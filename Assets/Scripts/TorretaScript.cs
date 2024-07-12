@@ -7,9 +7,15 @@ public class TorretaScript : MonoBehaviour
 {
     public Transform punta;
     public Transform target;
+    public Transform firingPoint;
+    public GameObject bala;
+
     public LayerMask enemigos;
 
-    public float rango = 5f;
+    public float rango;
+    public float rotationSpd;
+    public float bps;
+    private float cooldown;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +33,26 @@ public class TorretaScript : MonoBehaviour
         }
 
         RotateTowardsTarget();
+        if (!CheckTargetRange())
+        {
+            target = null;
+        } else
+        {
+            cooldown += Time.deltaTime;
+
+            if (cooldown >= 1f / bps)
+            {
+                Disparar();
+                cooldown = 0f;
+            }
+        }
+    }
+
+    private void Disparar()
+    {
+        GameObject balaObj = Instantiate(bala, firingPoint.position, Quaternion.identity);
+        BalaScript balascript = balaObj.GetComponent<BalaScript>();
+        balascript.SetTarget(target);
     }
 
     private void FindTarget()
@@ -44,7 +70,12 @@ public class TorretaScript : MonoBehaviour
         float angulo = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angulo));
 
-        punta.rotation = targetRotation;
+        punta.rotation = Quaternion.RotateTowards(punta.rotation, targetRotation, rotationSpd * Time.deltaTime);
+    }
+
+    private bool CheckTargetRange()
+    {
+        return Vector2.Distance(target.position, transform.position) <= rango;
     }
 
     private void OnDrawGizmosSelected()
