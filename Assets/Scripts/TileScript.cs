@@ -15,4 +15,16 @@ public class TileScript : MonoBehaviour
     {
         
     }
+
+    private void OnMouseEnter()
+    {
+        SpriteRenderer renderer = this.gameObject.GetComponent<SpriteRenderer>();
+        renderer.color = Color.yellow;
+    }
+
+    private void OnMouseExit()
+    {
+        SpriteRenderer renderer = this.gameObject.GetComponent<SpriteRenderer>();
+        renderer.color = Color.white;
+    }
 }
