@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class BalaScript : MonoBehaviour
 {
+
+    //Objetos
+
     public Rigidbody2D rb;
     private Transform target;
+
+    //Variables
 
     public float balaSpd;
 
