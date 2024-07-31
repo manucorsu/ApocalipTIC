@@ -12,17 +12,19 @@ public class TorretaScript2 : MonoBehaviour
     public Transform target;
     public GameObject bala;
     public LayerMask enemigos;
+    private Animator animator;
 
     //Variables
 
     public float rango;
     public float rotationSpd;
     public bool isShooting = false;
+    public float anim = 2;
 
     // Start is called before the first frame update
     void Start()
     {
-        bala.SetActive(false);
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -39,19 +41,25 @@ public class TorretaScript2 : MonoBehaviour
         {
             target = null;
             isShooting = false;
-            bala.SetActive(false);
         }
         else
         {
             if (isShooting == false)
             {
                 isShooting = true;
-                bala.SetActive(true);
             }
         }
 
-
+        if (isShooting == true)
+        {
+            bala.gameObject.SetActive(true);
+        }
+        else
+        {
+            bala.gameObject.SetActive(false);
+        }
     }
+    
 
     private void FindTarget()
     {

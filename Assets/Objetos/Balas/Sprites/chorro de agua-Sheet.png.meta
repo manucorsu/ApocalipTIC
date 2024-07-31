@@ -24,6 +24,7 @@ TextureImporter:
     21300038: chorro de agua-Sheet_19
     21300040: chorro de agua-Sheet_20
     21300042: chorro de agua-Sheet_21
+    21300044: chorro de agua-Sheet_22
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -98,18 +99,18 @@ TextureImporter:
       name: chorro de agua-Sheet_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 98
-        width: 20
-        height: 37
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50b81f30e42410448b6e70ad8f89868e
+      spriteID: 3b1123be203910548b356c1e80484afe
       vertices: []
       indices: 
       edges: []
@@ -118,18 +119,18 @@ TextureImporter:
       name: chorro de agua-Sheet_1
       rect:
         serializedVersion: 2
-        x: 44
-        y: 130
-        width: 8
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a490945cae7956a4d88e87bad2991667
+      spriteID: 9cf7e86ef479d564586f64c35d666c62
       vertices: []
       indices: 
       edges: []
@@ -138,18 +139,18 @@ TextureImporter:
       name: chorro de agua-Sheet_2
       rect:
         serializedVersion: 2
-        x: 74
-        y: 130
-        width: 12
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aad0ca5fdf6f43f46a282666250a022d
+      spriteID: fb5f9897cb6599d49b89b71e71daef5c
       vertices: []
       indices: 
       edges: []
@@ -158,18 +159,18 @@ TextureImporter:
       name: chorro de agua-Sheet_3
       rect:
         serializedVersion: 2
-        x: 104
-        y: 130
-        width: 17
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92628af7f88824741a0540e44d146d9f
+      spriteID: f22735c2cb555ff4c99c223a1b6cb56b
       vertices: []
       indices: 
       edges: []
@@ -178,18 +179,18 @@ TextureImporter:
       name: chorro de agua-Sheet_4
       rect:
         serializedVersion: 2
-        x: 135
-        y: 130
-        width: 18
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 128
+        y: 128
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7928720d70f898d43b7f41e5cb42cc41
+      spriteID: 7aa78f1cc8e923c4eae1d7062d8868a7
       vertices: []
       indices: 
       edges: []
@@ -198,18 +199,18 @@ TextureImporter:
       name: chorro de agua-Sheet_5
       rect:
         serializedVersion: 2
-        x: 39
-        y: 98
-        width: 20
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50ea08ceb5c630d4f88f1d63e6a0ed7b
+      spriteID: 7ad66e8c8036938419113d59f6086011
       vertices: []
       indices: 
       edges: []
@@ -218,18 +219,18 @@ TextureImporter:
       name: chorro de agua-Sheet_6
       rect:
         serializedVersion: 2
-        x: 69
-        y: 98
-        width: 22
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2d0027c8807cbd4091ab12f6cf56ecc
+      spriteID: e2348acbed7f33e489a896786ae2d0ee
       vertices: []
       indices: 
       edges: []
@@ -238,18 +239,18 @@ TextureImporter:
       name: chorro de agua-Sheet_7
       rect:
         serializedVersion: 2
-        x: 101
-        y: 98
-        width: 23
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 63
+        y: 96
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d75629cae9a70954281ca54a6e69b5cf
+      spriteID: 609ab104ea37197448b259c5a4f92351
       vertices: []
       indices: 
       edges: []
@@ -258,18 +259,18 @@ TextureImporter:
       name: chorro de agua-Sheet_8
       rect:
         serializedVersion: 2
-        x: 133
-        y: 98
-        width: 23
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf5c2bb24a1733d428726ff468ba4a38
+      spriteID: c7b26febff89ce44cb15f00f9276a139
       vertices: []
       indices: 
       edges: []
@@ -278,18 +279,18 @@ TextureImporter:
       name: chorro de agua-Sheet_9
       rect:
         serializedVersion: 2
-        x: 4
-        y: 66
-        width: 24
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 128
+        y: 96
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 767bbd52e4e598143a3374e024d45a0c
+      spriteID: f965406a83abd6d44a51ff49498fc214
       vertices: []
       indices: 
       edges: []
@@ -298,18 +299,18 @@ TextureImporter:
       name: chorro de agua-Sheet_10
       rect:
         serializedVersion: 2
-        x: 36
-        y: 66
-        width: 24
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 240fe2c2d66bb594e92ce4f769ae8625
+      spriteID: d32b5e0f3c1c26245aa8832d92ebf019
       vertices: []
       indices: 
       edges: []
@@ -318,18 +319,18 @@ TextureImporter:
       name: chorro de agua-Sheet_11
       rect:
         serializedVersion: 2
-        x: 68
-        y: 66
-        width: 24
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0efb0fa31ec47994e8f39973600434da
+      spriteID: 1c06e81012d195746ab756de7712df56
       vertices: []
       indices: 
       edges: []
@@ -338,18 +339,18 @@ TextureImporter:
       name: chorro de agua-Sheet_12
       rect:
         serializedVersion: 2
-        x: 100
-        y: 66
-        width: 24
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bc1db22bce93d54e99d4a4c683857f2
+      spriteID: a22e844406e0eb4479930b0537824a6c
       vertices: []
       indices: 
       edges: []
@@ -358,18 +359,18 @@ TextureImporter:
       name: chorro de agua-Sheet_13
       rect:
         serializedVersion: 2
-        x: 132
-        y: 66
-        width: 24
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 886e47eea5c4d8944ac9565603c24c21
+      spriteID: 2df4515586d31d84f830cc3a3ab3123c
       vertices: []
       indices: 
       edges: []
@@ -378,18 +379,18 @@ TextureImporter:
       name: chorro de agua-Sheet_14
       rect:
         serializedVersion: 2
-        x: 4
-        y: 34
-        width: 24
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1932036fe4bf294b8279857e3404dad
+      spriteID: e0659f3d635eeb2488b8bd1784def8c9
       vertices: []
       indices: 
       edges: []
@@ -398,18 +399,18 @@ TextureImporter:
       name: chorro de agua-Sheet_15
       rect:
         serializedVersion: 2
-        x: 36
-        y: 36
-        width: 24
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6ea67ed810bf044288a5b083a453e4d
+      spriteID: 1f5c1212a3e044643a03ecf7f12161a6
       vertices: []
       indices: 
       edges: []
@@ -418,18 +419,18 @@ TextureImporter:
       name: chorro de agua-Sheet_16
       rect:
         serializedVersion: 2
-        x: 69
-        y: 39
-        width: 24
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 008f01c9f3b6c104a82d5647c7d34950
+      spriteID: c906e51f8fd9e304e8f710dbc9ddf8be
       vertices: []
       indices: 
       edges: []
@@ -438,18 +439,18 @@ TextureImporter:
       name: chorro de agua-Sheet_17
       rect:
         serializedVersion: 2
-        x: 100
-        y: 44
-        width: 24
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e9346ef1afbaea4fbd22c33226b6a49
+      spriteID: ed4d4027183cc5e4997913ca80aadd02
       vertices: []
       indices: 
       edges: []
@@ -458,18 +459,18 @@ TextureImporter:
       name: chorro de agua-Sheet_18
       rect:
         serializedVersion: 2
-        x: 132
-        y: 47
-        width: 24
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 063ba2ee8a5d81443aab26db7728d231
+      spriteID: d6295f1fb299b334cb3090dc2232392a
       vertices: []
       indices: 
       edges: []
@@ -478,18 +479,18 @@ TextureImporter:
       name: chorro de agua-Sheet_19
       rect:
         serializedVersion: 2
-        x: 4
-        y: 19
-        width: 24
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edbada3ecc2350c43a568a1e17a388f9
+      spriteID: 02e88bb6b3eb903469439b12677d2b65
       vertices: []
       indices: 
       edges: []
@@ -498,18 +499,18 @@ TextureImporter:
       name: chorro de agua-Sheet_20
       rect:
         serializedVersion: 2
-        x: 36
-        y: 20
-        width: 24
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b26d03580d9a9f54c97aa4a40a16b5cd
+      spriteID: b5c3c51b3922b144780e59b755e55f87
       vertices: []
       indices: 
       edges: []
@@ -518,18 +519,38 @@ TextureImporter:
       name: chorro de agua-Sheet_21
       rect:
         serializedVersion: 2
-        x: 68
-        y: 23
-        width: 24
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a9eecfd1a52b504a997c64fa6808da1
+      spriteID: da85da449a0242449b69f0f1b874aeda
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chorro de agua-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73ac30dbc1be8364883054893d7465d6
       vertices: []
       indices: 
       edges: []
