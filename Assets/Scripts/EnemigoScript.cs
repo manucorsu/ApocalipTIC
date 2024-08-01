@@ -8,6 +8,7 @@ public class EnemigoScript : MonoBehaviour
     public string spName;
     public bool puedeMoverse = true;
     [SerializeField] GameObject waypoints;
+    public float vida;
 
     // Start is called before the first frame update
     void Start()
