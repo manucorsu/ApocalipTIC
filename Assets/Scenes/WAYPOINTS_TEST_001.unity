@@ -180,7 +180,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -8192
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -10250,7 +10250,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pfbsEnemigos:
   - {fileID: 8838121849432884106, guid: dd3e816cf6c72864885b29a5fa964a35, type: 3}
-  spawners: []
+  - {fileID: 7638835673199839570, guid: 04451449685c31543a1a98aee4214ad2, type: 3}
+  spawners:
+  - {fileID: 2143208743}
+  - {fileID: 534649954}
+  - {fileID: 1797181309}
+  - {fileID: 1276793964}
+  - {fileID: 1354190232}
+  - {fileID: 186277058}
+  - {fileID: 1563445253}
+  - {fileID: 1624082030}
+  - {fileID: 1607141602}
+  - {fileID: 2041741301}
+  - {fileID: 1327966983}
+  - {fileID: 1009869547}
+  - {fileID: 323766008}
+  - {fileID: 661158610}
+  - {fileID: 59450000}
+  - {fileID: 1752319060}
+  - {fileID: 1558417330}
+  - {fileID: 1997379131}
+  - {fileID: 1485709249}
+  - {fileID: 667698931}
+  - {fileID: 129322761}
+  - {fileID: 958913657}
+  - {fileID: 1338358017}
+  - {fileID: 143740982}
+  - {fileID: 153707967}
+  - {fileID: 447067985}
+  - {fileID: 1703205090}
   spawnear: 1
 --- !u!4 &1804724413
 Transform:

@@ -10,7 +10,11 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating(nameof(SpawnEnemy), 0f, 1f);
+        foreach (GameObject spawner in spawners)
+        {
+            spawner.GetComponent<SpriteRenderer>().enabled = false;
+        }
+        InvokeRepeating(nameof(SpawnEnemy), 0f, 10f);
     }
 
     // Update is called once per frame
@@ -23,7 +27,12 @@ public class EnemySpawner : MonoBehaviour
     {
         if (spawnear == true)
         {
-            Instantiate(pfbsEnemigos[0], new Vector3(0, 0, 0), Quaternion.identity);
+            byte rie = System.Convert.ToByte(Random.Range(0, pfbsEnemigos.Length)); //RIE = Random Index para el array de Enemigos™
+            GameObject nuevoEnemigo = pfbsEnemigos[rie];
+
+            byte ris = System.Convert.ToByte(Random.Range(0, spawners.Length)); //RIS = Random Index para el array de Spawners™
+            Transform loc = spawners[ris].transform;
+            Instantiate(nuevoEnemigo, loc.position, Quaternion.identity);
         }
     }
 }
