@@ -7,7 +7,7 @@ public class EnemigoScript : MonoBehaviour
     private Vector3 initialPos;
     public GameObject[] waypoints;
     public string spName;
-    private bool puedeMoverse = true;
+    public bool puedeMoverse = true;
     public float vida;
 
     // Start is called before the first frame update
