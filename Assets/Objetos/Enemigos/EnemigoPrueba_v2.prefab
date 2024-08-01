@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7638835673199839598}
-  - component: {fileID: 7638835673199839596}
   - component: {fileID: 7638835673199839571}
   - component: {fileID: 7638835673199839599}
   - component: {fileID: 1199585243032204024}
   - component: {fileID: 1199585243032204025}
+  - component: {fileID: 114871404636932894}
+  - component: {fileID: 114487851025892346}
   m_Layer: 8
   m_Name: EnemigoPrueba_v2
   m_TagString: enemigo
@@ -35,19 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7638835673199839596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7638835673199839570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b3524097b235f04b9a77cee89d961d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 7638835673199839571}
 --- !u!50 &7638835673199839571
 Rigidbody2D:
   serializedVersion: 4
@@ -162,3 +150,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114871404636932894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638835673199839570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191c9e6e90394dd49957e2d7ac96a0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawners: []
+--- !u!114 &114487851025892346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638835673199839570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3524097b235f04b9a77cee89d961d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 7638835673199839571}

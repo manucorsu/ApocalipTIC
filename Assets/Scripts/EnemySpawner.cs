@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
         {
             spawner.GetComponent<SpriteRenderer>().enabled = false;
         }
-        InvokeRepeating(nameof(SpawnEnemy), 0f, 1f);
+        InvokeRepeating(nameof(SpawnEnemy), 0f, 10f);
     }
 
     // Update is called once per frame
