@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject[] pfbsEnemigos; //cada tipo de enemigo es un prefab y está en este array
-    public GameObject[] spawners;
+    [SerializeField] GameObject[] pfbsEnemigos; /*cada tipo de enemigo es un prefab y 
+                                                 * está en este array*/
+    [SerializeField] GameObject[] spawners;
+
     public bool spawnear;
     // Start is called before the first frame update
     void Start()

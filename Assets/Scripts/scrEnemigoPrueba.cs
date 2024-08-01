@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class scrEnemigoPrueba : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()

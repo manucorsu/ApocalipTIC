@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class EnemigoScript : MonoBehaviour
 {
-    private Vector3 initialPos;
-    public GameObject[] waypoints;
+    public float spd;
     public string spName;
-    private bool puedeMoverse = true;
-    public float vida;
+    public bool puedeMoverse = true;
+    [SerializeField] GameObject waypoints;
 
     // Start is called before the first frame update
     void Start()
     {
-        DeterminarPath();
+        BuscarPath();
     }
 
     // Update is called once per frame
@@ -21,47 +20,95 @@ public class EnemigoScript : MonoBehaviour
     {
 
     }
-    private void DeterminarPath()
+
+    private void BuscarPath()
     {
+        /*jajaja no puedo usar switch porque apareció en 2019 y unity 2018 no lo acepta 
+         jajajaja*/
+
         if(spName == "A1" || spName == "A4" || spName == "A7")
         {
-            Debug.Log("A147");
+            A147();
         }
         else if(spName == "A2" || spName == "A5" || spName == "A8")
         {
-            Debug.Log("A258");
+            A258();
         }
         else if(spName == "A3" || spName == "A6" || spName == "A9")
         {
-            Debug.Log("A369");
+            A369();
         }
         else if(spName == "B1" || spName == "B3" || spName == "B5")
         {
-            Debug.Log("B135");
+            B135();
         }
         else if(spName == "B2" || spName == "B4" || spName == "B6")
         {
-            Debug.Log("B246");
+            B246();
         }
         else if (spName == "C1" || spName == "C2" || spName == "C3")
         {
-            Debug.Log("C123");
+            C123();
         }
         else if(spName == "C4" || spName == "C5" || spName == "C6")
         {
-            Debug.Log("C456");
+            C456();
         }
         else if(spName == "D1" || spName == "D3" || spName == "D5")
         {
-            Debug.Log("D135");
+            D135();
         }
         else if(spName == "D2" || spName == "D4" || spName == "D6")
         {
-            Debug.Log("D246");
-        }
-        else
-        {
-            Debug.LogWarning("Enemigo no apareció en un spawner válido");
+            D246();
         }
     }
+
+    #region caminos, ver SPAWNERSGUIDE
+    //Los "A" tienen la suerte de que no deben girar en ningún momento para llegar al objetivo
+    private void A147()
+    {
+        
+    }
+
+    private void A258()
+    {
+
+    }
+
+    private void A369()
+    {
+
+    }
+
+    private void B135()
+    {
+
+    }
+
+    private void B246()
+    {
+
+    }
+
+    private void C123()
+    {
+
+    }
+
+    private void C456()
+    {
+
+    }
+
+    private void D135()
+    {
+        
+    }
+
+    private void D246()
+    {
+
+    }
+    #endregion
 }
