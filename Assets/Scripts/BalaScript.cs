@@ -47,7 +47,10 @@ public class BalaScript : MonoBehaviour
 
         if (collision.gameObject.tag == "enemigo")
         {
-            Destroy(this.gameObject);
+            if (collision.transform == target)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

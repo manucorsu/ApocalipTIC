@@ -12,19 +12,19 @@ public class TorretaScript2 : MonoBehaviour
     public Transform target;
     public GameObject bala;
     public LayerMask enemigos;
-    private Animator animator;
-
+    private BalaScript2 balascr2;
+    public RaycastHit2D[] hits;
+    
     //Variables
 
     public float rango;
     public float rotationSpd;
     public bool isShooting = false;
-    public float anim = 2;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = gameObject.GetComponent<Animator>();
+        balascr2 = bala.GetComponent<BalaScript2>();
     }
 
     // Update is called once per frame
@@ -37,6 +37,7 @@ public class TorretaScript2 : MonoBehaviour
         }
 
         RotateTowardsTarget();
+
         if (!CheckTargetRange())
         {
             target = null;
@@ -52,23 +53,31 @@ public class TorretaScript2 : MonoBehaviour
 
         if (isShooting == true)
         {
+
             bala.gameObject.SetActive(true);
+            if (balascr2.anim != 2)
+            {
+                balascr2.anim = 1;
+            }
         }
-        else
-        {
-            bala.gameObject.SetActive(false);
-        }
+
+        
     }
     
 
     private void FindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, rango, new Vector2(transform.position.x, transform.position.y), 0f, enemigos);
-
+        hits = Physics2D.CircleCastAll(transform.position, rango, new Vector2(transform.position.x, transform.position.y), 0f, enemigos);
         if (hits.Length > 0)
         {
             target = hits[0].transform;
         }
+
+        if (hits.Length == 0)
+        {
+            balascr2.anim = 3;
+        }
+
     }
 
     private void RotateTowardsTarget()
@@ -77,6 +86,7 @@ public class TorretaScript2 : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angulo - 90));
 
         punta.rotation = Quaternion.RotateTowards(punta.rotation, targetRotation, rotationSpd * Time.deltaTime);
+
     }
 
     private bool CheckTargetRange()
