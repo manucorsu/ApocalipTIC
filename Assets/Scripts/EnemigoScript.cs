@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemigoScript : MonoBehaviour
 {
     public float spd;
     public string spName;
-    public bool puedeMoverse = true;
-    [SerializeField] GameObject waypoints;
-    public float vida;
+    public bool puedeMoverse = false;
+    [SerializeField] private GameObject[] waypoints;
+    private List<Vector3> v3Camino = new List<Vector3>();
+
+    public float hp;
 
     // Start is called before the first frame update
     void Start()
@@ -16,21 +19,16 @@ public class EnemigoScript : MonoBehaviour
         BuscarPath();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void BuscarPath()
     {
         /*jajaja no puedo usar switch porque apareció en 2019 y unity 2018 no lo acepta 
-         jajajaja*/
+         jajajaja
+        
+        Si no se entiende nada, ver SPAWNERSGUIDE*/
 
         if (spName == "A1" || spName == "A4" || spName == "A7")
         {
-            string[] camino = new string[] {"G1"};
-            HacerCamino(camino);
+            V3ify(new string[] { "G1" });
         }
         else if (spName == "A2" || spName == "A5" || spName == "A8")
         {
@@ -38,6 +36,7 @@ public class EnemigoScript : MonoBehaviour
         }
         else if (spName == "A3" || spName == "A6" || spName == "A9")
         {
+
         }
         else if (spName == "B1" || spName == "B3" || spName == "B5")
         {
@@ -64,12 +63,28 @@ public class EnemigoScript : MonoBehaviour
 
         }
     }
-
-    private void HacerCamino(string[] camino)
+    private void V3ify(string[] camino)
     {
-        foreach (string wpName in camino)
+        foreach (GameObject wp in waypoints)
         {
-            Debug.LogError(wpName);
+            Debug.Log(wp.name);
+            if (camino.Contains(wp.name))
+            {
+                v3Camino.Add(wp.transform.position);
+            }
+        }
+        puedeMoverse = true;
+    }
+
+    void Update()
+    {
+        if (puedeMoverse == true)
+        {
+            for (byte i = 0; i < v3Camino.Count; i++)
+            {
+                this.transform.position = Vector3.MoveTowards
+                    (this.transform.position, v3Camino[i], spd * Time.deltaTime);
+            }
         }
     }
 }
