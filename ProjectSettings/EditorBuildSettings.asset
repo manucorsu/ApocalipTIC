@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/WAYPOINTS_TEST_001.unity
-    guid: 4deed37a26f84404a96b6cc4f7b75c22
+    path: Assets/Scenes/Game.unity
+    guid: 791fb51cc134d39449db4dfca7306409
   - enabled: 1
-    path: Assets/Scenes/GameOverScene.unity
+    path: Assets/Scenes/GameOver.unity
     guid: 55a29364cf084bd46b69a47dc7455597
   m_configObjects: {}

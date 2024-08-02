@@ -113,13 +113,14 @@ public class EnemigoScript : MonoBehaviour
 
             if (wi == v3Camino.Count)
             {
+                spd = 0;
                 Perder();
             }
         }
     }
     void Perder()
     {
-        spd = 0;
-        SceneManager.LoadScene("GameOverScene");
+        Debug.Log("boo hoo");
+        SceneManager.LoadScene("GameOver");
     }
 }

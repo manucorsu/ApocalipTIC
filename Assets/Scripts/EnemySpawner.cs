@@ -14,7 +14,10 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (GameObject spawner in spawners)
         {
-            spawner.GetComponent<SpriteRenderer>().enabled = false;
+            if(spawner.GetComponent<SpriteRenderer>().enabled == true)
+            {
+                spawner.GetComponent<SpriteRenderer>().enabled = false;
+            }
         }
         InvokeRepeating(nameof(SpawnEnemy), 0f, 1f);
     }
