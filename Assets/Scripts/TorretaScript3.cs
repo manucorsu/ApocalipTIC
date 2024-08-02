@@ -10,19 +10,20 @@ public class TorretaScript3 : MonoBehaviour
 
     public Transform target;
     public LayerMask enemigos;
+    public Animator animator;
 
     //Variables
 
     public float rango;
     public float cooldown;
     public bool canEat = true;
-    public int anim = 1;
+    public float anima = 2;
     public float spd;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator.SetFloat("anim", anima);
     }
 
     // Update is called once per frame
@@ -30,14 +31,11 @@ public class TorretaScript3 : MonoBehaviour
     {
         if (target == null)
         {
-            FindTarget();
-            return;
-        }
-        
-
-        if (!CheckTargetRange())
-        {
-            target = null;
+            if (canEat)
+            {
+                FindTarget();
+                return;
+            }
         }
     }
 
@@ -53,12 +51,9 @@ public class TorretaScript3 : MonoBehaviour
                 StartCoroutine(Comer());
             }
         }
+
     }
 
-    private bool CheckTargetRange()
-    {
-        return Vector2.Distance(target.position, transform.position) <= rango;
-    }
 
     private void OnDrawGizmosSelected()
     {
@@ -70,9 +65,35 @@ public class TorretaScript3 : MonoBehaviour
     {
         scrEnemigoPrueba targetscr = target.GetComponent<scrEnemigoPrueba>();
         targetscr.puedeMoverse = false;
-        
-        target.position = Vector3.MoveTowards(target.position, transform.position, spd * Time.deltaTime);
+
+        anima = 0;
+        animator.SetFloat("anim", anima);
+
+        while (target.position != transform.position)
+        {
+            target.position = Vector3.MoveTowards(target.position, transform.position, spd * Time.deltaTime);
+            target.Rotate(new Vector3(0,0,1), 200 * Time.deltaTime);
+            target.localScale = new Vector2(target.localScale.x - 0.04f, target.localScale.y - 0.04f);
+            yield return null;
+        }
+
+        canEat = false;
+        Destroy(target.gameObject);
+
+        animator.enabled = true;
+        anima = 1;
+        animator.SetFloat("anim", anima);
 
         yield return new WaitForSeconds(cooldown);
+
+        canEat = true;
+
+        anima = 2;
+        animator.SetFloat("anim", anima);
+    }
+
+    public void AnimationEnd()
+    {
+        animator.enabled = false;
     }
 }

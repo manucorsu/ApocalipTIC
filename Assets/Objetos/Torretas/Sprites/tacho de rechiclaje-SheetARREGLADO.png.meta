@@ -1,17 +1,18 @@
 fileFormatVersion: 2
-guid: 6b26c6351b3e2044a9e7b24bc50fafc6
+guid: 0fbdd6352ca95a543ae42d166b6e9a15
 TextureImporter:
   fileIDToRecycleName:
-    21300000: tacho de basura-Sheet_0
-    21300002: tacho de basura-Sheet_1
-    21300004: tacho de basura-Sheet_2
-    21300006: tacho de basura-Sheet_3
-    21300008: tacho de basura-Sheet_4
-    21300010: tacho de basura-Sheet_5
-    21300012: tacho de basura-Sheet_6
-    21300014: tacho de basura-Sheet_7
-    21300016: tacho de basura-Sheet_8
-    21300018: tacho de basura-Sheet_9
+    21300000: tacho de rechiclaje-SheetARREGLADO_0
+    21300002: tacho de rechiclaje-SheetARREGLADO_1
+    21300004: tacho de rechiclaje-SheetARREGLADO_2
+    21300006: tacho de rechiclaje-SheetARREGLADO_3
+    21300008: tacho de rechiclaje-SheetARREGLADO_4
+    21300010: tacho de rechiclaje-SheetARREGLADO_5
+    21300012: tacho de rechiclaje-SheetARREGLADO_6
+    21300014: tacho de rechiclaje-SheetARREGLADO_7
+    21300016: tacho de rechiclaje-SheetARREGLADO_8
+    21300018: tacho de rechiclaje-SheetARREGLADO_9
+    21300020: tacho de rechiclaje-SheetARREGLADO_10
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -52,7 +53,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -83,7 +84,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tacho de basura-Sheet_0
+      name: tacho de rechiclaje-SheetARREGLADO_0
       rect:
         serializedVersion: 2
         x: 0
@@ -97,13 +98,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 893b084aff5628a49854b16213d5e61d
+      spriteID: f113084f57192fb4cbfd2f710e919ef3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tacho de basura-Sheet_1
+      name: tacho de rechiclaje-SheetARREGLADO_1
       rect:
         serializedVersion: 2
         x: 16
@@ -117,13 +118,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cafc4115b089ba94dafe230ebc9d651c
+      spriteID: ece4c4def14be4943860d59339b5b547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tacho de basura-Sheet_2
+      name: tacho de rechiclaje-SheetARREGLADO_2
       rect:
         serializedVersion: 2
         x: 32
@@ -137,13 +138,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d7cea4dd2fa15b478fe8d78702cf3b6
+      spriteID: fb3d3aee90f740b4382d2a5cd7da014d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tacho de basura-Sheet_3
+      name: tacho de rechiclaje-SheetARREGLADO_3
       rect:
         serializedVersion: 2
         x: 48
@@ -157,13 +158,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db3dbeaef11010a40bf729c965097655
+      spriteID: 5a4af0e6a33859e438582f3e806d75e8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tacho de basura-Sheet_4
+      name: tacho de rechiclaje-SheetARREGLADO_4
       rect:
         serializedVersion: 2
         x: 64
@@ -177,13 +178,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49385a17b253d18409f9b02a3637a903
+      spriteID: cfa93aa757f7c814c9ac86e45717f0f3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tacho de basura-Sheet_5
+      name: tacho de rechiclaje-SheetARREGLADO_5
       rect:
         serializedVersion: 2
         x: 80
@@ -197,13 +198,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58211bd9da9495d4690ea4850bddce7a
+      spriteID: f1d902324d6e3374fb3619659f618070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tacho de basura-Sheet_6
+      name: tacho de rechiclaje-SheetARREGLADO_6
       rect:
         serializedVersion: 2
         x: 96
@@ -217,13 +218,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bed6aa3eb55c2af47a5fadc8ddcae845
+      spriteID: 221b656ab84c2314d985b7ec77202b17
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tacho de basura-Sheet_7
+      name: tacho de rechiclaje-SheetARREGLADO_7
       rect:
         serializedVersion: 2
         x: 112
@@ -237,13 +238,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fc334de886814248ab78754a7350eb6
+      spriteID: 4ff02578403195046a3141ee46805a47
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tacho de basura-Sheet_8
+      name: tacho de rechiclaje-SheetARREGLADO_8
       rect:
         serializedVersion: 2
         x: 128
@@ -257,13 +258,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90e279dc16f03ba43828e44a5615f4fa
+      spriteID: dd72cfa8d6aecc943845364a67c5d90c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tacho de basura-Sheet_9
+      name: tacho de rechiclaje-SheetARREGLADO_9
       rect:
         serializedVersion: 2
         x: 144
@@ -277,7 +278,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38c5ad1d2f77d6644a45210c41f24e2e
+      spriteID: df897339d11f3294c9b81ad56363c783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tacho de rechiclaje-SheetARREGLADO_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf1155bcad3ab55469d30dac4e0ed582
       vertices: []
       indices: 
       edges: []
@@ -285,7 +306,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 517eb95a5d096cd42b7bb00619387077
+    spriteID: 75a0f1f05afb34044bf86a8b6186a2ec
     vertices: []
     indices: 
     edges: []
