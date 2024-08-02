@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8830741314296655098}
-  - component: {fileID: 1231783219749323916}
+  - component: {fileID: 114113594721489648}
   - component: {fileID: 8830741314296655047}
   - component: {fileID: 8830741314296655099}
   - component: {fileID: 11901727637772140}
@@ -35,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1231783219749323916
+--- !u!114 &114113594721489648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,14 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191c9e6e90394dd49957e2d7ac96a0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spd: 1
+  hp: 100
+  spd: 2.5
+  puedeMoverse: 0
   spName: 
-  puedeMoverse: 1
-  waypoints:
-  - {fileID: 823827041407658395, guid: 4a89225ba8233f24aacec1da2182feb7, type: 3}
-  - {fileID: 7696325762707933710, guid: e10fbad18cf0472488922ecdd9a136c7, type: 3}
-  - {fileID: 7273038632206192631, guid: 2490c2a2dfd07224d9d63258224e95a0, type: 3}
-  hp: 0
+  padreWaypoints: {fileID: 5029048597798462383, guid: c9a0224b3eb909743bc15a959e711d05,
+    type: 3}
 --- !u!50 &8830741314296655047
 Rigidbody2D:
   serializedVersion: 4
