@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8761383864941554203}
   balaSpd: 5
+  balaDmg: 25
 --- !u!58 &58932662460936438
 CircleCollider2D:
   m_ObjectHideFlags: 0
