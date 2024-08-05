@@ -120,7 +120,7 @@ public class EnemigoScript : MonoBehaviour
     }
     void Perder()
     {
-        Debug.Log("boo hoo");
-        SceneManager.LoadScene("GameOver");
+        Destroy(this.gameObject);
+        //SceneManager.LoadScene("GameOver");
     }
 }

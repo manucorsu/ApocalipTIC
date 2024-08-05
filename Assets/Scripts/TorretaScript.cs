@@ -13,6 +13,7 @@ public class TorretaScript : MonoBehaviour
     public Transform firingPoint;
     public GameObject bala;
     public LayerMask enemigos;
+    public Animator animator;
 
     //Variables
 
@@ -20,6 +21,7 @@ public class TorretaScript : MonoBehaviour
     public float rotationSpd;
     public float bps;
     private float cooldown;
+    public int anim;
 
     // Start is called before the first frame update
     void Start()
@@ -54,9 +56,8 @@ public class TorretaScript : MonoBehaviour
 
     private void Disparar()
     {
-        GameObject balaObj = Instantiate(bala, firingPoint.position, punta.rotation);
-        BalaScript balascript = balaObj.GetComponent<BalaScript>();
-        balascript.SetTarget(target);
+        anim = 1;
+        animator.SetFloat("anim", anim);
     }
 
     private void FindTarget()
@@ -86,5 +87,15 @@ public class TorretaScript : MonoBehaviour
     {
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, rango);
+    }
+
+    public void AnimationEnd()
+    {
+        GameObject balaObj = Instantiate(bala, firingPoint.position, punta.rotation);
+        BalaScript balascript = balaObj.GetComponent<BalaScript>();
+        balascript.SetTarget(target);
+
+        anim = 0;
+        animator.SetFloat("anim", anim);
     }
 }
