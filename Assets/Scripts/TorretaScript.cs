@@ -54,7 +54,7 @@ public class TorretaScript : MonoBehaviour
 
     private void Disparar()
     {
-        GameObject balaObj = Instantiate(bala, firingPoint.position, Quaternion.identity);
+        GameObject balaObj = Instantiate(bala, firingPoint.position, punta.rotation);
         BalaScript balascript = balaObj.GetComponent<BalaScript>();
         balascript.SetTarget(target);
     }
@@ -72,7 +72,7 @@ public class TorretaScript : MonoBehaviour
     private void RotateTowardsTarget()
     {
         float angulo = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angulo - 90));
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angulo + 90));
 
         punta.rotation = Quaternion.RotateTowards(punta.rotation, targetRotation, rotationSpd * Time.deltaTime);
     }

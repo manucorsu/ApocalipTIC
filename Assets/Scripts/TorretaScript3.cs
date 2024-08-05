@@ -63,8 +63,9 @@ public class TorretaScript3 : MonoBehaviour
 
     private IEnumerator Comer()
     {
-        scrEnemigoPrueba targetscr = target.GetComponent<scrEnemigoPrueba>();
-        targetscr.puedeMoverse = false;
+        EnemigoScript targetscr = target.GetComponent<EnemigoScript>();
+        targetscr.hp = 999;
+        targetscr.spd = 0;
 
         anima = 0;
         animator.SetFloat("anim", anima);

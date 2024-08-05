@@ -19,18 +19,20 @@ public class SpawnerMapaScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+       
         for (int i = 0; i < 4; i++)
         {
-            int valorAzar1 = Random.Range(0, sector1.Count - 1);
-            Instantiate(decoraciones[Random.Range(1, Random.Range(2, decoraciones.Length-1))], sector1[valorAzar1].transform.position, Quaternion.identity);
+            int valorAzar1 = Random.Range(0, sector1.Count);
+            Instantiate(decoraciones[Random.Range(0, decoraciones.Length)], sector1[valorAzar1].transform.position, Quaternion.identity);
             Destroy(sector1[valorAzar1]);
             sector1.RemoveAt(valorAzar1);
         }
 
         for (int i = 0; i < 4; i++)
         {
-            int valorAzar2 = Random.Range(0, sector2.Count - 1);
-            Instantiate(decoraciones[Random.Range(1, Random.Range(2, decoraciones.Length - 1))], sector2[valorAzar2].transform.position, Quaternion.identity);
+            int valorAzar2 = Random.Range(0, sector2.Count);
+            Instantiate(decoraciones[Random.Range(0, decoraciones.Length)], sector2[valorAzar2].transform.position, Quaternion.identity);
             Destroy(sector2[valorAzar2]);
             sector2.RemoveAt(valorAzar2);
         }
@@ -38,15 +40,15 @@ public class SpawnerMapaScript : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             int valorAzar3 = Random.Range(0, sector3.Count - 1);
-            Instantiate(decoraciones[Random.Range(0, Random.Range(2, decoraciones.Length - 1))], sector3[valorAzar3].transform.position, Quaternion.identity);
+            Instantiate(decoraciones[Random.Range(0, decoraciones.Length)], sector3[valorAzar3].transform.position, Quaternion.identity);
             Destroy(sector3[valorAzar3]);
             sector3.RemoveAt(valorAzar3);
         }
 
         for (int i = 0; i < 4; i++)
         {
-            int valorAzar4 = Random.Range(0, sector4.Count - 1);
-            Instantiate(decoraciones[Random.Range(0, Random.Range(2, decoraciones.Length - 1))], sector4[valorAzar4].transform.position, Quaternion.identity);
+            int valorAzar4 = Random.Range(0, sector4.Count);
+            Instantiate(decoraciones[Random.Range(0, decoraciones.Length)], sector4[valorAzar4].transform.position, Quaternion.identity);
             Destroy(sector4[valorAzar4]);
             sector4.RemoveAt(valorAzar4);
         }

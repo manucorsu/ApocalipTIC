@@ -4022,9 +4022,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decoraciones:
-  - {fileID: 7372697089819059288, guid: 4367cfd639711fe4096b2148b872d3ff, type: 3}
-  - {fileID: 641608661021530915, guid: b1022c1dab18c8445857415904f46fdd, type: 3}
   - {fileID: 5095910544910015822, guid: 79d97b5345b2664439f5624c508bb447, type: 3}
+  - {fileID: 7372697089819059288, guid: 4367cfd639711fe4096b2148b872d3ff, type: 3}
   sector1:
   - {fileID: 1270398456}
   - {fileID: 1477561764}
