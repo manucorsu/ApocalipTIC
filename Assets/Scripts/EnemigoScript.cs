@@ -11,9 +11,12 @@ public class EnemigoScript : MonoBehaviour
     Animator animator;
     List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
 
+    [Header("Stats")]
+    [SerializeField] byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas
     [SerializeField] float hpSave;
     [HideInInspector] public float hp;
     public float spd; //speed
+
 
     GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
     List<Transform> waypoints = new List<Transform>(); //todos los waypoints

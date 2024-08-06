@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191c9e6e90394dd49957e2d7ac96a0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minRonda: 0
   hpSave: 100
   hp: 100
   spd: 2.5

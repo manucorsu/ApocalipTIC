@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public bool spawnear = false;
+
+    [Header("Arrays")]
     [SerializeField] GameObject[] pfbsEnemigos; //cada tipo de enemigo es un prefab y está en este array
     [SerializeField] GameObject[] spawners;
-    public bool spawnear;
+
+    [Header("Sistema de rondas")]
+    [SerializeField] float dificultad = 0.75f;
+    [SerializeField] byte r1Bots = 6; //bots de la ronda 1, usados de base para todo el resto de las rondas
+    [SerializeField] float eps = 0.5f; //enemigos por segundo
+
+    byte ronda = 1;
+    float tiempoDesdeUltimoSpawn;
+    byte enemigosVivos;
+    byte enemigosASpawnear;
 
     void Start()
     {
@@ -17,22 +29,33 @@ public class EnemySpawner : MonoBehaviour
                 spawner.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
-        InvokeRepeating(nameof(SpawnEnemy), 0f, 1f);
+        EmpezarRonda();
+    }
+    void Update()
+    {
+        if (spawnear == false) { return; }
+        tiempoDesdeUltimoSpawn += Time.deltaTime;
+        if (tiempoDesdeUltimoSpawn >= (1f / eps))
+        {
+            SpawnEnemy();
+        }
+    }
+    void EmpezarRonda()
+    {
+        spawnear = true;
+        enemigosASpawnear = (byte)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
     }
     void SpawnEnemy()
     {
-        if (spawnear == true)
-        {
-            byte rie = System.Convert.ToByte(Random.Range(0, pfbsEnemigos.Length)); //RIE = Random Index para el array de Enemigos™
-            GameObject prefabElegido = pfbsEnemigos[rie];
+        byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
+        GameObject prefabElegido = pfbsEnemigos[rie];
 
-            byte ris = System.Convert.ToByte(Random.Range(0, spawners.Length)); //RIS = Random Index para el array de Spawners™
-            Transform loc = spawners[ris].transform;
+        byte ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
+        Transform loc = spawners[ris].transform;
 
-            GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
+        GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
 
-            EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
-            enemigoScript.spName = spawners[ris].name;
-        }
+        EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
+        enemigoScript.spName = spawners[ris].name;
     }
 }
