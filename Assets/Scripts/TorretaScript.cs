@@ -13,7 +13,7 @@ public class TorretaScript : MonoBehaviour
     public Transform firingPoint;
     public GameObject bala;
     public LayerMask enemigos;
-    Animator animator;
+    public Animator animator;
 
     //Variables
 
@@ -25,10 +25,7 @@ public class TorretaScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (this.gameObject.GetComponent<Animator>() != null)
-        {
-            animator = this.gameObject.GetComponent<Animator>();
-        }
+            animator = punta.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -64,7 +61,6 @@ public class TorretaScript : MonoBehaviour
         balascript.SetTarget(target);
         yield return new WaitForSeconds(0.2f);
         animator.SetFloat("anim", 0);
-        yield return new WaitForSeconds(cooldown);
     }
 
     private void FindTarget()

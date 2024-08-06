@@ -68,33 +68,38 @@ public class TorretaScript3 : MonoBehaviour
     private IEnumerator Comer()
     {
         EnemigoScript targetscr = target.GetComponent<EnemigoScript>();
-        targetscr.hp = 999;
-        targetscr.spd = 0;
 
-        anima = 0;
-        animator.SetFloat("anim", anima);
-
-        while (target.position != transform.position)
+        if (targetscr.canBeEaten == true)
         {
-            target.position = Vector3.MoveTowards(target.position, transform.position, spd * Time.deltaTime);
-            target.Rotate(new Vector3(0, 0, 1), 200 * Time.deltaTime);
-            target.localScale = new Vector2(target.localScale.x - 0.04f, target.localScale.y - 0.04f);
-            yield return null;
-        }
+            targetscr.hp = 999;
+            targetscr.spd = 0;
+            targetscr.canBeEaten = false;
 
-        canEat = false;
-        Destroy(target.gameObject);
+            anima = 0;
+            animator.SetFloat("anim", anima);
 
-        animator.enabled = true;
-        anima = 1;
-        animator.SetFloat("anim", anima);
+            while (target.position != transform.position)
+            {
+                target.position = Vector3.MoveTowards(target.position, transform.position, spd * Time.deltaTime);
+                target.Rotate(new Vector3(0, 0, 1), 200 * Time.deltaTime);
+                target.localScale = new Vector2(target.localScale.x - 0.04f, target.localScale.y - 0.04f);
+                yield return null;
+            }
 
-        yield return new WaitForSeconds(cooldown);
+            canEat = false;
+            Destroy(target.gameObject);
 
-        canEat = true;
+            animator.enabled = true;
+            anima = 1;
+            animator.SetFloat("anim", anima);
 
-        anima = 2;
-        animator.SetFloat("anim", anima);
+            yield return new WaitForSeconds(cooldown);
+
+            canEat = true;
+
+            anima = 2;
+            animator.SetFloat("anim", anima);
+        } 
     }
 
     public void AnimationEnd()

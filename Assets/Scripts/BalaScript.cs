@@ -36,6 +36,7 @@ public class BalaScript : MonoBehaviour
     {
         if (target == null)
         {
+            Destroy(this.gameObject);
             return;
         }
 

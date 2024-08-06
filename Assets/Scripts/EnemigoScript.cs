@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class EnemigoScript : MonoBehaviour
 {
+
+    public bool canBeEaten = true;
+
     Animator animator;
     List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
 

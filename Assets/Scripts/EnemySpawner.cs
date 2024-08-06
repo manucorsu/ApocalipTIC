@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
                 spawner.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
-        InvokeRepeating(nameof(SpawnEnemy), 0f, 3f);
+        InvokeRepeating(nameof(SpawnEnemy), 0f, 1f);
     }
     void SpawnEnemy()
     {
