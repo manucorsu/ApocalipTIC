@@ -3,31 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class TorretaScript : MonoBehaviour
+public class TorretaScript4 : MonoBehaviour
 {
 
-    //BALLESTA
+    //PROYECTOR
 
     //Objetos
 
     public Transform punta;
     public Transform target;
-    public Transform firingPoint;
     public GameObject bala;
     public LayerMask enemigos;
-    public Animator animator;
+    public BalaScript4 balascr4;
+    public RaycastHit2D[] hits;
 
     //Variables
 
     public float rango;
     public float rotationSpd;
-    public float bps;
-    private float cooldown;
+    public bool isShooting = false;
 
     // Start is called before the first frame update
     void Start()
     {
-            animator = punta.GetComponent<Animator>();
+       // balascr4 = bala.GetComponent<BalaScript4>();
     }
 
     // Update is called once per frame
@@ -40,39 +39,42 @@ public class TorretaScript : MonoBehaviour
         }
 
         RotateTowardsTarget();
+
         if (!CheckTargetRange())
         {
             target = null;
-        } else
+            isShooting = false;
+        }
+        else
         {
-            cooldown += Time.deltaTime;
-
-            if (cooldown >= 1f / bps)
+            if (isShooting == false)
             {
-                StartCoroutine(Disparar());
-                cooldown = 0f;
+                isShooting = true;
             }
+        }
+
+        if (isShooting == true)
+        {
+
+          //  bala.gameObject.SetActive(true);
+            //Animación bala
         }
     }
 
-    private IEnumerator Disparar()
-    {
-        animator.SetFloat("anim", 1);
-        GameObject balaObj = Instantiate(bala, firingPoint.position, punta.rotation);
-        BalaScript balascript = balaObj.GetComponent<BalaScript>();
-        balascript.SetTarget(target);
-        yield return new WaitForSeconds(0.2f);
-        animator.SetFloat("anim", 0);
-    }
 
     private void FindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, rango, new Vector2(transform.position.x, transform.position.y), 0f, enemigos);
-
+        hits = Physics2D.CircleCastAll(transform.position, rango, new Vector2(transform.position.x, transform.position.y), 0f, enemigos);
         if (hits.Length > 0)
         {
             target = hits[0].transform;
         }
+
+        if (hits.Length == 0)
+        {
+            //Animación bala
+        }
+
     }
 
     private void RotateTowardsTarget()
@@ -81,6 +83,7 @@ public class TorretaScript : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angulo + 90));
 
         punta.rotation = Quaternion.RotateTowards(punta.rotation, targetRotation, rotationSpd * Time.deltaTime);
+
     }
 
     private bool CheckTargetRange()

@@ -6,6 +6,8 @@ using UnityEditor;
 public class TorretaScript2 : MonoBehaviour
 {
 
+    //NICHO
+
     //Objetos
 
     public Transform punta;

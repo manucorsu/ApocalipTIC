@@ -6,6 +6,8 @@ using UnityEditor;
 public class TorretaScript3 : MonoBehaviour
 {
 
+    //TACHO
+
     //Objetos
 
     public Transform target;
