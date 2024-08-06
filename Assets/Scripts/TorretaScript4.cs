@@ -21,12 +21,13 @@ public class TorretaScript4 : MonoBehaviour
 
     public float rango;
     public float rotationSpd;
-    public bool isShooting = false;
+    public bool canshoot = true;
+    public float bps; 
 
     // Start is called before the first frame update
     void Start()
     {
-       // balascr4 = bala.GetComponent<BalaScript4>();
+        bala.SetActive(false);
     }
 
     // Update is called once per frame
@@ -35,32 +36,29 @@ public class TorretaScript4 : MonoBehaviour
         if (target == null)
         {
             FindTarget();
+
             return;
         }
 
-        RotateTowardsTarget();
+        if (canshoot)
+        {
+            RotateTowardsTarget();
+        }
+
 
         if (!CheckTargetRange())
         {
             target = null;
-            isShooting = false;
         }
         else
         {
-            if (isShooting == false)
+            if (canshoot)
             {
-                isShooting = true;
+                StartCoroutine(Atacar());
             }
         }
 
-        if (isShooting == true)
-        {
-
-          //  bala.gameObject.SetActive(true);
-            //Animación bala
-        }
     }
-
 
     private void FindTarget()
     {
@@ -68,11 +66,6 @@ public class TorretaScript4 : MonoBehaviour
         if (hits.Length > 0)
         {
             target = hits[0].transform;
-        }
-
-        if (hits.Length == 0)
-        {
-            //Animación bala
         }
 
     }
@@ -89,6 +82,16 @@ public class TorretaScript4 : MonoBehaviour
     private bool CheckTargetRange()
     {
         return Vector2.Distance(target.position, transform.position) <= rango;
+    }
+
+    public IEnumerator Atacar()
+    {
+        canshoot = false;
+        bala.SetActive(true);
+        yield return new WaitForSeconds(1);
+        bala.SetActive(false);
+        yield return new WaitForSeconds(1);
+        canshoot = true;
     }
 
     private void OnDrawGizmosSelected()
