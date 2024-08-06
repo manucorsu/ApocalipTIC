@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject[] spawners;
 
     [Header("Sistema de rondas")]
-    [SerializeField] float dificultad = 0.75f;
+    [SerializeField] float dificultad = 0.75f; //scaler de dificultad
     [SerializeField] byte r1Bots = 6; //bots de la ronda 1, usados de base para todo el resto de las rondas
     [SerializeField] float eps = 0.5f; //enemigos por segundo
 
@@ -29,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
                 spawner.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
+        //InvokeRepeating(nameof(SpawnEnemy), 0f, 0.5f);
         EmpezarRonda();
     }
     void Update()

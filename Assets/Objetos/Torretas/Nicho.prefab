@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5962855182431712520}
   - component: {fileID: 5962855182431712527}
   - component: {fileID: 5962855182431712525}
+  - component: {fileID: 8014415506125743138}
   m_Layer: 0
   m_Name: Bala2
   m_TagString: Untagged
@@ -115,6 +116,39 @@ MonoBehaviour:
   animator: {fileID: 5962855182431712527}
   anim: 1
   info: 0
+--- !u!60 &8014415506125743138
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5962855182431712526}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 1}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 1.5, y: 1.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.6875, y: 0}
+      - {x: 0.125, y: -0.1875}
+      - {x: 0.125, y: -0.6875}
+      - {x: 0.8125, y: -2}
+      - {x: 1.125, y: -2}
+      - {x: 1.875, y: -0.5625}
+      - {x: 1.875, y: -0.25}
+      - {x: 1.5625, y: 0}
 --- !u!1 &6966831420242492774
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +310,7 @@ MonoBehaviour:
   enemigos:
     serializedVersion: 2
     m_Bits: 256
+  dps: 50
   rango: 3
   rotationSpd: 300
   isShooting: 0

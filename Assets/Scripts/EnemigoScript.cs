@@ -14,7 +14,7 @@ public class EnemigoScript : MonoBehaviour
     [Header("Stats")]
     [SerializeField] byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas
     [SerializeField] float hpSave;
-    [HideInInspector] public float hp;
+    public float hp;
     public float spd; //speed
 
 
@@ -134,30 +134,61 @@ public class EnemigoScript : MonoBehaviour
 
             if (wi == v3Camino.Count)
             {
-                spd = 0;
                 Perder();
             }
         }
         if (hp < hpSave)
         {
             float deltaHP = (hpSave - hp);
-            Sufrir(deltaHP);
+            StartCoroutine(Sufrir(deltaHP));
         }
     }
-    void Perder() //por si en algún momento hay que hacer algo aparte de cargar una escena cuando perdés
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.LogWarning("perdiste");
-        Destroy(this.gameObject);
-        //SceneManager.LoadScene("GameOver");
+        if (collision.gameObject.name == "Bala2") //el chorro de agua
+        {
+            TorretaScript2 nicho = collision.gameObject.transform.root.gameObject.GetComponent<TorretaScript2>();
+            StartCoroutine(Sufrir(nicho.dps, true));
+        }
     }
 
-    void Sufrir(float dmg) //hace la animación de sufrir daño y cambia la barra de vida
+    IEnumerator Sufrir(float dmg, bool fromNicho = false) //hace la animación de sufrir daño y cambia la barra de vida
     {
-        Debug.Log("ow");
-        if (hp <= 0)
+        while (false != true)
         {
-            Debug.Log("se murió un enemigo");
-            Destroy(this.gameObject);
+            if (fromNicho)
+            {
+                yield return new WaitForSeconds(1f);
+                hp -= dmg;
+                hpSave = hp;
+                if (hp <= 0)
+                {
+                    Destroy(this.gameObject);
+                    break;
+                }
+            }
+            else
+            {
+                yield return 0;
+                if (hp <= 0)
+                {
+                    //Debug.Log("se murió un enemigo");
+                    Destroy(this.gameObject);
+                    break;
+                }
+                else
+                {
+                    hpSave -= dmg;
+                }
+            }
         }
+    }
+
+    void Perder() //por si en algún momento hay que hacer algo aparte de cargar una escena cuando perdés
+    {
+        this.spd = 0;
+        //Debug.LogWarning("perdiste");
+        Destroy(this.gameObject);
+        //SceneManager.LoadScene("GameOver");
     }
 }

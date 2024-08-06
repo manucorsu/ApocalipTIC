@@ -16,9 +16,10 @@ public class TorretaScript2 : MonoBehaviour
     public LayerMask enemigos;
     private BalaScript2 balascr2;
     public RaycastHit2D[] hits;
-    
+
     //Variables
 
+    public float dps;
     public float rango;
     public float rotationSpd;
     public bool isShooting = false;
