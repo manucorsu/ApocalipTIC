@@ -21,7 +21,6 @@ public class TorretaScript : MonoBehaviour
     public float rotationSpd;
     public float bps;
     private float cooldown;
-    public int anim;
 
     // Start is called before the first frame update
     void Start()
@@ -51,16 +50,21 @@ public class TorretaScript : MonoBehaviour
 
             if (cooldown >= 1f / bps)
             {
-                Disparar();
+                StartCoroutine(Disparar());
                 cooldown = 0f;
             }
         }
     }
 
-    private void Disparar()
+    private IEnumerator Disparar()
     {
-        anim = 1;
-        animator.SetFloat("anim", anim);
+        animator.SetFloat("anim", 1);
+        GameObject balaObj = Instantiate(bala, firingPoint.position, punta.rotation);
+        BalaScript balascript = balaObj.GetComponent<BalaScript>();
+        balascript.SetTarget(target);
+        yield return new WaitForSeconds(0.2f);
+        animator.SetFloat("anim", 0);
+        yield return new WaitForSeconds(cooldown);
     }
 
     private void FindTarget()
@@ -90,15 +94,5 @@ public class TorretaScript : MonoBehaviour
     {
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, rango);
-    }
-
-    public void AnimationEnd()
-    {
-        GameObject balaObj = Instantiate(bala, firingPoint.position, punta.rotation);
-        BalaScript balascript = balaObj.GetComponent<BalaScript>();
-        balascript.SetTarget(target);
-
-        anim = 0;
-        animator.SetFloat("anim", anim);
     }
 }
