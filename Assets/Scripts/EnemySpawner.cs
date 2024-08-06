@@ -8,18 +8,18 @@ public class EnemySpawner : MonoBehaviour
                                                  * está en este array*/
     [SerializeField] GameObject[] spawners;
 
-    public bool spawnear; 
+    public bool spawnear;
 
     void Start()
     {
         foreach (GameObject spawner in spawners)
         {
-            if(spawner.GetComponent<SpriteRenderer>().enabled == true)
+            if (spawner.GetComponent<SpriteRenderer>().enabled == true)
             {
                 spawner.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
-        InvokeRepeating(nameof(SpawnEnemy), 0f, 1f);
+        InvokeRepeating(nameof(SpawnEnemy), 0f, 3f);
     }
     void SpawnEnemy()
     {

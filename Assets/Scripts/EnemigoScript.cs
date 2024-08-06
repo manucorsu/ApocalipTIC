@@ -6,21 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class EnemigoScript : MonoBehaviour
 {
-    public float hp;
 
-    public float spd;
-    [HideInInspector] public bool puedeMoverse = false;
+    [SerializeField] float hpSave;
+    [HideInInspector] public float hp;
+    public float spd; //speed
 
-    public string spName;
-
-    private GameObject padreWaypoints;
-    private List<Transform> waypoints = new List<Transform>();
-    private List<Vector3> v3Camino = new List<Vector3>();
+    GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
+    List<Transform> waypoints = new List<Transform>(); //todos los waypoints
+    public string spName; //en qué spawn point (ubicación) apareció. setteado por EnemySpawner
+    List<Vector3> v3Camino = new List<Vector3>();
     byte wi = 0; //waypoint index
+    bool siguiendo = false; //ver final de V3ify()
 
 
-
-    // Start is called before the first frame update
     void Start()
     {
         padreWaypoints = GameObject.Find("PadreWaypoints");
@@ -96,13 +94,13 @@ public class EnemigoScript : MonoBehaviour
                     break;
                 }
             }
-            puedeMoverse = true;
+            siguiendo = true; //activar el update, básicamente
         }
     }
 
     void Update()
     {
-        if (puedeMoverse == true)
+        if (siguiendo == true)
         {
             this.transform.position = Vector3.MoveTowards(this.transform.position, v3Camino[wi], spd * Time.deltaTime);
 
@@ -117,10 +115,25 @@ public class EnemigoScript : MonoBehaviour
                 Perder();
             }
         }
+        if (hp != hpSave)
+        {
+            float dmg = hp - hpSave;
+            Sufrir(dmg);
+        }
     }
-    void Perder()
+    void Perder() //por si en algún momento hay que hacer algo aparte de cargar una escena cuando perdés
     {
+        Debug.Log("perdiste");
         Destroy(this.gameObject);
         //SceneManager.LoadScene("GameOver");
+    }
+
+    void Sufrir(float dmg) //hace la animación de sufrir daño y cambia la barra de vida
+    {
+        if(hp <= 0)
+        {
+            Debug.Log("se murió un enemigo");
+            Destroy(this.gameObject);
+        }
     }
 }

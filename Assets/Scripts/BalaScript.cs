@@ -13,17 +13,18 @@ public class BalaScript : MonoBehaviour
     //Variables
 
     public float balaSpd;
+    public float balaDmg;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SetTarget(Transform targetSet)
@@ -49,6 +50,11 @@ public class BalaScript : MonoBehaviour
         {
             if (collision.transform == target)
             {
+                EnemigoScript enemigoScript = collision.gameObject.GetComponent<EnemigoScript>();
+                if (enemigoScript != null)
+                {
+                    enemigoScript.hp = (enemigoScript.hp - balaDmg);
+                }
                 Destroy(this.gameObject);
             }
         }
