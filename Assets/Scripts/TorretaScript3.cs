@@ -10,7 +10,7 @@ public class TorretaScript3 : MonoBehaviour
 
     public Transform target;
     public LayerMask enemigos;
-    public Animator animator;
+    Animator animator;
 
     //Variables
 
@@ -23,6 +23,10 @@ public class TorretaScript3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (this.gameObject.GetComponent<Animator>() != null)
+        {
+            animator = this.gameObject.GetComponent<Animator>();
+        }
         animator.SetFloat("anim", anima);
     }
 
@@ -41,7 +45,7 @@ public class TorretaScript3 : MonoBehaviour
 
     private void FindTarget()
     {
-        RaycastHit2D[]  hits = Physics2D.CircleCastAll(transform.position, rango, new Vector2(transform.position.x, transform.position.y), 0f, enemigos);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, rango, new Vector2(transform.position.x, transform.position.y), 0f, enemigos);
         if (hits.Length > 0)
         {
             target = hits[0].transform;
@@ -73,7 +77,7 @@ public class TorretaScript3 : MonoBehaviour
         while (target.position != transform.position)
         {
             target.position = Vector3.MoveTowards(target.position, transform.position, spd * Time.deltaTime);
-            target.Rotate(new Vector3(0,0,1), 200 * Time.deltaTime);
+            target.Rotate(new Vector3(0, 0, 1), 200 * Time.deltaTime);
             target.localScale = new Vector2(target.localScale.x - 0.04f, target.localScale.y - 0.04f);
             yield return null;
         }

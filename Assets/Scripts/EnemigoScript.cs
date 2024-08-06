@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EnemigoScript : MonoBehaviour
 {
+    Animator animator;
+    List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
 
     [SerializeField] float hpSave;
     [HideInInspector] public float hp;
@@ -18,9 +19,16 @@ public class EnemigoScript : MonoBehaviour
     byte wi = 0; //waypoint index
     bool siguiendo = false; //ver final de V3ify()
 
-
     void Start()
     {
+        AsignarTodo();
+        BuscarPath();
+    }
+
+    void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
+    {
+        secuenciaAnims.Clear();
+        animator = this.gameObject.GetComponent<Animator>();
         padreWaypoints = GameObject.Find("PadreWaypoints");
         foreach (Transform hijo in padreWaypoints.transform)
         {
@@ -33,7 +41,6 @@ public class EnemigoScript : MonoBehaviour
                 waypoints.Add(hijo.transform);
             }
         }
-        BuscarPath();
     }
 
     private void BuscarPath()
@@ -45,39 +52,48 @@ public class EnemigoScript : MonoBehaviour
 
         if (spName == "A1" || spName == "A4" || spName == "A7")
         {
+            secuenciaAnims.Add(0);
             V3ify(new string[] { "G1" });
         }
         else if (spName == "A2" || spName == "A5" || spName == "A8")
         {
+            secuenciaAnims.Add(0);
             V3ify(new string[] { "G2" });
         }
         else if (spName == "A3" || spName == "A6" || spName == "A9")
         {
+            secuenciaAnims.Add(0);
             V3ify(new string[] { "G3" });
         }
         else if (spName == "B1" || spName == "B3" || spName == "B5")
         {
+            secuenciaAnims.Add(0); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "W1", "W5", "G3" });
         }
         else if (spName == "B2" || spName == "B4" || spName == "B6")
         {
+            secuenciaAnims.Add(0); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "W2", "W5", "G3" });
         }
         else if (spName == "C1" || spName == "C2" || spName == "C3")
         {
+            secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "W5", "G3" });
         }
         else if (spName == "C4" || spName == "C5" || spName == "C6")
         {
+            secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "W6", "G2" });
         }
         else if (spName == "D1" || spName == "D3" || spName == "D5")
         {
-            V3ify(new string[] { "W4", "W6", "G2" });
+            secuenciaAnims.Add(2); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
+            V3ify(new string[] { "W3", "W6", "G2" });
         }
         else if (spName == "D2" || spName == "D4" || spName == "D6")
         {
-            V3ify(new string[] { "W3", "W6", "G2" });
+            secuenciaAnims.Add(2); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
+            V3ify(new string[] { "W4", "W6", "G2" });
         }
     }
     private void V3ify(string[] camino)
@@ -102,6 +118,7 @@ public class EnemigoScript : MonoBehaviour
     {
         if (siguiendo == true)
         {
+            animator.SetFloat("anim", secuenciaAnims[wi]);
             this.transform.position = Vector3.MoveTowards(this.transform.position, v3Camino[wi], spd * Time.deltaTime);
 
             if (transform.position == v3Camino[wi])
@@ -115,22 +132,23 @@ public class EnemigoScript : MonoBehaviour
                 Perder();
             }
         }
-        if (hp != hpSave)
+        if (hp < hpSave)
         {
-            float dmg = hp - hpSave;
-            Sufrir(dmg);
+            float deltaHP = (hpSave - hp);
+            Sufrir(deltaHP);
         }
     }
     void Perder() //por si en algún momento hay que hacer algo aparte de cargar una escena cuando perdés
     {
-        Debug.Log("perdiste");
+        Debug.LogWarning("perdiste");
         Destroy(this.gameObject);
         //SceneManager.LoadScene("GameOver");
     }
 
     void Sufrir(float dmg) //hace la animación de sufrir daño y cambia la barra de vida
     {
-        if(hp <= 0)
+        Debug.Log("ow");
+        if (hp <= 0)
         {
             Debug.Log("se murió un enemigo");
             Destroy(this.gameObject);
