@@ -16,13 +16,17 @@ public class TorretaScript4 : MonoBehaviour
     public LayerMask enemigos;
     public BalaScript4 balascr4;
     public RaycastHit2D[] hits;
+    public RaycastHit2D[] hits2;
+    public Transform puntaRecta;
 
     //Variables
 
     public float rango;
     public float rotationSpd;
     public bool canshoot = true;
-    public float bps; 
+    public float cooldown;
+    public float dps;
+    public float stunTime;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +58,14 @@ public class TorretaScript4 : MonoBehaviour
         {
             if (canshoot)
             {
-                StartCoroutine(Atacar());
+                hits2 = Physics2D.LinecastAll(transform.position, puntaRecta.position, enemigos);
+                foreach(RaycastHit2D enemigos in hits2)
+                {
+                    if (enemigos.transform == target.transform)
+                    {
+                        StartCoroutine(Atacar());
+                    } 
+                }
             }
         }
 
@@ -88,9 +99,9 @@ public class TorretaScript4 : MonoBehaviour
     {
         canshoot = false;
         bala.SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.45f);
         bala.SetActive(false);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(cooldown);
         canshoot = true;
     }
 
@@ -98,5 +109,6 @@ public class TorretaScript4 : MonoBehaviour
     {
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, rango);
+        Handles.DrawLine(transform.position, puntaRecta.position);
     }
 }
