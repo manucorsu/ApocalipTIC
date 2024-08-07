@@ -40,10 +40,6 @@ public class EnemigoScript : MonoBehaviour
         {
             if (hijo != padreWaypoints)
             {
-                if (hijo.GetComponent<SpriteRenderer>().enabled)
-                {
-                    hijo.GetComponent<SpriteRenderer>().enabled = false;
-                }
                 waypoints.Add(hijo.transform);
             }
         }
@@ -151,7 +147,7 @@ public class EnemigoScript : MonoBehaviour
             StartCoroutine(Sufrir(nicho.dps, true));
         }
 
-        if (collision.gameObject.name == "Bala4") //el chorro de agua
+        else if (collision.gameObject.name == "Bala4") //el proyector
         {
             TorretaScript4 proyector = collision.gameObject.transform.root.gameObject.GetComponent<TorretaScript4>();
             StartCoroutine(Stun(proyector.dps, proyector.stunTime));
@@ -169,7 +165,7 @@ public class EnemigoScript : MonoBehaviour
                 hpSave = hp;
                 if (hp <= 0)
                 {
-                    Destroy(this.gameObject);
+                    Morir();
                     break;
                 }
             }
@@ -179,7 +175,7 @@ public class EnemigoScript : MonoBehaviour
                 if (hp <= 0)
                 {
                     //Debug.Log("se murió un enemigo");
-                    Destroy(this.gameObject);
+                    Morir();
                     break;
                 }
                 else
@@ -198,12 +194,24 @@ public class EnemigoScript : MonoBehaviour
         yield return new WaitForSeconds(tiempo);
         spd = spdSave;
     }
-
+    void Morir()
+    {
+        EnemySpawner enemySpawner = GameObject.Find("ENEMYSPAWNER").GetComponent<EnemySpawner>();
+        if(enemySpawner == null)
+        {
+            Debug.LogError("El script o GameObject de ENEMYSPAWNER no existe!");
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            enemySpawner.botsVivos--;
+            Destroy(this.gameObject);
+        }
+    }
     void Perder() //por si en algún momento hay que hacer algo aparte de cargar una escena cuando perdés
     {
-            this.spd = 0;
-            Destroy(this.gameObject);
-            //SceneManager.LoadScene("GameOver");
-
+        this.spd = 0;
+        Destroy(this.gameObject);
+        //SceneManager.LoadScene("GameOver");
     }
 }

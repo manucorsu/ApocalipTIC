@@ -17,18 +17,11 @@ public class EnemySpawner : MonoBehaviour
 
     byte ronda = 1;
     float tiempoDesdeUltimoSpawn;
-    [HideInInspector] public byte botsVivos;
+    public byte botsVivos;
     byte botsASpawnear;
 
     void Start()
     {
-        foreach (GameObject spawner in spawners)
-        {
-            if (spawner.GetComponent<SpriteRenderer>().enabled == true)
-            {
-                spawner.GetComponent<SpriteRenderer>().enabled = false;
-            }
-        }
         EmpezarRonda();
     }
     void Update()
@@ -38,19 +31,19 @@ public class EnemySpawner : MonoBehaviour
         if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0)
         {
             SpawnEnemy();
+            botsASpawnear--;
+            botsVivos++;
+            tiempoDesdeUltimoSpawn = 0;
         }
     }
     void EmpezarRonda()
     {
         spawnear = true;
         botsASpawnear = (byte)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
+        Debug.Log(botsASpawnear);
     }
     void SpawnEnemy()
     {
-        botsASpawnear--;
-        botsVivos++;
-        tiempoDesdeUltimoSpawn = 0;
-        
         byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
         GameObject prefabElegido = pfbsEnemigos[rie];
 
