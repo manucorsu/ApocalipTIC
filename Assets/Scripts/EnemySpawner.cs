@@ -13,12 +13,12 @@ public class EnemySpawner : MonoBehaviour
     [Header("Sistema de rondas")]
     [SerializeField] float dificultad = 0.75f; //scaler de dificultad
     [SerializeField] byte r1Bots = 6; //bots de la ronda 1, usados de base para todo el resto de las rondas
-    [SerializeField] float eps = 0.5f; //enemigos por segundo
+    [SerializeField] float bps = 0.5f; //bots por segundo
 
     byte ronda = 1;
     float tiempoDesdeUltimoSpawn;
-    byte enemigosVivos;
-    byte enemigosASpawnear;
+    [HideInInspector] public byte botsVivos;
+    byte botsASpawnear;
 
     void Start()
     {
@@ -29,14 +29,13 @@ public class EnemySpawner : MonoBehaviour
                 spawner.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
-        //InvokeRepeating(nameof(SpawnEnemy), 0f, 0.5f);
         EmpezarRonda();
     }
     void Update()
     {
         if (spawnear == false) { return; }
         tiempoDesdeUltimoSpawn += Time.deltaTime;
-        if (tiempoDesdeUltimoSpawn >= (1f / eps))
+        if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0)
         {
             SpawnEnemy();
         }
@@ -44,10 +43,14 @@ public class EnemySpawner : MonoBehaviour
     void EmpezarRonda()
     {
         spawnear = true;
-        enemigosASpawnear = (byte)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
+        botsASpawnear = (byte)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
     }
     void SpawnEnemy()
     {
+        botsASpawnear--;
+        botsVivos++;
+        tiempoDesdeUltimoSpawn = 0;
+        
         byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
         GameObject prefabElegido = pfbsEnemigos[rie];
 

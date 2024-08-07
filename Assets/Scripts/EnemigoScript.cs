@@ -186,9 +186,9 @@ public class EnemigoScript : MonoBehaviour
 
     void Perder() //por si en algún momento hay que hacer algo aparte de cargar una escena cuando perdés
     {
-        this.spd = 0;
-        //Debug.LogWarning("perdiste");
-        Destroy(this.gameObject);
-        //SceneManager.LoadScene("GameOver");
+            this.spd = 0;
+            Destroy(this.gameObject);
+            //SceneManager.LoadScene("GameOver");
+
     }
 }

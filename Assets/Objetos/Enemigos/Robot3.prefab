@@ -49,8 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeEaten: 1
   minRonda: 0
-  hpSave: 100
-  hp: 100
+  hpSave: 150
+  hp: 150
   spd: 2.5
   spName: 
 --- !u!50 &4651135590154431684

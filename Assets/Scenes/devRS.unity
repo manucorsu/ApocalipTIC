@@ -10758,7 +10758,8 @@ MonoBehaviour:
   - {fileID: 864739996}
   dificultad: 0.75
   r1Bots: 1
-  eps: 0.5
+  bps: 0.5
+  botsVivos: 0
 --- !u!4 &1878297150
 Transform:
   m_ObjectHideFlags: 0
