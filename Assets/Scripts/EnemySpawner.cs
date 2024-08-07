@@ -29,17 +29,17 @@ public class EnemySpawner : MonoBehaviour
                 spawner.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
-        //InvokeRepeating(nameof(SpawnEnemy), 0f, 0.5f);
-        EmpezarRonda();
+        InvokeRepeating(nameof(SpawnEnemy), 0f, 0.4f);
+        //EmpezarRonda();
     }
     void Update()
     {
-        if (spawnear == false) { return; }
-        tiempoDesdeUltimoSpawn += Time.deltaTime;
-        if (tiempoDesdeUltimoSpawn >= (1f / eps))
-        {
-            SpawnEnemy();
-        }
+        //if (spawnear == false) { return; }
+        //tiempoDesdeUltimoSpawn += Time.deltaTime;
+        //if (tiempoDesdeUltimoSpawn >= (1f / eps))
+        //{
+        //    SpawnEnemy();
+        //}
     }
     void EmpezarRonda()
     {

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BalaScript4 : MonoBehaviour
 {
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +17,10 @@ public class BalaScript4 : MonoBehaviour
     {
         
     }
+
+    public void AnimationEnd()
+    {
+        
+    }
+
 }

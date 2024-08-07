@@ -150,6 +150,12 @@ public class EnemigoScript : MonoBehaviour
             TorretaScript2 nicho = collision.gameObject.transform.root.gameObject.GetComponent<TorretaScript2>();
             StartCoroutine(Sufrir(nicho.dps, true));
         }
+
+        if (collision.gameObject.name == "Bala4") //el chorro de agua
+        {
+            TorretaScript4 proyector = collision.gameObject.transform.root.gameObject.GetComponent<TorretaScript4>();
+            StartCoroutine(Stun(proyector.dps, proyector.stunTime));
+        }
     }
 
     IEnumerator Sufrir(float dmg, bool fromNicho = false) //hace la animación de sufrir daño y cambia la barra de vida
@@ -182,6 +188,15 @@ public class EnemigoScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    public IEnumerator Stun(float daño, float tiempo)
+    {
+        float spdSave = spd;
+        hp -= daño;
+        spd = 0;
+        yield return new WaitForSeconds(tiempo);
+        spd = spdSave;
     }
 
     void Perder() //por si en algún momento hay que hacer algo aparte de cargar una escena cuando perdés
