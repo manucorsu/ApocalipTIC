@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float bps = 0.5f; //bots por segundo
     private byte ronda = 1;
     private float tiempoDesdeUltimoSpawn;
-    public byte botsVivos;
+    [HideInInspector] public byte botsVivos;
     private byte botsASpawnear;
 
     void Start()
