@@ -8,23 +8,23 @@ public class EnemigoScript : MonoBehaviour
 
     public bool canBeEaten = true;
 
-    Animator animator;
-    List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
+    private Animator animator;
+    private List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
 
     [Header("Stats")]
-    [SerializeField] byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas
-    [SerializeField] float hpSave;
+    [SerializeField] private byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas
+    [SerializeField] private float hpSave;
     public float hp;
     public float spd; //speed
     public float spdSave;
 
 
-    GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
-    List<Transform> waypoints = new List<Transform>(); //todos los waypoints
+    private GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
+    private List<Transform> waypoints = new List<Transform>(); //todos los waypoints
     public string spName; //en qué spawn point (ubicación) apareció. setteado por EnemySpawner
-    List<Vector3> v3Camino = new List<Vector3>();
-    byte wi = 0; //waypoint index
-    bool siguiendo = false; //ver final de V3ify()
+    private List<Vector3> v3Camino = new List<Vector3>();
+    private byte wi = 0; //waypoint index
+    private bool siguiendo = false; //ver final de V3ify()
 
     void Start()
     {
@@ -34,7 +34,7 @@ public class EnemigoScript : MonoBehaviour
         spdSave = spd;
     }
 
-    void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
+    private void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
     {
         secuenciaAnims.Clear();
         animator = this.gameObject.GetComponent<Animator>();
@@ -157,7 +157,7 @@ public class EnemigoScript : MonoBehaviour
         }
     }
 
-    IEnumerator Sufrir(float dmg, bool fromNicho = false) //hace la animación de sufrir daño y cambia la barra de vida
+    private IEnumerator Sufrir(float dmg, bool fromNicho = false) //hace la animación de sufrir daño y cambia la barra de vida
     {
         while (false != true)
         {
@@ -197,10 +197,10 @@ public class EnemigoScript : MonoBehaviour
         yield return new WaitForSeconds(tiempo);
         spd = spdSave;
     }
-    void Morir()
+    public void Morir()
     {
         EnemySpawner enemySpawner = GameObject.Find("ENEMYSPAWNER").GetComponent<EnemySpawner>();
-        if(enemySpawner == null)
+        if (enemySpawner == null)
         {
             Debug.LogError("El script o GameObject de ENEMYSPAWNER no existe!");
             Destroy(this.gameObject);
@@ -211,10 +211,10 @@ public class EnemigoScript : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    void Perder() //por si en algún momento hay que hacer algo aparte de cargar una escena cuando perdés
+    private void Perder()
     {
-        this.spd = 0;
-        Destroy(this.gameObject);
+        Morir();
+        Debug.LogWarning("PERDISTE");
         //SceneManager.LoadScene("GameOver");
     }
 }
