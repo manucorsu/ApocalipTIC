@@ -89,7 +89,7 @@ public class TorretaScript3 : MonoBehaviour
             }
 
             canEat = false;
-            Destroy(target.gameObject);
+            targetscr.Morir();
 
             animator.enabled = true;
             anima = 1;
@@ -101,7 +101,7 @@ public class TorretaScript3 : MonoBehaviour
 
             anima = 2;
             animator.SetFloat("anim", anima);
-        } 
+        }
     }
 
     public void AnimationEnd()

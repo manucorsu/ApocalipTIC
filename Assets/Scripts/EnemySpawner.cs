@@ -1,49 +1,57 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public bool spawnear = false;
+    private bool spawnear;
 
     [Header("Arrays")]
-    [SerializeField] GameObject[] pfbsEnemigos; //cada tipo de enemigo es un prefab y está en este array
-    [SerializeField] GameObject[] spawners;
+    [SerializeField] private GameObject[] pfbsEnemigos; //cada tipo de enemigo es un prefab y está en este array
+    [SerializeField] private GameObject[] spawners;
 
     [Header("Sistema de rondas")]
-    [SerializeField] float dificultad = 0.75f; //scaler de dificultad
-    [SerializeField] byte r1Bots = 6; //bots de la ronda 1, usados de base para todo el resto de las rondas
-    [SerializeField] float bps = 0.5f; //bots por segundo
-
-    byte ronda = 1;
-    float tiempoDesdeUltimoSpawn;
+    [SerializeField] private GameObject btnIniciarRonda;
+    [SerializeField] private Text txtRonda;
+    [SerializeField] private float dificultad = 0.75f; //scaler de dificultad
+    [SerializeField] private byte r1Bots = 6; //bots de la ronda 1, usados de base para todo el resto de las rondas
+    [SerializeField] private float bps = 0.5f; //bots por segundo
+    private byte ronda = 1;
+    private float tiempoDesdeUltimoSpawn;
     public byte botsVivos;
-    byte botsASpawnear;
+    private byte botsASpawnear;
 
     void Start()
     {
-        EmpezarRonda();
+        ToggleSpawning(false);
     }
+
     void Update()
     {
-        if (spawnear == false) { return; }
-        tiempoDesdeUltimoSpawn += Time.deltaTime;
-        if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0)
+        if (spawnear == true)
         {
-            SpawnEnemy();
-            botsASpawnear--;
-            botsVivos++;
-            tiempoDesdeUltimoSpawn = 0;
+            tiempoDesdeUltimoSpawn += Time.deltaTime;
+
+            if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0)
+            {
+                SpawnEnemy();
+            }
+            if (botsVivos == 0 && botsASpawnear == 0)
+            {
+                TerminarRonda();
+            }
         }
     }
-    void EmpezarRonda()
+    public void EmpezarRonda()
     {
-        spawnear = true;
+        ToggleSpawning(true);
         botsASpawnear = (byte)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
-        Debug.Log(botsASpawnear);
     }
-    void SpawnEnemy()
+    private void SpawnEnemy()
     {
+        botsASpawnear--;
+        botsVivos++;
+        tiempoDesdeUltimoSpawn = 0;
+
         byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
         GameObject prefabElegido = pfbsEnemigos[rie];
 
@@ -54,5 +62,28 @@ public class EnemySpawner : MonoBehaviour
 
         EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
         enemigoScript.spName = spawners[ris].name;
+    }
+
+    private void TerminarRonda()
+    {
+        Debug.Log("done");
+        ronda++;
+        ToggleSpawning(false);
+        tiempoDesdeUltimoSpawn = 0;
+    }
+
+    private void ToggleSpawning(bool t)
+    {
+        spawnear = t;
+
+        btnIniciarRonda.SetActive(!t);
+        if (t == true)
+        {
+            txtRonda.text = "";
+        }
+        else
+        {
+            txtRonda.text = $"Empezando RONDA {ronda}/30";
+        }
     }
 }
