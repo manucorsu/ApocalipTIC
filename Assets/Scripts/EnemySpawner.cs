@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private bool spawnear;
+    public bool spawnear = false;
 
     [Header("Arrays")]
     [SerializeField] private GameObject[] pfbsEnemigos; //cada tipo de enemigo es un prefab y está en este array
@@ -66,7 +66,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void TerminarRonda()
     {
-        Debug.Log("done");
         ronda++;
         ToggleSpawning(false);
         tiempoDesdeUltimoSpawn = 0;
@@ -74,8 +73,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void ToggleSpawning(bool t)
     {
-        spawnear = t;
-
         btnIniciarRonda.SetActive(!t);
         if (t == true)
         {
@@ -85,5 +82,6 @@ public class EnemySpawner : MonoBehaviour
         {
             txtRonda.text = $"Empezando RONDA {ronda}/30";
         }
+        spawnear = t;
     }
 }

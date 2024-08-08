@@ -5,8 +5,12 @@ using UnityEngine;
 public class ConstruirScript : MonoBehaviour
 {
 
+    //Objetos
+
     public GameObject torretaSeleccionada;
     private SpriteRenderer sr;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +21,7 @@ public class ConstruirScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     private void OnMouseDown()
