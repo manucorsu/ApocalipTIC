@@ -16,6 +16,7 @@ public class EnemigoScript : MonoBehaviour
     [SerializeField] float hpSave;
     public float hp;
     public float spd; //speed
+    public float spdSave;
 
 
     GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
@@ -29,6 +30,8 @@ public class EnemigoScript : MonoBehaviour
     {
         AsignarTodo();
         BuscarPath();
+
+        spdSave = spd;
     }
 
     void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
