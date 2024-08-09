@@ -51,7 +51,8 @@ MonoBehaviour:
   minRonda: 0
   hpSave: 150
   hp: 150
-  spd: 2.5
+  spd: 5
+  spdSave: 0
   spName: 
 --- !u!50 &4651135590154431684
 Rigidbody2D:

@@ -8,6 +8,7 @@ public class ConstruirScriptGeneral : MonoBehaviour
     public GameObject spawner;
     public EnemySpawner scrEnemySpawner;
     public GameObject[] tiles;
+    public GameObject[] consumiblesZonas;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,14 @@ public class ConstruirScriptGeneral : MonoBehaviour
                     tile.gameObject.SetActive(false);
                 }
             }
+
+            foreach (GameObject zona in consumiblesZonas)
+            {
+                if (zona != null)
+                {
+                    zona.gameObject.SetActive(true);
+                }
+            }
         }
         else
         {
@@ -35,6 +44,14 @@ public class ConstruirScriptGeneral : MonoBehaviour
                 if (tile != null)
                 {
                     tile.gameObject.SetActive(true);
+                }
+            }
+
+            foreach (GameObject zona in consumiblesZonas)
+            {
+                if (zona != null)
+                {
+                    zona.gameObject.SetActive(false);
                 }
             }
         }

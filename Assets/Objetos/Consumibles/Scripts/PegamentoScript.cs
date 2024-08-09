@@ -27,19 +27,28 @@ public class PegamentoScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "enemigo")
+        EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
+        if (enemigoScr.canBeEaten == true)
         {
-            EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
-            enemigoScr.spd /= 4;
+            if (collision.gameObject.tag == "enemigo")
+            {
+                enemigoScr.spd /= 4;
+            }
+        } else
+        {
+            enemigoScr.spd = 0;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "enemigo")
+        EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
+        if (enemigoScr.canBeEaten == true)
         {
-            EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
-            enemigoScr.spd = enemigoScr.spdSave;
+            if (collision.gameObject.tag == "enemigo")
+            {
+                enemigoScr.spd = enemigoScr.spdSave;
+            }
         }
     }
 

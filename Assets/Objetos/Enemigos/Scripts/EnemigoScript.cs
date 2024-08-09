@@ -16,7 +16,7 @@ public class EnemigoScript : MonoBehaviour
     public float hp; //"HP real"
     private float hpSave; //última HP registrada, el enemigo sabe si sufrió daño si su HP real es menor que el valor de esta variable
     public float spd; //speed
-    public float spdSave;
+    [HideInInspector] public float spdSave;
 
 
     private GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
@@ -26,6 +26,8 @@ public class EnemigoScript : MonoBehaviour
     private byte wi = 0; //waypoint index
     private bool siguiendo = false; //ver final de V3ify()
 
+    private bool sufrirActive = true;
+    private IEnumerator sufrir;
     void Start()
     {
         AsignarTodo();
@@ -139,7 +141,7 @@ public class EnemigoScript : MonoBehaviour
         if (hp < hpSave)
         {
             float deltaHP = (hpSave - hp);
-            StartCoroutine(Sufrir(deltaHP));
+            StartCoroutine(SufrirNicho(deltaHP));
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -147,7 +149,8 @@ public class EnemigoScript : MonoBehaviour
         if (collision.gameObject.name == "Bala2") //el chorro de agua
         {
             TorretaScript2 nicho = collision.gameObject.transform.root.gameObject.GetComponent<TorretaScript2>();
-            StartCoroutine(Sufrir(nicho.dps, true));
+            sufrir = SufrirNicho(nicho.dps);
+            StartCoroutine(sufrir);
         }
 
         else if (collision.gameObject.name == "Bala4") //el proyector
@@ -157,37 +160,26 @@ public class EnemigoScript : MonoBehaviour
         }
     }
 
-    private IEnumerator Sufrir(float dmg, bool fromNicho = false) //hace la animación de sufrir daño y cambia la barra de vida
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        while (false != true)
+        if (sufrirActive == true && sufrir != null)
         {
-            if (fromNicho)
-            {
-                yield return new WaitForSeconds(1f);
-                hp -= dmg;
-                hpSave = hp;
-                if (hp <= 0)
-                {
-                    Morir();
-                    break;
-                }
-            }
-            else
-            {
-                yield return 0;
-                if (hp <= 0)
-                {
-                    //Debug.Log("se murió un enemigo");
-                    Morir();
-                    break;
-                }
-                else
-                {
-                    hpSave -= dmg;
-                }
-            }
+            StopCoroutine(sufrir);
+            sufrirActive = false;
         }
     }
+
+    private IEnumerator SufrirNicho(float dps) //hace la animación de sufrir daño y cambia la barra de vida
+    {
+        yield return new WaitForSeconds(1f);
+        hp -= dps;
+        hpSave = hp;
+        if (hp <= 0)
+        {
+            Morir();
+        }
+    }
+
 
     public IEnumerator Stun(float daño, float tiempo)
     {
