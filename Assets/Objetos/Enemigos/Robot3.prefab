@@ -49,9 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeEaten: 1
   minRonda: 0
-  hpSave: 150
   hp: 150
-  spd: 5
+  spd: 1
   spdSave: 0
   spName: 
 --- !u!50 &4651135590154431684
@@ -159,7 +158,7 @@ Animator:
   m_GameObject: {fileID: 4651135590154431685}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6d418f9113bb5ed42b7313d084c5d62c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 82e34d7ac620f4843902758a0ee2024c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

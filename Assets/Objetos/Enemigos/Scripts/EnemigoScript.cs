@@ -26,8 +26,8 @@ public class EnemigoScript : MonoBehaviour
     private byte wi = 0; //waypoint index
     private bool siguiendo = false; //ver final de V3ify()
 
-    private bool sufrirActive = true;
-    private IEnumerator sufrir;
+    private IEnumerator sufrirNicho; private float sufrirNichoDPS;
+
     void Start()
     {
         AsignarTodo();
@@ -141,7 +141,7 @@ public class EnemigoScript : MonoBehaviour
         if (hp < hpSave)
         {
             float deltaHP = (hpSave - hp);
-            StartCoroutine(SufrirNicho(deltaHP));
+            
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -149,8 +149,8 @@ public class EnemigoScript : MonoBehaviour
         if (collision.gameObject.name == "Bala2") //el chorro de agua
         {
             TorretaScript2 nicho = collision.gameObject.transform.root.gameObject.GetComponent<TorretaScript2>();
-            sufrir = SufrirNicho(nicho.dps);
-            StartCoroutine(sufrir);
+            sufrirNichoDPS = nicho.dps; sufrirNicho = SufrirNicho();
+            StartCoroutine(sufrirNicho);
         }
 
         else if (collision.gameObject.name == "Bala4") //el proyector
@@ -162,21 +162,27 @@ public class EnemigoScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (sufrirActive == true && sufrir != null)
+        if(collision.gameObject.name == "Bala2")
         {
-            StopCoroutine(sufrir);
-            sufrirActive = false;
+            if(sufrirNicho != null)
+            {
+                StopCoroutine(sufrirNicho);
+            }
         }
     }
 
-    private IEnumerator SufrirNicho(float dps) //hace la animación de sufrir daño y cambia la barra de vida
+    private IEnumerator SufrirNicho()
     {
-        yield return new WaitForSeconds(1f);
-        hp -= dps;
-        hpSave = hp;
-        if (hp <= 0)
+        while (false != true)
         {
-            Morir();
+            yield return new WaitForSeconds(1f);
+            hp -= sufrirNichoDPS;
+            if (hp <= 0)
+            {
+                Morir();
+                break;
+            }
+            hpSave = hp;
         }
     }
 
@@ -199,7 +205,15 @@ public class EnemigoScript : MonoBehaviour
         }
         else
         {
-            enemySpawner.botsVivos--;
+            byte botsVivos = enemySpawner.botsVivos;
+            if(botsVivos-- > 0)
+            {
+                enemySpawner.botsVivos = botsVivos--;
+            }
+            else
+            {
+                enemySpawner.TerminarRonda();
+            }
             Destroy(this.gameObject);
         }
     }
