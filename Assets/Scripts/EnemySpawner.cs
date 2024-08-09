@@ -53,6 +53,7 @@ public class EnemySpawner : MonoBehaviour
         tiempoDesdeUltimoSpawn = 0;
 
         byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
+        Debug.Log(rie);
         GameObject prefabElegido = pfbsEnemigos[rie];
 
         byte ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™

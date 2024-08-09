@@ -13,8 +13,8 @@ public class EnemigoScript : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField] private byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas
-    [SerializeField] private float hpSave;
-    public float hp;
+    public float hp; //"HP real"
+    private float hpSave; //última HP registrada, el enemigo sabe si sufrió daño si su HP real es menor que el valor de esta variable
     public float spd; //speed
     public float spdSave;
 
@@ -30,8 +30,6 @@ public class EnemigoScript : MonoBehaviour
     {
         AsignarTodo();
         BuscarPath();
-
-        spdSave = spd;
     }
 
     private void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
@@ -46,6 +44,8 @@ public class EnemigoScript : MonoBehaviour
                 waypoints.Add(hijo.transform);
             }
         }
+        spdSave = spd;
+        hpSave = hp;
     }
 
     private void BuscarPath()

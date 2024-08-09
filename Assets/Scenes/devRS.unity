@@ -5089,7 +5089,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1224433483
 GameObject:
@@ -5124,7 +5124,7 @@ Transform:
   - {fileID: 1087467624}
   - {fileID: 1233390064}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &1224433485
 Grid:
@@ -5986,7 +5986,7 @@ RectTransform:
   - {fileID: 2138712529}
   - {fileID: 1942917507}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6089,11 +6089,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472818969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1513449608}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1481762095
 GameObject:
@@ -6253,6 +6253,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1513449607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1513449608}
+  m_Layer: 0
+  m_Name: GameScripts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1513449608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513449607}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1472818971}
+  - {fileID: 1878297150}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1588411899
 GameObject:
   m_ObjectHideFlags: 0
@@ -10968,38 +11000,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3b69575fcbf294fafaa215dbffa911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pfbsEnemigos:
-  - {fileID: 4651135590154431685, guid: 89d228bcfe23e574b84c03bef66528be, type: 3}
-  spawners:
-  - {fileID: 1680918099}
-  - {fileID: 1299703298}
-  - {fileID: 1763522506}
-  - {fileID: 2100749862}
-  - {fileID: 2016231682}
-  - {fileID: 1041835661}
-  - {fileID: 1655912629}
-  - {fileID: 758214250}
-  - {fileID: 233750062}
-  - {fileID: 1415304058}
-  - {fileID: 1335916942}
-  - {fileID: 728442468}
-  - {fileID: 29146602}
-  - {fileID: 1351711301}
-  - {fileID: 786601569}
-  - {fileID: 1361109291}
-  - {fileID: 1947177349}
-  - {fileID: 1812572256}
-  - {fileID: 1717163384}
-  - {fileID: 806236772}
-  - {fileID: 1990789222}
-  - {fileID: 1054514064}
-  - {fileID: 732260326}
-  - {fileID: 461918292}
-  - {fileID: 1730415186}
-  - {fileID: 1332395067}
-  - {fileID: 864739996}
-  btnIniciarRonda: {fileID: 1942917506}
-  txtRonda: {fileID: 2138712530}
+  spawnear: 0
+  pfbsEnemigos: []
+  spawners: []
+  btnIniciarRonda: {fileID: 0}
+  txtRonda: {fileID: 0}
   dificultad: 0.75
   r1Bots: 6
   bps: 0.5
@@ -11015,8 +11020,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 1513449608}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1942917506
 GameObject:
