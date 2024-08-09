@@ -310,7 +310,7 @@ MonoBehaviour:
   enemigos:
     serializedVersion: 2
     m_Bits: 256
-  dps: 50
+  dps: 15.5
   rango: 3
   rotationSpd: 300
   isShooting: 0
