@@ -46,8 +46,8 @@ public class EnemigoScript : MonoBehaviour
                 waypoints.Add(hijo.transform);
             }
         }
-        spdSave = spd;
-        hpSave = hp;
+        spdSave = this.spd;
+        hpSave = this.hp;
     }
 
     private void BuscarPath()
@@ -141,9 +141,19 @@ public class EnemigoScript : MonoBehaviour
         if (hp < hpSave)
         {
             float deltaHP = (hpSave - hp);
-            
+            Sufrir(deltaHP);
         }
     }
+
+    private void Sufrir(float dmg)
+    { // sufrir daño. [[NO USAR PARA EL PROYECTOR O EL NICHO HIDRANTE]]
+        hp -= dmg;
+        if (hp != hpSave) hpSave = hp;
+
+        if (hp >= 0) Morir();
+        else { return; }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Bala2") //el chorro de agua
@@ -160,22 +170,11 @@ public class EnemigoScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.gameObject.name == "Bala2")
-        {
-            if(sufrirNicho != null)
-            {
-                StopCoroutine(sufrirNicho);
-            }
-        }
-    }
-
     private IEnumerator SufrirNicho()
     {
         while (false != true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1);
             hp -= sufrirNichoDPS;
             if (hp <= 0)
             {
@@ -186,17 +185,33 @@ public class EnemigoScript : MonoBehaviour
         }
     }
 
-
     public IEnumerator Stun(float daño, float tiempo)
     {
-        float spdSave = spd;
+        float spdSave = this.spd;
         hp -= daño;
-        spd = 0;
+        if (hp <= 0)
+        {
+            Morir();
+        }
+        this.spd = 0;
         yield return new WaitForSeconds(tiempo);
-        spd = spdSave;
+        this.spd = spdSave;
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Bala2")
+        {
+            if (sufrirNicho != null)
+            {
+                StopCoroutine(sufrirNicho);
+            }
+        }
+    }
+
     public void Morir()
     {
+        this.spd = 0;
         EnemySpawner enemySpawner = GameObject.Find("ENEMYSPAWNER").GetComponent<EnemySpawner>();
         if (enemySpawner == null)
         {
@@ -206,7 +221,7 @@ public class EnemigoScript : MonoBehaviour
         else
         {
             byte botsVivos = enemySpawner.botsVivos;
-            if(botsVivos-- > 0)
+            if (botsVivos-- > 0)
             {
                 enemySpawner.botsVivos = botsVivos--;
             }
@@ -217,6 +232,7 @@ public class EnemigoScript : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
     private void Perder()
     {
         Morir();
