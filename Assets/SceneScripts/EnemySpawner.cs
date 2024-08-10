@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
@@ -11,17 +13,18 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Sistema de rondas")]
     [SerializeField] private Text txtRonda;
-    [SerializeField] private GameObject btnIniciarRonda;
+    [SerializeField] private GameObject btnIniciarRonda; // No sé por qué no anda .enabled si es Button así que voy a usar SetActive 🤷
     [SerializeField] private float dificultad = 0.75f; //scaler de dificultad
     [SerializeField] private byte r1Bots = 6; //bots de la ronda 1, usados de base para todo el resto de las rondas
     [SerializeField] private float bps = 0.5f; //bots por segundo
     private byte ronda = 1;
     private float tiempoDesdeUltimoSpawn;
-    public byte botsVivos;
+    public List<GameObject> botsVivos = new List<GameObject>();
     private byte botsASpawnear;
 
     void Start()
     {
+        botsVivos.Clear();
         ToggleSpawning(false);
     }
 
@@ -35,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 SpawnEnemy();
             }
-            if (botsVivos <= 0 && botsASpawnear <= 0)
+            if (botsVivos.Count <= 0 && botsASpawnear <= 0)
             {
                 TerminarRonda();
             }
@@ -48,10 +51,6 @@ public class EnemySpawner : MonoBehaviour
     }
     private void SpawnEnemy()
     {
-        botsASpawnear--;
-        botsVivos++;
-        tiempoDesdeUltimoSpawn = 0;
-
         byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
         GameObject prefabElegido = pfbsEnemigos[rie];
 
@@ -62,10 +61,15 @@ public class EnemySpawner : MonoBehaviour
 
         EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
         enemigoScript.spName = spawners[ris].name;
+
+        botsASpawnear--;
+        botsVivos.Add(nuevoEnemigo);
+        tiempoDesdeUltimoSpawn = 0;
     }
 
     public void TerminarRonda()
     {
+        botsVivos.Clear();
         ronda++;
         ToggleSpawning(false);
         tiempoDesdeUltimoSpawn = 0;

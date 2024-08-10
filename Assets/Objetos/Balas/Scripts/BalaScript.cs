@@ -43,21 +43,8 @@ public class BalaScript : MonoBehaviour
         Vector2 direction = (target.position - transform.position).normalized;
         rb.velocity = direction * balaSpd;
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (collision.gameObject.tag == "enemigo")
-        {
-            if (collision.transform == target)
-            {
-                EnemigoScript enemigoScript = collision.gameObject.GetComponent<EnemigoScript>();
-                if (enemigoScript != null)
-                {
-                    enemigoScript.hp = (enemigoScript.hp - balaDmg);
-                }
-                Destroy(this.gameObject);
-            }
-        }
+        if (collision.gameObject.tag == "enemigo") Destroy(this.gameObject);
     }
 }

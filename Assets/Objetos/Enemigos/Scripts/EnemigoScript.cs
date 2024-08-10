@@ -30,13 +30,18 @@ public class EnemigoScript : MonoBehaviour
 
     void Start()
     {
+        if (spName == null || spName == string.Empty)
+        {
+            Debug.LogError("spName == null o string.Empty. En general esto pasa cuando un enemigo no fue generado por EnemySpawner.");
+            Destroy(this.gameObject); //ÚNICA vez en toda la HISTORIA donde un enemigo se destruye directamente y no llamando a Morir()
+        }
         AsignarTodo();
         BuscarPath();
     }
 
     private void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
     {
-        secuenciaAnims.Clear();
+        secuenciaAnims.Clear(); //cuenta como asignación? 
         animator = this.gameObject.GetComponent<Animator>();
         padreWaypoints = GameObject.Find("PadreWaypoints");
         foreach (Transform hijo in padreWaypoints.transform)
@@ -138,19 +143,13 @@ public class EnemigoScript : MonoBehaviour
                 Perder();
             }
         }
-        if (hp < hpSave)
-        {
-            float deltaHP = (hpSave - hp);
-            Sufrir(deltaHP);
-        }
     }
 
     private void Sufrir(float dmg)
-    { // sufrir daño. [[NO USAR PARA EL PROYECTOR O EL NICHO HIDRANTE]]
+    { // Sufrir daño causado por PROYECTILES (balas que usan el BalaScript).
+      //BAJO NINGUNA CIRCUNSTANCIA usar para balas "especiales" (como el chorro de agua o el proyector
         hp -= dmg;
-        if (hp != hpSave) hpSave = hp;
-
-        if (hp >= 0) Morir();
+        if (hp <= 0) Morir();
         else { return; }
     }
 
@@ -167,6 +166,12 @@ public class EnemigoScript : MonoBehaviour
         {
             TorretaScript4 proyector = collision.gameObject.transform.root.gameObject.GetComponent<TorretaScript4>();
             StartCoroutine(Stun(proyector.dps, proyector.stunTime));
+        }
+        else
+        {
+            BalaScript bala = collision.gameObject.GetComponent<BalaScript>();
+            Sufrir(bala.balaDmg);
+            Destroy(bala.gameObject);
         }
     }
 
@@ -220,15 +225,7 @@ public class EnemigoScript : MonoBehaviour
         }
         else
         {
-            byte botsVivos = enemySpawner.botsVivos;
-            if (botsVivos-- > 0)
-            {
-                enemySpawner.botsVivos = botsVivos--;
-            }
-            else
-            {
-                enemySpawner.TerminarRonda();
-            }
+            enemySpawner.botsVivos.Remove(this.gameObject);
             Destroy(this.gameObject);
         }
     }
