@@ -31,6 +31,9 @@ public class scrBotones : MonoBehaviour
                 {
                     scrConstruir = tile.GetComponent<ConstruirScript>();
                     scrConstruir.torretaSeleccionada = torretas[0];
+
+                    TorretaScript scrTiralápices = torretas[0].GetComponent<TorretaScript>();
+                    scrConstruir.precioSeleccionado = scrTiralápices.precio;
                 }
             }
         }
@@ -43,6 +46,9 @@ public class scrBotones : MonoBehaviour
                 {
                     scrConstruir = tile.GetComponent<ConstruirScript>();
                     scrConstruir.torretaSeleccionada = torretas[1];
+
+                    TorretaScript2 scrNicho = torretas[1].GetComponent<TorretaScript2>();
+                    scrConstruir.precioSeleccionado = scrNicho.precio;
                 }
             }
         }
@@ -55,6 +61,9 @@ public class scrBotones : MonoBehaviour
                 {
                     scrConstruir = tile.GetComponent<ConstruirScript>();
                     scrConstruir.torretaSeleccionada = torretas[2];
+
+                    TorretaScript3 scrTacho = torretas[2].GetComponent<TorretaScript3>();
+                    scrConstruir.precioSeleccionado = scrTacho.precio;
                 }
             }
         }
@@ -67,6 +76,9 @@ public class scrBotones : MonoBehaviour
                 {
                     scrConstruir = tile.GetComponent<ConstruirScript>();
                     scrConstruir.torretaSeleccionada = torretas[3];
+
+                    TorretaScript4 scrProyector = torretas[3].GetComponent<TorretaScript4>();
+                    scrConstruir.precioSeleccionado = scrProyector.precio;
                 }
             }
         }

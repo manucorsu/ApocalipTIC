@@ -23,6 +23,7 @@ public class TorretaScript2 : MonoBehaviour
     public float rango;
     public float rotationSpd;
     public bool isShooting = false;
+    public float precio;
 
     // Start is called before the first frame update
     void Start()

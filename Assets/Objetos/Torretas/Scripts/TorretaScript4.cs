@@ -27,6 +27,7 @@ public class TorretaScript4 : MonoBehaviour
     public float cooldown;
     public float dps;
     public float stunTime;
+    public float precio;
 
     // Start is called before the first frame update
     void Start()

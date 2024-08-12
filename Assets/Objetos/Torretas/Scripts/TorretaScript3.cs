@@ -21,6 +21,7 @@ public class TorretaScript3 : MonoBehaviour
     public bool canEat = true;
     public float anima = 2;
     public float spd;
+    public float precio;
 
     // Start is called before the first frame update
     void Start()

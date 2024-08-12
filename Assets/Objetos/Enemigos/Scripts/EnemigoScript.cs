@@ -17,6 +17,9 @@ public class EnemigoScript : MonoBehaviour
     private float hpSave; //última HP registrada, el enemigo sabe si sufrió daño si su HP real es menor que el valor de esta variable
     public float spd; //speed
     [HideInInspector] public float spdSave;
+    public float plata;
+    public GameObject construir;
+    public ConstruirScriptGeneral construirscr;
 
 
     private GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
@@ -37,6 +40,8 @@ public class EnemigoScript : MonoBehaviour
         }
         AsignarTodo();
         BuscarPath();
+
+        construirscr = construir.GetComponent<ConstruirScriptGeneral>();
     }
 
     private void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
@@ -53,6 +58,7 @@ public class EnemigoScript : MonoBehaviour
         }
         spdSave = this.spd;
         hpSave = this.hp;
+        construir = GameObject.Find("Construir");
     }
 
     private void BuscarPath()
@@ -228,6 +234,8 @@ public class EnemigoScript : MonoBehaviour
             enemySpawner.botsVivos.Remove(this.gameObject);
             Destroy(this.gameObject);
         }
+
+        construirscr.plataActual += plata;
     }
 
     private void Perder()
