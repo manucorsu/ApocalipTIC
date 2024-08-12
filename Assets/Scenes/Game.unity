@@ -1971,6 +1971,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &342464001
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7411269467034504211, guid: 3eebbb493df2be64583d1405667058bf,
+        type: 3}
+      propertyPath: m_Name
+      value: Robot2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411269467034504239, guid: 3eebbb493df2be64583d1405667058bf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411269467034504239, guid: 3eebbb493df2be64583d1405667058bf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411269467034504239, guid: 3eebbb493df2be64583d1405667058bf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411269467034504239, guid: 3eebbb493df2be64583d1405667058bf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411269467034504239, guid: 3eebbb493df2be64583d1405667058bf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411269467034504239, guid: 3eebbb493df2be64583d1405667058bf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411269467034504239, guid: 3eebbb493df2be64583d1405667058bf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411269467034504239, guid: 3eebbb493df2be64583d1405667058bf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411269467034504239, guid: 3eebbb493df2be64583d1405667058bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411269467034504239, guid: 3eebbb493df2be64583d1405667058bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411269467034504239, guid: 3eebbb493df2be64583d1405667058bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3eebbb493df2be64583d1405667058bf, type: 3}
 --- !u!1 &352408224
 GameObject:
   m_ObjectHideFlags: 0
@@ -11612,6 +11681,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnear: 0
   pfbsEnemigos:
+  - {fileID: 4711819497900499442, guid: 924439ca9d4008b4785a60cc19bf4b96, type: 3}
+  - {fileID: 7411269467034504211, guid: 3eebbb493df2be64583d1405667058bf, type: 3}
   - {fileID: 4651135590154431685, guid: 89d228bcfe23e574b84c03bef66528be, type: 3}
   spawners:
   - {fileID: 116802921}
@@ -11641,12 +11712,12 @@ MonoBehaviour:
   - {fileID: 1077084822}
   - {fileID: 466719802}
   - {fileID: 1083779887}
-  btnIniciarRonda: {fileID: 850049343}
   txtRonda: {fileID: 2080629017}
+  btnIniciarRonda: {fileID: 850049343}
   dificultad: 0.75
   r1Bots: 6
   bps: 0.5
-  botsVivos: 0
+  botsVivos: []
 --- !u!4 &1591279639
 Transform:
   m_ObjectHideFlags: 0
