@@ -23,6 +23,7 @@ public class TorretaScript : MonoBehaviour
     public float rotationSpd;
     public float bps;
     private float cooldown;
+    public float precio;
 
     // Start is called before the first frame update
     void Start()

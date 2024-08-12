@@ -315,6 +315,7 @@ MonoBehaviour:
   cooldown: 3
   dps: 5
   stunTime: 0.5
+  precio: 225
 --- !u!1 &2296560995809869553
 GameObject:
   m_ObjectHideFlags: 0

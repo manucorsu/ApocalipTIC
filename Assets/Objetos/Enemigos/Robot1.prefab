@@ -52,6 +52,9 @@ MonoBehaviour:
   hp: 100
   spd: 2.5
   spdSave: 0
+  plata: 15
+  construir: {fileID: 0}
+  construirscr: {fileID: 0}
   spName: 
 --- !u!50 &4711819497900499443
 Rigidbody2D:

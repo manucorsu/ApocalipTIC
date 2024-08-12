@@ -314,6 +314,7 @@ MonoBehaviour:
   rango: 3
   rotationSpd: 300
   isShooting: 0
+  precio: 150
 --- !u!1 &6966831421037618975
 GameObject:
   m_ObjectHideFlags: 0

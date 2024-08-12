@@ -9,6 +9,12 @@ public class ConstruirScript : MonoBehaviour
 
     public GameObject torretaSeleccionada;
     private SpriteRenderer sr;
+    public GameObject construir;
+    private ConstruirScriptGeneral scrConstruir;
+
+    //Variables
+
+    public float precioSeleccionado;
 
 
 
@@ -16,6 +22,8 @@ public class ConstruirScript : MonoBehaviour
     void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
+        construir = GameObject.Find("Construir");
+        scrConstruir = construir.GetComponent<ConstruirScriptGeneral>();
     }
 
     // Update is called once per frame
@@ -26,8 +34,12 @@ public class ConstruirScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Instantiate(torretaSeleccionada, transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        if ((scrConstruir.plataActual - precioSeleccionado) >= 0)
+        {
+            Instantiate(torretaSeleccionada, transform.position, Quaternion.identity);
+            scrConstruir.plataActual -= precioSeleccionado;
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnMouseEnter()

@@ -196,6 +196,7 @@ MonoBehaviour:
   rango: 3.35
   rotationSpd: 1000
   bps: 1
+  precio: 100
 --- !u!1 &7696407428886232020
 GameObject:
   m_ObjectHideFlags: 0
