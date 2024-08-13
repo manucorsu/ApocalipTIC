@@ -7,7 +7,7 @@ public class ConstruirScript : MonoBehaviour
 
     //Objetos
 
-    public GameObject torretaSeleccionada;
+    public GameObject torretaSeleccionada = null;
     private SpriteRenderer sr;
     public GameObject construir;
     private ConstruirScriptGeneral scrConstruir;
@@ -36,9 +36,12 @@ public class ConstruirScript : MonoBehaviour
     {
         if ((scrConstruir.plataActual - precioSeleccionado) >= 0)
         {
-            Instantiate(torretaSeleccionada, transform.position, Quaternion.identity);
-            scrConstruir.plataActual -= precioSeleccionado;
-            Destroy(this.gameObject);
+            if (torretaSeleccionada != null)
+            {
+                Instantiate(torretaSeleccionada, transform.position, Quaternion.identity);
+                scrConstruir.plataActual -= precioSeleccionado;
+                Destroy(this.gameObject);
+            }
         }
     }
 

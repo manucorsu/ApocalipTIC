@@ -8,6 +8,7 @@ public class scrBotones : MonoBehaviour
     private ConstruirScript scrConstruir;
     public GameObject[] tiles;
     public GameObject[] torretas;
+    public GameObject cuadroTorreta;
 
     // Start is called before the first frame update
     void Start()

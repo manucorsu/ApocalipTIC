@@ -892,6 +892,7 @@ GameObject:
   - component: {fileID: 101487931}
   - component: {fileID: 101487930}
   - component: {fileID: 101487929}
+  - component: {fileID: 101487933}
   m_Layer: 5
   m_Name: btnProyector
   m_TagString: Untagged
@@ -1005,6 +1006,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101487927}
   m_CullTransparentMesh: 0
+--- !u!114 &101487933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101487927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788f21512d750a040b2631e927ee760f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cuadroTorreta: {fileID: 936862856}
+  "txtT\xEDtuloTorreta": {fileID: 625583507}
+  txtDescTorreta: {fileID: 586528481}
 --- !u!1 &104754076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2117,7 +2133,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &334158825
 GameObject:
@@ -2889,7 +2905,7 @@ RectTransform:
   - {fileID: 760361934}
   - {fileID: 936862857}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4102,6 +4118,83 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &586528479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586528480}
+  - component: {fileID: 586528482}
+  - component: {fileID: 586528481}
+  m_Layer: 5
+  m_Name: txtDescTorreta
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &586528480
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586528479}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 936862857}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.4, y: -7}
+  m_SizeDelta: {x: 75.263916, y: 62.034378}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &586528481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586528479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 4649befeba29a3c4d858c9781567ad17, type: 3}
+    m_FontSize: 12
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Descripci\xF3n de la torreta aqu\xED"
+--- !u!222 &586528482
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586528479}
+  m_CullTransparentMesh: 0
 --- !u!1 &587953732
 GameObject:
   m_ObjectHideFlags: 0
@@ -4342,6 +4435,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &615247383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 342464001}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 615247384}
+  m_Layer: 0
+  m_Name: Robot2 (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &615247384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 342464001}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615247383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &625583505
 GameObject:
   m_ObjectHideFlags: 0
@@ -4354,7 +4477,7 @@ GameObject:
   - component: {fileID: 625583508}
   - component: {fileID: 625583507}
   m_Layer: 5
-  m_Name: Text
+  m_Name: "txtT\xEDtuloTorreta"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6212,7 +6335,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &823340272
 GameObject:
@@ -6539,6 +6662,7 @@ GameObject:
   - component: {fileID: 878903004}
   - component: {fileID: 878903003}
   - component: {fileID: 878903002}
+  - component: {fileID: 878903006}
   m_Layer: 5
   m_Name: "btnTiral\xE1pices"
   m_TagString: Untagged
@@ -6652,6 +6776,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878903000}
   m_CullTransparentMesh: 0
+--- !u!114 &878903006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878903000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788f21512d750a040b2631e927ee760f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cuadroTorreta: {fileID: 936862856}
+  "txtT\xEDtuloTorreta": {fileID: 625583507}
+  txtDescTorreta: {fileID: 586528481}
 --- !u!1 &879879362
 GameObject:
   m_ObjectHideFlags: 0
@@ -6870,7 +7009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &936862857
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6883,6 +7022,7 @@ RectTransform:
   m_LocalScale: {x: 1.4765, y: 1.4765, z: 1.4765}
   m_Children:
   - {fileID: 625583506}
+  - {fileID: 586528480}
   m_Father: {fileID: 412298976}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11076,7 +11216,7 @@ Transform:
   - {fileID: 1398770150}
   - {fileID: 1106914362}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180840348
 GameObject:
@@ -11501,6 +11641,7 @@ GameObject:
   - component: {fileID: 1289922315}
   - component: {fileID: 1289922314}
   - component: {fileID: 1289922313}
+  - component: {fileID: 1289922317}
   m_Layer: 5
   m_Name: btnTacho
   m_TagString: Untagged
@@ -11614,6 +11755,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289922311}
   m_CullTransparentMesh: 0
+--- !u!114 &1289922317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289922311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788f21512d750a040b2631e927ee760f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cuadroTorreta: {fileID: 936862856}
+  "txtT\xEDtuloTorreta": {fileID: 625583507}
+  txtDescTorreta: {fileID: 586528481}
 --- !u!1 &1364921503
 GameObject:
   m_ObjectHideFlags: 0
@@ -11903,6 +12059,7 @@ GameObject:
   - component: {fileID: 1446011158}
   - component: {fileID: 1446011157}
   - component: {fileID: 1446011156}
+  - component: {fileID: 1446011160}
   m_Layer: 5
   m_Name: btnNicho
   m_TagString: Untagged
@@ -12016,6 +12173,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446011154}
   m_CullTransparentMesh: 0
+--- !u!114 &1446011160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446011154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788f21512d750a040b2631e927ee760f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cuadroTorreta: {fileID: 936862856}
+  "txtT\xEDtuloTorreta": {fileID: 625583507}
+  txtDescTorreta: {fileID: 586528481}
 --- !u!1 &1466480582
 GameObject:
   m_ObjectHideFlags: 0
@@ -12663,7 +12835,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1648316704
 GameObject:
@@ -13099,7 +13271,7 @@ Transform:
   - {fileID: 1727600549}
   - {fileID: 1093262921}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &1709332342
 Grid:
@@ -14176,7 +14348,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1860246660
 GameObject:
@@ -14272,6 +14444,7 @@ MonoBehaviour:
   - {fileID: 6966831420949532576, guid: 4a5ac0f841e23e54d8732b205d2390f3, type: 3}
   - {fileID: 6947866215203442404, guid: 9f0919607b61f5742ada65263ea76007, type: 3}
   - {fileID: 2296560995446444706, guid: bae9b735f1732e2458057a0b6694746f, type: 3}
+  cuadroTorreta: {fileID: 936862856}
 --- !u!4 &1860246662
 Transform:
   m_ObjectHideFlags: 0
@@ -14284,7 +14457,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1863991463
 GameObject:
