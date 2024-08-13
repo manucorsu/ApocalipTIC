@@ -14,6 +14,7 @@ public class BidónScript : MonoBehaviour
 
     public float daño;
     public float anim;
+    public float precio;
 
     // Start is called before the first frame update
     void Start()

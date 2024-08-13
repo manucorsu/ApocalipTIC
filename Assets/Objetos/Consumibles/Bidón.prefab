@@ -117,6 +117,7 @@ MonoBehaviour:
   collider: {fileID: 3212824467811206767}
   "da\xF1o": 50
   anim: 0
+  precio: 75
 --- !u!58 &3212824467811206767
 CircleCollider2D:
   m_ObjectHideFlags: 0

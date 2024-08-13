@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 538395728475649943}
   anim: 0
+  precio: 100
 --- !u!58 &58150987135597348
 CircleCollider2D:
   m_ObjectHideFlags: 0

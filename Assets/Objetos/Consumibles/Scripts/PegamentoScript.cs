@@ -12,6 +12,7 @@ public class PegamentoScript : MonoBehaviour
     //Variables
 
     public float anim;
+    public float precio;
 
     // Start is called before the first frame update
     void Start()

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class scrBotones : MonoBehaviour
 {
-    public GameObject construir;
     private ConstruirScript scrConstruir;
+    private ZonaConsumiblesScript scrZonaConsumible;
     public GameObject[] tiles;
     public GameObject[] torretas;
     public GameObject cuadroTorreta;
+    public GameObject[] zonasConsumibles;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,21 @@ public class scrBotones : MonoBehaviour
     {
         
     }
+
+    // VALOR DE CADA VARIABLE:
+    //
+    // 1: TIRALÁPICES
+    // 2: NICHO
+    // 3: TACHO
+    // 4: PROYECTOR
+    // 5: 
+    // 6: 
+    // 7: 
+    // 8: 
+    // 9: BIDÓN
+    // 10: PEGAMENTO 
+    // 11:
+    // 12:
 
     public void Click(int torreta)
     {
@@ -83,5 +99,32 @@ public class scrBotones : MonoBehaviour
                 }
             }
         }
+
+        if (torreta == 9)
+        {
+            foreach (GameObject zona in zonasConsumibles)
+            {
+                  scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                  scrZonaConsumible.consumibleSeleccionado = torretas[9];
+
+                  BidónScript scrBidón = torretas[9].GetComponent<BidónScript>();
+                  scrZonaConsumible.precioSeleccionado = scrBidón.precio;
+                }
+            }
+    
+
+        if (torreta == 10)
+        {
+            foreach (GameObject zona in zonasConsumibles)
+            {
+                  scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                  scrZonaConsumible.consumibleSeleccionado = torretas[10];
+
+                  PegamentoScript scrPegamento = torretas[10].GetComponent<PegamentoScript>();
+                  scrZonaConsumible.precioSeleccionado = scrPegamento.precio;
+                }
+            }
+        }
+
     }
-}
+
