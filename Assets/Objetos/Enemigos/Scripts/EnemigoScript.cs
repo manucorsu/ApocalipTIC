@@ -12,14 +12,13 @@ public class EnemigoScript : MonoBehaviour
     private List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
 
     [Header("Stats")]
-    [SerializeField] private byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas
-    public float hp; //"HP real"
-    private float hpSave; //última HP registrada, el enemigo sabe si sufrió daño si su HP real es menor que el valor de esta variable
+    public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
+    public float hp;
     public float spd; //speed
     [HideInInspector] public float spdSave;
     public float plata;
-    public GameObject construir;
-    public ConstruirScriptGeneral construirscr;
+    [HideInInspector] public GameObject construir;
+    [HideInInspector] public ConstruirScriptGeneral construirscr;
 
 
     private GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
@@ -57,7 +56,6 @@ public class EnemigoScript : MonoBehaviour
             }
         }
         spdSave = this.spd;
-        hpSave = this.hp;
         construir = GameObject.Find("Construir");
     }
 
@@ -192,7 +190,6 @@ public class EnemigoScript : MonoBehaviour
                 Morir();
                 break;
             }
-            hpSave = hp;
         }
     }
 

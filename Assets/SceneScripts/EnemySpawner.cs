@@ -51,11 +51,35 @@ public class EnemySpawner : MonoBehaviour
     }
     private void SpawnEnemy()
     {
-        byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
-        GameObject prefabElegido = pfbsEnemigos[rie];
+        GameObject prefabElegido;
+        while (false != true)
+        {
+            byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
+            prefabElegido = pfbsEnemigos[rie];
+            if(prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda)
+            {
+                break;
+            }
+        }
 
-        byte ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
-        Transform loc = spawners[ris].transform;
+        Transform loc;
+        byte ris;
+        while (false != true)
+        {
+            ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
+            loc = spawners[ris].transform;
+            if(loc.name[0] == 'A')
+            {
+                if(ronda >= 5)
+                {
+                    break;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
 
         GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
 

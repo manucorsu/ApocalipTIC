@@ -48,11 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBeEaten: 1
-  minRonda: 0
+  minRonda: 3
   hp: 200
-  spd: 0.75
+  spd: 1
   spdSave: 0
-  plata: 20
+  plata: 35
   construir: {fileID: 0}
   construirscr: {fileID: 0}
   spName: 
