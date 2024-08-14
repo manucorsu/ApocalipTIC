@@ -14,6 +14,9 @@ public class scrBotones : MonoBehaviour
     public GameObject cuadroTorreta;
     public GameObject[] zonasConsumibles;
 
+    public Sprite sprDobleVelocidad1;
+    public Sprite spDobleVelocidad2;
+
     //Variables
 
     public int velocidad = 1;
@@ -140,11 +143,15 @@ public class scrBotones : MonoBehaviour
         {
             Time.timeScale = 2;
             velocidad = 2;
+            SpriteRenderer sr = this.gameObject.GetComponent<SpriteRenderer>();
+            sr.sprite = spDobleVelocidad2;
         } 
 
         else if (velocidad == 2) {
             Time.timeScale = 1;
             velocidad = 1;
+            SpriteRenderer sr = this.gameObject.GetComponent<SpriteRenderer>();
+            sr.sprite = sprDobleVelocidad1;
         }
     }
 
