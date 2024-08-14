@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3212824467811206767}
   m_Layer: 0
   m_Name: "Bid\xF3n"
-  m_TagString: Untagged
+  m_TagString: ignorar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

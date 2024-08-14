@@ -17,7 +17,7 @@ public class PegamentoScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -28,16 +28,17 @@ public class PegamentoScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
-        if (enemigoScr.canBeEaten == true)
+        if (collision.gameObject.tag == "enemigo")
         {
-            if (collision.gameObject.tag == "enemigo")
+            EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
+            if (enemigoScr.canBeEaten == true)
             {
                 enemigoScr.spd /= 4;
             }
-        } else
-        {
-            enemigoScr.spd = 0;
+            else
+            {
+                enemigoScr.spd = 0;
+            }
         }
     }
 

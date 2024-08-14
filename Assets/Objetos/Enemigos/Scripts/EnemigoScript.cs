@@ -149,7 +149,7 @@ public class EnemigoScript : MonoBehaviour
         }
     }
 
-    private void Sufrir(float dmg)
+    public void Sufrir(float dmg)
     { // Sufrir daño causado por PROYECTILES (balas que usan el BalaScript).
       //BAJO NINGUNA CIRCUNSTANCIA usar para balas "especiales" (como el chorro de agua o el proyector
         hp -= dmg;
@@ -171,6 +171,12 @@ public class EnemigoScript : MonoBehaviour
             TorretaScript4 proyector = collision.gameObject.transform.root.gameObject.GetComponent<TorretaScript4>();
             StartCoroutine(Stun(proyector.dps, proyector.stunTime));
         }
+
+        else if(collision.gameObject.tag == "ignorar") //pegamento, bidón.
+        {
+            return;
+        }
+
         else
         {
             BalaScript bala = collision.gameObject.GetComponent<BalaScript>();

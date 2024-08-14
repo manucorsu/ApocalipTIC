@@ -5,7 +5,7 @@ using UnityEngine;
 public class ZonaConsumiblesScript : MonoBehaviour
 {
 
-    public GameObject consumibleSeleccionado;
+    public GameObject consumibleSeleccionado = null;
     public GameObject construir;
     public ConstruirScriptGeneral scrConstruir;
     public float precioSeleccionado;
@@ -25,11 +25,14 @@ public class ZonaConsumiblesScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if ((scrConstruir.plataActual - precioSeleccionado) >= 0)
+        if (consumibleSeleccionado != null)
         {
-            var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouseWorldPos.z = 0f;
-            Instantiate(consumibleSeleccionado, mouseWorldPos, Quaternion.identity);
+            if ((scrConstruir.plataActual - precioSeleccionado) >= 0)
+            {
+                var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mouseWorldPos.z = 0f;
+                Instantiate(consumibleSeleccionado, mouseWorldPos, Quaternion.identity);
+            }
         }
     }
 }

@@ -5602,8 +5602,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1591279638}
-        m_MethodName: 
+      - m_Target: {fileID: 1860246661}
+        m_MethodName: DobleVeclocidad
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6982,6 +6982,7 @@ GameObject:
   - component: {fileID: 931722640}
   - component: {fileID: 931722639}
   - component: {fileID: 931722638}
+  - component: {fileID: 931722641}
   m_Layer: 5
   m_Name: "btnBid\xF3n"
   m_TagString: Untagged
@@ -7095,6 +7096,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931722636}
   m_CullTransparentMesh: 0
+--- !u!114 &931722641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931722636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788f21512d750a040b2631e927ee760f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cuadroTorreta: {fileID: 936862856}
+  "txtT\xEDtuloTorreta": {fileID: 625583507}
+  txtDescTorreta: {fileID: 586528481}
 --- !u!1 &936862856
 GameObject:
   m_ObjectHideFlags: 0
@@ -10962,8 +10978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a572f578ab58974fa10c09a4e2cc225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consumibleSeleccionado: {fileID: 8891854371874229756, guid: 07f2b19f740575c4d945c106b69493ee,
-    type: 3}
+  consumibleSeleccionado: {fileID: 0}
   construir: {fileID: 0}
   scrConstruir: {fileID: 0}
   precioSeleccionado: 0
@@ -11888,6 +11903,7 @@ GameObject:
   - component: {fileID: 1290536389}
   - component: {fileID: 1290536388}
   - component: {fileID: 1290536387}
+  - component: {fileID: 1290536390}
   m_Layer: 5
   m_Name: btnPegamento
   m_TagString: Untagged
@@ -12001,6 +12017,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290536385}
   m_CullTransparentMesh: 0
+--- !u!114 &1290536390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290536385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788f21512d750a040b2631e927ee760f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cuadroTorreta: {fileID: 936862856}
+  "txtT\xEDtuloTorreta": {fileID: 625583507}
+  txtDescTorreta: {fileID: 586528481}
 --- !u!1 &1364921503
 GameObject:
   m_ObjectHideFlags: 0
@@ -12197,8 +12228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a572f578ab58974fa10c09a4e2cc225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consumibleSeleccionado: {fileID: 8891854371874229756, guid: 07f2b19f740575c4d945c106b69493ee,
-    type: 3}
+  consumibleSeleccionado: {fileID: 0}
   construir: {fileID: 0}
   scrConstruir: {fileID: 0}
   precioSeleccionado: 0
@@ -13313,8 +13343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a572f578ab58974fa10c09a4e2cc225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consumibleSeleccionado: {fileID: 8891854371874229756, guid: 07f2b19f740575c4d945c106b69493ee,
-    type: 3}
+  consumibleSeleccionado: {fileID: 0}
   construir: {fileID: 0}
   scrConstruir: {fileID: 0}
   precioSeleccionado: 0
@@ -14733,6 +14762,7 @@ MonoBehaviour:
   - {fileID: 1863991463}
   - {fileID: 1398770149}
   - {fileID: 1106914361}
+  velocidad: 1
 --- !u!4 &1860246662
 Transform:
   m_ObjectHideFlags: 0
@@ -14866,8 +14896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a572f578ab58974fa10c09a4e2cc225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consumibleSeleccionado: {fileID: 8891854371874229756, guid: 07f2b19f740575c4d945c106b69493ee,
-    type: 3}
+  consumibleSeleccionado: {fileID: 0}
   construir: {fileID: 0}
   scrConstruir: {fileID: 0}
   precioSeleccionado: 0

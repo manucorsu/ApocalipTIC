@@ -49,7 +49,7 @@ public class BidónScript : MonoBehaviour
         if (collision.gameObject.tag == "enemigo")
         {         
            EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
-           enemigoScr.hp -= daño;
+            enemigoScr.Sufrir(daño);
         }
     }
 }

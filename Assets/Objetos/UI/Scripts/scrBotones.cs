@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class scrBotones : MonoBehaviour
 {
+
+    //Objetos
+
     private ConstruirScript scrConstruir;
     private ZonaConsumiblesScript scrZonaConsumible;
     public GameObject[] tiles;
     public GameObject[] torretas;
     public GameObject cuadroTorreta;
     public GameObject[] zonasConsumibles;
+
+    //Variables
+
+    public int velocidad = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -125,6 +132,21 @@ public class scrBotones : MonoBehaviour
                 }
             }
         }
+
+    public void DobleVeclocidad()
+    {
+
+        if (velocidad == 1)
+        {
+            Time.timeScale = 2;
+            velocidad = 2;
+        } 
+
+        else if (velocidad == 2) {
+            Time.timeScale = 1;
+            velocidad = 1;
+        }
+    }
 
     }
 
