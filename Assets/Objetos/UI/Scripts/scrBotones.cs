@@ -16,18 +16,18 @@ public class scrBotones : MonoBehaviour
 
     //Variables
 
-    public int velocidad = 1;
+    public bool dv = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // VALOR DE CADA VARIABLE:
@@ -111,42 +111,43 @@ public class scrBotones : MonoBehaviour
         {
             foreach (GameObject zona in zonasConsumibles)
             {
-                  scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
-                  scrZonaConsumible.consumibleSeleccionado = torretas[9];
+                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                scrZonaConsumible.consumibleSeleccionado = torretas[9];
 
-                  BidónScript scrBidón = torretas[9].GetComponent<BidónScript>();
-                  scrZonaConsumible.precioSeleccionado = scrBidón.precio;
-                }
+                BidónScript scrBidón = torretas[9].GetComponent<BidónScript>();
+                scrZonaConsumible.precioSeleccionado = scrBidón.precio;
             }
-    
+        }
+
 
         if (torreta == 10)
         {
             foreach (GameObject zona in zonasConsumibles)
             {
-                  scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
-                  scrZonaConsumible.consumibleSeleccionado = torretas[10];
+                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                scrZonaConsumible.consumibleSeleccionado = torretas[10];
 
-                  PegamentoScript scrPegamento = torretas[10].GetComponent<PegamentoScript>();
-                  scrZonaConsumible.precioSeleccionado = scrPegamento.precio;
-                }
+                PegamentoScript scrPegamento = torretas[10].GetComponent<PegamentoScript>();
+                scrZonaConsumible.precioSeleccionado = scrPegamento.precio;
             }
         }
+    }
 
     public void DobleVeclocidad()
     {
 
-        if (velocidad == 1)
+        if (dv == false)
         {
             Time.timeScale = 2;
-            velocidad = 2;
-        } 
+            dv = true;
+        }
 
-        else if (velocidad == 2) {
+        else
+        {
             Time.timeScale = 1;
-            velocidad = 1;
+            dv = false;
         }
     }
 
-    }
+}
 
