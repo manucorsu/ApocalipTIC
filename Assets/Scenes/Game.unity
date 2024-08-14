@@ -5112,7 +5112,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '>>'
+  m_Text: 
 --- !u!222 &656398377
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5535,6 +5535,7 @@ GameObject:
   - component: {fileID: 715089475}
   - component: {fileID: 715089474}
   - component: {fileID: 715089473}
+  - component: {fileID: 715089476}
   m_Layer: 5
   m_Name: btnDobleVelocidad
   m_TagString: Untagged
@@ -5631,8 +5632,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5648,6 +5649,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715089471}
   m_CullTransparentMesh: 0
+--- !u!114 &715089476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715089471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ec5435b5302f541bbde07452947c78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles: []
+  torretas: []
+  cuadroTorreta: {fileID: 0}
+  zonasConsumibles: []
+  sprDobleVelocidad1: {fileID: 21300000, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
+  spDobleVelocidad2: {fileID: 21300002, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
+  velocidad: 1
 --- !u!1 &723804941
 GameObject:
   m_ObjectHideFlags: 0
@@ -14762,6 +14782,8 @@ MonoBehaviour:
   - {fileID: 1863991463}
   - {fileID: 1398770149}
   - {fileID: 1106914361}
+  sprDobleVelocidad1: {fileID: 0}
+  spDobleVelocidad2: {fileID: 0}
   velocidad: 1
 --- !u!4 &1860246662
 Transform:

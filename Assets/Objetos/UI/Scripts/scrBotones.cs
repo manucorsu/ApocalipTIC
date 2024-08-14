@@ -14,20 +14,23 @@ public class scrBotones : MonoBehaviour
     public GameObject cuadroTorreta;
     public GameObject[] zonasConsumibles;
 
+    public Sprite sprDobleVelocidad1;
+    public Sprite spDobleVelocidad2;
+
     //Variables
 
-    public bool dv = false;
+    public int velocidad = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     // VALOR DE CADA VARIABLE:
@@ -111,43 +114,46 @@ public class scrBotones : MonoBehaviour
         {
             foreach (GameObject zona in zonasConsumibles)
             {
-                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
-                scrZonaConsumible.consumibleSeleccionado = torretas[9];
+                  scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                  scrZonaConsumible.consumibleSeleccionado = torretas[9];
 
-                BidónScript scrBidón = torretas[9].GetComponent<BidónScript>();
-                scrZonaConsumible.precioSeleccionado = scrBidón.precio;
+                  BidónScript scrBidón = torretas[9].GetComponent<BidónScript>();
+                  scrZonaConsumible.precioSeleccionado = scrBidón.precio;
+                }
             }
-        }
-
+    
 
         if (torreta == 10)
         {
             foreach (GameObject zona in zonasConsumibles)
             {
-                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
-                scrZonaConsumible.consumibleSeleccionado = torretas[10];
+                  scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                  scrZonaConsumible.consumibleSeleccionado = torretas[10];
 
-                PegamentoScript scrPegamento = torretas[10].GetComponent<PegamentoScript>();
-                scrZonaConsumible.precioSeleccionado = scrPegamento.precio;
+                  PegamentoScript scrPegamento = torretas[10].GetComponent<PegamentoScript>();
+                  scrZonaConsumible.precioSeleccionado = scrPegamento.precio;
+                }
             }
         }
-    }
 
     public void DobleVeclocidad()
     {
 
-        if (dv == false)
+        if (velocidad == 1)
         {
             Time.timeScale = 2;
-            dv = true;
-        }
+            velocidad = 2;
+            SpriteRenderer sr = this.gameObject.GetComponent<SpriteRenderer>();
+            sr.sprite = spDobleVelocidad2;
+        } 
 
-        else
-        {
+        else if (velocidad == 2) {
             Time.timeScale = 1;
-            dv = false;
+            velocidad = 1;
+            SpriteRenderer sr = this.gameObject.GetComponent<SpriteRenderer>();
+            sr.sprite = sprDobleVelocidad1;
         }
     }
 
-}
+    }
 
