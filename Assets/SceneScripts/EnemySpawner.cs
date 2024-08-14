@@ -56,7 +56,7 @@ public class EnemySpawner : MonoBehaviour
         {
             byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
             prefabElegido = pfbsEnemigos[rie];
-            if(prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda)
+            if (prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda)
             {
                 break;
             }
@@ -68,9 +68,9 @@ public class EnemySpawner : MonoBehaviour
         {
             ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
             loc = spawners[ris].transform;
-            if(loc.name[0] == 'A')
+            if (loc.name[0] == 'A')
             {
-                if(ronda >= 5)
+                if (ronda >= 5)
                 {
                     break;
                 }

@@ -19,18 +19,12 @@ public class scrBotones : MonoBehaviour
 
     //Variables
 
-    public int velocidad = 1;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool dv = false; // false si el botón de doble velocidad está inactivo, true si lo está
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // VALOR DE CADA VARIABLE:
@@ -114,46 +108,47 @@ public class scrBotones : MonoBehaviour
         {
             foreach (GameObject zona in zonasConsumibles)
             {
-                  scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
-                  scrZonaConsumible.consumibleSeleccionado = torretas[9];
+                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                scrZonaConsumible.consumibleSeleccionado = torretas[9];
 
-                  BidónScript scrBidón = torretas[9].GetComponent<BidónScript>();
-                  scrZonaConsumible.precioSeleccionado = scrBidón.precio;
-                }
+                BidónScript scrBidón = torretas[9].GetComponent<BidónScript>();
+                scrZonaConsumible.precioSeleccionado = scrBidón.precio;
             }
-    
+        }
+
 
         if (torreta == 10)
         {
             foreach (GameObject zona in zonasConsumibles)
             {
-                  scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
-                  scrZonaConsumible.consumibleSeleccionado = torretas[10];
+                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                scrZonaConsumible.consumibleSeleccionado = torretas[10];
 
-                  PegamentoScript scrPegamento = torretas[10].GetComponent<PegamentoScript>();
-                  scrZonaConsumible.precioSeleccionado = scrPegamento.precio;
-                }
+                PegamentoScript scrPegamento = torretas[10].GetComponent<PegamentoScript>();
+                scrZonaConsumible.precioSeleccionado = scrPegamento.precio;
             }
         }
+    }
 
     public void DobleVeclocidad()
     {
 
-        if (velocidad == 1)
+        if (dv == false)
         {
             Time.timeScale = 2;
-            velocidad = 2;
+            dv = true;
             SpriteRenderer sr = this.gameObject.GetComponent<SpriteRenderer>();
             sr.sprite = spDobleVelocidad2;
-        } 
+        }
 
-        else if (velocidad == 2) {
+        else if (dv == true)
+        {
             Time.timeScale = 1;
-            velocidad = 1;
+            dv = false;
             SpriteRenderer sr = this.gameObject.GetComponent<SpriteRenderer>();
             sr.sprite = sprDobleVelocidad1;
         }
     }
 
-    }
+}
 

@@ -13,7 +13,8 @@ public class EnemigoScript : MonoBehaviour
 
     [Header("Stats")]
     public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
-    public float hp;
+    [SerializeField] private float baseHP; //límite de la barra de vida
+    [HideInInspector] public float hp;
     public float spd; //speed
     [HideInInspector] public float spdSave;
     public float plata;
@@ -172,7 +173,7 @@ public class EnemigoScript : MonoBehaviour
             StartCoroutine(Stun(proyector.dps, proyector.stunTime));
         }
 
-        else if(collision.gameObject.tag == "ignorar") //pegamento, bidón.
+        else if (collision.gameObject.tag == "ignorar") //pegamento, bidón.
         {
             return;
         }

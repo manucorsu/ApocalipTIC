@@ -5,7 +5,7 @@ using UnityEngine;
 public class PauseScript : MonoBehaviour
 {
     public bool isPaused = false;
-    [SerializeField] GameObject pauseMenu; //panel PauseMenu
+    [SerializeField] private GameObject pauseMenu; //panel PauseMenu
 
     void Update()
     {

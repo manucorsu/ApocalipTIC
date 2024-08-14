@@ -88,7 +88,8 @@ public class TorretaScript3 : MonoBehaviour
                 if (target.localScale.x > 0)
                 {
                     target.localScale = new Vector2(target.localScale.x - 0.04f, target.localScale.y - 0.04f);
-                } else
+                }
+                else
                 {
                     target.localScale = new Vector3(0, 0, 0);
                 }
