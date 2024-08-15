@@ -19,7 +19,7 @@ public class ZonaConsumiblesScript : MonoBehaviour
     public float precioSeleccionado;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         sceneScripts = GameObject.Find("SCENESCRIPTS");
         zonaConsumible = GameObject.Find("ConsumiblesZona1");

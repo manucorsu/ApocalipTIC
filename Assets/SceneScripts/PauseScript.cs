@@ -33,7 +33,7 @@ public class PauseScript : MonoBehaviour
         }
         else
         {
-            bool dv = GameObject.Find("Botones").GetComponent<scrBotones>().dv;
+            bool dv = GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().dv;
 
             if (dv == true) Time.timeScale = 2;
             else { Time.timeScale = 1; }
