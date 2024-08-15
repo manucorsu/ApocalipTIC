@@ -972,7 +972,7 @@ GameObject:
   - component: {fileID: 101487933}
   m_Layer: 5
   m_Name: btnProyector
-  m_TagString: Untagged
+  m_TagString: botonTorreta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1066,8 +1066,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: fb8b0e31a17ef7d4b9d8ed27d655a191, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5665,9 +5665,18 @@ MonoBehaviour:
   torretas: []
   cuadroTorreta: {fileID: 0}
   zonasConsumibles: []
-  sprDobleVelocidad1: {fileID: 21300000, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
-  spDobleVelocidad2: {fileID: 21300002, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
-  velocidad: 1
+  botones: []
+  botonesTorretas: []
+  botonesConsumibles: []
+  btDv: {fileID: 0}
+  btDvSprite1: {fileID: 0}
+  btDvSprite2: {fileID: 0}
+  btPlay: {fileID: 0}
+  btPlaySprite1: {fileID: 0}
+  btPlaySprite2: {fileID: 0}
+  btTorretaSprite1: {fileID: 0}
+  btTorretaSprite2: {fileID: 0}
+  dv: 0
 --- !u!1 &723804941
 GameObject:
   m_ObjectHideFlags: 0
@@ -6509,8 +6518,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e65f580c10a21364aa16f32eb6387c20, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6663,7 +6672,7 @@ GameObject:
   - component: {fileID: 878903006}
   m_Layer: 5
   m_Name: "btnTiral\xE1pices"
-  m_TagString: Untagged
+  m_TagString: botonTorreta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6757,8 +6766,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: fb8b0e31a17ef7d4b9d8ed27d655a191, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7005,7 +7014,7 @@ GameObject:
   - component: {fileID: 931722641}
   m_Layer: 5
   m_Name: "btnBid\xF3n"
-  m_TagString: Untagged
+  m_TagString: botonConsumible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7099,8 +7108,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: fb8b0e31a17ef7d4b9d8ed27d655a191, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10891,7 +10900,7 @@ GameObject:
   - component: {fileID: 1106914364}
   - component: {fileID: 1106914365}
   - component: {fileID: 1106914363}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ConsumiblesZona4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10974,7 +10983,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11001,6 +11010,11 @@ MonoBehaviour:
   consumibleSeleccionado: {fileID: 0}
   construir: {fileID: 0}
   scrConstruir: {fileID: 0}
+  zonasConsumibles:
+    serializedVersion: 2
+    m_Bits: 1024
+  zonaConsumible: {fileID: 0}
+  scrZona: {fileID: 0}
   precioSeleccionado: 0
 --- !u!1 &1127151310
 GameObject:
@@ -11785,7 +11799,7 @@ GameObject:
   - component: {fileID: 1289922317}
   m_Layer: 5
   m_Name: btnTacho
-  m_TagString: Untagged
+  m_TagString: botonTorreta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11879,8 +11893,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: fb8b0e31a17ef7d4b9d8ed27d655a191, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -11926,7 +11940,7 @@ GameObject:
   - component: {fileID: 1290536390}
   m_Layer: 5
   m_Name: btnPegamento
-  m_TagString: Untagged
+  m_TagString: botonConsumible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12020,8 +12034,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: fb8b0e31a17ef7d4b9d8ed27d655a191, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -12120,7 +12134,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: :)
+  m_Text: 
 --- !u!222 &1364921506
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12141,7 +12155,7 @@ GameObject:
   - component: {fileID: 1398770152}
   - component: {fileID: 1398770153}
   - component: {fileID: 1398770151}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ConsumiblesZona3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12224,7 +12238,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12251,6 +12265,11 @@ MonoBehaviour:
   consumibleSeleccionado: {fileID: 0}
   construir: {fileID: 0}
   scrConstruir: {fileID: 0}
+  zonasConsumibles:
+    serializedVersion: 2
+    m_Bits: 1024
+  zonaConsumible: {fileID: 0}
+  scrZona: {fileID: 0}
   precioSeleccionado: 0
 --- !u!1 &1427300749
 GameObject:
@@ -12346,7 +12365,7 @@ GameObject:
   - component: {fileID: 1446011160}
   m_Layer: 5
   m_Name: btnNicho
-  m_TagString: Untagged
+  m_TagString: botonTorreta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12440,8 +12459,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: fb8b0e31a17ef7d4b9d8ed27d655a191, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -13108,6 +13127,8 @@ MonoBehaviour:
   r1Bots: 6
   bps: 0.5
   botsVivos: []
+  btnPlaySprite1: {fileID: 21300000, guid: e65f580c10a21364aa16f32eb6387c20, type: 3}
+  btnPlaySprite2: {fileID: 21300002, guid: e65f580c10a21364aa16f32eb6387c20, type: 3}
 --- !u!4 &1591279639
 Transform:
   m_ObjectHideFlags: 0
@@ -13256,7 +13277,7 @@ GameObject:
   - component: {fileID: 1661311566}
   - component: {fileID: 1661311567}
   - component: {fileID: 1661311565}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ConsumiblesZona1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13339,7 +13360,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -13366,6 +13387,11 @@ MonoBehaviour:
   consumibleSeleccionado: {fileID: 0}
   construir: {fileID: 0}
   scrConstruir: {fileID: 0}
+  zonasConsumibles:
+    serializedVersion: 2
+    m_Bits: 1024
+  zonaConsumible: {fileID: 0}
+  scrZona: {fileID: 0}
   precioSeleccionado: 0
 --- !u!1 &1682405809
 GameObject:
@@ -14782,9 +14808,36 @@ MonoBehaviour:
   - {fileID: 1863991463}
   - {fileID: 1398770149}
   - {fileID: 1106914361}
-  sprDobleVelocidad1: {fileID: 0}
-  spDobleVelocidad2: {fileID: 0}
-  velocidad: 1
+  botones:
+  - {fileID: 878903000}
+  - {fileID: 1446011154}
+  - {fileID: 1289922311}
+  - {fileID: 101487927}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 931722636}
+  - {fileID: 1290536385}
+  - {fileID: 0}
+  - {fileID: 0}
+  botonesTorretas:
+  - {fileID: 878903000}
+  - {fileID: 1446011154}
+  - {fileID: 1289922311}
+  - {fileID: 101487927}
+  botonesConsumibles:
+  - {fileID: 931722636}
+  - {fileID: 1290536385}
+  btDv: {fileID: 715089471}
+  btDvSprite1: {fileID: 21300000, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
+  btDvSprite2: {fileID: 21300002, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
+  btPlay: {fileID: 850049343}
+  btPlaySprite1: {fileID: 0}
+  btPlaySprite2: {fileID: 0}
+  btTorretaSprite1: {fileID: 21300000, guid: fb8b0e31a17ef7d4b9d8ed27d655a191, type: 3}
+  btTorretaSprite2: {fileID: 21300000, guid: 359e8f53f904b3d4aa23570eafe690ca, type: 3}
+  dv: 0
 --- !u!4 &1860246662
 Transform:
   m_ObjectHideFlags: 0
@@ -14811,7 +14864,7 @@ GameObject:
   - component: {fileID: 1863991466}
   - component: {fileID: 1863991467}
   - component: {fileID: 1863991465}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ConsumiblesZona2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14894,7 +14947,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -14921,6 +14974,11 @@ MonoBehaviour:
   consumibleSeleccionado: {fileID: 0}
   construir: {fileID: 0}
   scrConstruir: {fileID: 0}
+  zonasConsumibles:
+    serializedVersion: 2
+    m_Bits: 1024
+  zonaConsumible: {fileID: 0}
+  scrZona: {fileID: 0}
   precioSeleccionado: 0
 --- !u!1 &1866149036
 GameObject:

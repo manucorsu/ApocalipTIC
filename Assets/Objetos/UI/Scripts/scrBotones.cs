@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class scrBotones : MonoBehaviour
 {
@@ -14,8 +15,20 @@ public class scrBotones : MonoBehaviour
     public GameObject cuadroTorreta;
     public GameObject[] zonasConsumibles;
 
-    public Sprite sprDobleVelocidad1;
-    public Sprite spDobleVelocidad2;
+    public GameObject[] botones;
+    public GameObject[] botonesTorretas;
+    public GameObject[] botonesConsumibles;
+
+    public GameObject btDv;
+    public Sprite btDvSprite1;
+    public Sprite btDvSprite2;
+
+    public GameObject btPlay;
+    public Sprite btPlaySprite1;
+    public Sprite btPlaySprite2;
+
+    public Sprite btTorretaSprite1;
+    public Sprite btTorretaSprite2;
 
     //Variables
 
@@ -55,8 +68,11 @@ public class scrBotones : MonoBehaviour
 
                     TorretaScript scrTiralápices = torretas[0].GetComponent<TorretaScript>();
                     scrConstruir.precioSeleccionado = scrTiralápices.precio;
+
                 }
             }
+
+
         }
 
         if (torreta == 2)
@@ -128,6 +144,36 @@ public class scrBotones : MonoBehaviour
                 scrZonaConsumible.precioSeleccionado = scrPegamento.precio;
             }
         }
+
+
+        if(botones[torreta-1].tag == "botonTorreta")
+        {
+            foreach (GameObject boton in botonesTorretas)
+            {
+                Image imagen = boton.GetComponent<Image>();
+                imagen.sprite = btTorretaSprite1;
+            }
+
+            Image imagen2 = botones[torreta-1].GetComponent<Image>();
+            imagen2.sprite = btTorretaSprite2;
+
+        }
+
+        if (botones[torreta - 1].tag == "botonConsumible")
+        {
+            foreach (GameObject boton in botonesConsumibles)
+            {
+                Image imagen = boton.GetComponent<Image>();
+                imagen.sprite = btTorretaSprite1;
+            }
+
+            Image imagen2 = botones[torreta - 1].GetComponent<Image>();
+            imagen2.sprite = btTorretaSprite2;
+
+        }
+
+
+
     }
 
     public void DobleVeclocidad()
@@ -137,16 +183,16 @@ public class scrBotones : MonoBehaviour
         {
             Time.timeScale = 2;
             dv = true;
-            SpriteRenderer sr = this.gameObject.GetComponent<SpriteRenderer>();
-            sr.sprite = spDobleVelocidad2;
+            Image btDvImage = btDv.GetComponent<Image>();
+            btDvImage.sprite = btDvSprite2;
         }
 
         else if (dv == true)
         {
             Time.timeScale = 1;
             dv = false;
-            SpriteRenderer sr = this.gameObject.GetComponent<SpriteRenderer>();
-            sr.sprite = sprDobleVelocidad1;
+            Image btDvImage = btDv.GetComponent<Image>();
+            btDvImage.sprite = btDvSprite1;
         }
     }
 
