@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public bool spawnear = false;
+    [HideInInspector] public bool spawnear = false;
 
     [Header("Arrays")]
     [SerializeField] private GameObject[] pfbsEnemigos; //cada tipo de enemigo es un prefab y está en este array
@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float bps = 0.5f; //bots por segundo
     private byte ronda = 1;
     private float tiempoDesdeUltimoSpawn;
-    public List<GameObject> botsVivos = new List<GameObject>();
+    [HideInInspector] public List<GameObject> botsVivos = new List<GameObject>();
     private byte botsASpawnear;
 
     void Start()

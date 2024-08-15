@@ -9,7 +9,6 @@ public class ConstruirScript : MonoBehaviour
 
     public GameObject torretaSeleccionada = null;
     private SpriteRenderer sr;
-    public GameObject construir;
     private ConstruirScriptGeneral scrConstruir;
 
     //Variables
@@ -22,8 +21,12 @@ public class ConstruirScript : MonoBehaviour
     void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
-        construir = GameObject.Find("Construir");
-        scrConstruir = construir.GetComponent<ConstruirScriptGeneral>();
+        sceneScripts = GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>();
+        if (sceneScripts == null)
+        {
+            scrConstruir = GameObject.Find("SCENESCRIPTS"); 
+        }
+        scrConstruir = sceneScripts.GetComponent<ConstruirScriptGeneral>();
     }
 
     // Update is called once per frame

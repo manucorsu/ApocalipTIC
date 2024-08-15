@@ -6,6 +6,13 @@ public class PauseScript : MonoBehaviour
 {
     public bool isPaused = false;
     [SerializeField] private GameObject pauseMenu; //panel PauseMenu
+    private GameObject[] tiles;
+
+
+    void Awake()
+    {
+
+    }
 
     void Update()
     {

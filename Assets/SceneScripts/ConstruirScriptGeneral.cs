@@ -5,11 +5,9 @@ using UnityEngine.UI;
 
 public class ConstruirScriptGeneral : MonoBehaviour
 {
-
     //Objetos
 
-    public GameObject spawner;
-    public EnemySpawner scrEnemySpawner;
+    private EnemySpawner enemySpawner;
     public GameObject[] tiles;
     public GameObject[] consumiblesZonas;
     public Text plataActualtxt;
@@ -24,13 +22,13 @@ public class ConstruirScriptGeneral : MonoBehaviour
         plataActual = 1000;
         plataActualtxt.text = "$" + plataActual.ToString();
 
-        scrEnemySpawner = spawner.GetComponent<EnemySpawner>();
+        enemySpawner = this.gameObject.GetComponent<EnemySpawner>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (scrEnemySpawner.spawnear == true)
+        if (enemySpawner.spawnear == true)
         {
             foreach (GameObject tile in tiles)
             {
@@ -68,6 +66,5 @@ public class ConstruirScriptGeneral : MonoBehaviour
         }
 
         plataActualtxt.text = "$" + plataActual.ToString();
-
     }
 }
