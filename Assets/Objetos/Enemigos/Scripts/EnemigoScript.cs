@@ -13,13 +13,12 @@ public class EnemigoScript : MonoBehaviour
 
     [Header("Stats")]
     public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
-    [SerializeField] private float baseHP; //límite de la barra de vida
+    [SerializeField] private float baseHP; //límite de la barra de vida (to-do)
     [HideInInspector] public float hp;
     public float spd; //speed
     [HideInInspector] public float spdSave;
-    public float plata;
-    [HideInInspector] public GameObject construir;
-    [HideInInspector] public ConstruirScriptGeneral construirscr;
+    public float plata; //cuánto $ recibe el jugador al mater a este enemigo.
+    [HideInInspector] private ConstruirScriptGeneral construirscr;
 
 
     private GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
@@ -31,6 +30,11 @@ public class EnemigoScript : MonoBehaviour
 
     private IEnumerator sufrirNicho; private float sufrirNichoDPS;
 
+    void Awake()
+    {
+        AsignarTodo();
+    }
+
     void Start()
     {
         if (spName == null || spName == string.Empty)
@@ -38,10 +42,7 @@ public class EnemigoScript : MonoBehaviour
             Debug.LogError("spName == null o string.Empty. En general esto pasa cuando un enemigo no fue generado por EnemySpawner.");
             Destroy(this.gameObject); //ÚNICA vez en toda la HISTORIA donde un enemigo se destruye directamente y no llamando a Morir()
         }
-        AsignarTodo();
         BuscarPath();
-
-        construirscr = construir.GetComponent<ConstruirScriptGeneral>();
     }
 
     private void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
@@ -57,7 +58,8 @@ public class EnemigoScript : MonoBehaviour
             }
         }
         spdSave = this.spd;
-        construir = GameObject.Find("Construir");
+        construirscr = GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>();
+        if (construirscr == null) Debug.LogError("construirscr fue null en EnemigoScript!!");
     }
 
     private void BuscarPath()
@@ -227,10 +229,10 @@ public class EnemigoScript : MonoBehaviour
     public void Morir()
     {
         this.spd = 0;
-        EnemySpawner enemySpawner = GameObject.Find("ENEMYSPAWNER").GetComponent<EnemySpawner>();
+        EnemySpawner enemySpawner = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>();
         if (enemySpawner == null)
         {
-            Debug.LogError("El script o GameObject de ENEMYSPAWNER no existe!");
+            Debug.LogError("enemySpawner fue null en EnemigoScript!!");
             Destroy(this.gameObject);
         }
         else
