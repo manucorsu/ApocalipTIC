@@ -21,7 +21,7 @@ public class ConstruirScript : MonoBehaviour
     void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
-        scrConstruir = this.gameObject.GetComponent<ConstruirScriptGeneral>();
+        scrConstruir = GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>();
     }
 
     // Update is called once per frame

@@ -8,7 +8,7 @@ public class ZonaConsumiblesScript : MonoBehaviour
     //Objetos
 
     public GameObject consumibleSeleccionado = null;
-    public GameObject construir;
+    public GameObject sceneScripts;
     public ConstruirScriptGeneral scrConstruir;
     public LayerMask zonasConsumibles;
     public GameObject zonaConsumible;
@@ -21,9 +21,9 @@ public class ZonaConsumiblesScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        construir = GameObject.Find("Construir");
+        sceneScripts = GameObject.Find("SCENESCRIPTS");
         zonaConsumible = GameObject.Find("ConsumiblesZona1");
-        scrConstruir = construir.GetComponent<ConstruirScriptGeneral>();
+        scrConstruir = sceneScripts.GetComponent<ConstruirScriptGeneral>();
         scrZona = zonaConsumible.GetComponent<ZonaConsumiblesScript>();
     }
 

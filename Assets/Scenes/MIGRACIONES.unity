@@ -1032,7 +1032,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2123730106}
         m_MethodName: Click
         m_Mode: 3
         m_Arguments:
@@ -6617,7 +6617,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2123730106}
         m_MethodName: Click
         m_Mode: 3
         m_Arguments:
@@ -10866,7 +10866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumibleSeleccionado: {fileID: 8891854371874229756, guid: 07f2b19f740575c4d945c106b69493ee,
     type: 3}
-  construir: {fileID: 0}
+  sceneScripts: {fileID: 0}
   scrConstruir: {fileID: 0}
   zonasConsumibles:
     serializedVersion: 2
@@ -11718,7 +11718,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2123730106}
         m_MethodName: Click
         m_Mode: 3
         m_Arguments:
@@ -12102,7 +12102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumibleSeleccionado: {fileID: 8891854371874229756, guid: 07f2b19f740575c4d945c106b69493ee,
     type: 3}
-  construir: {fileID: 0}
+  sceneScripts: {fileID: 0}
   scrConstruir: {fileID: 0}
   zonasConsumibles:
     serializedVersion: 2
@@ -12269,7 +12269,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2123730106}
         m_MethodName: Click
         m_Mode: 3
         m_Arguments:
@@ -13135,7 +13135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumibleSeleccionado: {fileID: 8891854371874229756, guid: 07f2b19f740575c4d945c106b69493ee,
     type: 3}
-  construir: {fileID: 0}
+  sceneScripts: {fileID: 0}
   scrConstruir: {fileID: 0}
   zonasConsumibles:
     serializedVersion: 2
@@ -14566,7 +14566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumibleSeleccionado: {fileID: 8891854371874229756, guid: 07f2b19f740575c4d945c106b69493ee,
     type: 3}
-  construir: {fileID: 0}
+  sceneScripts: {fileID: 0}
   scrConstruir: {fileID: 0}
   zonasConsumibles:
     serializedVersion: 2
