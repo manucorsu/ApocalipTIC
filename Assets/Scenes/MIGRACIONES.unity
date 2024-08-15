@@ -158,7 +158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &18565246
 BoxCollider2D:
@@ -280,7 +279,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &20009239
 BoxCollider2D:
@@ -558,7 +556,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &28874847
 BoxCollider2D:
@@ -680,7 +677,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &33364596
 BoxCollider2D:
@@ -802,7 +798,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &53074869
 BoxCollider2D:
@@ -1379,7 +1374,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &145562680
 BoxCollider2D:
@@ -1487,7 +1481,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &169742272
 BoxCollider2D:
@@ -1623,7 +1616,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &205264528
 BoxCollider2D:
@@ -1745,7 +1737,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &252097789
 BoxCollider2D:
@@ -2025,7 +2016,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &270986275
 BoxCollider2D:
@@ -2147,7 +2137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &334158828
 BoxCollider2D:
@@ -2269,7 +2258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &352408227
 BoxCollider2D:
@@ -2391,7 +2379,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &359628643
 BoxCollider2D:
@@ -3091,7 +3078,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &498523403
 BoxCollider2D:
@@ -3213,7 +3199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &503727776
 BoxCollider2D:
@@ -3335,7 +3320,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &511578082
 BoxCollider2D:
@@ -3457,7 +3441,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &521059186
 BoxCollider2D:
@@ -3653,7 +3636,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &536375775
 BoxCollider2D:
@@ -3775,7 +3757,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &539721825
 BoxCollider2D:
@@ -4290,7 +4271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &587953735
 BoxCollider2D:
@@ -4686,7 +4666,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &629090347
 BoxCollider2D:
@@ -4887,7 +4866,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &635645828
 BoxCollider2D:
@@ -5009,7 +4987,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &646359311
 BoxCollider2D:
@@ -5287,7 +5264,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &673521366
 BoxCollider2D:
@@ -5488,7 +5464,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &687460298
 BoxCollider2D:
@@ -5735,7 +5710,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &723804944
 BoxCollider2D:
@@ -5857,7 +5831,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &735537550
 BoxCollider2D:
@@ -6056,7 +6029,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &782430265
 BoxCollider2D:
@@ -6178,7 +6150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &784981966
 BoxCollider2D:
@@ -6491,7 +6462,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &854827532
 BoxCollider2D:
@@ -6754,7 +6724,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &879879365
 BoxCollider2D:
@@ -7312,7 +7281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &964950105
 BoxCollider2D:
@@ -7434,7 +7402,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &972489977
 BoxCollider2D:
@@ -10143,7 +10110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1068087244
 BoxCollider2D:
@@ -10423,7 +10389,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1089256161
 BoxCollider2D:
@@ -10584,7 +10549,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1098877528
 BoxCollider2D:
@@ -10706,7 +10670,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1101345010
 BoxCollider2D:
@@ -10905,6 +10868,11 @@ MonoBehaviour:
     type: 3}
   construir: {fileID: 0}
   scrConstruir: {fileID: 0}
+  zonasConsumibles:
+    serializedVersion: 2
+    m_Bits: 1024
+  zonaConsumible: {fileID: 0}
+  scrZona: {fileID: 0}
   precioSeleccionado: 0
 --- !u!1 &1127151310
 GameObject:
@@ -10952,7 +10920,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1127151313
 BoxCollider2D:
@@ -11153,7 +11120,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1137284430
 BoxCollider2D:
@@ -11261,7 +11227,7 @@ Transform:
   - {fileID: 1398770150}
   - {fileID: 1106914362}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180840348
 GameObject:
@@ -11397,7 +11363,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1188439045
 BoxCollider2D:
@@ -11519,7 +11484,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1258486405
 BoxCollider2D:
@@ -12140,6 +12104,11 @@ MonoBehaviour:
     type: 3}
   construir: {fileID: 0}
   scrConstruir: {fileID: 0}
+  zonasConsumibles:
+    serializedVersion: 2
+    m_Bits: 1024
+  zonaConsumible: {fileID: 0}
+  scrZona: {fileID: 0}
   precioSeleccionado: 0
 --- !u!1 &1427300749
 GameObject:
@@ -12486,7 +12455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1508040349
 BoxCollider2D:
@@ -12608,7 +12576,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1537043670
 BoxCollider2D:
@@ -12730,7 +12697,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1565439137
 BoxCollider2D:
@@ -12852,7 +12818,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1587698774
 BoxCollider2D:
@@ -12974,7 +12939,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1648316707
 BoxCollider2D:
@@ -13173,6 +13137,11 @@ MonoBehaviour:
     type: 3}
   construir: {fileID: 0}
   scrConstruir: {fileID: 0}
+  zonasConsumibles:
+    serializedVersion: 2
+    m_Bits: 1024
+  zonaConsumible: {fileID: 0}
+  scrZona: {fileID: 0}
   precioSeleccionado: 0
 --- !u!1 &1682405809
 GameObject:
@@ -13462,7 +13431,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1725177377
 BoxCollider2D:
@@ -13720,7 +13688,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1769654539
 BoxCollider2D:
@@ -13842,7 +13809,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1770160296
 BoxCollider2D:
@@ -14043,7 +14009,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1804913769
 BoxCollider2D:
@@ -14244,7 +14209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1828664796
 BoxCollider2D:
@@ -14479,7 +14443,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1863991463
 GameObject:
@@ -14604,6 +14568,11 @@ MonoBehaviour:
     type: 3}
   construir: {fileID: 0}
   scrConstruir: {fileID: 0}
+  zonasConsumibles:
+    serializedVersion: 2
+    m_Bits: 1024
+  zonaConsumible: {fileID: 0}
+  scrZona: {fileID: 0}
   precioSeleccionado: 0
 --- !u!1 &1866149036
 GameObject:
@@ -14651,7 +14620,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1866149039
 BoxCollider2D:
@@ -14773,7 +14741,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1871604597
 BoxCollider2D:
@@ -14895,7 +14862,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1895680501
 BoxCollider2D:
@@ -15142,7 +15108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1912018635
 BoxCollider2D:
@@ -15575,7 +15540,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1979142137
 BoxCollider2D:
@@ -15697,7 +15661,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1991727479
 BoxCollider2D:
@@ -16050,7 +16013,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSeleccionada: {fileID: 0}
-  construir: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &2086333658
 BoxCollider2D:
@@ -16236,7 +16198,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2123730102
 MonoBehaviour:
@@ -16453,6 +16415,8 @@ MonoBehaviour:
   r1Bots: 6
   bps: 0.5
   botsVivos: []
+  btnPlaySprite1: {fileID: 0}
+  btnPlaySprite2: {fileID: 0}
 --- !u!114 &2123730106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16539,7 +16503,36 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   cuadroTorreta: {fileID: 936862856}
-  zonasConsumibles: []
-  sprDobleVelocidad1: {fileID: 0}
-  spDobleVelocidad2: {fileID: 0}
+  zonasConsumibles:
+  - {fileID: 1661311563}
+  - {fileID: 1863991463}
+  - {fileID: 1398770149}
+  - {fileID: 1106914361}
+  botones:
+  - {fileID: 878903000}
+  - {fileID: 1446011154}
+  - {fileID: 1289922311}
+  - {fileID: 101487927}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 931722636}
+  - {fileID: 1290536385}
+  - {fileID: 0}
+  - {fileID: 0}
+  botonesTorretas:
+  - {fileID: 878903000}
+  - {fileID: 1446011154}
+  - {fileID: 1289922311}
+  - {fileID: 101487927}
+  botonesConsumibles: []
+  btDv: {fileID: 715089471}
+  btDvSprite1: {fileID: 21300000, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
+  btDvSprite2: {fileID: 21300002, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
+  btPlay: {fileID: 850049343}
+  btPlaySprite1: {fileID: 0}
+  btPlaySprite2: {fileID: 0}
+  btTorretaSprite1: {fileID: 21300000, guid: fb8b0e31a17ef7d4b9d8ed27d655a191, type: 3}
+  btTorretaSprite2: {fileID: 21300000, guid: 359e8f53f904b3d4aa23570eafe690ca, type: 3}
   dv: 0
