@@ -22,6 +22,9 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> botsVivos = new List<GameObject>();
     private byte botsASpawnear;
 
+    public Sprite btnPlaySprite1;
+    public Sprite btnPlaySprite2;
+
     void Start()
     {
         botsVivos.Clear();
@@ -48,6 +51,10 @@ public class EnemySpawner : MonoBehaviour
     {
         ToggleSpawning(true);
         botsASpawnear = (byte)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
+
+        Image btnPlayImage = btnIniciarRonda.GetComponent<Image>();
+        btnPlayImage.sprite = btnPlaySprite2;
+
     }
     private void SpawnEnemy()
     {
@@ -97,6 +104,9 @@ public class EnemySpawner : MonoBehaviour
         ronda++;
         ToggleSpawning(false);
         tiempoDesdeUltimoSpawn = 0;
+
+        Image btnPlayImage = btnIniciarRonda.GetComponent<Image>();
+        btnPlayImage.sprite = btnPlaySprite1;
     }
 
     private void ToggleSpawning(bool t)

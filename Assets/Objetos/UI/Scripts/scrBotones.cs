@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class scrBotones : MonoBehaviour
 {
@@ -14,8 +15,13 @@ public class scrBotones : MonoBehaviour
     public GameObject cuadroTorreta;
     public GameObject[] zonasConsumibles;
 
-    public Sprite sprDobleVelocidad1;
-    public Sprite spDobleVelocidad2;
+    public GameObject btDv;
+    public Sprite btDvSprite1;
+    public Sprite btDvSprite2;
+
+    public GameObject btPlay;
+    public Sprite btPlaySprite1;
+    public Sprite btPlaySprite2;
 
     //Variables
 
@@ -137,16 +143,16 @@ public class scrBotones : MonoBehaviour
         {
             Time.timeScale = 2;
             dv = true;
-            SpriteRenderer sr = this.gameObject.GetComponent<SpriteRenderer>();
-            sr.sprite = spDobleVelocidad2;
+            Image btDvImage = btDv.GetComponent<Image>();
+            btDvImage.sprite = btDvSprite2;
         }
 
         else if (dv == true)
         {
             Time.timeScale = 1;
             dv = false;
-            SpriteRenderer sr = this.gameObject.GetComponent<SpriteRenderer>();
-            sr.sprite = sprDobleVelocidad1;
+            Image btDvImage = btDv.GetComponent<Image>();
+            btDvImage.sprite = btDvSprite1;
         }
     }
 

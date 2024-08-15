@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4651135590154431736}
   - component: {fileID: 4191575630132828015}
   - component: {fileID: 4191575630132828014}
+  - component: {fileID: 114012231639120516}
   m_Layer: 8
   m_Name: Robot3
   m_TagString: enemigo
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeEaten: 1
   minRonda: 3
+  baseHP: 0
   hp: 200
   spd: 1
   spdSave: 0
@@ -170,3 +172,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114012231639120516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4651135590154431685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a572f578ab58974fa10c09a4e2cc225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consumibleSeleccionado: {fileID: 0}
+  construir: {fileID: 0}
+  scrConstruir: {fileID: 0}
+  zonasConsumibles:
+    serializedVersion: 2
+    m_Bits: 0
+  precioSeleccionado: 0
