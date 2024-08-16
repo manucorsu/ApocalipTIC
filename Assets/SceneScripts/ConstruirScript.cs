@@ -6,7 +6,7 @@ public class ConstruirScript : MonoBehaviour
 {
 
     //Objetos
-
+    [HideInInspector] public GameObject sceneScripts;
     public GameObject torretaSeleccionada = null;
     private SpriteRenderer sr;
     private ConstruirScriptGeneral scrConstruir;
@@ -14,25 +14,22 @@ public class ConstruirScript : MonoBehaviour
     //Variables
 
     public float precioSeleccionado;
-
-
-
-    // Start is called before the first frame update
-    void Start()
+    private bool isPaused;
+    void Awake()
     {
+        sceneScripts = GameObject.Find("SCENESCRIPTS");
         sr = gameObject.GetComponent<SpriteRenderer>();
-        scrConstruir = GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>();
+        scrConstruir = sceneScripts.GetComponent<ConstruirScriptGeneral>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-       
+        isPaused = sceneScripts.GetComponent<PauseScript>().isPaused;
     }
 
     private void OnMouseDown()
     {
-        if ((scrConstruir.plataActual - precioSeleccionado) >= 0)
+        if ((scrConstruir.plataActual - precioSeleccionado) >= 0 && !isPaused)
         {
             if (torretaSeleccionada != null)
             {
@@ -45,7 +42,7 @@ public class ConstruirScript : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        sr.color = Color.green;
+        if (!isPaused) sr.color = Color.green;
     }
 
     private void OnMouseExit()

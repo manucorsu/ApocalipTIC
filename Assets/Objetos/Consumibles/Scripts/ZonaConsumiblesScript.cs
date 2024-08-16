@@ -17,25 +17,27 @@ public class ZonaConsumiblesScript : MonoBehaviour
     //Variables 
 
     public float precioSeleccionado;
+    private bool isPaused;
 
     // Start is called before the first frame update
     void Awake()
     {
         sceneScripts = GameObject.Find("SCENESCRIPTS");
-        zonaConsumible = GameObject.Find("ConsumiblesZona1");
         scrConstruir = sceneScripts.GetComponent<ConstruirScriptGeneral>();
+        zonaConsumible = GameObject.Find("ConsumiblesZona1");
         scrZona = zonaConsumible.GetComponent<ZonaConsumiblesScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        isPaused = sceneScripts.GetComponent<PauseScript>().isPaused;
         consumibleSeleccionado = scrZona.consumibleSeleccionado;
     }
 
     public void OnMouseDown()
     {
-        if (consumibleSeleccionado != null)
+        if (consumibleSeleccionado != null && !isPaused)
         {
             if ((scrConstruir.plataActual - precioSeleccionado) >= 0)
             {
