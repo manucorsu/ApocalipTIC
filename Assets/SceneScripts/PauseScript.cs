@@ -6,13 +6,7 @@ public class PauseScript : MonoBehaviour
 {
     public bool isPaused = false;
     [SerializeField] private GameObject pauseMenu; //panel PauseMenu
-
-
-    void Awake()
-    {
-
-    }
-
+    private GameObject controls; //las cosas que en winforms se llamaban controles (botones, texto) de este panel
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -21,13 +15,19 @@ public class PauseScript : MonoBehaviour
         }
     }
 
-    public void SetPause(bool s)
-    // pausa/despausa el juego, abriendo/cerrando la 
+    public void SetPause(bool s, bool mb = false)
+    // pausa/despausa el juego, y activa el panel de pausa
+    // como quería que se note que el juego está pausado cuando aparece una messagebox,
+    // pero no quería hacer un panel nuevo que sea igual al fondo el panel este, reciclo,
+    // usando este panel desactivando los controles (ver definición de controles) si mb == true
     {
+        
         isPaused = s;
         if (s == true)
         {
             pauseMenu.SetActive(true);
+            if (mb == true) controls.SetActive(false);
+            else { controls.SetActive(false); }
             Time.timeScale = 0;
         }
         else

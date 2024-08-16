@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &18565246
@@ -278,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &20009239
@@ -555,6 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &28874847
@@ -676,6 +679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &33364596
@@ -797,6 +801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &53074869
@@ -1373,6 +1378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &145562680
@@ -1480,6 +1486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &169742272
@@ -1615,6 +1622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &205264528
@@ -1691,6 +1699,91 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &249688329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 249688330}
+  - component: {fileID: 249688332}
+  - component: {fileID: 249688331}
+  - component: {fileID: 249688333}
+  m_Layer: 5
+  m_Name: MessageBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &249688330
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249688329}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 412298976}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -42, y: 56.218}
+  m_SizeDelta: {x: 381, y: 277}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &249688331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249688329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &249688332
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249688329}
+  m_CullTransparentMesh: 0
+--- !u!114 &249688333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249688329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6aef00d78954bd43aa08ac955a3bf2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &252097786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &252097789
@@ -2015,6 +2109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &270986275
@@ -2136,6 +2231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &334158828
@@ -2257,6 +2353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &352408227
@@ -2378,6 +2475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &359628643
@@ -2789,6 +2887,7 @@ RectTransform:
   - {fileID: 823340275}
   - {fileID: 760361934}
   - {fileID: 936862857}
+  - {fileID: 249688330}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3000,6 +3099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &498523403
@@ -3121,6 +3221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &503727776
@@ -3242,6 +3343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &511578082
@@ -3363,6 +3465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &521059186
@@ -3484,6 +3587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &536375775
@@ -3605,6 +3709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &539721825
@@ -4119,6 +4224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &587953735
@@ -4227,6 +4333,43 @@ RectTransform:
   - {fileID: 1289922312}
   - {fileID: 101487928}
   m_Father: {fileID: 1922144731}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &602999181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 602999182}
+  m_Layer: 5
+  m_Name: Controls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &602999182
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602999181}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7975851770972504799}
+  - {fileID: 7975851771078682271}
+  m_Father: {fileID: 7975851772517267703}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4514,6 +4657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &629090347
@@ -4714,6 +4858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &635645828
@@ -4835,6 +4980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &646359311
@@ -5112,6 +5258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &673521366
@@ -5312,6 +5459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &687460298
@@ -5587,6 +5735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &723804944
@@ -5708,6 +5857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &735537550
@@ -5906,6 +6056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &782430265
@@ -6027,6 +6178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &784981966
@@ -6339,6 +6491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &854827532
@@ -6601,6 +6754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &879879365
@@ -7174,6 +7328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &964950105
@@ -7295,6 +7450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &972489977
@@ -10003,6 +10159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1068087244
@@ -10282,6 +10439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1089256161
@@ -10442,6 +10600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1098877528
@@ -10563,6 +10722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1101345010
@@ -10812,6 +10972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1127151313
@@ -11012,6 +11173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1137284430
@@ -11255,6 +11417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1188439045
@@ -11376,6 +11539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1258486405
@@ -12735,6 +12899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1508040349
@@ -12856,6 +13021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1537043670
@@ -12977,6 +13143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1565439137
@@ -13098,6 +13265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1587698774
@@ -13219,6 +13387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1648316707
@@ -13710,6 +13879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1725177377
@@ -13967,6 +14137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1769654539
@@ -14088,6 +14259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1770160296
@@ -14288,6 +14460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1804913769
@@ -14488,6 +14661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1828664796
@@ -14898,6 +15072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1866149039
@@ -15019,6 +15194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1871604597
@@ -15140,6 +15316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1895680501
@@ -15261,6 +15438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1912018635
@@ -15693,6 +15871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1979142137
@@ -15814,6 +15993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &1991727479
@@ -16089,6 +16269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76573ea51be665a4db5bff25b4c0ac37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneScripts: {fileID: 0}
   torretaSeleccionada: {fileID: 0}
   precioSeleccionado: 0
 --- !u!61 &2086333658
@@ -16311,7 +16492,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7975851772517267703}
+  m_Father: {fileID: 602999182}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -16436,7 +16617,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7975851772683637925}
-  m_Father: {fileID: 7975851772517267703}
+  m_Father: {fileID: 602999182}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -16508,8 +16689,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.95923257, y: 0.95923257, z: 0.95923257}
   m_Children:
-  - {fileID: 7975851770972504799}
-  - {fileID: 7975851771078682271}
+  - {fileID: 602999182}
   m_Father: {fileID: 412298976}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
