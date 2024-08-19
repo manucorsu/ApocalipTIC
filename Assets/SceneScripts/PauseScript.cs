@@ -27,7 +27,7 @@ public class PauseScript : MonoBehaviour
         {
             pauseMenu.SetActive(true);
             if (mb == true) controls.SetActive(false);
-            else { controls.SetActive(false); }
+            //else { controls.SetActive(false); }
             Time.timeScale = 0;
         }
         else

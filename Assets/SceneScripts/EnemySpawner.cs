@@ -111,7 +111,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void ToggleSpawning(bool t)
     {
-        btnIniciarRonda.SetActive(!t);
         if (t == true)
         {
             txtRonda.text = "";
