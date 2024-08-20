@@ -60,4 +60,6 @@ public class scrBotonTorreta : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         cuadroTorreta.SetActive(false);
     }
+
+
 }
