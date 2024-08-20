@@ -17,7 +17,7 @@ public class PegamentoScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -45,11 +45,14 @@ public class PegamentoScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
-        if (enemigoScr.canBeEaten == true)
+        if (enemigoScr != null)
         {
-            if (collision.gameObject.tag == "enemigo")
+            if (enemigoScr.canBeEaten == true)
             {
-                enemigoScr.spd = enemigoScr.spdSave;
+                if (collision.gameObject.tag == "enemigo")
+                {
+                    enemigoScr.spd = enemigoScr.spdSave;
+                }
             }
         }
     }
@@ -61,7 +64,7 @@ public class PegamentoScript : MonoBehaviour
             anim = 1;
             animator.SetFloat("anim", anim);
             StartCoroutine(Pegamento());
-        } 
+        }
     }
 
     public IEnumerator Pegamento()
@@ -69,12 +72,12 @@ public class PegamentoScript : MonoBehaviour
         yield return new WaitForSeconds(15);
         SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
         Color newColor = sr.color;
-        while(newColor.a > 0)
+        while (newColor.a > 0)
         {
             newColor.a -= 0.02f;
             sr.color = newColor;
             yield return null;
         }
         Destroy(this.gameObject);
-    } 
+    }
 }

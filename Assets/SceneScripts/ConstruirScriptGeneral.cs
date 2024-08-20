@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ConstruirScriptGeneral : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class ConstruirScriptGeneral : MonoBehaviour
     private EnemySpawner enemySpawner;
     public GameObject[] tiles;
     public GameObject[] consumiblesZonas;
-    public Text plataActualtxt;
+    public TMP_Text plataActualtxt;
 
     //Variables
 

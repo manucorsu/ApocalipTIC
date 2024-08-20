@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject[] spawners;
 
     [Header("Sistema de rondas")]
-    [SerializeField] private Text txtRonda;
+    [SerializeField] private TMP_Text txtRonda;
     [SerializeField] private GameObject btnIniciarRonda; // No sé por qué no anda .enabled si es Button así que voy a usar SetActive 🤷
     [SerializeField] private float dificultad = 0.75f; //scaler de dificultad
     [SerializeField] private byte r1Bots = 6; //bots de la ronda 1, usados de base para todo el resto de las rondas
