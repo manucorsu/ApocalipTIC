@@ -242,12 +242,17 @@ public class EnemigoScript : MonoBehaviour
         }
 
         construirscr.plataActual += plata;
+        GameManager.Instance.puntaje += (int)plata;
     }
 
     private void Perder()
     {
+        GameManager.Instance.vidas--;
         Morir();
-        Debug.LogWarning("PERDISTE");
-        //SceneManager.LoadScene("GameOver");
+        if (GameManager.Instance.vidas == 0)
+        {
+            GameManager.Instance.ChangeScene("Resultados");
+            Debug.LogError("PERDISTE");
+        }
     }
 }

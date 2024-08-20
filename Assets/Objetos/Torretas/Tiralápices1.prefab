@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 61211374871425584}
   - component: {fileID: 114104826051140476}
   m_Layer: 0
-  m_Name: "Tiral\xE1pices"
+  m_Name: "Tiral\xE1pices1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,6 +199,7 @@ MonoBehaviour:
   rotationSpd: 1000
   bps: 1
   precio: 100
+  shootClip: {fileID: 8300000, guid: efc070f4bde860d4081fb8e47b2e9e99, type: 3}
 --- !u!61 &61211374871425584
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -239,6 +240,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneScripts: {fileID: 0}
   cuadroMejora: {fileID: 0}
+  cuadroMejoraTransform: {fileID: 0}
+  textoTorreta: {fileID: 0}
+  textoSpeed: {fileID: 0}
+  textoRange: {fileID: 0}
+  textoDamage: {fileID: 0}
 --- !u!1 &7696407428886232020
 GameObject:
   m_ObjectHideFlags: 0

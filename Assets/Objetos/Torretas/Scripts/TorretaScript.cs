@@ -25,6 +25,8 @@ public class TorretaScript : MonoBehaviour
     private float cooldown;
     public float precio;
 
+    [SerializeField] private AudioClip shootClip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +62,7 @@ public class TorretaScript : MonoBehaviour
     {
         animator.SetFloat("anim", 1);
         GameObject balaObj = Instantiate(bala, firingPoint.position, punta.rotation);
+        SoundManager.Instance.PlaySound(shootClip);
         BalaScript balascript = balaObj.GetComponent<BalaScript>();
         balascript.SetTarget(target);
         yield return new WaitForSeconds(0.2f);
