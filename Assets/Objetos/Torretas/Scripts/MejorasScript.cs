@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MejorasScript : MonoBehaviour
 {
@@ -10,7 +11,14 @@ public class MejorasScript : MonoBehaviour
 
     public GameObject sceneScripts;
     public GameObject cuadroMejora;
+    public RectTransform cuadroMejoraTransform;
     private EnemySpawner enemySpawner;
+
+    public TMP_Text textoTorreta;
+    public TMP_Text textoSpeed;
+    public TMP_Text textoRange;
+    public TMP_Text textoDamage;
+
 
     //Variables
 
@@ -21,6 +29,7 @@ public class MejorasScript : MonoBehaviour
     {
         sceneScripts = GameObject.Find("SCENESCRIPTS");
         cuadroMejora = GameObject.Find("cuadroMejora");
+        cuadroMejoraTransform = cuadroMejora.GetComponent<RectTransform>();
         enemySpawner = sceneScripts.GetComponent<EnemySpawner>();
     }
 
@@ -34,23 +43,7 @@ public class MejorasScript : MonoBehaviour
     {
         if (enemySpawner.spawnear == false)
         {
-            Vector3 posiciónDestino = new Vector3(this.transform.position.x + 3, this.transform.position.y);
-
-            if (this.gameObject.transform.position.y < -5)
-            {
-                posiciónDestino.y += 1.5f;
-            }
-
-            if (this.gameObject.transform.position.y > 4)
-            {
-                posiciónDestino.y -= 1.5f;
-            }
-
-            if (this.gameObject.transform.position.x > 7)
-            {
-                posiciónDestino.x -= 6;
-            }
-
+            Vector2 posiciónDestino = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             cuadroMejora.transform.position = Vector3.MoveTowards(cuadroMejora.transform.position, posiciónDestino, 1000);
         }
     }
