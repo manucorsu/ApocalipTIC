@@ -24,6 +24,7 @@ public class TorretaScript : MonoBehaviour
     public float bps;
     private float cooldown;
     public float precio;
+    public float dmg;
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +63,7 @@ public class TorretaScript : MonoBehaviour
         GameObject balaObj = Instantiate(bala, firingPoint.position, punta.rotation);
         BalaScript balascript = balaObj.GetComponent<BalaScript>();
         balascript.SetTarget(target);
+        balascript.balaDmg = dmg;
         yield return new WaitForSeconds(0.2f);
         animator.SetFloat("anim", 0);
     }
