@@ -18,9 +18,8 @@ public class EnemigoScript : MonoBehaviour
     public float spd; //speed
     [HideInInspector] public float spdSave;
     public float plata; //cuánto $ recibe el jugador al mater a este enemigo.
+
     [HideInInspector] private ConstruirScriptGeneral construirscr;
-
-
     private GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
     private List<Transform> waypoints = new List<Transform>(); //todos los waypoints
     public string spName; //en qué spawn point (ubicación) apareció. setteado por EnemySpawner
