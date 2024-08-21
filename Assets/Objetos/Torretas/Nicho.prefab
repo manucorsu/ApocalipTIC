@@ -382,8 +382,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3564feb4cf4c6374d929d3f1d4d831af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneScripts: {fileID: 0}
-  cuadroMejora: {fileID: 0}
+  textoTorreta: {fileID: 0}
+  textoSpeed: {fileID: 0}
+  textoRange: {fileID: 0}
+  textoDamage: {fileID: 0}
+  "tiral\xE1pices": {fileID: 7696407428644965581, guid: fa126b9fd1885d24d9b7fcc2522eba42,
+    type: 3}
+  nicho: {fileID: 6966831420949532576}
+  tacho: {fileID: 6947866215203442404, guid: 9f0919607b61f5742ada65263ea76007, type: 3}
+  proyector: {fileID: 2296560995446444706, guid: bae9b735f1732e2458057a0b6694746f,
+    type: 3}
 --- !u!1 &6966831421037618975
 GameObject:
   m_ObjectHideFlags: 0

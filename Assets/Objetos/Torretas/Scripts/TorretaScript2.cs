@@ -16,6 +16,7 @@ public class TorretaScript2 : MonoBehaviour
     public LayerMask enemigos;
     private BalaScript2 balascr2;
     public RaycastHit2D[] hits;
+    
 
     //Variables
 
@@ -24,6 +25,7 @@ public class TorretaScript2 : MonoBehaviour
     public float rotationSpd;
     public bool isShooting = false;
     public float precio;
+    public float chorroScale = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +67,7 @@ public class TorretaScript2 : MonoBehaviour
             }
         }
 
+        bala.transform.localScale = new Vector3(chorroScale, chorroScale, chorroScale);
         
     }
     

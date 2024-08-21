@@ -18490,7 +18490,7 @@ GameObject:
   - component: {fileID: 5870478443665026845}
   - component: {fileID: 5870478443665026844}
   m_Layer: 5
-  m_Name: Button
+  m_Name: btnMejora1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18512,7 +18512,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21.1, y: 10.2}
+  m_AnchoredPosition: {x: 31.9, y: 10.2}
   m_SizeDelta: {x: 15.590797, y: 15.590797}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5870478443665026844
@@ -18603,7 +18603,7 @@ GameObject:
   - component: {fileID: 5870478444076691565}
   - component: {fileID: 5870478444076691564}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: btnMejora2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18625,7 +18625,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21.10001, y: -6.095388}
+  m_AnchoredPosition: {x: 31.899963, y: -6.095388}
   m_SizeDelta: {x: 15.590797, y: 15.590797}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5870478444076691564
@@ -18715,7 +18715,7 @@ GameObject:
   - component: {fileID: 5870478444383537969}
   - component: {fileID: 5870478444383537968}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: txtMejoraTorreta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18789,8 +18789,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -18952,7 +18952,7 @@ GameObject:
   - component: {fileID: 5870478444585948991}
   - component: {fileID: 5870478444585948990}
   m_Layer: 5
-  m_Name: Text (TMP) (3)
+  m_Name: txtMejoraDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19110,7 +19110,7 @@ GameObject:
   - component: {fileID: 5870478444733605784}
   - component: {fileID: 5870478444733605783}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: txtMejoraRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19268,7 +19268,7 @@ GameObject:
   - component: {fileID: 5870478445236792525}
   - component: {fileID: 5870478445236792524}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: txtMejoraSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19427,7 +19427,7 @@ GameObject:
   - component: {fileID: 5870478445341545167}
   - component: {fileID: 5870478445341545166}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: btnMejora3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19449,7 +19449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21.10001, y: -22.395388}
+  m_AnchoredPosition: {x: 31.899963, y: -22.395388}
   m_SizeDelta: {x: 15.590797, y: 15.590797}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5870478445341545166
