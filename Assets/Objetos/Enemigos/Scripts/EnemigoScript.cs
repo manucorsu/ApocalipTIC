@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class EnemigoScript : MonoBehaviour
 {
-
     public bool canBeEaten = true;
 
     private Animator animator;
@@ -13,14 +12,12 @@ public class EnemigoScript : MonoBehaviour
 
     [Header("Stats")]
     public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
-    [SerializeField] private float baseHP; //límite de la barra de vida (to-do)
-    [HideInInspector] public float hp;
+    public float hp;
     public float spd; //speed
     [HideInInspector] public float spdSave;
     public float plata; //cuánto $ recibe el jugador al mater a este enemigo.
+
     [HideInInspector] private ConstruirScriptGeneral construirscr;
-
-
     private GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
     private List<Transform> waypoints = new List<Transform>(); //todos los waypoints
     public string spName; //en qué spawn point (ubicación) apareció. setteado por EnemySpawner
@@ -37,7 +34,7 @@ public class EnemigoScript : MonoBehaviour
 
     void Start()
     {
-        if (spName == null || spName == string.Empty)
+        if (spName == null || spName == string.Empty && this.GetComponent<Boss>() == null)
         {
             Debug.LogError("spName == null o string.Empty. En general esto pasa cuando un enemigo no fue generado por EnemySpawner.");
             Destroy(this.gameObject); //ÚNICA vez en toda la HISTORIA donde un enemigo se destruye directamente y no llamando a Morir()
@@ -152,7 +149,7 @@ public class EnemigoScript : MonoBehaviour
         }
     }
 
-    public void Sufrir(float dmg)
+    public virtual void Sufrir(float dmg)
     { // Sufrir daño causado por PROYECTILES (balas que usan el BalaScript).
       //BAJO NINGUNA CIRCUNSTANCIA usar para balas "especiales" (como el chorro de agua o el proyector
         hp -= dmg;
@@ -226,22 +223,12 @@ public class EnemigoScript : MonoBehaviour
         }
     }
 
-    public void Morir()
+    public virtual void Morir()
     {
         this.spd = 0;
-        EnemySpawner enemySpawner = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>();
-        if (enemySpawner == null)
-        {
-            Debug.LogError("enemySpawner fue null en EnemigoScript!!");
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            enemySpawner.botsVivos.Remove(this.gameObject);
-            Destroy(this.gameObject);
-        }
-
+        EnemySpawner.botsVivos.Remove(this.gameObject);
         construirscr.plataActual += plata;
+        Destroy(this.gameObject);
     }
 
     private void Perder()

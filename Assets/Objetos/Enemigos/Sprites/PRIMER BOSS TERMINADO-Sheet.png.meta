@@ -53,7 +53,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,9 +84,9 @@ TextureImporter:
       name: PRIMER BOSS TERMINADO-Sheet_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 29
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -95,7 +95,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b16589079c9cea42b8d992f451bd217
+      spriteID: 8a075cfa95593594097e6739a39d0261
       vertices: []
       indices: 
       edges: []
@@ -104,9 +104,9 @@ TextureImporter:
       name: PRIMER BOSS TERMINADO-Sheet_1
       rect:
         serializedVersion: 2
-        x: 34
+        x: 32
         y: 0
-        width: 29
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,7 +115,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35296b98bfabbea49acd13494f4f6c1d
+      spriteID: 951041ff7578ff94e965af1a05bb31df
       vertices: []
       indices: 
       edges: []
@@ -124,9 +124,9 @@ TextureImporter:
       name: PRIMER BOSS TERMINADO-Sheet_2
       rect:
         serializedVersion: 2
-        x: 68
+        x: 64
         y: 0
-        width: 27
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -135,7 +135,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 902961b7178040740a42ca1b9a92bfd8
+      spriteID: f2770200877de97428460a7cfab5435a
       vertices: []
       indices: 
       edges: []
@@ -144,9 +144,9 @@ TextureImporter:
       name: PRIMER BOSS TERMINADO-Sheet_3
       rect:
         serializedVersion: 2
-        x: 100
+        x: 96
         y: 0
-        width: 27
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -155,7 +155,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0189b31c899842248b0e287e1002a08a
+      spriteID: 329e2df2a5cc67e4e846db44dfded7da
       vertices: []
       indices: 
       edges: []
@@ -164,9 +164,9 @@ TextureImporter:
       name: PRIMER BOSS TERMINADO-Sheet_4
       rect:
         serializedVersion: 2
-        x: 130
+        x: 128
         y: 0
-        width: 27
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -175,7 +175,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82540d45567ae4b419f8788d168e0bf6
+      spriteID: ddac4d84d5a2dd64e9254d511e5ba278
       vertices: []
       indices: 
       edges: []
@@ -184,9 +184,9 @@ TextureImporter:
       name: PRIMER BOSS TERMINADO-Sheet_5
       rect:
         serializedVersion: 2
-        x: 162
+        x: 160
         y: 0
-        width: 27
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -195,7 +195,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c10b11127fe36049ac3a5253867cdf8
+      spriteID: 2c2bf6c2364d5054ea00ffdb56c890f0
       vertices: []
       indices: 
       edges: []
@@ -204,9 +204,9 @@ TextureImporter:
       name: PRIMER BOSS TERMINADO-Sheet_6
       rect:
         serializedVersion: 2
-        x: 194
+        x: 192
         y: 0
-        width: 29
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -215,7 +215,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dde0a7d132fd63d42b3e7579fb92ad64
+      spriteID: c2e7cf92d72b18b4c9b7f4f6cff4d06e
       vertices: []
       indices: 
       edges: []
@@ -224,9 +224,9 @@ TextureImporter:
       name: PRIMER BOSS TERMINADO-Sheet_7
       rect:
         serializedVersion: 2
-        x: 226
+        x: 224
         y: 0
-        width: 29
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -235,7 +235,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93c3a307d521f1a42adfb035664f015b
+      spriteID: 32be1097949e0cf4180d838de82b9f64
       vertices: []
       indices: 
       edges: []

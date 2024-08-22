@@ -58,8 +58,6 @@ public class MejorasScript : MonoBehaviour
         scrbotones = sceneScripts.GetComponent<scrBotones>();
 
         cuadroMejoraTransform = cuadroMejora.GetComponent<RectTransform>();
-        enemySpawner = sceneScripts.GetComponent<EnemySpawner>();
-
         mainCamera = Camera.main;
     }
 
@@ -71,7 +69,7 @@ public class MejorasScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (enemySpawner.spawnear == false)
+        if (EnemySpawner.spawnear == false)
         {
             Vector2 posiciónDestino = new Vector2(Input.mousePosition.x + 100, Input.mousePosition.y);
             cuadroMejora.transform.position = Vector3.MoveTowards(cuadroMejora.transform.position, posiciónDestino, 10000);

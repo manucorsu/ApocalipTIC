@@ -22,14 +22,12 @@ public class ConstruirScriptGeneral : MonoBehaviour
     {
         plataActual = 1000;
         plataActualtxt.text = "$" + plataActual.ToString();
-
-        enemySpawner = this.gameObject.GetComponent<EnemySpawner>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemySpawner.spawnear == true)
+        if (EnemySpawner.spawnear == true)
         {
             foreach (GameObject tile in tiles)
             {

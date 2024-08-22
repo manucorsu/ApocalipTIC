@@ -6,7 +6,8 @@ using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [HideInInspector] public bool spawnear = false;
+    [HideInInspector] public static bool spawnear = false;
+    [HideInInspector] public static bool isBossFight = false;
 
     [Header("Arrays")]
     [SerializeField] private GameObject[] pfbsEnemigos; //cada tipo de enemigo es un prefab y está en este array
@@ -18,13 +19,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float dificultad = 0.75f; //scaler de dificultad
     [SerializeField] private byte r1Bots = 6; //bots de la ronda 1, usados de base para todo el resto de las rondas
     [SerializeField] private float bps = 0.5f; //bots por segundo
-    private byte ronda = 1;
+    public static byte ronda = 1;
     private float tiempoDesdeUltimoSpawn;
-    [HideInInspector] public List<GameObject> botsVivos = new List<GameObject>();
+    [HideInInspector] public static List<GameObject> botsVivos = new List<GameObject>();
     private byte botsASpawnear;
 
-    public Sprite btnPlaySprite1;
-    public Sprite btnPlaySprite2;
+    [SerializeField] private Sprite btnPlaySprite1;
+    [SerializeField] private Sprite btnPlaySprite2;
 
     void Start()
     {
