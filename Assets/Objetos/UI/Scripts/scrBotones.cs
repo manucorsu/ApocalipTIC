@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class scrBotones : MonoBehaviour
 {
@@ -30,9 +31,18 @@ public class scrBotones : MonoBehaviour
     public Sprite btTorretaSprite1;
     public Sprite btTorretaSprite2;
 
+    public TMP_Text textoMejoraTorreta;
+    public GameObject torretaParaMejorar;
+
     //Variables
 
     public bool dv = false; // false si el botón de doble velocidad está inactivo, true si lo está
+
+
+    private void Start()
+    {
+        textoMejoraTorreta = GameObject.Find("txtMejoraTorreta").GetComponent<TMP_Text>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -193,6 +203,46 @@ public class scrBotones : MonoBehaviour
             dv = false;
             Image btDvImage = btDv.GetComponent<Image>();
             btDvImage.sprite = btDvSprite1;
+        }
+    }
+
+    public void BtnMejora(int boton)
+    {
+        if (textoMejoraTorreta.text == "Tiralápices")
+        {
+            TorretaScript scrTorreta = torretaParaMejorar.GetComponent<TorretaScript>();
+            if (boton == 1 && scrTorreta.nivel1 !=3) { scrTorreta.nivel1++; scrTorreta.bps++; }
+            if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; }
+            if (boton == 3 && scrTorreta.nivel3 != 3) { scrTorreta.nivel3++; scrTorreta.dmg += 5; }
+            MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+            scrMejora.Mejorar();
+        }
+
+        if (textoMejoraTorreta.text == "Nicho")
+        {
+            TorretaScript2 scrTorreta = torretaParaMejorar.GetComponent<TorretaScript2>();
+            if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.chorroScale += 0.5f; scrTorreta.bala.transform.position = new Vector2(scrTorreta.bala.transform.position.x - 0.5f, scrTorreta.bala.transform.position.y + 1); }
+            if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.dps += 5; }
+            MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+            scrMejora.Mejorar();
+        }
+
+        if (textoMejoraTorreta.text == "Tacho")
+        {
+            TorretaScript3 scrTorreta = torretaParaMejorar.GetComponent<TorretaScript3>();
+            if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 1; }
+            if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; }
+            MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+            scrMejora.Mejorar();
+        }
+
+        if (textoMejoraTorreta.text == "Proyector")
+        {
+            TorretaScript4 scrTorreta = torretaParaMejorar.GetComponent<TorretaScript4>();
+            if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.5f; }
+            if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rayoScale += 0.5f; scrTorreta.bala.transform.position = new Vector2(scrTorreta.bala.transform.position.x, scrTorreta.bala.transform.position.y); }
+            MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+            scrMejora.Mejorar();
         }
     }
 

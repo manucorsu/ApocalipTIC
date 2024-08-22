@@ -30,6 +30,9 @@ public class TorretaScript4 : MonoBehaviour
     public float precio;
     public float rayoScale = 1;
 
+    public float nivel1 = 1;
+    public float nivel2 = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,7 +78,7 @@ public class TorretaScript4 : MonoBehaviour
             }
         }
 
-        bala.transform.localScale = new Vector3(rayoScale, rayoScale, rayoScale);
+        bala.transform.localScale = new Vector3(rayoScale, -rayoScale, rayoScale);
 
     }
 

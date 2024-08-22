@@ -23,6 +23,9 @@ public class TorretaScript3 : MonoBehaviour
     public float spd;
     public float precio;
 
+    public float nivel1 = 1;
+    public float nivel2 = 1;
+
     // Start is called before the first frame update
     void Start()
     {
