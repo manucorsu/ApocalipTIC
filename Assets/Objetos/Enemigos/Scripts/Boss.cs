@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Boss : EnemigoScript
 {
-    //Este script se hace cuando chatgpt me termine de enseñar OOP
+    private void Update()
+    {
+        this.canBeEaten = false;
+    }
 }

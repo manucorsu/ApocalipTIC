@@ -49,7 +49,6 @@ public class MejorasScript : MonoBehaviour
         btnMejora3 = GameObject.Find("btnMejora3").GetComponent<Button>();
 
         cuadroMejoraTransform = cuadroMejora.GetComponent<RectTransform>();
-        enemySpawner = sceneScripts.GetComponent<EnemySpawner>();
     }
 
     // Update is called once per frame
@@ -60,7 +59,7 @@ public class MejorasScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (enemySpawner.spawnear == false)
+        if (EnemySpawner.spawnear == false)
         {
             Vector2 posiciónDestino = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             cuadroMejora.transform.position = Vector3.MoveTowards(cuadroMejora.transform.position, posiciónDestino, 1000);
