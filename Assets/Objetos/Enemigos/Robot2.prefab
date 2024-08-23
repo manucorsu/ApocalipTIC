@@ -48,15 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191c9e6e90394dd49957e2d7ac96a0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBeEaten: 1
+  isBoss: 0
   minRonda: 1
-  baseHP: 0
   hp: 150
   spd: 1.5
   spdSave: 0
   plata: 20
-  construir: {fileID: 0}
-  construirscr: {fileID: 0}
+  canBeEaten: 1
   spName: 
 --- !u!50 &7411269467034504210
 Rigidbody2D:
@@ -185,9 +183,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consumibleSeleccionado: {fileID: 0}
-  construir: {fileID: 0}
+  sceneScripts: {fileID: 0}
   scrConstruir: {fileID: 0}
   zonasConsumibles:
     serializedVersion: 2
     m_Bits: 0
+  zonaConsumible: {fileID: 0}
+  scrZona: {fileID: 0}
   precioSeleccionado: 0

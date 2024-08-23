@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Boss : EnemigoScript
 {
-    [SerializeField] private protected SpriteRenderer sr;
-    [SerializeField] private protected Sprite[] sprites;
-    private protected byte si = 0; //sprite index
+    [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private Sprite[] sprites;
+    private byte si = 0; //sprite index
 
+    private void Awake()
+    {
+        isBoss = true;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.B)) // Hacer boss

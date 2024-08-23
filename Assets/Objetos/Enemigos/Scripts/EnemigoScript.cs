@@ -5,27 +5,36 @@ using UnityEngine.SceneManagement;
 
 public class EnemigoScript : MonoBehaviour
 {
-    public bool canBeEaten = true;
 
+    #region anim
     private Animator animator;
     private List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
+    #endregion
 
+    #region stats
     [Header("Stats")]
+    public bool isBoss;
     public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
     public float hp;
     public float spd; //speed
     [HideInInspector] public float spdSave;
-    public float plata; //cuánto $ recibe el jugador al mater a este enemigo.
+    public float plata; //cuánta $ recibe el jugador al mater a este enemigo.
+    public bool canBeEaten = true;
+    #endregion
 
-    [HideInInspector] private ConstruirScriptGeneral construirscr;
+    [HideInInspector] private ConstruirScriptGeneral construirscr; // ni idea fue Marcos
+
+    #region nav
     private GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
     private List<Transform> waypoints = new List<Transform>(); //todos los waypoints
     public string spName; //en qué spawn point (ubicación) apareció. setteado por EnemySpawner
     private List<Vector3> v3Camino = new List<Vector3>();
     private byte wi = 0; //waypoint index
     private bool siguiendo = false; //ver final de V3ify()
+    #endregion
 
     private IEnumerator sufrirNicho; private float sufrirNichoDPS;
+
 
     void Awake()
     {
@@ -34,7 +43,7 @@ public class EnemigoScript : MonoBehaviour
 
     void Start()
     {
-        if (spName == null || spName == string.Empty && this.GetComponent<Boss>() == null)
+        if (spName == null || spName == string.Empty && !isBoss)
         {
             Debug.LogError("spName == null o string.Empty. En general esto pasa cuando un enemigo no fue generado por EnemySpawner.");
             Destroy(this.gameObject); //ÚNICA vez en toda la HISTORIA donde un enemigo se destruye directamente y no llamando a Morir()
@@ -46,6 +55,7 @@ public class EnemigoScript : MonoBehaviour
     {
         secuenciaAnims.Clear(); //cuenta como asignación? 
         animator = this.gameObject.GetComponent<Animator>();
+
         padreWaypoints = GameObject.Find("PadreWaypoints");
         foreach (Transform hijo in padreWaypoints.transform)
         {
