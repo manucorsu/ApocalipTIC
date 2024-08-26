@@ -13846,7 +13846,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3b69575fcbf294fafaa215dbffa911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnear: 0
   pfbsEnemigos:
   - {fileID: 4711819497900499442, guid: 924439ca9d4008b4785a60cc19bf4b96, type: 3}
   - {fileID: 7411269467034504211, guid: 03e6fc9d4bd3b3d459c497b365e0ed6f, type: 3}
@@ -13885,7 +13884,6 @@ MonoBehaviour:
   dificultad: 0.75
   r1Bots: 6
   bps: 0.5
-  botsVivos: []
   btnPlaySprite1: {fileID: 21300000, guid: e65f580c10a21364aa16f32eb6387c20, type: 3}
   btnPlaySprite2: {fileID: 21300002, guid: e65f580c10a21364aa16f32eb6387c20, type: 3}
 --- !u!114 &1496161649
@@ -18928,7 +18926,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -913.18945, y: -254.67624}
+  m_AnchoredPosition: {x: -698, y: -170}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5870478444479722668

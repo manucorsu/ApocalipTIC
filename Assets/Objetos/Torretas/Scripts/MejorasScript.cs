@@ -31,6 +31,7 @@ public class MejorasScript : MonoBehaviour
     public scrBotones scrbotones;
 
     public Camera mainCamera;
+    public RectTransform canvasTransform;
 
 
     //Variables
@@ -39,10 +40,11 @@ public class MejorasScript : MonoBehaviour
     private bool nivel2;
     private bool nivel3;
 
-
     // Start is called before the first frame update
     void Start()
     {
+        canvasTransform = GameObject.Find("Canvas").GetComponent<RectTransform>();
+
         sceneScripts = GameObject.Find("SCENESCRIPTS");
         cuadroMejora = GameObject.Find("cuadroMejora");
 
@@ -64,15 +66,33 @@ public class MejorasScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
+       
     }
 
     private void OnMouseDown()
     {
         if (EnemySpawner.spawnear == false)
         {
-            Vector2 posiciónDestino = new Vector2(Input.mousePosition.x + 100, Input.mousePosition.y);
-            cuadroMejora.transform.position = Vector3.MoveTowards(cuadroMejora.transform.position, posiciónDestino, 10000);
+            cuadroMejora.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, this.transform.TransformPoint(Vector3.zero));
+           
+            float thisPosX = this.transform.position.x + 2;
+            float thisPosY = this.transform.position.y;
+
+            if (this.transform.position.x > 10) {
+                thisPosX -= 4;
+            }
+            if (this.transform.position.y > -5)
+            {
+                thisPosY -= 1;
+            }
+            if (this.transform.position.y < 4)
+            {
+                thisPosY += 1;
+            }
+
+            Vector2 ViewportPosition = mainCamera.WorldToViewportPoint(new Vector2(thisPosX, thisPosY));
+            Vector2 WorldObject_ScreenPosition = new Vector2(((ViewportPosition.x * canvasTransform.sizeDelta.x) - (canvasTransform.sizeDelta.x * 0.5f)), ((ViewportPosition.y * canvasTransform.sizeDelta.y) - (canvasTransform.sizeDelta.y * 0.5f)));
+            cuadroMejoraTransform.anchoredPosition = WorldObject_ScreenPosition;
         }
 
         Mejorar();
@@ -145,4 +165,8 @@ public class MejorasScript : MonoBehaviour
         scrbotones.torretaParaMejorar = this.gameObject;
 
     }
+
+   
+ 
+
 }
