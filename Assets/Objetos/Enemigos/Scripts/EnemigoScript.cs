@@ -7,8 +7,8 @@ public class EnemigoScript : MonoBehaviour
 {
 
     #region anim
-    private Animator animator;
-    private List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
+    protected Animator animator;
+    protected List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
     #endregion
 
     #region stats
@@ -25,9 +25,9 @@ public class EnemigoScript : MonoBehaviour
     [HideInInspector] private ConstruirScriptGeneral construirscr; // ni idea fue Marcos
 
     #region nav
-    private GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
-    private List<Transform> waypoints = new List<Transform>(); //todos los waypoints
-    public string spName; //en qué spawn point (ubicación) apareció. setteado por EnemySpawner
+    protected GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
+    protected List<Transform> waypoints = new List<Transform>(); //todos los waypoints
+    public string spName; //en qué spawn point (ubicación) apareció. setteado EnemySpawner SACANDO que sea el jefe, que asigna su propio spawnpoint
     private List<Vector3> v3Camino = new List<Vector3>();
     private byte wi = 0; //waypoint index
     private bool siguiendo = false; //ver final de V3ify()
@@ -51,7 +51,7 @@ public class EnemigoScript : MonoBehaviour
         BuscarPath();
     }
 
-    private void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
+    protected virtual void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
     {
         secuenciaAnims.Clear(); //cuenta como asignación? 
         animator = this.gameObject.GetComponent<Animator>();

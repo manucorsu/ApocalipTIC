@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [HideInInspector] public static bool isBossFight = false;
 
     [Header("Arrays")]
+    [SerializeField] private GameObject prefabBoss;
     [SerializeField] private GameObject[] pfbsEnemigos; //cada tipo de enemigo es un prefab y está en este array
     [SerializeField] private GameObject[] spawners;
 
@@ -35,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (spawnear == true)
+        if (spawnear == true && !isBossFight)
         {
             tiempoDesdeUltimoSpawn += Time.deltaTime;
 
@@ -51,53 +52,70 @@ public class EnemySpawner : MonoBehaviour
     }
     public void EmpezarRonda()
     {
-        ToggleSpawning(true);
-        botsASpawnear = (byte)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
-
+        if (ronda == 15 || ronda == 30)
+        {
+            isBossFight = true;
+            Instantiate(prefabBoss);
+        }
+        else
+        {
+            isBossFight = false;
+            ToggleSpawning(true);
+            botsASpawnear = (byte)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
+        }
         Image btnPlayImage = btnIniciarRonda.GetComponent<Image>();
         btnPlayImage.sprite = btnPlaySprite2;
-
     }
     private void SpawnEnemy()
     {
-        GameObject prefabElegido;
-        while (false != true)
+        if (!isBossFight)
         {
-            byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
-            prefabElegido = pfbsEnemigos[rie];
-            if (prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda)
+            GameObject prefabElegido;
+            while (false != true)
             {
-                break;
-            }
-        }
-
-        Transform loc;
-        byte ris;
-        while (false != true)
-        {
-            ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
-            loc = spawners[ris].transform;
-            if (loc.name[0] == 'A')
-            {
-                if (ronda >= 5)
+                byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
+                prefabElegido = pfbsEnemigos[rie];
+                if (prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda)
                 {
                     break;
                 }
             }
-            else
+
+            Transform loc;
+            byte ris;
+            while (false != true)
             {
-                break;
+                ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
+                loc = spawners[ris].transform;
+                if (loc.name[0] == 'A')
+                {
+                    if (ronda >= 5)
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    break;
+                }
             }
+
+            GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
+
+            EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
+            enemigoScript.spName = spawners[ris].name;
+
+            botsASpawnear--;
+            botsVivos.Add(nuevoEnemigo);
+            tiempoDesdeUltimoSpawn = 0;
         }
-
-        GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
-
-        EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
-        enemigoScript.spName = spawners[ris].name;
-
-        botsASpawnear--;
-        botsVivos.Add(nuevoEnemigo);
-        tiempoDesdeUltimoSpawn = 0;
+        else
+        {
+            Debug.Log("spawneando jefe");
+            GameObject boss = Instantiate(prefabBoss, spawners[17].transform.position, Quaternion.identity); //spawners[17] = spawner C3.
+            boss.GetComponent<Boss>().spName = spawners[17].name;
+            botsVivos.Add(boss);
+        }
     }
 
     public void TerminarRonda()
