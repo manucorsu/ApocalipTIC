@@ -28,9 +28,9 @@ public class EnemigoScript : MonoBehaviour
     protected GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
     protected List<Transform> waypoints = new List<Transform>(); //todos los waypoints
     public string spName; //en qué spawn point (ubicación) apareció. setteado EnemySpawner SACANDO que sea el jefe, que asigna su propio spawnpoint
-    private List<Vector3> v3Camino = new List<Vector3>();
-    private byte wi = 0; //waypoint index
-    private bool siguiendo = false; //ver final de V3ify()
+    protected List<Vector3> v3Camino = new List<Vector3>();
+    protected byte wi = 0; //waypoint index
+    protected bool siguiendo = false; //ver final de V3ify()
     #endregion
 
     private IEnumerator sufrirNicho; private float sufrirNichoDPS;
@@ -69,7 +69,7 @@ public class EnemigoScript : MonoBehaviour
         if (construirscr == null) Debug.LogError("construirscr fue null en EnemigoScript!!");
     }
 
-    private void BuscarPath()
+    protected virtual void BuscarPath()
     {
         /*jajaja no puedo usar switch porque apareció en 2019 y unity 2018 no lo acepta 
          jajajaja
@@ -122,7 +122,7 @@ public class EnemigoScript : MonoBehaviour
             V3ify(new string[] { "W4", "W6", "G2" });
         }
     }
-    private void V3ify(string[] camino)
+    protected virtual void V3ify(string[] camino)
     {
         for (int i = 0; i < camino.Length; i++)
         {
