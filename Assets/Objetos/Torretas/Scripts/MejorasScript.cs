@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class MejorasScript : MonoBehaviour
 {
@@ -71,6 +72,26 @@ public class MejorasScript : MonoBehaviour
 
     private void OnMouseDown()
     {
+        //EVITAR QUE EL CLICK NO ATRAVIESE LA UI
+
+        PointerEventData pointer = new PointerEventData(EventSystem.current);
+        pointer.position = Input.mousePosition;
+
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointer, raycastResults);
+
+        if (raycastResults.Count > 0)
+        {
+            foreach (var go in raycastResults)
+            {
+                if (go.gameObject.name == "cuadroMejora")
+                {
+                    return;
+                }
+            }
+        }
+
+
         if (EnemySpawner.spawnear == false)
         {
             cuadroMejora.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, this.transform.TransformPoint(Vector3.zero));

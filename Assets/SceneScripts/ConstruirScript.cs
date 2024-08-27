@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ConstruirScript : MonoBehaviour
 {
@@ -25,10 +26,32 @@ public class ConstruirScript : MonoBehaviour
     void Update()
     {
         isPaused = sceneScripts.GetComponent<PauseScript>().isPaused;
+
+        
     }
 
     private void OnMouseDown()
     {
+        //EVITAR QUE EL CLICK NO ATRAVIESE LA UI
+
+        PointerEventData pointer = new PointerEventData(EventSystem.current);
+        pointer.position = Input.mousePosition;
+
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointer, raycastResults);
+
+        if (raycastResults.Count > 0)
+        {
+            foreach(var go in raycastResults)
+            {
+                if (go.gameObject.name == "cuadroMejora")
+                {
+                    return;
+                }
+            }
+        }
+
+
         if ((scrConstruir.plataActual - precioSeleccionado) >= 0 && !isPaused)
         {
             if (torretaSeleccionada != null)
