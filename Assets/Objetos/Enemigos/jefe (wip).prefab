@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2692484358794775461}
   - component: {fileID: 2692484358794775463}
   - component: {fileID: 2692484358794775448}
-  - component: {fileID: 2692484358794775449}
+  - component: {fileID: 95065624503208508}
   m_Layer: 8
   m_Name: jefe (wip)
   m_TagString: enemigo
@@ -127,7 +127,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2692484358794775451}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -140,7 +140,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &2692484358794775449
+--- !u!95 &95065624503208508
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ Animator:
   m_GameObject: {fileID: 2692484358794775451}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9b50940f45d6c0046b9209524528dc2f, type: 2}
+  m_Controller: {fileID: 9100000, guid: f83bab38b511d6247ae04fa4e33c8c08, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
