@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 114882398580919848}
   m_Layer: 0
   m_Name: Tacho
-  m_TagString: Untagged
+  m_TagString: torreta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,6 +105,8 @@ MonoBehaviour:
   anima: 2
   spd: 5
   precio: 200
+  nivel1: 1
+  nivel2: 1
 --- !u!95 &6947866215203442200
 Animator:
   serializedVersion: 3
@@ -163,12 +165,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textoTorreta: {fileID: 0}
-  textoSpeed: {fileID: 0}
-  textoRange: {fileID: 0}
-  textoDamage: {fileID: 0}
+  textoMejora1: {fileID: 0}
+  textoMejora2: {fileID: 0}
+  textoMejora3: {fileID: 0}
   "tiral\xE1pices": {fileID: 7696407428644965581, guid: fa126b9fd1885d24d9b7fcc2522eba42,
     type: 3}
   nicho: {fileID: 6966831420949532576, guid: 4a5ac0f841e23e54d8732b205d2390f3, type: 3}
   tacho: {fileID: 6947866215203442404}
   proyector: {fileID: 2296560995446444706, guid: bae9b735f1732e2458057a0b6694746f,
     type: 3}
+  scrbotones: {fileID: 0}
+  mainCamera: {fileID: 0}
+  canvasTransform: {fileID: 0}

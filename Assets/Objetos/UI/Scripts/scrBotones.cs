@@ -221,7 +221,7 @@ public class scrBotones : MonoBehaviour
         if (textoMejoraTorreta.text == "Nicho")
         {
             TorretaScript2 scrTorreta = torretaParaMejorar.GetComponent<TorretaScript2>();
-            if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.chorroScale += 0.5f; scrTorreta.bala.transform.position = new Vector2(scrTorreta.bala.transform.position.x - 0.5f, scrTorreta.bala.transform.position.y + 1); }
+            if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++;  scrTorreta.chorroScale += 0.5f;  scrTorreta.bala.transform.position = new Vector2(scrTorreta.bala.transform.position.x - 0.5f, scrTorreta.bala.transform.position.y + 1);  }
             if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.dps += 5; }
             MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
             scrMejora.Mejorar();
@@ -240,10 +240,16 @@ public class scrBotones : MonoBehaviour
         {
             TorretaScript4 scrTorreta = torretaParaMejorar.GetComponent<TorretaScript4>();
             if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.5f; }
-            if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rayoScale += 0.5f; scrTorreta.bala.transform.position = new Vector2(scrTorreta.bala.transform.position.x, scrTorreta.bala.transform.position.y); }
+            if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rayoScale += 0.5f; if (scrTorreta.nivel2 == 3) { scrTorreta.bala.transform.position = new Vector2(scrTorreta.bala.transform.position.x, scrTorreta.bala.transform.position.y); } }
             MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
             scrMejora.Mejorar();
         }
+    }
+
+    public void CerrarCuadroMejora()
+    {
+        Image cuadroMejora = GameObject.Find("cuadroMejora").GetComponent<Image>();
+        cuadroMejora.rectTransform.position = new Vector2(1000, 1000);
     }
 
 }

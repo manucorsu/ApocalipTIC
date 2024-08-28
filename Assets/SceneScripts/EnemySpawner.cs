@@ -52,6 +52,9 @@ public class EnemySpawner : MonoBehaviour
     }
     public void EmpezarRonda()
     {
+        Image cuadroMejora = GameObject.Find("cuadroMejora").GetComponent<Image>();
+        cuadroMejora.rectTransform.position = new Vector2(1000, 1000);
+
         if (ronda == 15 || ronda == 30)
         {
             isBossFight = true;

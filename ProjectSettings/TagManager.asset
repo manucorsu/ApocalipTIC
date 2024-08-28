@@ -8,6 +8,7 @@ TagManager:
   - ignorar
   - botonTorreta
   - botonConsumible
+  - torreta
   layers:
   - Default
   - TransparentFX
