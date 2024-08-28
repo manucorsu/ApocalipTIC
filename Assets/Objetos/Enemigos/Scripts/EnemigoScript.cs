@@ -69,7 +69,7 @@ public class EnemigoScript : MonoBehaviour
         if (construirscr == null) Debug.LogError("construirscr fue null en EnemigoScript!!");
     }
 
-    protected virtual void BuscarPath()
+    private void BuscarPath()
     {
         /*jajaja no puedo usar switch porque apareció en 2019 y unity 2018 no lo acepta 
          jajajaja
@@ -122,7 +122,7 @@ public class EnemigoScript : MonoBehaviour
             V3ify(new string[] { "W4", "W6", "G2" });
         }
     }
-    protected virtual void V3ify(string[] camino)
+    private void V3ify(string[] camino)
     {
         for (int i = 0; i < camino.Length; i++)
         {
