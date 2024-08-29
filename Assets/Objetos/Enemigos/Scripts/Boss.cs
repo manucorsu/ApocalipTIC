@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,6 +29,10 @@ public class Boss : EnemigoScript
     {
 
     };
+    protected override dynamic V3ify(string[] camino)
+    {
+        return base.V3ify(camino);
+    }
     private void Awake()
     {
         isBoss = true;
@@ -82,4 +85,7 @@ public class Boss : EnemigoScript
             }
         }
     }
+    #region behaviour
+    //acá van las funciones ej "Spawnear Enemigo", "Reir" etc cuando tenga tiempo
+    #endregion
 }

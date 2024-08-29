@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Security.AccessControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -124,8 +126,9 @@ public class EnemigoScript : MonoBehaviour
             V3ify(new string[] { "W4", "W6", "G2" });
         }
     }
-    private void V3ify(string[] camino)
+    protected virtual dynamic V3ify(string[] camino)
     {
+        List<Vector3> vl = new List<Vector3>();
         for (int i = 0; i < camino.Length; i++)
         {
             string targetName = camino[i];
@@ -134,11 +137,20 @@ public class EnemigoScript : MonoBehaviour
             {
                 if (waypoints[j].name == targetName)
                 {
-                    v3Camino.Add(waypoints[j].position);
+                    vl.Add(waypoints[j].position);
                     break;
                 }
             }
+        }
+        if (!isBoss)
+        {
+            v3Camino = vl;
             siguiendo = true; //activar el update, básicamente
+            return 0;
+        }
+        else
+        {
+            return vl;
         }
     }
 
