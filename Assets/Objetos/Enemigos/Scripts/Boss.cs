@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss : EnemigoScript
 {
     private byte a;
-    private bool introDone = false;
+    private static bool introDone = false;
     private Dictionary<string, float> anims = new Dictionary<string, float> //viva python
     {
         {"MoveDown", 0f},
@@ -21,20 +22,27 @@ public class Boss : EnemigoScript
         {"Stun", 8f},
         {"Die", 9f}
     };
-    private Dictionary<string, dynamic[]> pathDict = new Dictionary<string, dynamic[]>
-    /*string: nombre del camino; dynamic[]: en orden en el que se ejecutan, los puntos de movimiento
-      V3ificado y las acciones (funciones) que se ejecutan.
-      ej: {"nombre": new dynamic[] {V3ify(new string[] {"W4", "W6"}), GenerarEnemigo, V3ify(new string[] {"W4"}), StunnearTorreta}
-      Digan lo que quieran pero C# sigue siendo mejor que python.*/
-    {
 
+    #region nav
+    private Dictionary<string, dynamic[]> paths = new Dictionary<string, dynamic[]>
+    /*string: nombre del camino; dynamic[]: en orden en el que se ejecutan, los puntos de movimiento y las 
+      acciones (funciones, en la #region acts) que se ejecutan... Es difícil de explicar, es más fácil si lo miras directo.
+      Digan lo que quieran pero C# sigue siendo mejor que JavaScript.*/
+    {
+        {"Intro", new dynamic[] {new string[] { "C6", "J1" }, (Action)ActIntroLaugh, "END"}},
+        {"MovA", new dynamic[] {new string[] { "J1", "W6" }, (Action)ActSpawnEnemy, "END"}}
     };
+    private List<string> pathQueue = new List<string>();
+
     protected override dynamic V3ify(string[] camino)
     {
         return base.V3ify(camino);
     }
+    #endregion
+
     private void Awake()
     {
+        pathQueue.Clear();
         isBoss = true;
         AsignarTodo();
     }
@@ -45,6 +53,7 @@ public class Boss : EnemigoScript
     }
     private void Start()
     {
+        pathQueue.Add("Intro");
     }
     private void Update()
     {
@@ -73,19 +82,27 @@ public class Boss : EnemigoScript
                 a = 0;
             }
         }
-
-        if (siguiendo == true)
+        while (pathQueue.Count > 0)
         {
-            //{poner cosas de animación acá}
-            this.transform.position = Vector3.MoveTowards(this.transform.position, v3Camino[wi], spd * Time.deltaTime);
-
-            if (transform.position == v3Camino[wi])
+            foreach (string p in pathQueue)
             {
-                wi++;
+                foreach(dynamic behaviour in paths[p])
+                {
+
+                }
             }
         }
     }
-    #region behaviour
-    //acá van las funciones ej "Spawnear Enemigo", "Reir" etc cuando tenga tiempo
+    #region acts
+    //acá van las funciones ej "Spawnear Enemigo", "Reir" etc cuando tenga tiempo.
+    private static void ActIntroLaugh()
+    {
+        Debug.Log("jefe: intro laugh");
+        introDone = true;
+    }
+    private static void ActSpawnEnemy()
+    {
+        if (introDone) Debug.Log("jefe: generando enemigo");
+    }
     #endregion
 }
