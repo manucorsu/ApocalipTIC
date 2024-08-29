@@ -55,13 +55,15 @@ public class EnemigoScript : MonoBehaviour
     {
         secuenciaAnims.Clear(); //cuenta como asignación? 
         animator = this.gameObject.GetComponent<Animator>();
-
-        padreWaypoints = GameObject.Find("PadreWaypoints");
-        foreach (Transform hijo in padreWaypoints.transform)
+        if (!isBoss)
         {
-            if (hijo != padreWaypoints)
+            padreWaypoints = GameObject.Find("PadreWaypoints");
+            foreach (Transform hijo in padreWaypoints.transform)
             {
-                waypoints.Add(hijo.transform);
+                if (hijo != padreWaypoints)
+                {
+                    waypoints.Add(hijo.transform);
+                }
             }
         }
         spdSave = this.spd;

@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss : EnemigoScript
 {
-    byte a = 0;
+    private byte a;
+    private bool introDone = false;
     private Dictionary<string, float> anims = new Dictionary<string, float> //viva python
     {
         {"MoveDown", 0f},
@@ -16,10 +18,18 @@ public class Boss : EnemigoScript
         {"SpawnLeft", 5f},
         {"SpawnRight", 6f},
 
-        {"Stun", 7f},
-        {"Die", 8f}
+        {"IntroLaugh", 7f},
+        {"Stun", 8f},
+        {"Die", 9f}
     };
-    private Dictionary<string, string[]> acciones = new Dictionary<string, string[]> { }; //string key, string[] camino que debe ser V3ificado.
+    private Dictionary<string, dynamic[]> pathDict = new Dictionary<string, dynamic[]>
+    /*string: nombre del camino; dynamic[]: en orden en el que se ejecutan, los puntos de movimiento
+      V3ificado y las acciones (funciones) que se ejecutan.
+      ej: {"nombre": new dynamic[] {V3ify(new string[] {"W4", "W6"}), GenerarEnemigo, V3ify(new string[] {"W4"}), StunnearTorreta}
+      Digan lo que quieran pero C# sigue siendo mejor que python.*/
+    {
+
+    };
     private void Awake()
     {
         isBoss = true;
@@ -29,7 +39,6 @@ public class Boss : EnemigoScript
     {
         base.AsignarTodo();
         if (EnemySpawner.isBossFight == false) Debug.LogWarning("El jefe spawneó cuando EnemySpawner.isBossFight era false.");
-
     }
     private void Start()
     {
