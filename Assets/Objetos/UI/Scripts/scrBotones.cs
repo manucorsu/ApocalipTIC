@@ -240,7 +240,7 @@ public class scrBotones : MonoBehaviour
         {
             TorretaScript4 scrTorreta = torretaParaMejorar.GetComponent<TorretaScript4>();
             if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.5f; }
-            if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rayoScale += 0.5f; if (scrTorreta.nivel2 == 3) { scrTorreta.bala.transform.position = new Vector2(scrTorreta.bala.transform.position.x, scrTorreta.bala.transform.position.y); } }
+            if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rayoScale += 0.5f;   scrTorreta.bala.transform.position = new Vector2(scrTorreta.bala.transform.position.x, scrTorreta.bala.transform.position.y - 0.5f);  }
             MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
             scrMejora.Mejorar();
         }
