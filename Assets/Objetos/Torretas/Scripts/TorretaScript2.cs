@@ -60,7 +60,9 @@ public class TorretaScript2 : MonoBehaviour
             }
         }
 
-        if (isShooting == true)
+
+
+        if (isShooting == true) 
         {
 
             bala.gameObject.SetActive(true);
@@ -81,6 +83,10 @@ public class TorretaScript2 : MonoBehaviour
         if (hits.Length > 0)
         {
             target = hits[0].transform;
+            EnemigoScript targetscr = target.GetComponent<EnemigoScript>();
+            if (targetscr.canBeEaten == false){
+                target = null;
+            }
         }
 
         if (hits.Length == 0)
