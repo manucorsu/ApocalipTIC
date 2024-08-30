@@ -126,7 +126,7 @@ public class EnemigoScript : MonoBehaviour
             V3ify(new string[] { "W4", "W6", "G2" });
         }
     }
-    protected virtual dynamic V3ify(string[] camino)
+    protected virtual List<Vector3> V3ify(string[] camino)
     {
         List<Vector3> vl = new List<Vector3>();
         for (int i = 0; i < camino.Length; i++)
@@ -146,7 +146,7 @@ public class EnemigoScript : MonoBehaviour
         {
             v3Camino = vl;
             siguiendo = true; //activar el update, básicamente
-            return 0;
+            return vl;
         }
         else
         {

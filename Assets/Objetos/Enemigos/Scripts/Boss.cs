@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,26 +22,51 @@ public class Boss : EnemigoScript
         {"Die", 9f}
     };
 
-    #region nav
-    private Dictionary<string, dynamic[]> paths = new Dictionary<string, dynamic[]>
-    /*string: nombre del camino; dynamic[]: en orden en el que se ejecutan, los puntos de movimiento y las 
-      acciones (funciones, en la #region acts) que se ejecutan... Es difícil de explicar, es más fácil si lo miras directo.
-      Digan lo que quieran pero C# sigue siendo mejor que JavaScript.*/
+    #region nav/behaviour
+    #region interface y derivados
+    public interface IBossCmd
     {
-        {"Intro", new dynamic[] {new string[] { "C6", "J1" }, (Action)ActIntroLaugh, "END"}},
-        {"MovA", new dynamic[] {new string[] { "J1", "W6" }, (Action)ActSpawnEnemy, "END"}}
-    };
-    private List<string> pathQueue = new List<string>();
-
-    protected override dynamic V3ify(string[] camino)
-    {
-        return base.V3ify(camino);
+        void Execute(Boss boss);
     }
+    public class MoveToWPCmd : IBossCmd
+    {
+        private string waypoint;
+
+        public MoveToWPCmd(string waypoint)
+        {
+            this.waypoint = waypoint;
+        }
+
+        public void Execute(Boss boss)
+        {
+            boss.MoveTo(waypoint);
+        }
+    }
+    public class GenerarEnemigoCmd : IBossCmd
+    {
+        public void Execute(Boss boss)
+        {
+            boss.GenerarEnemigo();
+        }
+    }
+    #endregion
+
+    #region acciones
+    public void MoveTo(string wp)
+    {
+        Vector3 wpv3 = V3ify(new string[] { wp })[0];
+        this.transform.position = Vector3.MoveTowards(this.transform.position, wpv3, spd * Time.deltaTime);
+    }
+    public void GenerarEnemigo()
+    {
+        Debug.Log("spawning enemy");
+    }
+    #endregion
+    private Queue<IBossCmd> colaCmds = new Queue<IBossCmd>();
     #endregion
 
     private void Awake()
     {
-        pathQueue.Clear();
         isBoss = true;
         AsignarTodo();
     }
@@ -53,7 +77,7 @@ public class Boss : EnemigoScript
     }
     private void Start()
     {
-        pathQueue.Add("Intro");
+        colaCmds.Enqueue(new MoveToWPCmd("J1"));
     }
     private void Update()
     {
@@ -82,27 +106,5 @@ public class Boss : EnemigoScript
                 a = 0;
             }
         }
-        while (pathQueue.Count > 0)
-        {
-            foreach (string p in pathQueue)
-            {
-                foreach(dynamic behaviour in paths[p])
-                {
-
-                }
-            }
-        }
     }
-    #region acts
-    //acá van las funciones ej "Spawnear Enemigo", "Reir" etc cuando tenga tiempo.
-    private static void ActIntroLaugh()
-    {
-        Debug.Log("jefe: intro laugh");
-        introDone = true;
-    }
-    private static void ActSpawnEnemy()
-    {
-        if (introDone) Debug.Log("jefe: generando enemigo");
-    }
-    #endregion
 }
