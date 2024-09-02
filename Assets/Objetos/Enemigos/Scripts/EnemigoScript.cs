@@ -57,15 +57,12 @@ public class EnemigoScript : MonoBehaviour
     {
         secuenciaAnims.Clear(); //cuenta como asignación? 
         animator = this.gameObject.GetComponent<Animator>();
-        if (!isBoss)
+        padreWaypoints = GameObject.Find("PadreWaypoints");
+        foreach (Transform hijo in padreWaypoints.transform)
         {
-            padreWaypoints = GameObject.Find("PadreWaypoints");
-            foreach (Transform hijo in padreWaypoints.transform)
+            if (hijo != padreWaypoints)
             {
-                if (hijo != padreWaypoints)
-                {
-                    waypoints.Add(hijo.transform);
-                }
+                waypoints.Add(hijo.transform);
             }
         }
         spdSave = this.spd;
@@ -126,7 +123,7 @@ public class EnemigoScript : MonoBehaviour
             V3ify(new string[] { "W4", "W6", "G2" });
         }
     }
-    protected void V3ify(string[] camino)
+    protected List<Vector3> V3ify(string[] camino)
     {
         List<Vector3> vl = new List<Vector3>();
         for (int i = 0; i < camino.Length; i++)
@@ -142,8 +139,12 @@ public class EnemigoScript : MonoBehaviour
                 }
             }
         }
+        if (!isBoss)
+        {
             v3Camino = vl;
             siguiendo = true; //activar el update, básicamente
+        }
+        return vl;
     }
 
     void Update()

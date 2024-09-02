@@ -13849,7 +13849,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3b69575fcbf294fafaa215dbffa911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabBoss: {fileID: 0}
+  prefabBoss: {fileID: 2692484358794775451, guid: 9e5bcbd67bb4e5745b757ce9d30e392f,
+    type: 3}
   pfbsEnemigos:
   - {fileID: 4711819497900499442, guid: 924439ca9d4008b4785a60cc19bf4b96, type: 3}
   - {fileID: 7411269467034504211, guid: 03e6fc9d4bd3b3d459c497b365e0ed6f, type: 3}

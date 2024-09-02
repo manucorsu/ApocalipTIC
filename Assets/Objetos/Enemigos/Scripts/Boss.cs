@@ -23,13 +23,7 @@ public class Boss : EnemigoScript
     };
 
     #region behaviours
-    private void Behaviour1()
-    {
-        siguiendo = false;
-        v3Camino.Clear();
-        V3ify(new string[] { "W1", "J1" });
-        siguiendo = true;
-    }
+
     #endregion
 
     private void Awake()
@@ -48,11 +42,6 @@ public class Boss : EnemigoScript
     }
     private void Update()
     {
-        while(hp > 0)
-        {
-            byte rbi = (byte)Random.Range(0, 1);
-
-        }
         #region debug
         if (Input.GetKeyDown(KeyCode.B)) // Hacer boss
         {
@@ -78,7 +67,20 @@ public class Boss : EnemigoScript
                 animator.SetFloat("anim", anims["MoveLeft"]);
                 a = 0;
             }
-            #endregion
+        }
+        else if (Input.GetKeyDown(KeyCode.M)) //movement test
+        {
+            StartCoroutine(Move("icyfgtvuoijokpo"));
+        }
+        #endregion
+        IEnumerator Move(string w)
+        {
+            Vector3 desiredPos = new Vector3(-5.5f, -0.5f, 0);
+            while (this.transform.position != desiredPos)
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position, desiredPos, spd * Time.deltaTime);
+                yield return null; //null == esperar al siguiente frame a lo Update
+            }
         }
     }
 }
