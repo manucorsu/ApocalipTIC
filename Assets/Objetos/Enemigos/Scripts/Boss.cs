@@ -22,47 +22,14 @@ public class Boss : EnemigoScript
         {"Die", 9f}
     };
 
-    #region nav/behaviour
-    #region interface y derivados
-    public interface IBossCmd
+    #region behaviours
+    private void Behaviour1()
     {
-        void Execute(Boss boss);
+        siguiendo = false;
+        v3Camino.Clear();
+        V3ify(new string[] { "W1", "J1" });
+        siguiendo = true;
     }
-    public class MoveToWPCmd : IBossCmd
-    {
-        private string waypoint;
-
-        public MoveToWPCmd(string waypoint)
-        {
-            this.waypoint = waypoint;
-        }
-
-        public void Execute(Boss boss)
-        {
-            boss.MoveTo(waypoint);
-        }
-    }
-    public class GenerarEnemigoCmd : IBossCmd
-    {
-        public void Execute(Boss boss)
-        {
-            boss.GenerarEnemigo();
-        }
-    }
-    #endregion
-
-    #region acciones
-    public void MoveTo(string wp)
-    {
-        Vector3 wpv3 = V3ify(new string[] { wp })[0];
-        this.transform.position = Vector3.MoveTowards(this.transform.position, wpv3, spd * Time.deltaTime);
-    }
-    public void GenerarEnemigo()
-    {
-        Debug.Log("spawning enemy");
-    }
-    #endregion
-    private Queue<IBossCmd> colaCmds = new Queue<IBossCmd>();
     #endregion
 
     private void Awake()
@@ -77,10 +44,16 @@ public class Boss : EnemigoScript
     }
     private void Start()
     {
-        colaCmds.Enqueue(new MoveToWPCmd("J1"));
+
     }
     private void Update()
     {
+        while(hp > 0)
+        {
+            byte rbi = (byte)Random.Range(0, 1);
+
+        }
+        #region debug
         if (Input.GetKeyDown(KeyCode.B)) // Hacer boss
         {
             Debug.Log("Atacando jefe!");
@@ -105,6 +78,7 @@ public class Boss : EnemigoScript
                 animator.SetFloat("anim", anims["MoveLeft"]);
                 a = 0;
             }
+            #endregion
         }
     }
 }

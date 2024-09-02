@@ -126,7 +126,7 @@ public class EnemigoScript : MonoBehaviour
             V3ify(new string[] { "W4", "W6", "G2" });
         }
     }
-    protected virtual List<Vector3> V3ify(string[] camino)
+    protected void V3ify(string[] camino)
     {
         List<Vector3> vl = new List<Vector3>();
         for (int i = 0; i < camino.Length; i++)
@@ -142,16 +142,8 @@ public class EnemigoScript : MonoBehaviour
                 }
             }
         }
-        if (!isBoss)
-        {
             v3Camino = vl;
             siguiendo = true; //activar el update, básicamente
-            return vl;
-        }
-        else
-        {
-            return vl;
-        }
     }
 
     void Update()
@@ -175,7 +167,7 @@ public class EnemigoScript : MonoBehaviour
 
     public virtual void Sufrir(float dmg)
     { // Sufrir daño causado por PROYECTILES (balas que usan el BalaScript).
-      //BAJO NINGUNA CIRCUNSTANCIA usar para balas "especiales" (como el chorro de agua o el proyector
+      //BAJO NINGUNA CIRCUNSTANCIA usar para balas "especiales" (como el chorro de agua o el proyector)
         hp -= dmg;
         if (hp <= 0) Morir();
         else { return; }
