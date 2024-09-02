@@ -28,7 +28,8 @@ public class TorretaScript4 : MonoBehaviour
     public float dps;
     public float stunTime;
     public float precio;
-    public float rayoScale = 1;
+
+    public float precioMejora;
 
     public float nivel1 = 1;
     public float nivel2 = 1;
@@ -77,8 +78,6 @@ public class TorretaScript4 : MonoBehaviour
                 }
             }
         }
-
-        bala.transform.localScale = new Vector3(rayoScale, -rayoScale, rayoScale);
 
     }
 

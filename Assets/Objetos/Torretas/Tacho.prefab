@@ -105,6 +105,7 @@ MonoBehaviour:
   anima: 2
   spd: 5
   precio: 200
+  precioMejora: 300
   nivel1: 1
   nivel2: 1
 --- !u!95 &6947866215203442200
@@ -168,6 +169,7 @@ MonoBehaviour:
   textoMejora1: {fileID: 0}
   textoMejora2: {fileID: 0}
   textoMejora3: {fileID: 0}
+  textoPrecioMejora: {fileID: 0}
   "tiral\xE1pices": {fileID: 7696407428644965581, guid: fa126b9fd1885d24d9b7fcc2522eba42,
     type: 3}
   nicho: {fileID: 6966831420949532576, guid: 4a5ac0f841e23e54d8732b205d2390f3, type: 3}

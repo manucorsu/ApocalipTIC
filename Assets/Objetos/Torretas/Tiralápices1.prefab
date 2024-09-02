@@ -203,6 +203,7 @@ MonoBehaviour:
   nivel1: 1
   nivel2: 1
   nivel3: 1
+  precioMejora: 300
 --- !u!61 &61211374871425584
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -245,6 +246,7 @@ MonoBehaviour:
   textoMejora1: {fileID: 0}
   textoMejora2: {fileID: 0}
   textoMejora3: {fileID: 0}
+  textoPrecioMejora: {fileID: 0}
   "tiral\xE1pices": {fileID: 7696407428644965581}
   nicho: {fileID: 6966831420949532576, guid: 4a5ac0f841e23e54d8732b205d2390f3, type: 3}
   tacho: {fileID: 6947866215203442404, guid: 9f0919607b61f5742ada65263ea76007, type: 3}

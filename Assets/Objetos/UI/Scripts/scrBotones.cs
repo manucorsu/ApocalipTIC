@@ -34,6 +34,8 @@ public class scrBotones : MonoBehaviour
     public TMP_Text textoMejoraTorreta;
     public GameObject torretaParaMejorar;
 
+    public GameObject sceneScripts;
+
     //Variables
 
     public bool dv = false; // false si el botón de doble velocidad está inactivo, true si lo está
@@ -42,6 +44,7 @@ public class scrBotones : MonoBehaviour
     private void Start()
     {
         textoMejoraTorreta = GameObject.Find("txtMejoraTorreta").GetComponent<TMP_Text>();
+        sceneScripts = GameObject.Find("SCENESCRIPTS");
     }
 
     // Update is called once per frame
@@ -208,41 +211,60 @@ public class scrBotones : MonoBehaviour
 
     public void BtnMejora(int boton)
     {
+        ConstruirScriptGeneral scrConstruirGeneral = sceneScripts.GetComponent<ConstruirScriptGeneral>();
+        
         if (textoMejoraTorreta.text == "Tiralápices")
         {
             TorretaScript scrTorreta = torretaParaMejorar.GetComponent<TorretaScript>();
-            if (boton == 1 && scrTorreta.nivel1 !=3) { scrTorreta.nivel1++; scrTorreta.bps++; }
-            if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; }
-            if (boton == 3 && scrTorreta.nivel3 != 3) { scrTorreta.nivel3++; scrTorreta.dmg += 5; }
-            MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
-            scrMejora.Mejorar();
+
+            if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
+            {
+                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.bps++; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 300; }
+                if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 300; }
+                if (boton == 3 && scrTorreta.nivel3 != 3) { scrTorreta.nivel3++; scrTorreta.dmg += 5; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 300; }
+
+                MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+                scrMejora.Mejorar();
+            }
         }
 
         if (textoMejoraTorreta.text == "Nicho")
         {
-            TorretaScript2 scrTorreta = torretaParaMejorar.GetComponent<TorretaScript2>();
-            if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++;  scrTorreta.chorroScale += 0.5f;  scrTorreta.bala.transform.position = new Vector2(scrTorreta.bala.transform.position.x - 0.5f, scrTorreta.bala.transform.position.y + 1);  }
-            if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.dps += 5; }
-            MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
-            scrMejora.Mejorar();
+                TorretaScript2 scrTorreta = torretaParaMejorar.GetComponent<TorretaScript2>();
+
+            if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
+            {
+                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.25f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 300; }
+                if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.dps += 5; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 300; }
+                MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+                scrMejora.Mejorar();
+            }
         }
 
         if (textoMejoraTorreta.text == "Tacho")
         {
             TorretaScript3 scrTorreta = torretaParaMejorar.GetComponent<TorretaScript3>();
-            if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 1; }
-            if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; }
-            MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
-            scrMejora.Mejorar();
+
+            if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
+            {
+                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 1; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 300; }
+                if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 300; }
+                MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+                scrMejora.Mejorar();
+            }
         }
 
         if (textoMejoraTorreta.text == "Proyector")
         {
             TorretaScript4 scrTorreta = torretaParaMejorar.GetComponent<TorretaScript4>();
-            if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.5f; }
-            if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rayoScale += 0.5f;   scrTorreta.bala.transform.position = new Vector2(scrTorreta.bala.transform.position.x, scrTorreta.bala.transform.position.y - 0.5f);  }
-            MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
-            scrMejora.Mejorar();
+
+            if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
+            {
+                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 300; }
+                if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 300; }
+                MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+                scrMejora.Mejorar();
+            }
         }
     }
 

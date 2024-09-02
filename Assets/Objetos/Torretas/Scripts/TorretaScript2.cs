@@ -25,7 +25,9 @@ public class TorretaScript2 : MonoBehaviour
     public float rotationSpd;
     public bool isShooting = false;
     public float precio;
-    public float chorroScale = 1;
+    public float cooldown = 1;
+
+    public float precioMejora;
 
     public float nivel1 = 1;
     public float nivel2 = 1;
@@ -71,8 +73,6 @@ public class TorretaScript2 : MonoBehaviour
                 balascr2.anim = 1;
             }
         }
-
-        bala.transform.localScale = new Vector3(chorroScale, chorroScale, chorroScale);
         
     }
     

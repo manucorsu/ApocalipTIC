@@ -319,6 +319,7 @@ MonoBehaviour:
   isShooting: 0
   precio: 150
   chorroScale: 1
+  precioMejora: 300
   nivel1: 1
   nivel2: 1
 --- !u!61 &61204781643948748
@@ -389,6 +390,7 @@ MonoBehaviour:
   textoMejora1: {fileID: 0}
   textoMejora2: {fileID: 0}
   textoMejora3: {fileID: 0}
+  textoPrecioMejora: {fileID: 0}
   "tiral\xE1pices": {fileID: 7696407428644965581, guid: fa126b9fd1885d24d9b7fcc2522eba42,
     type: 3}
   nicho: {fileID: 6966831420949532576}

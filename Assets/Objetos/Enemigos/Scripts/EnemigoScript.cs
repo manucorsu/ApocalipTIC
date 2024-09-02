@@ -35,7 +35,7 @@ public class EnemigoScript : MonoBehaviour
     protected bool siguiendo = false; //ver final de V3ify()
     #endregion
 
-    private IEnumerator sufrirNicho; private float sufrirNichoDPS;
+    private IEnumerator sufrirNicho; private float sufrirNichoDPS; private float nichoCooldown;
 
 
     void Awake()
@@ -187,6 +187,7 @@ public class EnemigoScript : MonoBehaviour
         {
             TorretaScript2 nicho = collision.gameObject.transform.root.gameObject.GetComponent<TorretaScript2>();
             sufrirNichoDPS = nicho.dps; sufrirNicho = SufrirNicho();
+            nichoCooldown = nicho.cooldown;
             StartCoroutine(sufrirNicho);
         }
 
@@ -213,7 +214,7 @@ public class EnemigoScript : MonoBehaviour
     {
         while (false != true)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(nichoCooldown);
             hp -= sufrirNichoDPS;
             if (hp <= 0)
             {

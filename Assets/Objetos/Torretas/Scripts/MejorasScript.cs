@@ -13,12 +13,13 @@ public class MejorasScript : MonoBehaviour
     private GameObject sceneScripts;
     private GameObject cuadroMejora;
     private RectTransform cuadroMejoraTransform;
-    private EnemySpawner enemySpawner;
 
     public TMP_Text textoTorreta;
     public TMP_Text textoMejora1;
     public TMP_Text textoMejora2;
     public TMP_Text textoMejora3;
+
+    public TMP_Text textoPrecioMejora;
 
     public GameObject tiralápices;
     public GameObject nicho;
@@ -35,11 +36,7 @@ public class MejorasScript : MonoBehaviour
     public RectTransform canvasTransform;
 
 
-    //Variables
-
-    private int nivel1;
-    private bool nivel2;
-    private bool nivel3;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +50,8 @@ public class MejorasScript : MonoBehaviour
         textoMejora1 = GameObject.Find("txtMejoraSpeed").GetComponent<TMP_Text>();
         textoMejora2 = GameObject.Find("txtMejoraRange").GetComponent<TMP_Text>();
         textoMejora3 = GameObject.Find("txtMejoraDamage").GetComponent<TMP_Text>();
+
+        textoPrecioMejora = GameObject.Find("txtPrecioMejora").GetComponent<TMP_Text>();
 
         btnMejora1 = GameObject.Find("btnMejora1").GetComponent<Button>();
         btnMejora2 = GameObject.Find("btnMejora2").GetComponent<Button>();
@@ -132,10 +131,12 @@ public class MejorasScript : MonoBehaviour
             textoMejora1.text = "Spd:" + torretaScr.nivel1; //torretaScr.bps.ToString();
             textoMejora2.text = "Ran:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Dmg:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
+            textoPrecioMejora.text = "$" + torretaScr.precioMejora;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
             btnMejora3.enabled = true;
+            btnMejora3.GetComponent<Image>().enabled = true;
         }
 
         //NICHO
@@ -144,13 +145,15 @@ public class MejorasScript : MonoBehaviour
         {
             TorretaScript2 torretaScr2 = this.GetComponent<TorretaScript2>();
             textoTorreta.text = "Nicho";
-            textoMejora1.text = "Ran:" + torretaScr2.nivel1; //torretaScr2.chorroScale.ToString();
+            textoMejora1.text = "Spd:" + torretaScr2.nivel1; //torretaScr2.chorroScale.ToString();
             textoMejora2.text = "Dmg:" + torretaScr2.nivel2; //torretaScr2.dps.ToString();
             textoMejora3.text = "";
+            textoPrecioMejora.text = "$" + torretaScr2.precioMejora;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
             btnMejora3.enabled = false;
+            btnMejora3.GetComponent<Image>().enabled = false;
         }
 
         //TACHO
@@ -162,10 +165,13 @@ public class MejorasScript : MonoBehaviour
             textoMejora1.text = "Spd:" + torretaScr3.nivel1; //torretaScr3.cooldown.ToString();
             textoMejora2.text = "Ran:" + torretaScr3.nivel2; //torretaScr3.rango.ToString();
             textoMejora3.text = "";
+            textoPrecioMejora.text = "$" + torretaScr3.precioMejora;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
             btnMejora3.enabled = false;
+            btnMejora3.GetComponent<Image>().enabled = false;
+
         }
 
         //PROYECTOR
@@ -177,10 +183,12 @@ public class MejorasScript : MonoBehaviour
             textoMejora1.text = "Spd:" + torretaScr4.nivel1; //torretaScr4.rayoScale.ToString();
             textoMejora2.text = "Ran:" + torretaScr4.nivel2; //torretaScr4.dps.ToString();
             textoMejora3.text = "";
+            textoPrecioMejora.text = "$" + torretaScr4.precioMejora;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
             btnMejora3.enabled = false;
+            btnMejora3.GetComponent<Image>().enabled = false;
         }
 
         scrbotones.torretaParaMejorar = this.gameObject;

@@ -23,6 +23,8 @@ public class TorretaScript3 : MonoBehaviour
     public float spd;
     public float precio;
 
+    public float precioMejora;
+
     public float nivel1 = 1;
     public float nivel2 = 1;
 
