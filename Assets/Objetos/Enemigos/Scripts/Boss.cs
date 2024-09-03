@@ -83,4 +83,8 @@ public class Boss : EnemigoScript
             }
         }
     }
+
+    string TPQ = "Manuwu Coworsuwunky Gay";
+
+        //JAJAJAJAJAJAJAJAJ MANU ES UN TPQ Y UNA BUTAQUERA AJJAJAJAJajAJAJAJAJAJAJJAJAJAJA
 }
