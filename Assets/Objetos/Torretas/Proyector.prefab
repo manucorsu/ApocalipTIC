@@ -318,7 +318,6 @@ MonoBehaviour:
   dps: 5
   stunTime: 0.5
   precio: 225
-  rayoScale: 1
   precioMejora: 300
   nivel1: 1
   nivel2: 1
@@ -370,6 +369,8 @@ MonoBehaviour:
   nicho: {fileID: 6966831420949532576, guid: 4a5ac0f841e23e54d8732b205d2390f3, type: 3}
   tacho: {fileID: 6947866215203442404, guid: 9f0919607b61f5742ada65263ea76007, type: 3}
   proyector: {fileID: 2296560995446444706}
+  tiralapiceras: {fileID: 3659079229627018876, guid: 358ef43c1ecb8784991dfc599502beff,
+    type: 3}
   scrbotones: {fileID: 0}
   mainCamera: {fileID: 0}
   canvasTransform: {fileID: 0}

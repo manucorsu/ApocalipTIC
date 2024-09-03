@@ -16,7 +16,7 @@ public class scrBotonTorreta : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         if (this.gameObject == GameObject.Find("btnTiralápices"))
         {
-            txtTítuloTorreta.text = "Tiralápices ";
+            txtTítuloTorreta.text = "Tiralápices";
             txtDescTorreta.text = "Arma básica que dispara lápices.";
             cuadroTorreta.SetActive(true);
         }
@@ -39,6 +39,13 @@ public class scrBotonTorreta : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
             txtTítuloTorreta.text = "Proyector";
             txtDescTorreta.text = "Ciega a los enemigos frenándolos por un tiempo.";
+            cuadroTorreta.SetActive(true);
+        }
+
+        if (this.gameObject == GameObject.Find("btnTiralapiceras"))
+        {
+            txtTítuloTorreta.text = "Tiralapiceras";
+            txtDescTorreta.text = "Dispara lapiceras a largas distancias.";
             cuadroTorreta.SetActive(true);
         }
 
