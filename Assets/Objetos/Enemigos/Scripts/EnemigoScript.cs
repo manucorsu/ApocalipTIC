@@ -28,7 +28,7 @@ public class EnemigoScript : MonoBehaviour
 
     #region nav
     protected GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
-    protected List<Transform> waypoints = new List<Transform>(); //todos los waypoints
+    public List<Transform> waypoints = new List<Transform>(); //todos los waypoints
     public string spName; //en qué spawn point (ubicación) apareció. setteado EnemySpawner SACANDO que sea el jefe, que asigna su propio spawnpoint
     protected List<Vector3> v3Camino = new List<Vector3>();
     protected byte wi = 0; //waypoint index
@@ -123,7 +123,7 @@ public class EnemigoScript : MonoBehaviour
             V3ify(new string[] { "W4", "W6", "G2" });
         }
     }
-    protected List<Vector3> V3ify(string[] camino)
+    private void V3ify(string[] camino)
     {
         List<Vector3> vl = new List<Vector3>();
         for (int i = 0; i < camino.Length; i++)
@@ -139,12 +139,8 @@ public class EnemigoScript : MonoBehaviour
                 }
             }
         }
-        if (!isBoss)
-        {
-            v3Camino = vl;
-            siguiendo = true; //activar el update, básicamente
-        }
-        return vl;
+        v3Camino = vl;
+        siguiendo = true; //activar el update, básicamente
     }
 
     void Update()

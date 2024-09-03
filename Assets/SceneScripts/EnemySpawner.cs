@@ -36,7 +36,13 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (spawnear == true && !isBossFight)
+        if (Input.GetKeyDown(KeyCode.B) && spawnear == false) // debug: cambiar a ronda 15
+        {
+            ronda = 15;
+            txtRonda.text = "override ronda 15";
+        }
+
+        if (spawnear == true && isBossFight == false)
         {
             tiempoDesdeUltimoSpawn += Time.deltaTime;
 
@@ -58,7 +64,11 @@ public class EnemySpawner : MonoBehaviour
         if (ronda == 15 || ronda == 30)
         {
             isBossFight = true;
-            Instantiate(prefabBoss);
+            Boss jefe = Instantiate(prefabBoss, new Vector3(14.5f, 0.5f, 0), Quaternion.identity).GetComponent<Boss>(); 
+            foreach(GameObject s in spawners)
+            {
+                jefe.waypoints.Add(s.transform);
+            }
         }
         else
         {
