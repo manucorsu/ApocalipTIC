@@ -81,6 +81,11 @@ public class TorretaScript : MonoBehaviour
         if (hits.Length > 0)
         {
             target = hits[0].transform;
+
+            if (this.gameObject.layer == LayerMask.NameToLayer("Tiralapiceras"))
+            {
+                Debug.DrawLine(firingPoint.transform.position, target.transform.position);
+            }
         }
     }
 

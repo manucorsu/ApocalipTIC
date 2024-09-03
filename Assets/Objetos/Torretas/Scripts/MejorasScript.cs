@@ -25,6 +25,7 @@ public class MejorasScript : MonoBehaviour
     public GameObject nicho;
     public GameObject tacho;
     public GameObject proyector;
+    public GameObject tiralapiceras;
 
     private Button btnMejora1;
     private Button btnMejora2;
@@ -191,11 +192,25 @@ public class MejorasScript : MonoBehaviour
             btnMejora3.GetComponent<Image>().enabled = false;
         }
 
+        //TIRALAPICERAS
+
+        if (this.gameObject == tiralapiceras)
+        {
+            TorretaScript torretaScr = this.GetComponent<TorretaScript>();
+            textoTorreta.text = "Tiralapiceras";
+            textoMejora1.text = "Spd:" + torretaScr.nivel1; //torretaScr.bps.ToString();
+            textoMejora2.text = "Ran:" + torretaScr.nivel2; //torretaScr.rango.ToString();
+            textoMejora3.text = "Dmg:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
+            textoPrecioMejora.text = "$" + torretaScr.precioMejora;
+
+            btnMejora1.enabled = true;
+            btnMejora2.enabled = true;
+            btnMejora3.enabled = false;
+            btnMejora3.GetComponent<Image>().enabled = false;
+        }
+
         scrbotones.torretaParaMejorar = this.gameObject;
 
     }
 
-   
- 
-
-}
+    }
