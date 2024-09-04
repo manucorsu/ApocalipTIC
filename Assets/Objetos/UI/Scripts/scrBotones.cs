@@ -174,7 +174,8 @@ public class scrBotones : MonoBehaviour
         }
 
 
-        if(botones[torreta-1].tag == "botonTorreta")
+
+        if (botones[torreta-1].tag == "botonTorreta")
         {
             foreach (GameObject boton in botonesTorretas)
             {
