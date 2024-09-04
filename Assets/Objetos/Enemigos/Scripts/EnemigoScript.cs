@@ -27,8 +27,8 @@ public class EnemigoScript : MonoBehaviour
     [HideInInspector] private ConstruirScriptGeneral construirscr; // ni idea fue Marcos
 
     #region nav
-    protected GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
-    public List<Transform> waypoints = new List<Transform>(); //todos los waypoints
+    private GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
+    protected List<Transform> waypoints = new List<Transform>(); //todos los waypoints
     public string spName; //en qué spawn point (ubicación) apareció. setteado EnemySpawner SACANDO que sea el jefe, que asigna su propio spawnpoint
     protected List<Vector3> v3Camino = new List<Vector3>();
     protected byte wi = 0; //waypoint index

@@ -25,7 +25,7 @@ public class Boss : EnemigoScript
         idle = false;
         this.gameObject.tag = "Untagged";
         this.gameObject.layer = 0;
-        //animator.SetFloat("anim", anims["MoveLeft
+        //animator.SetFloat("anim", anims["MoveLeft"]);
         StartCoroutine(MoveTo("C3"));
         //animator.SetFloat("anim", anims["MoveDown"]); 
         StartCoroutine(MoveTo("W1"));
@@ -36,22 +36,33 @@ public class Boss : EnemigoScript
     }
     private IEnumerator DoIntroLaugh()
     {
-        Debug.Log("risa malvada");
-        //animator.SetFloat("anim", anims["IntroLaugh"]);
-        yield return new WaitForSeconds(3);
+        while (false != true)
+        {
+            Debug.Log("risa malvada");
+            //animator.SetFloat("anim", anims["IntroLaugh"]);
+            yield return new WaitForSeconds(3);
+            break;
+        }
     }
     private IEnumerator MoveTo(string wp)
     {
-        Vector3 desiredPos = V3ify(wp);
-        while (this.transform.position != desiredPos)
+        while (false != true)
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position, desiredPos, spd * Time.deltaTime);
-            yield return null; //null == esperar al siguiente frame a lo Update
-        }
-        Vector3 V3ify(string w)
-        {
-            //todo
-            return new Vector3(0, 0, 0);
+            Vector3 desiredPos = new Vector3();
+            for (int i = 0; i < waypoints.Count; i++)
+            {
+                if (waypoints[i].name == wp)
+                {
+                    desiredPos = waypoints[i].position;
+                    break;
+                }
+            }
+            while (this.transform.position != desiredPos)
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position, desiredPos, spd * Time.deltaTime);
+                yield return null; //null == esperar al siguiente frame a lo Update
+            }
+            break;
         }
     }
     #endregion
@@ -60,17 +71,23 @@ public class Boss : EnemigoScript
     {
         isBoss = true;
         AsignarTodo();
-        DoIntro();
     }
     protected override void AsignarTodo()
     {
         base.AsignarTodo();
+        GameObject padreSpawners = GameObject.Find("Spawners");
+        foreach (Transform s in padreSpawners.transform)
+        {
+            if (s != padreSpawners)
+            {this.waypoints.Add(s.transform);
+            }
+        }
         idle = true;
         if (EnemySpawner.isBossFight == false) Debug.LogWarning("El jefe spawneó cuando EnemySpawner.isBossFight era false.");
     }
     private void Start()
     {
-
+        DoIntro();
     }
     private void Update()
     {

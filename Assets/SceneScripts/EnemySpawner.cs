@@ -64,11 +64,7 @@ public class EnemySpawner : MonoBehaviour
         if (ronda == 15 || ronda == 30)
         {
             isBossFight = true;
-            Boss jefe = Instantiate(prefabBoss, new Vector3(14.5f, 0.5f, 0), Quaternion.identity).GetComponent<Boss>(); 
-            foreach(GameObject s in spawners)
-            {
-                jefe.waypoints.Add(s.transform);
-            }
+            Boss jefe = Instantiate(prefabBoss, new Vector3(14.5f, 0.5f, 0), Quaternion.identity).GetComponent<Boss>();
         }
         else
         {
