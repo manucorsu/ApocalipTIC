@@ -22,6 +22,7 @@ public class EnemigoScript : MonoBehaviour
     [HideInInspector] public float spdSave;
     public float plata; //cuánta $ recibe el jugador al mater a este enemigo.
     public bool canBeEaten = true;
+    public bool canBeShot = true;
     #endregion
 
     [HideInInspector] private ConstruirScriptGeneral construirscr; // ni idea fue Marcos

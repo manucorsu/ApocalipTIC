@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss : EnemigoScript
 {
+    private bool introDone = false;
     private bool idle; //si true, puede buscar un nuevo behaviour, si false está haciendo algo entonces no puede
     private Dictionary<string, float> anims = new Dictionary<string, float> //viva python
     {
@@ -22,27 +23,15 @@ public class Boss : EnemigoScript
     #region behaviour
     private void DoIntro()
     { //recuerdos de scratch
+        canBeShot = false;
         idle = false;
-        this.gameObject.tag = "Untagged";
-        this.gameObject.layer = 0;
-        //animator.SetFloat("anim", anims["MoveLeft"]);
-        StartCoroutine(MoveTo("C3"));
-        //animator.SetFloat("anim", anims["MoveDown"]); 
         StartCoroutine(MoveTo("W1"));
-        DoIntroLaugh();
-        this.gameObject.tag = "enemigo";
-        this.gameObject.layer = 8;
         idle = true;
     }
-    private IEnumerator DoIntroLaugh()
+    private void DoIntroLaugh()
     {
-        while (false != true)
-        {
-            Debug.Log("risa malvada");
-            //animator.SetFloat("anim", anims["IntroLaugh"]);
-            yield return new WaitForSeconds(3);
-            break;
-        }
+        animator.SetBool("playIntroLaugh", true);
+        canBeShot = true;
     }
     private IEnumerator MoveTo(string wp)
     {
@@ -62,6 +51,10 @@ public class Boss : EnemigoScript
                 this.transform.position = Vector3.MoveTowards(this.transform.position, desiredPos, spd * Time.deltaTime);
                 yield return null; //null == esperar al siguiente frame a lo Update
             }
+            if (!introDone)
+            {
+                DoIntroLaugh();
+            }
             break;
         }
     }
@@ -75,11 +68,13 @@ public class Boss : EnemigoScript
     protected override void AsignarTodo()
     {
         base.AsignarTodo();
+        introDone = false;
         GameObject padreSpawners = GameObject.Find("Spawners");
         foreach (Transform s in padreSpawners.transform)
         {
             if (s != padreSpawners)
-            {this.waypoints.Add(s.transform);
+            {
+                this.waypoints.Add(s.transform);
             }
         }
         idle = true;
@@ -91,6 +86,14 @@ public class Boss : EnemigoScript
     }
     private void Update()
     {
-
+        if ("a" == "b")
+        {
+            // Check if the animation has finished
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            {
+                canBeShot = true;
+                animator.SetBool("playNewTestAnim", false);
+            }
+        }
     }
 }

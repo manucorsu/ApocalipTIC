@@ -35,7 +35,7 @@ public class TorretaScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-            animator = punta.GetComponent<Animator>();
+        animator = punta.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -51,14 +51,18 @@ public class TorretaScript : MonoBehaviour
         if (!CheckTargetRange())
         {
             target = null;
-        } else
+        }
+        else
         {
             cooldown += Time.deltaTime;
 
             if (cooldown >= 1f / bps)
             {
-                StartCoroutine(Disparar());
-                cooldown = 0f;
+                if (target.GetComponent<EnemigoScript>().canBeShot)
+                {
+                    StartCoroutine(Disparar());
+                    cooldown = 0f;
+                }
             }
         }
     }

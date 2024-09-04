@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PauseScript : MonoBehaviour
 {
-    public bool isPaused = false;
+    public static bool isPaused = false;
     [SerializeField] private GameObject pauseMenu; //panel PauseMenu
     private GameObject controls; //las cosas que en winforms se llamaban controles (botones, texto) de este panel
     void Update()
@@ -32,7 +32,7 @@ public class PauseScript : MonoBehaviour
         }
         else
         {
-            bool dv = GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().dv;
+            bool dv = scrBotones.dv;
 
             if (dv == true) Time.timeScale = 2;
             else { Time.timeScale = 1; }

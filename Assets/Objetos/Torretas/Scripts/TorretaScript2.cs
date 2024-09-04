@@ -16,7 +16,7 @@ public class TorretaScript2 : MonoBehaviour
     public LayerMask enemigos;
     private BalaScript2 balascr2;
     public RaycastHit2D[] hits;
-    
+
 
     //Variables
 
@@ -64,18 +64,17 @@ public class TorretaScript2 : MonoBehaviour
 
 
 
-        if (isShooting == true) 
+        if (isShooting && target.GetComponent<EnemigoScript>().canBeShot)
         {
-
             bala.gameObject.SetActive(true);
             if (balascr2.anim != 2)
             {
                 balascr2.anim = 1;
             }
         }
-        
+
     }
-    
+
 
     private void FindTarget()
     {
@@ -84,7 +83,8 @@ public class TorretaScript2 : MonoBehaviour
         {
             target = hits[0].transform;
             EnemigoScript targetscr = target.GetComponent<EnemigoScript>();
-            if (targetscr.canBeEaten == false){
+            if (targetscr.canBeEaten == false)
+            {
                 target = null;
             }
         }

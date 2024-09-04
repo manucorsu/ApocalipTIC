@@ -65,10 +65,10 @@ public class TorretaScript4 : MonoBehaviour
             if (canshoot)
             {
                 hits2 = Physics2D.LinecastAll(transform.position, puntaRecta.position, enemigos);
-                foreach(RaycastHit2D enemigos in hits2)
+                foreach (RaycastHit2D enemigos in hits2)
                 {
                     EnemigoScript enemigoScript = target.gameObject.GetComponent<EnemigoScript>();
-                    if(enemigoScript != null)
+                    if (enemigoScript != null && enemigoScript.canBeShot)
                     {
                         if (enemigos.transform == target.transform && enemigoScript.spd > 0)
                         {

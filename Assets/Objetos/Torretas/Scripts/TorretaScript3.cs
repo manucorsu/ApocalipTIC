@@ -77,7 +77,7 @@ public class TorretaScript3 : MonoBehaviour
     {
         EnemigoScript targetscr = target.GetComponent<EnemigoScript>();
 
-        if (targetscr.canBeEaten == true)
+        if (targetscr.canBeEaten == true && targetscr.isBoss == false)
         {
             targetscr.hp = 999;
             targetscr.spd = 0;

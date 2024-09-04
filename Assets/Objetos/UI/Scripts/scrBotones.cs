@@ -38,7 +38,7 @@ public class scrBotones : MonoBehaviour
 
     //Variables
 
-    public bool dv = false; // false si el botón de doble velocidad está inactivo, true si lo está
+    public static bool dv = false; // false si el botón de doble velocidad está inactivo, true si lo está
 
 
     private void Start()
