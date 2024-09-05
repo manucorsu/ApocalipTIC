@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Arrays")]
     [SerializeField] private GameObject prefabBoss;
-    public static GameObject[] pfbsEnemigos; //cada tipo de enemigo es un prefab y está en este array
+    public GameObject[] pfbsEnemigos; //cada tipo de enemigo es un prefab y está en este array
     [SerializeField] private GameObject[] spawners;
 
     [Header("Sistema de rondas")]

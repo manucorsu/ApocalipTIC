@@ -72,7 +72,7 @@ public class Boss : EnemigoScript
             }
             else if (thenSpawnEnemies == true)
             {
-                GameObject[] pfbsEnemigos = EnemySpawner.pfbsEnemigos;
+                GameObject[] pfbsEnemigos = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().pfbsEnemigos;
                 byte cuantos = (byte)Random.Range(1, 4);
                 for (byte i = 0; i > cuantos; i++)
                 {
