@@ -812,7 +812,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 99504710}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2644,7 +2644,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386686332}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -3051,7 +3051,6 @@ MonoBehaviour:
   textoMejoraTorreta: {fileID: 0}
   torretaParaMejorar: {fileID: 0}
   sceneScripts: {fileID: 0}
-  dv: 0
 --- !u!114 &453910638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3066,11 +3065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabBoss: {fileID: 2692484358794775451, guid: 9e5bcbd67bb4e5745b757ce9d30e392f,
     type: 3}
-  pfbsEnemigos:
-  - {fileID: 4711819497900499442, guid: 924439ca9d4008b4785a60cc19bf4b96, type: 3}
-  - {fileID: 7411269467034504211, guid: 03e6fc9d4bd3b3d459c497b365e0ed6f, type: 3}
-  - {fileID: 4651135590154431685, guid: 89d228bcfe23e574b84c03bef66528be, type: 3}
-  - {fileID: 8083913890307406723, guid: 80ef8cc524fc9fc4db25c47d96df07ca, type: 3}
+  pfbsEnemigos: []
   spawners:
   - {fileID: 1874370561}
   - {fileID: 1467239967}
@@ -3118,7 +3113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71720a31872c0a3409a5d6c880430728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPaused: 0
   pauseMenu: {fileID: 587907873}
 --- !u!114 &453910640
 MonoBehaviour:
@@ -4934,7 +4928,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618219312}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -6412,7 +6406,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795751087}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -10077,7 +10071,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222636807}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -11277,7 +11271,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365100258}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -13855,7 +13849,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687750344}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -14260,7 +14254,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733926924}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -15378,7 +15372,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 201.5, y: -82}
+  m_AnchoredPosition: {x: 202.2, y: -83.3}
   m_SizeDelta: {x: 136.0375, y: 48.87108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1905991329
@@ -19333,7 +19327,6 @@ MonoBehaviour:
   textoMejoraTorreta: {fileID: 0}
   torretaParaMejorar: {fileID: 0}
   sceneScripts: {fileID: 0}
-  dv: 0
 --- !u!114 &2045996388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19599,7 +19592,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067191122}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

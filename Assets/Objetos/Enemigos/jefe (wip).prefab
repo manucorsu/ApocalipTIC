@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBoss: 1
   minRonda: 0
-  hp: 12000
+  hp: 3500
   spd: 1.5
   spdSave: 0
   plata: 5000

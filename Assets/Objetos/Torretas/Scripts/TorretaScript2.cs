@@ -64,7 +64,7 @@ public class TorretaScript2 : MonoBehaviour
 
 
 
-        if (isShooting && target.GetComponent<EnemigoScript>().canBeShot)
+        if (isShooting)
         {
             bala.gameObject.SetActive(true);
             if (balascr2.anim != 2)

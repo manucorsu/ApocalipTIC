@@ -250,6 +250,6 @@ public class EnemigoScript : MonoBehaviour
     {
         Morir();
         Debug.LogWarning("PERDISTE");
-        //SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("GameOver");
     }
 }

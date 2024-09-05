@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Arrays")]
     [SerializeField] private GameObject prefabBoss;
-    [SerializeField] private GameObject[] pfbsEnemigos; //cada tipo de enemigo es un prefab y está en este array
+    public GameObject[] pfbsEnemigos; //cada tipo de enemigo es un prefab y está en este array
     [SerializeField] private GameObject[] spawners;
 
     [Header("Sistema de rondas")]
@@ -42,13 +42,16 @@ public class EnemySpawner : MonoBehaviour
             txtRonda.text = "override ronda 15";
         }
 
-        if (spawnear == true && isBossFight == false)
+        if (spawnear == true)
         {
-            tiempoDesdeUltimoSpawn += Time.deltaTime;
-
-            if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0)
+            if (!isBossFight)
             {
-                SpawnEnemy();
+                tiempoDesdeUltimoSpawn += Time.deltaTime;
+
+                if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0)
+                {
+                    SpawnEnemy();
+                }
             }
             if (botsVivos.Count <= 0 && botsASpawnear <= 0)
             {
@@ -58,22 +61,26 @@ public class EnemySpawner : MonoBehaviour
     }
     public void EmpezarRonda()
     {
-        Image cuadroMejora = GameObject.Find("cuadroMejora").GetComponent<Image>();
-        cuadroMejora.rectTransform.position = new Vector2(1000, 1000);
-
-        if (ronda == 15 || ronda == 30)
+        if (spawnear == false)
         {
-            isBossFight = true;
-            Boss jefe = Instantiate(prefabBoss, new Vector3(14.5f, 0.5f, 0), Quaternion.identity).GetComponent<Boss>();
+            Image cuadroMejora = GameObject.Find("cuadroMejora").GetComponent<Image>();
+            cuadroMejora.rectTransform.position = new Vector2(1000, 1000);
+            if (ronda == 15 || ronda == 30)
+            {
+                isBossFight = true;
+                Boss jefe = Instantiate(prefabBoss, new Vector3(14.5f, 0.5f, 0), Quaternion.identity).GetComponent<Boss>();
+                botsVivos.Add(jefe.gameObject);
+                ToggleSpawning(true); //hay cosas que dependen de esta variable (aunque si es pelea de jefe no va a hacer nada en el update)
+            }
+            else
+            {
+                isBossFight = false;
+                ToggleSpawning(true);
+                botsASpawnear = (byte)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
+            }
+            Image btnPlayImage = btnIniciarRonda.GetComponent<Image>();
+            btnPlayImage.sprite = btnPlaySprite2;
         }
-        else
-        {
-            isBossFight = false;
-            ToggleSpawning(true);
-            botsASpawnear = (byte)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
-        }
-        Image btnPlayImage = btnIniciarRonda.GetComponent<Image>();
-        btnPlayImage.sprite = btnPlaySprite2;
     }
     private void SpawnEnemy()
     {
