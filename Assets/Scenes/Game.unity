@@ -11553,7 +11553,6 @@ MonoBehaviour:
   textoMejoraTorreta: {fileID: 0}
   torretaParaMejorar: {fileID: 0}
   sceneScripts: {fileID: 0}
-  dv: 0
 --- !u!1 &723804941
 GameObject:
   m_ObjectHideFlags: 0
@@ -19133,7 +19132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71720a31872c0a3409a5d6c880430728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPaused: 0
   pauseMenu: {fileID: 385582604}
 --- !u!114 &1496161646
 MonoBehaviour:
@@ -19330,7 +19328,6 @@ MonoBehaviour:
   textoMejoraTorreta: {fileID: 0}
   torretaParaMejorar: {fileID: 0}
   sceneScripts: {fileID: 0}
-  dv: 0
 --- !u!114 &1496161648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19345,11 +19342,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabBoss: {fileID: 2692484358794775451, guid: 9e5bcbd67bb4e5745b757ce9d30e392f,
     type: 3}
-  pfbsEnemigos:
-  - {fileID: 4711819497900499442, guid: 924439ca9d4008b4785a60cc19bf4b96, type: 3}
-  - {fileID: 7411269467034504211, guid: 03e6fc9d4bd3b3d459c497b365e0ed6f, type: 3}
-  - {fileID: 4651135590154431685, guid: 89d228bcfe23e574b84c03bef66528be, type: 3}
-  - {fileID: 8083913890307406723, guid: 80ef8cc524fc9fc4db25c47d96df07ca, type: 3}
   spawners:
   - {fileID: 116802921}
   - {fileID: 627240442}
