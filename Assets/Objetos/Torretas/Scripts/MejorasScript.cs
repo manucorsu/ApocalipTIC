@@ -205,8 +205,7 @@ public class MejorasScript : MonoBehaviour
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
-            btnMejora3.enabled = false;
-            btnMejora3.GetComponent<Image>().enabled = false;
+            btnMejora3.GetComponent<Image>().enabled = true;
         }
 
         scrbotones.torretaParaMejorar = this.gameObject;
