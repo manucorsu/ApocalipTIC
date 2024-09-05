@@ -40,7 +40,6 @@ public class scrBotones : MonoBehaviour
 
     public static bool dv = false; // false si el botón de doble velocidad está inactivo, true si lo está
 
-
     private void Start()
     {
         textoMejoraTorreta = GameObject.Find("txtMejoraTorreta").GetComponent<TMP_Text>();
@@ -70,6 +69,8 @@ public class scrBotones : MonoBehaviour
 
     public void Click(int torreta)
     {
+
+        //TIRALÁPICES
         if (torreta == 1)
         {
             foreach (GameObject tile in tiles)
@@ -88,6 +89,7 @@ public class scrBotones : MonoBehaviour
 
         }
 
+        //NICHO
         if (torreta == 2)
         {
             foreach (GameObject tile in tiles)
@@ -103,6 +105,7 @@ public class scrBotones : MonoBehaviour
             }
         }
 
+        //TACHO
         if (torreta == 3)
         {
             foreach (GameObject tile in tiles)
@@ -118,6 +121,7 @@ public class scrBotones : MonoBehaviour
             }
         }
 
+        //PROYECTOR
         if (torreta == 4)
         {
             foreach (GameObject tile in tiles)
@@ -133,6 +137,7 @@ public class scrBotones : MonoBehaviour
             }
         }
 
+        //TIRALAPICERAS
         if (torreta == 5)
         {
             foreach (GameObject tile in tiles)
@@ -148,6 +153,7 @@ public class scrBotones : MonoBehaviour
             }
         }
 
+        //BIDÓN
         if (torreta == 9)
         {
             foreach (GameObject zona in zonasConsumibles)
@@ -160,7 +166,7 @@ public class scrBotones : MonoBehaviour
             }
         }
 
-
+        //PEGAMENTO
         if (torreta == 10)
         {
             foreach (GameObject zona in zonasConsumibles)
@@ -170,6 +176,19 @@ public class scrBotones : MonoBehaviour
 
                 PegamentoScript scrPegamento = torretas[10].GetComponent<PegamentoScript>();
                 scrZonaConsumible.precioSeleccionado = scrPegamento.precio;
+            }
+        }
+
+        //PALOMAS
+        if (torreta == 11)
+        {
+            foreach (GameObject zona in zonasConsumibles)
+            {
+                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                scrZonaConsumible.consumibleSeleccionado = torretas[11];
+
+                scrPalomas scrPaloma = torretas[11].GetComponent<scrPalomas>();
+                scrZonaConsumible.precioSeleccionado = scrPaloma.precio;
             }
         }
 

@@ -1282,7 +1282,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 11
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3269,6 +3269,7 @@ GameObject:
   - component: {fileID: 372296122}
   - component: {fileID: 372296121}
   - component: {fileID: 372296120}
+  - component: {fileID: 372296123}
   m_Layer: 0
   m_Name: Palomas
   m_TagString: Untagged
@@ -7955,6 +7956,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -179.952, y: -90, z: 89.99999}
+--- !u!114 &372296123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372296119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e642282f3cb12f4b84a7ba0bf7fcab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  precio: 250
 --- !u!1 &380848972
 GameObject:
   m_ObjectHideFlags: 0
@@ -17106,6 +17120,7 @@ MonoBehaviour:
     m_Bits: 1024
   zonaConsumible: {fileID: 0}
   scrZona: {fileID: 0}
+  palomas: {fileID: 0}
   precioSeleccionado: 0
 --- !u!1 &1127151310
 GameObject:
@@ -18580,6 +18595,7 @@ MonoBehaviour:
     m_Bits: 1024
   zonaConsumible: {fileID: 0}
   scrZona: {fileID: 0}
+  palomas: {fileID: 0}
   precioSeleccionado: 0
 --- !u!1 &1413378601
 GameObject:
@@ -19287,7 +19303,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 3212824467811206761, guid: c189621d78d1aa84d8c702b890afce54, type: 3}
   - {fileID: 8891854371874229756, guid: 07f2b19f740575c4d945c106b69493ee, type: 3}
-  - {fileID: 0}
+  - {fileID: 372296119}
   - {fileID: 0}
   cuadroTorreta: {fileID: 936862856}
   zonasConsumibles:
@@ -19306,7 +19322,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 931722636}
   - {fileID: 1290536385}
-  - {fileID: 0}
+  - {fileID: 135340627}
   - {fileID: 0}
   botonesTorretas:
   - {fileID: 878903000}
@@ -19317,6 +19333,7 @@ MonoBehaviour:
   botonesConsumibles:
   - {fileID: 931722636}
   - {fileID: 1290536385}
+  - {fileID: 135340627}
   btDv: {fileID: 715089471}
   btDvSprite1: {fileID: 21300000, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
   btDvSprite2: {fileID: 21300002, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
@@ -20639,6 +20656,7 @@ MonoBehaviour:
     m_Bits: 1024
   zonaConsumible: {fileID: 0}
   scrZona: {fileID: 0}
+  palomas: {fileID: 0}
   precioSeleccionado: 0
 --- !u!1 &1682405809
 GameObject:
@@ -22453,6 +22471,7 @@ MonoBehaviour:
     m_Bits: 1024
   zonaConsumible: {fileID: 0}
   scrZona: {fileID: 0}
+  palomas: {fileID: 0}
   precioSeleccionado: 0
 --- !u!1 &1866149036
 GameObject:
