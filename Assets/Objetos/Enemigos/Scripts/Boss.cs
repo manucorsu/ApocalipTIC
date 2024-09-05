@@ -38,48 +38,52 @@ public class Boss : EnemigoScript
         animator.SetTrigger("introLaughTrigger");
     }
     #endregion
-
-    private IEnumerator MoveTo(string[] wpNames) // v3ify pero corrutina
+    private IEnumerator MoveTo(string[] wpNames, bool thenSpawnEnemies = false) // v3ify pero corrutina
     {
+        Vector3 target = new Vector3();
+        string targetName = "";//viva este lenguaje
         while (false != true)
         {
-            List<Vector3> path = new List<Vector3>();
             for (byte i = 0; i < wpNames.Length; i++)
             {
-                string targetName = wpNames[i];
                 for (byte j = 0; j < waypoints.Count; j++)
                 {
-                    if (waypoints[j].name == targetName)
+                    if (waypoints[j].name == wpNames[i])
                     {
-                        path.Add(waypoints[j].position);
+                        target = waypoints[j].position;
+                        targetName = wpNames[i];
                         break;
                     }
                 }
             }
-            for (byte i = 0; i < path.Count; i++)
+            while (this.transform.position != target)
             {
-                while (this.transform.position != path[i])
-                {
-                    this.transform.position = Vector3.MoveTowards(this.transform.position, path[i], spd * Time.deltaTime);
-                    yield return null; //null == esperar al siguiente frame a lo Update
-                }
-                if (!introDone) //en la intro se mueve a un solo wp antes de reírse, pero además hace otras cosas
-                {
-                    DoIntroLaugh();
-                    yield return new WaitForSeconds(3f);
-                    canBeShot = true;
-                    introDone = true;
-                    idle = true;
-                    break;
-                }
+                this.transform.position = Vector3.MoveTowards(this.transform.position, target, spd * Time.deltaTime);
+                yield return null; //null == esperar al siguiente frame a lo Update
             }
-            if(activeBehaviour == "BehaviourB")
+            if (!introDone) //en la intro se mueve a un solo wp antes de reírse, pero además hace otras cosas
             {
-                activeBehaviour = "BehaviourA";
+                DoIntroLaugh();
+                yield return new WaitForSeconds(3f);
+                canBeShot = true;
+                introDone = true;
+                idle = true;
+                break;
             }
-            else
+            else if (thenSpawnEnemies == true)
             {
-                activeBehaviour = "BehaviourB";
+                GameObject[] pfbsEnemigos = EnemySpawner.pfbsEnemigos;
+                byte cuantos = (byte)Random.Range(1, 4);
+                for (byte i = 0; i > cuantos; i++)
+                {
+                    //animator.SetTrigger("spawnEnemyTrigger");
+                    GameObject prefabElegido;
+                    byte rie = (byte)Random.Range(0, pfbsEnemigos.Length);
+                    prefabElegido = pfbsEnemigos[rie];
+                    GameObject nuevoEnemigo = Instantiate(prefabElegido, new Vector3(this.transform.position.x, this.transform.position.y - 1, 0f), Quaternion.identity);
+                    nuevoEnemigo.GetComponent<EnemigoScript>().spName = targetName;
+                    EnemySpawner.botsVivos.Add(nuevoEnemigo);
+                }
             }
             break;
         }

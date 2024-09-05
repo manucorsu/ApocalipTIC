@@ -9,6 +9,7 @@ public class GameOverSceneScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            EnemySpawner.ronda = 1;
             SceneManager.LoadScene("Game");
         }
     }

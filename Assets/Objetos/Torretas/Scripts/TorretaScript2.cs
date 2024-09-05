@@ -83,7 +83,7 @@ public class TorretaScript2 : MonoBehaviour
         {
             target = hits[0].transform;
             EnemigoScript targetscr = target.GetComponent<EnemigoScript>();
-            if (targetscr.canBeEaten == false)
+            if (targetscr.canBeEaten == false && targetscr.canBeShot == false)
             {
                 target = null;
             }
