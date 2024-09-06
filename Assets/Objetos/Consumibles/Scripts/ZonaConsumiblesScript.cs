@@ -72,16 +72,22 @@ public class ZonaConsumiblesScript : MonoBehaviour
         GameObject[] enemigos = GameObject.FindGameObjectsWithTag("enemigo");
         foreach(GameObject enemigo in enemigos)
         {
-            EnemigoScript scrEnemigo = enemigo.GetComponent<EnemigoScript>();
-            scrEnemigo.hp -= 10;
+            if (enemigo != null)
+            {
+                EnemigoScript scrEnemigo = enemigo.GetComponent<EnemigoScript>();
+                scrEnemigo.hp -= 10;
+            }
         }
 
         yield return new WaitForSeconds(1);
 
         foreach (GameObject enemigo in enemigos)
         {
-            EnemigoScript scrEnemigo = enemigo.GetComponent<EnemigoScript>();
-            scrEnemigo.hp -= 10;
+            if (enemigo != null)
+            {
+                EnemigoScript scrEnemigo = enemigo.GetComponent<EnemigoScript>();
+                scrEnemigo.hp -= 10;
+            }
         }
 
         yield return new WaitForSeconds(1);

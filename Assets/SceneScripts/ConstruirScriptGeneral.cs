@@ -41,7 +41,7 @@ public class ConstruirScriptGeneral : MonoBehaviour
             {
                 if (zona != null)
                 {
-                    zona.gameObject.SetActive(true);
+                    zona.gameObject.GetComponent<BoxCollider2D>().enabled = true;
                 }
             }
         }
@@ -59,7 +59,7 @@ public class ConstruirScriptGeneral : MonoBehaviour
             {
                 if (zona != null)
                 {
-                    zona.gameObject.SetActive(false);
+                    zona.gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 }
             }
         }
