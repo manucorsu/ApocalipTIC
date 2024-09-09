@@ -1,13 +1,14 @@
 fileFormatVersion: 2
-guid: 289f177e08faaac4db007fe9dacca295
+guid: 5910ba1a381647845a3bb50a106a65c3
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ROBOT 4 TODO-Sheet-export_0
-    21300002: ROBOT 4 TODO-Sheet-export_1
-    21300004: ROBOT 4 TODO-Sheet-export_2
-    21300006: ROBOT 4 TODO-Sheet-export_3
-    21300008: ROBOT 4 TODO-Sheet-export_4
-    21300010: ROBOT 4 TODO-Sheet-export_5
+    21300000: ROBOT 4 ACT_0
+    21300002: ROBOT 4 ACT_1
+    21300004: ROBOT 4 ACT_2
+    21300006: ROBOT 4 ACT_3
+    21300008: ROBOT 4 ACT_4
+    21300010: ROBOT 4 ACT_5
+    21300012: ROBOT 4 ACT_6
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -79,12 +80,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ROBOT 4 TODO-Sheet-export_0
+      name: ROBOT 4 ACT_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 14
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -93,18 +94,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0f2f4f41bfc5a54fb7bae624ac925e8
+      spriteID: e5d8d122f54c7744bb96f9686998d830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 4 TODO-Sheet-export_1
+      name: ROBOT 4 ACT_1
       rect:
         serializedVersion: 2
-        x: 17
+        x: 16
         y: 0
-        width: 14
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -113,18 +114,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 984f7dcb33c020d4fbd438c94736309f
+      spriteID: 798b1026ea7579e468454a83647b376a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 4 TODO-Sheet-export_2
+      name: ROBOT 4 ACT_2
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 0
-        width: 14
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -133,18 +134,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8a0903fe65546340aae49bb8b981724
+      spriteID: 6176d1961cfd43849af36de5774eeb80
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 4 TODO-Sheet-export_3
+      name: ROBOT 4 ACT_3
       rect:
         serializedVersion: 2
-        x: 49
+        x: 48
         y: 0
-        width: 14
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -153,18 +154,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce58ea3cade1f0542826044976db0b53
+      spriteID: a8f151a8adaec2c4b8f2a66943703c02
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 4 TODO-Sheet-export_4
+      name: ROBOT 4 ACT_4
       rect:
         serializedVersion: 2
-        x: 68
+        x: 64
         y: 0
-        width: 9
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -173,18 +174,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a3a2d2aa6eddb44589d9be671c88dfb
+      spriteID: 3981846e2c0b161429fb3839cfbbb002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 4 TODO-Sheet-export_5
+      name: ROBOT 4 ACT_5
       rect:
         serializedVersion: 2
-        x: 84
+        x: 80
         y: 0
-        width: 9
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -193,7 +194,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25d4e1b25d077584ebecafdad349cced
+      spriteID: 75cc295a267fb2c4c87a4a978fb20044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROBOT 4 ACT_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc217ccb7bffcfb468e45c96ca3141f3
       vertices: []
       indices: 
       edges: []
@@ -201,7 +222,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 332e964eaed548a47a658f0a29049241
+    spriteID: 1226f0428d1ba5748bce16896528f479
     vertices: []
     indices: 
     edges: []

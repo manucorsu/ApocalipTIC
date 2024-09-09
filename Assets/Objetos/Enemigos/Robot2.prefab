@@ -55,6 +55,7 @@ MonoBehaviour:
   spdSave: 0
   plata: 20
   canBeEaten: 1
+  canBeShot: 1
   spName: 
 --- !u!50 &7411269467034504210
 Rigidbody2D:
@@ -140,7 +141,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 4e188163733873a4ba835ec047a8b877, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e1521b8f76f101c4080f7001626582d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -190,4 +191,5 @@ MonoBehaviour:
     m_Bits: 0
   zonaConsumible: {fileID: 0}
   scrZona: {fileID: 0}
+  palomas: {fileID: 0}
   precioSeleccionado: 0

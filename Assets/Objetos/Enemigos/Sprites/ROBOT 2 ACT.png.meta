@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 4e188163733873a4ba835ec047a8b877
+guid: e1521b8f76f101c4080f7001626582d6
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ROBOT 2 TODO-Sheet-export_0
-    21300002: ROBOT 2 TODO-Sheet-export_1
-    21300004: ROBOT 2 TODO-Sheet-export_2
-    21300006: ROBOT 2 TODO-Sheet-export_3
-    21300008: ROBOT 2 TODO-Sheet-export_4
-    21300010: ROBOT 2 TODO-Sheet-export_5
-    21300012: ROBOT 2 TODO-Sheet-export_6
+    21300000: ROBOT 2 ACT_0
+    21300002: ROBOT 2 ACT_1
+    21300004: ROBOT 2 ACT_2
+    21300006: ROBOT 2 ACT_3
+    21300008: ROBOT 2 ACT_4
+    21300010: ROBOT 2 ACT_5
+    21300012: ROBOT 2 ACT_6
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -80,7 +80,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ROBOT 2 TODO-Sheet-export_0
+      name: ROBOT 2 ACT_0
       rect:
         serializedVersion: 2
         x: 0
@@ -94,13 +94,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c7ebcc0b23f98d48870f6a6071be38c
+      spriteID: b2566fb041b71a949a3fd30ed3342a32
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 2 TODO-Sheet-export_1
+      name: ROBOT 2 ACT_1
       rect:
         serializedVersion: 2
         x: 16
@@ -114,13 +114,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ff158169307abd43a60bcf88416d8b1
+      spriteID: 05e1b3764dd36e34690a539404d90f8f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 2 TODO-Sheet-export_2
+      name: ROBOT 2 ACT_2
       rect:
         serializedVersion: 2
         x: 32
@@ -134,13 +134,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd2f9e3817b308e4e9e7d9e9fb07f9ba
+      spriteID: 2778738704de23d4a943cd20d0d47d66
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 2 TODO-Sheet-export_3
+      name: ROBOT 2 ACT_3
       rect:
         serializedVersion: 2
         x: 48
@@ -154,13 +154,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ba9ee62edd922441a69216781929b6b
+      spriteID: ef4560f2aed220f4eb1f6601bde1a44d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 2 TODO-Sheet-export_4
+      name: ROBOT 2 ACT_4
       rect:
         serializedVersion: 2
         x: 64
@@ -174,13 +174,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9264b799ca6df7e4b8b60e8e27b0d20c
+      spriteID: 7abcf9358ead0ee4fb47c90fbb10c685
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 2 TODO-Sheet-export_5
+      name: ROBOT 2 ACT_5
       rect:
         serializedVersion: 2
         x: 80
@@ -194,13 +194,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74c206ac394d46545bfb71766273913f
+      spriteID: 20c4266eedf39594aa3a784bae5d8dad
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 2 TODO-Sheet-export_6
+      name: ROBOT 2 ACT_6
       rect:
         serializedVersion: 2
         x: 96
@@ -214,7 +214,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 126802092b0b81c4eb54acfc12da0179
+      spriteID: e10c2c42aabdfdb48b1c99c15d82d935
       vertices: []
       indices: 
       edges: []
@@ -222,7 +222,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: e8de73bcc880cfb4c9410e4397eec12b
+    spriteID: 9082927efd4b4c3439d7a47795eb6e92
     vertices: []
     indices: 
     edges: []
