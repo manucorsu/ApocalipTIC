@@ -21,6 +21,9 @@ public class EnemigoScript : MonoBehaviour
     public float plata; //cuánta $ recibe el jugador al mater a este enemigo.
     public bool canBeEaten = true;
     public bool canBeShot = true;
+    private SpriteRenderer spriteRenderer;
+    private Color baseColor;
+    private Color redHurt = new Color(185, 26, 28,1);
     #endregion
 
     [HideInInspector] private ConstruirScriptGeneral construirscr; // ni idea fue Marcos
@@ -55,6 +58,8 @@ public class EnemigoScript : MonoBehaviour
     protected virtual void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
     {
         secuenciaAnims.Clear(); //cuenta como asignación? 
+        spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+        baseColor = spriteRenderer.color;
         animator = this.gameObject.GetComponent<Animator>();
         padreWaypoints = GameObject.Find("PadreWaypoints");
         foreach (Transform hijo in padreWaypoints.transform)
@@ -160,10 +165,21 @@ public class EnemigoScript : MonoBehaviour
             }
         }
     }
-
+    private IEnumerator HurtVFX()
+    {
+        while (false != true)
+        {
+            this.spriteRenderer.color = redHurt;
+            Debug.Log("ouch");
+            yield return new WaitForSecondsRealtime(1);
+            this.spriteRenderer.color = baseColor;
+            break;
+        }
+    }
     public virtual void Sufrir(float dmg)
     { // Sufrir daño causado por PROYECTILES (balas que usan el BalaScript).
       //BAJO NINGUNA CIRCUNSTANCIA usar para balas "especiales" (como el chorro de agua o el proyector)
+        StartCoroutine(HurtVFX());
         hp -= dmg;
         if (hp <= 0) Morir();
         else { return; }
