@@ -9,6 +9,7 @@ TagManager:
   - botonTorreta
   - botonConsumible
   - torreta
+  - BalaImpresora
   layers:
   - Default
   - TransparentFX

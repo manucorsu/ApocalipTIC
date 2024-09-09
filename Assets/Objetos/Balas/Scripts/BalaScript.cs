@@ -9,6 +9,7 @@ public class BalaScript : MonoBehaviour
 
     public Rigidbody2D rb;
     private Transform target;
+    private SpriteRenderer sr;
 
     //Variables
 
@@ -18,7 +19,12 @@ public class BalaScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if (this.gameObject.tag == "BalaImpresora")
+        {
+            sr = GetComponent<SpriteRenderer>();
+            Color randomColor = new Color(Random.value, Random.value, Random.value);
+            sr.color = randomColor;
+        }
     }
 
     // Update is called once per frame

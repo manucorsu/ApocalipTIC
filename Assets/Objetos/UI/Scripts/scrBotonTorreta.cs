@@ -62,6 +62,13 @@ public class scrBotonTorreta : MonoBehaviour, IPointerEnterHandler, IPointerExit
             txtDescTorreta.text = "Deja un charco que realentiza a los enemigos.";
             cuadroTorreta.SetActive(true);
         }
+
+        if (this.gameObject == GameObject.Find("btnPalomas"))
+        {
+            txtTítuloTorreta.text = "Palomas";
+            txtDescTorreta.text = "Estampida que daña a todos los enemigos.";
+            cuadroTorreta.SetActive(true);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
