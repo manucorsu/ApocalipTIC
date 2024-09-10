@@ -153,6 +153,22 @@ public class scrBotones : MonoBehaviour
             }
         }
 
+        //LANZABOMBUCHAS
+        if (torreta == 6)
+        {
+            foreach (GameObject tile in tiles)
+            {
+                if (tile != null)
+                {
+                    scrConstruir = tile.GetComponent<ConstruirScript>();
+                    scrConstruir.torretaSeleccionada = torretas[5];
+
+                    TorretaScript scrLanzabombuchas = torretas[5].GetComponent<TorretaScript>();
+                    scrConstruir.precioSeleccionado = scrLanzabombuchas.precio;
+                }
+            }
+        }
+
         //BIDÓN
         if (torreta == 9)
         {
@@ -249,9 +265,9 @@ public class scrBotones : MonoBehaviour
         ConstruirScriptGeneral scrConstruirGeneral = sceneScripts.GetComponent<ConstruirScriptGeneral>();
 
 
-        //TIRALÁPICES
+        //TIRALÁPICES / TIRALAPÍCERAS / LANZABOMBUCHAS
 
-        if (textoMejoraTorreta.text == "Tiralápices" || textoMejoraTorreta.text == "Tiralapiceras") 
+        if (textoMejoraTorreta.text == "Tiralápices" || textoMejoraTorreta.text == "Tiralapiceras" || textoMejoraTorreta.text == "Lanzabombuchas") 
         {
             TorretaScript scrTorreta = torretaParaMejorar.GetComponent<TorretaScript>();
 
@@ -310,6 +326,8 @@ public class scrBotones : MonoBehaviour
                 scrMejora.Mejorar();
             }
         }
+
+        
     }
 
     public void CerrarCuadroMejora()

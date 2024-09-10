@@ -26,6 +26,7 @@ public class MejorasScript : MonoBehaviour
     public GameObject tacho;
     public GameObject proyector;
     public GameObject tiralapiceras;
+    public GameObject lanzabombuchas;
 
     private Button btnMejora1;
     private Button btnMejora2;
@@ -198,6 +199,22 @@ public class MejorasScript : MonoBehaviour
         {
             TorretaScript torretaScr = this.GetComponent<TorretaScript>();
             textoTorreta.text = "Tiralapiceras";
+            textoMejora1.text = "Spd:" + torretaScr.nivel1; //torretaScr.bps.ToString();
+            textoMejora2.text = "Ran:" + torretaScr.nivel2; //torretaScr.rango.ToString();
+            textoMejora3.text = "Dmg:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
+            textoPrecioMejora.text = "$" + torretaScr.precioMejora;
+
+            btnMejora1.enabled = true;
+            btnMejora2.enabled = true;
+            btnMejora3.GetComponent<Image>().enabled = true;
+        }
+
+        //LANZABOMBUCHAS
+
+        if (this.gameObject == lanzabombuchas)
+        {
+            TorretaScript torretaScr = this.GetComponent<TorretaScript>();
+            textoTorreta.text = "Lanzabombuchas";
             textoMejora1.text = "Spd:" + torretaScr.nivel1; //torretaScr.bps.ToString();
             textoMejora2.text = "Ran:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Dmg:" + torretaScr.nivel3; //torretaScr.dmg.ToString();

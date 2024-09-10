@@ -71,9 +71,18 @@ public class TorretaScript : MonoBehaviour
     {
         animator.SetFloat("anim", 1);
         GameObject balaObj = Instantiate(bala, firingPoint.position, punta.rotation);
-        BalaScript balascript = balaObj.GetComponent<BalaScript>();
-        balascript.SetTarget(target);
-        balascript.balaDmg = dmg;
+        if (balaObj.tag == "Bombucha")
+        {
+            BombuchaScript bombuchaScr = balaObj.GetComponent<BombuchaScript>();
+            bombuchaScr.SetTarget(target);
+            bombuchaScr.balaDmg = dmg;
+        }
+        else
+        {
+            BalaScript balascript = balaObj.GetComponent<BalaScript>();
+            balascript.SetTarget(target);
+            balascript.balaDmg = dmg;
+        }
         yield return new WaitForSeconds(0.2f);
         animator.SetFloat("anim", 0);
     }

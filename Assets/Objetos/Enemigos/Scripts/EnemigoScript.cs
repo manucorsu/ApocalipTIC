@@ -206,6 +206,13 @@ public class EnemigoScript : MonoBehaviour
             return;
         }
 
+        else if(collision.gameObject.tag == "Bombucha")
+        {
+            BombuchaScript bala = collision.gameObject.GetComponent<BombuchaScript>();
+            Sufrir(bala.balaDmg);
+            Destroy(bala.gameObject);
+            Debug.Log("auch");
+        }
         else
         {
             BalaScript bala = collision.gameObject.GetComponent<BalaScript>();

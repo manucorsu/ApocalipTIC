@@ -245,6 +245,8 @@ MonoBehaviour:
   proyector: {fileID: 2296560995446444706, guid: bae9b735f1732e2458057a0b6694746f,
     type: 3}
   tiralapiceras: {fileID: 3659079229627018876}
+  lanzabombuchas: {fileID: 6129792462237073539, guid: aa99b3ddceb2f3646be79cf705e4d571,
+    type: 3}
   scrbotones: {fileID: 0}
   mainCamera: {fileID: 0}
   canvasTransform: {fileID: 0}

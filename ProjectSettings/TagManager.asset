@@ -10,6 +10,7 @@ TagManager:
   - botonConsumible
   - torreta
   - BalaImpresora
+  - Bombucha
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - NWA
   - zonasConsumibles
   - Tiralapiceras
-  - 
+  - Lanzabombuchas
   - 
   - 
   - 

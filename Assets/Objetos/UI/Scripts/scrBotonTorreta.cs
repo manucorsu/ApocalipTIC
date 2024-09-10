@@ -49,6 +49,13 @@ public class scrBotonTorreta : MonoBehaviour, IPointerEnterHandler, IPointerExit
             cuadroTorreta.SetActive(true);
         }
 
+        if (this.gameObject == GameObject.Find("btnLanzabombuchas"))
+        {
+            txtTítuloTorreta.text = "Lanzabombuchas";
+            txtDescTorreta.text = "Lanza bombuchas que explotan en área.";
+            cuadroTorreta.SetActive(true);
+        }
+
         if (this.gameObject == GameObject.Find("btnBidón"))
         {
             txtTítuloTorreta.text = "Bidón";
