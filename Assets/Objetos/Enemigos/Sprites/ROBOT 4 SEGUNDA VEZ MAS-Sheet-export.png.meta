@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 5910ba1a381647845a3bb50a106a65c3
+guid: de398e57fb3e5e649b62f04a95cf278f
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ROBOT 4 ACT_0
-    21300002: ROBOT 4 ACT_1
-    21300004: ROBOT 4 ACT_2
-    21300006: ROBOT 4 ACT_3
-    21300008: ROBOT 4 ACT_4
-    21300010: ROBOT 4 ACT_5
-    21300012: ROBOT 4 ACT_6
+    21300000: ROBOT 4 SEGUNDA VEZ MAS-Sheet-export_0
+    21300002: ROBOT 4 SEGUNDA VEZ MAS-Sheet-export_1
+    21300004: ROBOT 4 SEGUNDA VEZ MAS-Sheet-export_2
+    21300006: ROBOT 4 SEGUNDA VEZ MAS-Sheet-export_3
+    21300008: ROBOT 4 SEGUNDA VEZ MAS-Sheet-export_4
+    21300010: ROBOT 4 SEGUNDA VEZ MAS-Sheet-export_5
+    21300012: ROBOT 4 SEGUNDA VEZ MAS-Sheet-export_6
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -80,7 +80,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ROBOT 4 ACT_0
+      name: ROBOT 4 SEGUNDA VEZ MAS-Sheet-export_0
       rect:
         serializedVersion: 2
         x: 0
@@ -94,13 +94,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5d8d122f54c7744bb96f9686998d830
+      spriteID: 4956026077e83e9499ee1537787ac50e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 4 ACT_1
+      name: ROBOT 4 SEGUNDA VEZ MAS-Sheet-export_1
       rect:
         serializedVersion: 2
         x: 16
@@ -114,13 +114,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 798b1026ea7579e468454a83647b376a
+      spriteID: 2da6b28b216acb749ab09d7ced98a6b2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 4 ACT_2
+      name: ROBOT 4 SEGUNDA VEZ MAS-Sheet-export_2
       rect:
         serializedVersion: 2
         x: 32
@@ -134,13 +134,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6176d1961cfd43849af36de5774eeb80
+      spriteID: 5fe04c224d9e1934fb6f24798472bd7d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 4 ACT_3
+      name: ROBOT 4 SEGUNDA VEZ MAS-Sheet-export_3
       rect:
         serializedVersion: 2
         x: 48
@@ -154,13 +154,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8f151a8adaec2c4b8f2a66943703c02
+      spriteID: db8dfe0bf70d667418606d31db561834
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 4 ACT_4
+      name: ROBOT 4 SEGUNDA VEZ MAS-Sheet-export_4
       rect:
         serializedVersion: 2
         x: 64
@@ -174,13 +174,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3981846e2c0b161429fb3839cfbbb002
+      spriteID: bf53d559eff349b4a820b138bc217246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 4 ACT_5
+      name: ROBOT 4 SEGUNDA VEZ MAS-Sheet-export_5
       rect:
         serializedVersion: 2
         x: 80
@@ -194,13 +194,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75cc295a267fb2c4c87a4a978fb20044
+      spriteID: c52b814d199cb0441bbf1a946988bf1c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ROBOT 4 ACT_6
+      name: ROBOT 4 SEGUNDA VEZ MAS-Sheet-export_6
       rect:
         serializedVersion: 2
         x: 96
@@ -214,7 +214,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc217ccb7bffcfb468e45c96ca3141f3
+      spriteID: 4f6918bfddd13934db5bb8f0c3ff5ace
       vertices: []
       indices: 
       edges: []
@@ -222,7 +222,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1226f0428d1ba5748bce16896528f479
+    spriteID: b1a90c4ddf58c454891f3227a7cfd65f
     vertices: []
     indices: 
     edges: []

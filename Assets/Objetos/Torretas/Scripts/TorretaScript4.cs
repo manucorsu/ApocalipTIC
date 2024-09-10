@@ -14,7 +14,6 @@ public class TorretaScript4 : MonoBehaviour
     public Transform target;
     public GameObject bala;
     public LayerMask enemigos;
-    public BalaScript4 balascr4;
     public RaycastHit2D[] hits;
     public RaycastHit2D[] hits2;
     public Transform puntaRecta;

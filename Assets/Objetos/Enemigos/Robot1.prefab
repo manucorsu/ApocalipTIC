@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191c9e6e90394dd49957e2d7ac96a0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtColor: {r: 0.8490566, g: 0.21226415, b: 0.21226415, a: 1}
   isBoss: 0
   minRonda: 0
   hp: 100
@@ -55,6 +56,7 @@ MonoBehaviour:
   spdSave: 0
   plata: 15
   canBeEaten: 1
+  canBeShot: 1
   spName: 
 --- !u!50 &4711819497900499443
 Rigidbody2D:
@@ -190,4 +192,5 @@ MonoBehaviour:
     m_Bits: 0
   zonaConsumible: {fileID: 0}
   scrZona: {fileID: 0}
+  palomas: {fileID: 0}
   precioSeleccionado: 0

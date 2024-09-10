@@ -11,7 +11,7 @@ public class Boss : EnemigoScript
         {"MoveDown", 0f},
         {"MoveLeft", 1f},
         {"MoveRight", 2f},
-        {"MoveUp", 3f},
+        {"MoveUp", 3f}
     };
 
     #region behaviour

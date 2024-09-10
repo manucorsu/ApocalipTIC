@@ -9,6 +9,8 @@ public class EnemigoScript : MonoBehaviour
     #region anim
     protected Animator animator;
     protected List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
+    private Color baseColor = new Color(255, 255, 255, 255);
+    [SerializeField] private Color hurtColor;
     #endregion
 
     #region stats
@@ -22,8 +24,6 @@ public class EnemigoScript : MonoBehaviour
     public bool canBeEaten = true;
     public bool canBeShot = true;
     private SpriteRenderer spriteRenderer;
-    private Color baseColor;
-    private Color redHurt = new Color(185, 26, 28,1);
     #endregion
 
     [HideInInspector] private ConstruirScriptGeneral construirscr; // ni idea fue Marcos
@@ -38,6 +38,7 @@ public class EnemigoScript : MonoBehaviour
     #endregion
 
     private IEnumerator sufrirNicho; private float sufrirNichoDPS; private float nichoCooldown;
+    private bool isBeingHurtByNicho;
 
 
     void Awake()
@@ -57,9 +58,9 @@ public class EnemigoScript : MonoBehaviour
 
     protected virtual void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
     {
+        v3Camino.Clear();
         secuenciaAnims.Clear(); //cuenta como asignación? 
         spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-        baseColor = spriteRenderer.color;
         animator = this.gameObject.GetComponent<Animator>();
         padreWaypoints = GameObject.Find("PadreWaypoints");
         foreach (Transform hijo in padreWaypoints.transform)
@@ -149,6 +150,10 @@ public class EnemigoScript : MonoBehaviour
 
     void Update()
     {
+        if (isBeingHurtByNicho == false && sufrirNicho != null)
+        {
+            StopCoroutine(sufrirNicho);
+        }
         if (siguiendo == true)
         {
             animator.SetFloat("anim", secuenciaAnims[wi]);
@@ -167,18 +172,14 @@ public class EnemigoScript : MonoBehaviour
     }
     private IEnumerator HurtVFX()
     {
-        while (false != true)
-        {
-            this.spriteRenderer.color = redHurt;
-            Debug.Log("ouch");
-            yield return new WaitForSecondsRealtime(1);
-            this.spriteRenderer.color = baseColor;
-            break;
-        }
+        this.spriteRenderer.color = hurtColor;
+        yield return new WaitForSeconds(0.1f);
+        this.spriteRenderer.color = baseColor;
     }
     public virtual void Sufrir(float dmg)
     { // Sufrir daño causado por PROYECTILES (balas que usan el BalaScript).
       //BAJO NINGUNA CIRCUNSTANCIA usar para balas "especiales" (como el chorro de agua o el proyector)
+        StopCoroutine(HurtVFX());
         StartCoroutine(HurtVFX());
         hp -= dmg;
         if (hp <= 0) Morir();
@@ -223,15 +224,18 @@ public class EnemigoScript : MonoBehaviour
 
     private IEnumerator SufrirNicho()
     {
+        isBeingHurtByNicho = true;
         while (false != true)
         {
-            yield return new WaitForSeconds(nichoCooldown);
+            StopCoroutine(HurtVFX());
+            StartCoroutine(HurtVFX());
             hp -= sufrirNichoDPS;
             if (hp <= 0)
             {
                 Morir();
-                break;
             }
+            else if (isBeingHurtByNicho == false) { break; }
+            else { yield return new WaitForSeconds(nichoCooldown); }
         }
     }
 
@@ -248,16 +252,6 @@ public class EnemigoScript : MonoBehaviour
         this.spd = spdSave;
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Bala2")
-        {
-            if (sufrirNicho != null)
-            {
-                StopCoroutine(sufrirNicho);
-            }
-        }
-    }
 
     public virtual void Morir()
     {
@@ -272,5 +266,9 @@ public class EnemigoScript : MonoBehaviour
         Morir();
         Debug.LogWarning("PERDISTE");
         SceneManager.LoadScene("GameOver");
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (isBeingHurtByNicho) isBeingHurtByNicho = false;
     }
 }

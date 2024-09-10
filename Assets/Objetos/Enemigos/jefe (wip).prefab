@@ -50,7 +50,7 @@ MonoBehaviour:
   isBoss: 1
   minRonda: 0
   hp: 3500
-  spd: 1.5
+  spd: 2
   spdSave: 0
   plata: 5000
   canBeEaten: 0
