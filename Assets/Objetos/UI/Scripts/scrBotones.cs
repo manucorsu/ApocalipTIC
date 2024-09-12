@@ -35,6 +35,9 @@ public class scrBotones : MonoBehaviour
     public GameObject torretaParaMejorar;
 
     public GameObject sceneScripts;
+    private ConstruirScriptGeneral scrConstruirGeneral;
+    public float precioParaVender;
+    public GameObject tile;
 
     //Variables
 
@@ -44,6 +47,8 @@ public class scrBotones : MonoBehaviour
     {
         textoMejoraTorreta = GameObject.Find("txtMejoraTorreta").GetComponent<TMP_Text>();
         sceneScripts = GameObject.Find("SCENESCRIPTS");
+
+        scrConstruirGeneral = sceneScripts.GetComponent<ConstruirScriptGeneral>();
     }
 
     // Update is called once per frame
@@ -210,7 +215,7 @@ public class scrBotones : MonoBehaviour
 
 
 
-        if (botones[torreta-1].tag == "botonTorreta")
+        if (botones[torreta - 1].tag == "botonTorreta")
         {
             foreach (GameObject boton in botonesTorretas)
             {
@@ -218,7 +223,7 @@ public class scrBotones : MonoBehaviour
                 imagen.sprite = btTorretaSprite1;
             }
 
-            Image imagen2 = botones[torreta-1].GetComponent<Image>();
+            Image imagen2 = botones[torreta - 1].GetComponent<Image>();
             imagen2.sprite = btTorretaSprite2;
 
         }
@@ -262,12 +267,11 @@ public class scrBotones : MonoBehaviour
 
     public void BtnMejora(int boton)
     {
-        ConstruirScriptGeneral scrConstruirGeneral = sceneScripts.GetComponent<ConstruirScriptGeneral>();
 
 
         //TIRALÁPICES / TIRALAPÍCERAS / LANZABOMBUCHAS
 
-        if (textoMejoraTorreta.text == "Tiralápices" || textoMejoraTorreta.text == "Tiralapiceras" || textoMejoraTorreta.text == "Lanzabombuchas") 
+        if (textoMejoraTorreta.text == "Tiralápices" || textoMejoraTorreta.text == "Tiralapiceras" || textoMejoraTorreta.text == "Lanzabombuchas")
         {
             TorretaScript scrTorreta = torretaParaMejorar.GetComponent<TorretaScript>();
 
@@ -286,7 +290,7 @@ public class scrBotones : MonoBehaviour
 
         if (textoMejoraTorreta.text == "Nicho")
         {
-                TorretaScript2 scrTorreta = torretaParaMejorar.GetComponent<TorretaScript2>();
+            TorretaScript2 scrTorreta = torretaParaMejorar.GetComponent<TorretaScript2>();
 
             if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
             {
@@ -327,7 +331,7 @@ public class scrBotones : MonoBehaviour
             }
         }
 
-        
+
     }
 
     public void CerrarCuadroMejora()
@@ -336,5 +340,13 @@ public class scrBotones : MonoBehaviour
         cuadroMejora.rectTransform.position = new Vector2(1000, 1000);
     }
 
+    public void Vender()
+    {
+        scrConstruirGeneral.plataActual += precioParaVender;
+        GameObject tileNueva = Instantiate(tile);
+        tileNueva.transform.position = torretaParaMejorar.transform.position;
+        CerrarCuadroMejora();
+        Destroy(torretaParaMejorar);
+    }
 }
 

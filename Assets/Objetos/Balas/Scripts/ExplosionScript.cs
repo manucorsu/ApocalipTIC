@@ -23,7 +23,7 @@ public class ExplosionScript : MonoBehaviour
         if (collision.tag == "enemigo")
         {
             EnemigoScript enemigoScript = collision.GetComponent<EnemigoScript>();
-            enemigoScript.hp -= daño;
+            enemigoScript.Sufrir(daño);
 
             Debug.Log("GOLPE");
         }

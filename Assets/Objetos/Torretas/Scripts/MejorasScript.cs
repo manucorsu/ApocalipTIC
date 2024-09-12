@@ -38,6 +38,7 @@ public class MejorasScript : MonoBehaviour
     public RectTransform canvasTransform;
 
 
+
     
 
     // Start is called before the first frame update
@@ -68,13 +69,13 @@ public class MejorasScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
+
 
     private void OnMouseDown()
     {
         //EVITAR QUE EL CLICK NO ATRAVIESE LA UI
-
         PointerEventData pointer = new PointerEventData(EventSystem.current);
         pointer.position = Input.mousePosition;
 
@@ -134,6 +135,7 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Ran:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Dmg:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
+            scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2);
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
@@ -151,6 +153,7 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Dmg:" + torretaScr2.nivel2; //torretaScr2.dps.ToString();
             textoMejora3.text = "";
             textoPrecioMejora.text = "$" + torretaScr2.precioMejora;
+            scrbotones.precioParaVender = Mathf.Round(torretaScr2.precio / 2);
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
@@ -168,6 +171,7 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Ran:" + torretaScr3.nivel2; //torretaScr3.rango.ToString();
             textoMejora3.text = "";
             textoPrecioMejora.text = "$" + torretaScr3.precioMejora;
+            scrbotones.precioParaVender = Mathf.Round(torretaScr3.precio / 2);
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
@@ -186,6 +190,7 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Ran:" + torretaScr4.nivel2; //torretaScr4.dps.ToString();
             textoMejora3.text = "";
             textoPrecioMejora.text = "$" + torretaScr4.precioMejora;
+            scrbotones.precioParaVender = Mathf.Round(torretaScr4.precio / 2);
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
@@ -203,6 +208,7 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Ran:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Dmg:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
+            scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2);
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
@@ -219,6 +225,7 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Ran:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Dmg:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
+            scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2);
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;

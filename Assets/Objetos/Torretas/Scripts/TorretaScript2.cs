@@ -98,10 +98,13 @@ public class TorretaScript2 : MonoBehaviour
 
     private void RotateTowardsTarget()
     {
-        float angulo = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angulo - 90));
+        if (target != null)
+        {
+            float angulo = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angulo - 90));
 
-        punta.rotation = Quaternion.RotateTowards(punta.rotation, targetRotation, rotationSpd * Time.deltaTime);
+            punta.rotation = Quaternion.RotateTowards(punta.rotation, targetRotation, rotationSpd * Time.deltaTime);
+        }
 
     }
 

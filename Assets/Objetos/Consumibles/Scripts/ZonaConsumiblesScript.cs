@@ -75,7 +75,7 @@ public class ZonaConsumiblesScript : MonoBehaviour
             if (enemigo != null)
             {
                 EnemigoScript scrEnemigo = enemigo.GetComponent<EnemigoScript>();
-                scrEnemigo.hp -= 10;
+                scrEnemigo.Sufrir(10);
             }
         }
 

@@ -11,6 +11,7 @@ public class ConstruirScript : MonoBehaviour
     public GameObject torretaSeleccionada = null;
     private SpriteRenderer sr;
     private ConstruirScriptGeneral scrConstruir;
+    private scrBotones botonesScript;
 
     //Variables
 
@@ -56,11 +57,14 @@ public class ConstruirScript : MonoBehaviour
         {
             if (torretaSeleccionada != null)
             {
-                Instantiate(torretaSeleccionada, transform.position, Quaternion.identity);
+                GameObject torreta = Instantiate(torretaSeleccionada, transform.position, Quaternion.identity);
+                MejorasScript torretaScr = torreta.GetComponent<MejorasScript>();
                 scrConstruir.plataActual -= precioSeleccionado;
                 Destroy(this.gameObject);
             }
         }
+
+        botonesScript = sceneScripts.GetComponent<scrBotones>();
     }
 
     private void OnMouseEnter()
