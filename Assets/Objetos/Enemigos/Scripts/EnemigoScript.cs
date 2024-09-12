@@ -17,7 +17,7 @@ public class EnemigoScript : MonoBehaviour
     [Header("Stats")]
     public bool isBoss;
     public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
-    [SerializeField] private byte baseHP;
+    [SerializeField] private float baseHP;
     public float hp;
     public float spd; //speed
     [HideInInspector] public float spdSave;
@@ -267,6 +267,7 @@ public class EnemigoScript : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        this.spriteRenderer.color = baseColor;
         StopCoroutine(sufrirNicho);
     }
 }
