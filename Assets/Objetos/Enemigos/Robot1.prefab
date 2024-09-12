@@ -51,6 +51,7 @@ MonoBehaviour:
   hurtColor: {r: 0.8490566, g: 0.21226415, b: 0.21226415, a: 1}
   isBoss: 0
   minRonda: 0
+  baseHP: 100
   hp: 100
   spd: 2.2
   spdSave: 0

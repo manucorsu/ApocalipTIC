@@ -17,6 +17,7 @@ public class EnemigoScript : MonoBehaviour
     [Header("Stats")]
     public bool isBoss;
     public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
+    [SerializeField] private byte baseHP;
     public float hp;
     public float spd; //speed
     [HideInInspector] public float spdSave;
@@ -37,9 +38,8 @@ public class EnemigoScript : MonoBehaviour
     protected bool siguiendo = false; //ver final de V3ify()
     #endregion
 
-    private IEnumerator sufrirNicho; private float sufrirNichoDPS; private float nichoCooldown;
-    private bool isBeingHurtByNicho;
-
+    private IEnumerator sufrirNicho;
+    private float sufrirNichoDPS; private float nichoCooldown;
 
     void Awake()
     {
@@ -58,6 +58,9 @@ public class EnemigoScript : MonoBehaviour
 
     protected virtual void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
     {
+        StopAllCoroutines();
+        sufrirNicho = SufrirNicho();
+        hp = baseHP;
         v3Camino.Clear();
         secuenciaAnims.Clear(); //cuenta como asignación? 
         spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
@@ -150,10 +153,6 @@ public class EnemigoScript : MonoBehaviour
 
     void Update()
     {
-        if (isBeingHurtByNicho == false && sufrirNicho != null)
-        {
-            StopCoroutine(sufrirNicho);
-        }
         if (siguiendo == true)
         {
             animator.SetFloat("anim", secuenciaAnims[wi]);
@@ -191,7 +190,7 @@ public class EnemigoScript : MonoBehaviour
         if (collision.gameObject.name == "Bala2") //el chorro de agua
         {
             TorretaScript2 nicho = collision.gameObject.transform.root.gameObject.GetComponent<TorretaScript2>();
-            sufrirNichoDPS = nicho.dps; sufrirNicho = SufrirNicho();
+            sufrirNichoDPS = nicho.dps;
             nichoCooldown = nicho.cooldown;
             StartCoroutine(sufrirNicho);
         }
@@ -207,7 +206,7 @@ public class EnemigoScript : MonoBehaviour
             return;
         }
 
-        else if(collision.gameObject.tag == "Bombucha")
+        else if (collision.gameObject.tag == "Bombucha")
         {
             BombuchaScript bala = collision.gameObject.GetComponent<BombuchaScript>();
             Sufrir(bala.balaDmg);
@@ -224,18 +223,16 @@ public class EnemigoScript : MonoBehaviour
 
     private IEnumerator SufrirNicho()
     {
-        isBeingHurtByNicho = true;
         while (false != true)
         {
-            StopCoroutine(HurtVFX());
-            StartCoroutine(HurtVFX());
             hp -= sufrirNichoDPS;
             if (hp <= 0)
             {
                 Morir();
             }
-            else if (isBeingHurtByNicho == false) { break; }
-            else { yield return new WaitForSeconds(nichoCooldown); }
+            this.spriteRenderer.color = hurtColor;
+            yield return new WaitForSeconds(nichoCooldown);
+            this.spriteRenderer.color = baseColor;
         }
     }
 
@@ -270,6 +267,6 @@ public class EnemigoScript : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (isBeingHurtByNicho) isBeingHurtByNicho = false;
+        StopCoroutine(sufrirNicho);
     }
 }

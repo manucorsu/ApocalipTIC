@@ -47,12 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0ca29213d2843843873bfafe6e65a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
   isBoss: 1
   minRonda: 0
+  baseHP: 6000
   hp: 3500
   spd: 2
   spdSave: 0
-  plata: 5000
+  plata: 500
   canBeEaten: 0
   canBeShot: 0
   spName: 
