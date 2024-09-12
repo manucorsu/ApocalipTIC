@@ -337,7 +337,7 @@ public class scrBotones : MonoBehaviour
     public void CerrarCuadroMejora()
     {
         Image cuadroMejora = GameObject.Find("cuadroMejora").GetComponent<Image>();
-        cuadroMejora.rectTransform.position = new Vector2(1000, 1000);
+        cuadroMejora.rectTransform.position = new Vector2(10000, 10000);
     }
 
     public void Vender()
