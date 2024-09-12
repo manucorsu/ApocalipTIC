@@ -342,9 +342,11 @@ public class scrBotones : MonoBehaviour
 
     public void Vender()
     {
+
         scrConstruirGeneral.plataActual += precioParaVender;
-        GameObject tileNueva = Instantiate(tile);
-        tileNueva.transform.position = torretaParaMejorar.transform.position;
+        MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+        scrMejora.tileParaRenovar.GetComponent<BoxCollider2D>().enabled = true;
+        scrMejora.tileParaRenovar.GetComponent<SpriteRenderer>().enabled = true;
         CerrarCuadroMejora();
         Destroy(torretaParaMejorar);
     }

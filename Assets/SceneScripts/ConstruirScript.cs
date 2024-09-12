@@ -22,6 +22,7 @@ public class ConstruirScript : MonoBehaviour
         sceneScripts = GameObject.Find("SCENESCRIPTS");
         sr = gameObject.GetComponent<SpriteRenderer>();
         scrConstruir = sceneScripts.GetComponent<ConstruirScriptGeneral>();
+        botonesScript = sceneScripts.GetComponent<scrBotones>();
     }
 
     void Update()
@@ -59,12 +60,14 @@ public class ConstruirScript : MonoBehaviour
             {
                 GameObject torreta = Instantiate(torretaSeleccionada, transform.position, Quaternion.identity);
                 MejorasScript torretaScr = torreta.GetComponent<MejorasScript>();
+                torretaScr.tileParaRenovar = this.gameObject;
                 scrConstruir.plataActual -= precioSeleccionado;
-                Destroy(this.gameObject);
+                this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
 
-        botonesScript = sceneScripts.GetComponent<scrBotones>();
+        
     }
 
     private void OnMouseEnter()

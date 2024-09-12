@@ -37,6 +37,7 @@ public class MejorasScript : MonoBehaviour
     public Camera mainCamera;
     public RectTransform canvasTransform;
 
+    public GameObject tileParaRenovar;
 
 
     
@@ -98,11 +99,11 @@ public class MejorasScript : MonoBehaviour
         {
             cuadroMejora.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, this.transform.TransformPoint(Vector3.zero));
            
-            float thisPosX = this.transform.position.x + 2;
+            float thisPosX = this.transform.position.x + 2.5f;
             float thisPosY = this.transform.position.y;
 
-            if (this.transform.position.x > 10) {
-                thisPosX -= 4;
+            if (this.transform.position.x > 8) {
+                thisPosX -= 5.5f;
             }
             if (this.transform.position.y > -5)
             {
@@ -110,7 +111,7 @@ public class MejorasScript : MonoBehaviour
             }
             if (this.transform.position.y < 4)
             {
-                thisPosY += 1;
+                thisPosY += 2;
             }
 
             Vector2 ViewportPosition = mainCamera.WorldToViewportPoint(new Vector2(thisPosX, thisPosY));
@@ -131,9 +132,9 @@ public class MejorasScript : MonoBehaviour
         {
             TorretaScript torretaScr = this.GetComponent<TorretaScript>();
             textoTorreta.text = "Tiralápices";
-            textoMejora1.text = "Spd:" + torretaScr.nivel1; //torretaScr.bps.ToString();
-            textoMejora2.text = "Ran:" + torretaScr.nivel2; //torretaScr.rango.ToString();
-            textoMejora3.text = "Dmg:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
+            textoMejora1.text = "Velocidad:" + torretaScr.nivel1; //torretaScr.bps.ToString();
+            textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
+            textoMejora3.text = "Daño:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2);
 
@@ -149,8 +150,8 @@ public class MejorasScript : MonoBehaviour
         {
             TorretaScript2 torretaScr2 = this.GetComponent<TorretaScript2>();
             textoTorreta.text = "Nicho";
-            textoMejora1.text = "Spd:" + torretaScr2.nivel1; //torretaScr2.chorroScale.ToString();
-            textoMejora2.text = "Dmg:" + torretaScr2.nivel2; //torretaScr2.dps.ToString();
+            textoMejora1.text = "Velocidad:" + torretaScr2.nivel1; //torretaScr2.chorroScale.ToString();
+            textoMejora2.text = "Daño:" + torretaScr2.nivel2; //torretaScr2.dps.ToString();
             textoMejora3.text = "";
             textoPrecioMejora.text = "$" + torretaScr2.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr2.precio / 2);
@@ -167,8 +168,8 @@ public class MejorasScript : MonoBehaviour
         {
             TorretaScript3 torretaScr3 = this.GetComponent<TorretaScript3>();
             textoTorreta.text = "Tacho";
-            textoMejora1.text = "Spd:" + torretaScr3.nivel1; //torretaScr3.cooldown.ToString();
-            textoMejora2.text = "Ran:" + torretaScr3.nivel2; //torretaScr3.rango.ToString();
+            textoMejora1.text = "Velocidad:" + torretaScr3.nivel1; //torretaScr3.cooldown.ToString();
+            textoMejora2.text = "Rango:" + torretaScr3.nivel2; //torretaScr3.rango.ToString();
             textoMejora3.text = "";
             textoPrecioMejora.text = "$" + torretaScr3.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr3.precio / 2);
@@ -186,8 +187,8 @@ public class MejorasScript : MonoBehaviour
         {
             TorretaScript4 torretaScr4 = this.GetComponent<TorretaScript4>();
             textoTorreta.text = "Proyector";
-            textoMejora1.text = "Spd:" + torretaScr4.nivel1; //torretaScr4.rayoScale.ToString();
-            textoMejora2.text = "Ran:" + torretaScr4.nivel2; //torretaScr4.dps.ToString();
+            textoMejora1.text = "Velocidad:" + torretaScr4.nivel1; //torretaScr4.rayoScale.ToString();
+            textoMejora2.text = "Rango:" + torretaScr4.nivel2; //torretaScr4.dps.ToString();
             textoMejora3.text = "";
             textoPrecioMejora.text = "$" + torretaScr4.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr4.precio / 2);
@@ -204,9 +205,9 @@ public class MejorasScript : MonoBehaviour
         {
             TorretaScript torretaScr = this.GetComponent<TorretaScript>();
             textoTorreta.text = "Tiralapiceras";
-            textoMejora1.text = "Spd:" + torretaScr.nivel1; //torretaScr.bps.ToString();
-            textoMejora2.text = "Ran:" + torretaScr.nivel2; //torretaScr.rango.ToString();
-            textoMejora3.text = "Dmg:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
+            textoMejora1.text = "Velocidad:" + torretaScr.nivel1; //torretaScr.bps.ToString();
+            textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
+            textoMejora3.text = "Daño:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2);
 
@@ -221,9 +222,9 @@ public class MejorasScript : MonoBehaviour
         {
             TorretaScript torretaScr = this.GetComponent<TorretaScript>();
             textoTorreta.text = "Lanzabombuchas";
-            textoMejora1.text = "Spd:" + torretaScr.nivel1; //torretaScr.bps.ToString();
-            textoMejora2.text = "Ran:" + torretaScr.nivel2; //torretaScr.rango.ToString();
-            textoMejora3.text = "Dmg:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
+            textoMejora1.text = "Velocidad:" + torretaScr.nivel1; //torretaScr.bps.ToString();
+            textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
+            textoMejora3.text = "Daño:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2);
 
