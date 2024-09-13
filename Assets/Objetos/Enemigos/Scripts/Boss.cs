@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : EnemigoScript
 {
@@ -27,8 +28,16 @@ public class Boss : EnemigoScript
         }
     }
     #region la intro
+    private Button btnDv;
+    private Image btnDvImg;
+    [SerializeField] private Sprite dvOnSpr;
+    [SerializeField] private Sprite dvOffSpr;
+
     private void DoIntro()
-    { //recuerdos de scratch
+    {
+        Time.timeScale = 1f;
+        btnDv.interactable = false;
+        btnDvImg.sprite = dvOffSpr;
         StartCoroutine(MoveTo(new string[] { "W1" }, new string[] { "MoveLeft" }));
     }
     private void DoIntroLaugh()
@@ -87,6 +96,13 @@ public class Boss : EnemigoScript
                 yield return new WaitForSeconds(3f);
                 canBeShot = true;
                 introDone = true;
+                if (scrBotones.dv)
+                {
+                    Time.timeScale = 2;
+                    btnDvImg.sprite = dvOnSpr;
+                }
+                else Time.timeScale = 1;
+                btnDv.interactable = true;
                 break;
             }
             else if (thenSpawnEnemies == true)
@@ -121,6 +137,8 @@ public class Boss : EnemigoScript
         introDone = false;
         canBeShot = false;
         idle = false;
+        btnDv = GameObject.Find("btnDobleVelocidad").GetComponent<Button>();
+        btnDvImg = GameObject.Find("btnDobleVelocidad").GetComponent<Image>();
         GameObject padreSpawners = GameObject.Find("Spawners");
         foreach (Transform s in padreSpawners.transform)
         {
@@ -140,7 +158,7 @@ public class Boss : EnemigoScript
         if (Input.GetKeyDown(KeyCode.S) && idle == true)
         {
             Debug.Log("s");
-            MoveTo(new string[] { "W1", "W6" }, new string[] { "MoveLeft", "MoveDown" }, true);
+            StartCoroutine(MoveTo(new string[] { "W1", "W6" }, new string[] { "MoveLeft", "MoveDown" }, true));
         }
     }
 }

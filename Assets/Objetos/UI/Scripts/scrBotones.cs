@@ -6,9 +6,7 @@ using TMPro;
 
 public class scrBotones : MonoBehaviour
 {
-
     //Objetos
-
     private ConstruirScript scrConstruir;
     private ZonaConsumiblesScript scrZonaConsumible;
     public GameObject[] tiles;
@@ -49,12 +47,6 @@ public class scrBotones : MonoBehaviour
         sceneScripts = GameObject.Find("SCENESCRIPTS");
 
         scrConstruirGeneral = sceneScripts.GetComponent<ConstruirScriptGeneral>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     // VALOR DE CADA VARIABLE:
@@ -119,7 +111,6 @@ public class scrBotones : MonoBehaviour
                 {
                     scrConstruir = tile.GetComponent<ConstruirScript>();
                     scrConstruir.torretaSeleccionada = torretas[2];
-
                     TorretaScript3 scrTacho = torretas[2].GetComponent<TorretaScript3>();
                     scrConstruir.precioSeleccionado = scrTacho.precio;
                 }
@@ -240,14 +231,10 @@ public class scrBotones : MonoBehaviour
             imagen2.sprite = btTorretaSprite2;
 
         }
-
-
-
     }
 
     public void DobleVeclocidad()
     {
-
         if (dv == false)
         {
             Time.timeScale = 2;
@@ -267,8 +254,6 @@ public class scrBotones : MonoBehaviour
 
     public void BtnMejora(int boton)
     {
-
-
         //TIRALÁPICES / TIRALAPÍCERAS / LANZABOMBUCHAS
 
         if (textoMejoraTorreta.text == "Tiralápices" || textoMejoraTorreta.text == "Tiralapiceras" || textoMejoraTorreta.text == "Lanzabombuchas")

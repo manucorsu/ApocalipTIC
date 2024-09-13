@@ -211,7 +211,6 @@ public class EnemigoScript : MonoBehaviour
             BombuchaScript bala = collision.gameObject.GetComponent<BombuchaScript>();
             Sufrir(bala.balaDmg);
             Destroy(bala.gameObject);
-            Debug.Log("auch");
         }
         else
         {
