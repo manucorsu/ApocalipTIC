@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : EnemigoScript
 {
@@ -27,8 +28,16 @@ public class Boss : EnemigoScript
         }
     }
     #region la intro
+    private Button btnDv;
+    private Image btnDvImg;
+    [SerializeField] private Sprite dvOnSpr;
+    [SerializeField] private Sprite dvOffSpr;
+
     private void DoIntro()
-    { //recuerdos de scratch
+    {
+        Time.timeScale = 1f;
+        btnDv.interactable = false;
+        btnDvImg.sprite = dvOffSpr;
         StartCoroutine(MoveTo(new string[] { "W1" }, new string[] { "MoveLeft" }));
     }
     private void DoIntroLaugh()
@@ -36,7 +45,7 @@ public class Boss : EnemigoScript
         animator.SetTrigger("introLaughTrigger");
     }
     #endregion
-    private IEnumerator MoveTo(string[] wpNames, string[] mans, bool thenSpawnEnemies = false) // v3ify pero corrutina
+    private IEnumerator MoveTo(string[] wpNames, string[] mans, bool thenSpawnEnemies = false, string finalAnim = "") // v3ify pero corrutina
     {
         idle = false;
         List<float> anims = new List<float>();
@@ -80,28 +89,39 @@ public class Boss : EnemigoScript
                     }
                 }
             }
-
+            if(finalAnim != "")
+            {
+                SetMoveAnim(finalAnim);
+            }
             if (!introDone) //en la intro se mueve a un solo wp antes de reírse, pero además hace otras cosas
             {
                 DoIntroLaugh();
                 yield return new WaitForSeconds(3f);
                 canBeShot = true;
                 introDone = true;
+                if (scrBotones.dv)
+                {
+                    Time.timeScale = 2;
+                    btnDvImg.sprite = dvOnSpr;
+                }
+                else Time.timeScale = 1;
+                btnDv.interactable = true;
                 break;
             }
             else if (thenSpawnEnemies == true)
             {
                 GameObject[] pfbsEnemigos = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().pfbsEnemigos;
                 byte cuantos = (byte)Random.Range(1, 4);
-                for (byte i = 0; i > cuantos; i++)
+                for (byte i = 0; i < cuantos; i++)
                 {
                     animator.SetTrigger("spawnEnemyTrigger");
                     GameObject prefabElegido;
                     byte rie = (byte)Random.Range(0, pfbsEnemigos.Length);
                     prefabElegido = pfbsEnemigos[rie];
-                    GameObject nuevoEnemigo = Instantiate(prefabElegido, new Vector3(this.transform.position.x, this.transform.position.y - 1, 0f), Quaternion.identity);
+                    GameObject nuevoEnemigo = Instantiate(prefabElegido, new Vector3(this.transform.position.x, (this.transform.position.y - 2), 0f), Quaternion.identity);
                     nuevoEnemigo.GetComponent<EnemigoScript>().spName = targetName;
                     EnemySpawner.botsVivos.Add(nuevoEnemigo);
+                    yield return new WaitForSeconds(1);
                 }
             }
             break;
@@ -121,6 +141,8 @@ public class Boss : EnemigoScript
         introDone = false;
         canBeShot = false;
         idle = false;
+        btnDv = GameObject.Find("btnDobleVelocidad").GetComponent<Button>();
+        btnDvImg = GameObject.Find("btnDobleVelocidad").GetComponent<Image>();
         GameObject padreSpawners = GameObject.Find("Spawners");
         foreach (Transform s in padreSpawners.transform)
         {
@@ -140,7 +162,7 @@ public class Boss : EnemigoScript
         if (Input.GetKeyDown(KeyCode.S) && idle == true)
         {
             Debug.Log("s");
-            MoveTo(new string[] { "W1", "W6" }, new string[] { "MoveLeft", "MoveDown" }, true);
+            StartCoroutine(MoveTo(new string[] { "J1" }, new string[] { "MoveLeft" }, true, "MoveDown"));
         }
     }
 }
