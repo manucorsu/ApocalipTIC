@@ -80,10 +80,7 @@ public class EnemigoScript : MonoBehaviour
 
     private void BuscarPath()
     {
-        /*jajaja no puedo usar switch porque apareció en 2019 y unity 2018 no lo acepta 
-         jajajaja
-
-        Si no se entiende nada, ver SPAWNERSGUIDE*/
+        /*Si no se entiende nada, ver SPAWNERSGUIDE*/
 
         if (spName == "A1" || spName == "A4" || spName == "A7")
         {
@@ -130,6 +127,11 @@ public class EnemigoScript : MonoBehaviour
             secuenciaAnims.Add(2); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "W4", "W6", "G2" });
         }
+        else if (spName == "J1")
+        {
+            secuenciaAnims.Add(0);
+            V3ify(new string[] { "G2" });
+        }
     }
     private void V3ify(string[] camino)
     {
@@ -151,7 +153,7 @@ public class EnemigoScript : MonoBehaviour
         siguiendo = true; //activar el update, básicamente
     }
 
-    void Update()
+    private void Update()
     {
         if (siguiendo == true)
         {
@@ -262,7 +264,7 @@ public class EnemigoScript : MonoBehaviour
         Time.timeScale = 1f;
         Morir();
         Debug.LogWarning("PERDISTE");
-        SceneManager.LoadScene("GameOver");
+        //SceneManager.LoadScene("GameOver");
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

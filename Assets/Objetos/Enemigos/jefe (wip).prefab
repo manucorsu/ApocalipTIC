@@ -50,11 +50,11 @@ MonoBehaviour:
   hurtColor: {r: 0.8509804, g: 0.21176471, b: 0.21176471, a: 1}
   isBoss: 1
   minRonda: 0
-  baseHP: 3500
-  hp: 3500
+  baseHP: 12000
+  hp: 12000.001
   spd: 2
   spdSave: 0
-  plata: 500
+  plata: 1000
   canBeEaten: 0
   canBeShot: 0
   spName: 

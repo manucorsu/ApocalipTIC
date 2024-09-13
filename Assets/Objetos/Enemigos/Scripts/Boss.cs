@@ -45,7 +45,7 @@ public class Boss : EnemigoScript
         animator.SetTrigger("introLaughTrigger");
     }
     #endregion
-    private IEnumerator MoveTo(string[] wpNames, string[] mans, bool thenSpawnEnemies = false) // v3ify pero corrutina
+    private IEnumerator MoveTo(string[] wpNames, string[] mans, bool thenSpawnEnemies = false, string finalAnim = "") // v3ify pero corrutina
     {
         idle = false;
         List<float> anims = new List<float>();
@@ -89,7 +89,10 @@ public class Boss : EnemigoScript
                     }
                 }
             }
-
+            if(finalAnim != "")
+            {
+                SetMoveAnim(finalAnim);
+            }
             if (!introDone) //en la intro se mueve a un solo wp antes de reírse, pero además hace otras cosas
             {
                 DoIntroLaugh();
@@ -109,15 +112,16 @@ public class Boss : EnemigoScript
             {
                 GameObject[] pfbsEnemigos = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().pfbsEnemigos;
                 byte cuantos = (byte)Random.Range(1, 4);
-                for (byte i = 0; i > cuantos; i++)
+                for (byte i = 0; i < cuantos; i++)
                 {
                     animator.SetTrigger("spawnEnemyTrigger");
                     GameObject prefabElegido;
                     byte rie = (byte)Random.Range(0, pfbsEnemigos.Length);
                     prefabElegido = pfbsEnemigos[rie];
-                    GameObject nuevoEnemigo = Instantiate(prefabElegido, new Vector3(this.transform.position.x, this.transform.position.y - 1, 0f), Quaternion.identity);
+                    GameObject nuevoEnemigo = Instantiate(prefabElegido, new Vector3(this.transform.position.x, (this.transform.position.y - 2), 0f), Quaternion.identity);
                     nuevoEnemigo.GetComponent<EnemigoScript>().spName = targetName;
                     EnemySpawner.botsVivos.Add(nuevoEnemigo);
+                    yield return new WaitForSeconds(1);
                 }
             }
             break;
@@ -158,7 +162,7 @@ public class Boss : EnemigoScript
         if (Input.GetKeyDown(KeyCode.S) && idle == true)
         {
             Debug.Log("s");
-            StartCoroutine(MoveTo(new string[] { "W1", "W6" }, new string[] { "MoveLeft", "MoveDown" }, true));
+            StartCoroutine(MoveTo(new string[] { "J1" }, new string[] { "MoveLeft" }, true, "MoveDown"));
         }
     }
 }
