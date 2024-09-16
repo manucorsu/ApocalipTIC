@@ -46,7 +46,7 @@ public class ConstruirScript : MonoBehaviour
         {
             foreach (var go in raycastResults)
             {
-                if (go.gameObject.name == "cuadroMejora")
+                if (go.gameObject.name == "cuadroMejora" || go.gameObject.name == "btnVender")
                 {
                     return;
                 }

@@ -27,6 +27,7 @@ public class MejorasScript : MonoBehaviour
     public GameObject proyector;
     public GameObject tiralapiceras;
     public GameObject lanzabombuchas;
+    public GameObject imán;
 
     private Button btnMejora1;
     private Button btnMejora2;
@@ -225,6 +226,23 @@ public class MejorasScript : MonoBehaviour
             textoMejora1.text = "Velocidad:" + torretaScr.nivel1; //torretaScr.bps.ToString();
             textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Daño:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
+            textoPrecioMejora.text = "$" + torretaScr.precioMejora;
+            scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2);
+
+            btnMejora1.enabled = true;
+            btnMejora2.enabled = true;
+            btnMejora3.GetComponent<Image>().enabled = true;
+        }
+
+        //IMÁN
+
+        if (this.gameObject == imán)
+        {
+            ImanScript torretaScr = this.GetComponent<ImanScript>();
+            textoTorreta.text = "Imán";
+            textoMejora1.text = "Velocidad:" + torretaScr.nivel1; //torretaScr.bps.ToString();
+            textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
+            textoMejora3.text = "Ganancia:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2);
 
