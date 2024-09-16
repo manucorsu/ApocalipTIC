@@ -29,7 +29,7 @@ public class ConstruirScript : MonoBehaviour
     {
         isPaused = PauseScript.isPaused;
 
-        
+
     }
 
     private void OnMouseDown()
@@ -44,7 +44,7 @@ public class ConstruirScript : MonoBehaviour
 
         if (raycastResults.Count > 0)
         {
-            foreach(var go in raycastResults)
+            foreach (var go in raycastResults)
             {
                 if (go.gameObject.name == "cuadroMejora" || go.gameObject.name == "btnVender")
                 {
@@ -67,7 +67,7 @@ public class ConstruirScript : MonoBehaviour
             }
         }
 
-        
+
     }
 
     private void OnMouseEnter()

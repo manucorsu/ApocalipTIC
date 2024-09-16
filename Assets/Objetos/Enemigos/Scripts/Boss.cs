@@ -89,7 +89,7 @@ public class Boss : EnemigoScript
                     }
                 }
             }
-            if(finalAnim != "")
+            if (finalAnim != "")
             {
                 SetMoveAnim(finalAnim);
             }

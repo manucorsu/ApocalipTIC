@@ -59,6 +59,7 @@ public class EnemigoScript : MonoBehaviour
     protected virtual void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
     {
         StopAllCoroutines();
+        EnemySpawner.botsVivos.Add(this.gameObject);
         sufrirNicho = SufrirNicho();
         hp = baseHP;
         v3Camino.Clear();
@@ -171,17 +172,16 @@ public class EnemigoScript : MonoBehaviour
             }
         }
     }
-    private IEnumerator HurtVFX()
+    private IEnumerator HurtVFX(float d)
     {
         this.spriteRenderer.color = hurtColor;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(d);
         this.spriteRenderer.color = baseColor;
     }
     public virtual void Sufrir(float dmg)
     { // Sufrir daño causado por PROYECTILES (balas que usan el BalaScript).
       //BAJO NINGUNA CIRCUNSTANCIA usar para balas "especiales" (como el chorro de agua o el proyector)
-        StopCoroutine(HurtVFX());
-        StartCoroutine(HurtVFX());
+        StartCoroutine(HurtVFX(0.1f));
         hp -= dmg;
         if (hp <= 0) Morir();
         else { return; }
@@ -226,14 +226,13 @@ public class EnemigoScript : MonoBehaviour
     {
         while (false != true)
         {
+            StartCoroutine(HurtVFX(1));
             hp -= sufrirNichoDPS;
             if (hp <= 0)
             {
                 Morir();
             }
-            this.spriteRenderer.color = hurtColor;
             yield return new WaitForSeconds(nichoCooldown);
-            this.spriteRenderer.color = baseColor;
         }
     }
 
