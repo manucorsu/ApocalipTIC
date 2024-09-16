@@ -165,6 +165,22 @@ public class scrBotones : MonoBehaviour
             }
         }
 
+        //IMÁN
+        if (torreta == 7)
+        {
+            foreach (GameObject tile in tiles)
+            {
+                if (tile != null)
+                {
+                    scrConstruir = tile.GetComponent<ConstruirScript>();
+                    scrConstruir.torretaSeleccionada = torretas[6];
+
+                    ImanScript scrImán = torretas[6].GetComponent<ImanScript>();
+                    scrConstruir.precioSeleccionado = scrImán.precio;
+                }
+            }
+        }
+
         //BIDÓN
         if (torreta == 9)
         {
@@ -311,6 +327,23 @@ public class scrBotones : MonoBehaviour
             {
                 if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+                MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+                scrMejora.Mejorar();
+            }
+        }
+
+        //IMÁN
+
+        if (textoMejoraTorreta.text == "Imán")
+        {
+            ImanScript scrTorreta = torretaParaMejorar.GetComponent<ImanScript>();
+
+            if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
+            {
+                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.bps+= 0.4f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+                if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+                if (boton == 3 && scrTorreta.nivel3 != 3) { scrTorreta.nivel3++; scrTorreta.ganancia += 2; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
                 scrMejora.Mejorar();
             }

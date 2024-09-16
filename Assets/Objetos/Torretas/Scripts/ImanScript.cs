@@ -8,6 +8,7 @@ public class ImanScript : TorretaScript
     private float cooldownIman;
     public bool isAbsorbing = false;
     public GameObject tuerca;
+    public int ganancia = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,8 @@ public class ImanScript : TorretaScript
                         GameObject basura = Instantiate(tuerca, new Vector2 (target.position.x, target.position.y), Quaternion.identity);
                         TornilloScript basuraScript = basura.GetComponent<TornilloScript>();
                         basuraScript.torreta = this.gameObject;
+                        basuraScript.puntaTorreta = punta.gameObject;
+                        basuraScript.ganancia = ganancia;
                         cooldownIman = 0f;
                     }
                 }
