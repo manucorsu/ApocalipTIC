@@ -112,9 +112,9 @@ public class Boss : EnemigoScript
             {
                 GameObject[] pfbsEnemigos = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().pfbsEnemigos;
                 byte cuantos = (byte)Random.Range(1, 4);
+                animator.SetBool("spawnEnemy", true);
                 for (byte i = 0; i < cuantos; i++)
                 {
-                    animator.SetTrigger("spawnEnemyTrigger");
                     GameObject prefabElegido;
                     byte rie = (byte)Random.Range(0, pfbsEnemigos.Length);
                     prefabElegido = pfbsEnemigos[rie];
@@ -123,6 +123,7 @@ public class Boss : EnemigoScript
                     EnemySpawner.botsVivos.Add(nuevoEnemigo);
                     yield return new WaitForSeconds(1);
                 }
+                animator.SetBool("spawnEnemy", false);
             }
             break;
         }
@@ -159,7 +160,7 @@ public class Boss : EnemigoScript
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S) && idle == true)
+        if (Input.GetKeyDown(KeyCode.S) && idle)
         {
             Debug.Log("s");
             StartCoroutine(MoveTo(new string[] { "J1" }, new string[] { "MoveLeft" }, true, "MoveDown"));

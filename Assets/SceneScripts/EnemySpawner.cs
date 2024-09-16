@@ -6,8 +6,8 @@ using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [HideInInspector] public static bool spawnear = false;
-    [HideInInspector] public static bool isBossFight = false;
+    public static bool spawnear = false;
+    public static bool isBossFight = false;
 
     [Header("Arrays")]
     [SerializeField] private GameObject prefabBoss;
@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float bps = 0.5f; //bots por segundo
     public static byte ronda = 1;
     private float tiempoDesdeUltimoSpawn;
-    [HideInInspector] public static List<GameObject> botsVivos = new List<GameObject>();
+    public static List<GameObject> botsVivos = new List<GameObject>();
     private byte botsASpawnear;
 
     [SerializeField] private Sprite btnPlaySprite1;
@@ -36,12 +36,13 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.B) && spawnear == false) // debug: cambiar a ronda 15
         {
             ronda = 15;
             txtRonda.text = "override ronda 15";
         }
-
+#endif 
         if (spawnear == true)
         {
             if (!isBossFight)
@@ -64,12 +65,13 @@ public class EnemySpawner : MonoBehaviour
         if (spawnear == false)
         {
             Image cuadroMejora = GameObject.Find("cuadroMejora").GetComponent<Image>();
-            cuadroMejora.rectTransform.position = new Vector2(1000, 1000);
+            cuadroMejora.rectTransform.position = new Vector2(100000000, 100000000);
             if (ronda == 15 || ronda == 30)
             {
                 isBossFight = true;
                 Boss jefe = Instantiate(prefabBoss, new Vector3(14.5f, 0.5f, 0), Quaternion.identity).GetComponent<Boss>();
-                ToggleSpawning(true); //hay cosas que dependen de esta variable (aunque si es pelea de jefe no va a hacer nada en el update)
+                ToggleSpawning(true); /* hay cosas que dependen de esta variable (aunque si es 
+                                       * pelea de jefe no va a hacer nada en el update)*/
             }
             else
             {

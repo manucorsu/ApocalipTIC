@@ -51,7 +51,7 @@ MonoBehaviour:
   isBoss: 1
   minRonda: 0
   baseHP: 12000
-  hp: 12000.001
+  hp: 12000
   spd: 2
   spdSave: 0
   plata: 1000
