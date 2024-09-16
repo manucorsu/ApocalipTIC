@@ -69,7 +69,6 @@ public class EnemySpawner : MonoBehaviour
             {
                 isBossFight = true;
                 Boss jefe = Instantiate(prefabBoss, new Vector3(14.5f, 0.5f, 0), Quaternion.identity).GetComponent<Boss>();
-                botsVivos.Add(jefe.gameObject);
                 ToggleSpawning(true); //hay cosas que dependen de esta variable (aunque si es pelea de jefe no va a hacer nada en el update)
             }
             else
@@ -122,7 +121,7 @@ public class EnemySpawner : MonoBehaviour
             enemigoScript.spName = spawners[ris].name;
 
             botsASpawnear--;
-            botsVivos.Add(nuevoEnemigo);
+            //botsVivos.Add(nuevoEnemigo);
             tiempoDesdeUltimoSpawn = 0;
         }
         else
