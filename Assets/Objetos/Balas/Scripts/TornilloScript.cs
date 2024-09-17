@@ -9,10 +9,12 @@ public class TornilloScript : MonoBehaviour
     public GameObject puntaTorreta;
     private int rotativo;
     public int ganancia;
+    private int plata;
 
     private void Start()
     {
         rotativo = Random.Range(-2, 2);
+        plata = Random.Range(1 + ganancia, 6 + ganancia);
     }
 
     private void Update()
@@ -29,14 +31,13 @@ public class TornilloScript : MonoBehaviour
 
     private IEnumerator Guita()
     {
+        ConstruirScriptGeneral construirScript = GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>();
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         SpriteRenderer sr = puntaTorreta.GetComponent<SpriteRenderer>();
         sr.color = Color.yellow;
         yield return new WaitForSeconds(0.2f);
         sr.color = Color.white;
-        ConstruirScriptGeneral construirScript = GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>();
-        construirScript.plataActual += Random.Range(1 + ganancia, 6 + ganancia);
-        GameObject.Find("txtPlata").GetComponent<TMP_Text>().text = construirScript.plataActual.ToString();
+        construirScript.plataActual += plata;
         Destroy(gameObject);
     }
 }

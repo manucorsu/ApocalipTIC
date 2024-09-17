@@ -27609,7 +27609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4056267767099391408}
   m_Layer: 0
-  m_Name: firingPoint1
+  m_Name: firingPointParlante
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27690,7 +27690,7 @@ GameObject:
   - component: {fileID: 4056267768801595234}
   - component: {fileID: 4056267768801595237}
   m_Layer: 0
-  m_Name: BaseTorreta1
+  m_Name: BaseParlante
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27715,27 +27715,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4056267768948402133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4056267768948402139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f73ecc9573516c4fa7cf72a397e22b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  firingPoint: {fileID: 4056267767099391408}
-  bala: {fileID: 9131770194057469851, guid: 1c26cdce117ef794c82f466f759843a1, type: 3}
-  enemigos:
-    serializedVersion: 2
-    m_Bits: 256
-  rango: 5
-  bps: 0.3
-  dmg: 10
 --- !u!4 &4056267768948402138
 Transform:
   m_ObjectHideFlags: 0
@@ -27760,8 +27739,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4056267768948402138}
-  - component: {fileID: 5934781857612306726}
-  - component: {fileID: 4056267768948402133}
+  - component: {fileID: 4056267768948402140}
   m_Layer: 0
   m_Name: Parlante
   m_TagString: torreta
@@ -27769,6 +27747,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4056267768948402140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4056267768948402139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d342b60b182dc47b85cd2e2481f9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4056267768801595237}
+  target: {fileID: 0}
+  firingPoint: {fileID: 4056267767099391408}
+  onda: {fileID: 1299225854440088668, guid: 9f585179f2bc9004da5d3a3cb742e6dd, type: 3}
+  bala: {fileID: 0}
+  enemigos:
+    serializedVersion: 2
+    m_Bits: 256
+  rango: 3
+  bps: 1
+  dmg: 40
+  dmgBala: 20
 --- !u!1 &5870478443665026842
 GameObject:
   m_ObjectHideFlags: 0
@@ -28853,29 +28855,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5870478445341545164}
   m_CullTransparentMesh: 0
---- !u!61 &5934781857612306726
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4056267768948402139}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0

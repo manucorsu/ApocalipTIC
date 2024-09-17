@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class ImpresoraScript : MonoBehaviour
+public class ParlanteScript : MonoBehaviour
 {
 
     //BALLESTA
 
     //Objetos
 
+    public Animator animator;
     public Transform target;
     public Transform firingPoint;
+    public GameObject onda;
     public GameObject bala;
     public LayerMask enemigos;
 
@@ -21,6 +23,7 @@ public class ImpresoraScript : MonoBehaviour
     public float bps;
     private float cooldown;
     public float dmg;
+    public float dmgBala;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +52,6 @@ public class ImpresoraScript : MonoBehaviour
             {
                 if (target.GetComponent<EnemigoScript>().canBeShot)
                 {
-                    
                     StartCoroutine(Disparar());
                     cooldown = 0f;
                 }
@@ -59,11 +61,10 @@ public class ImpresoraScript : MonoBehaviour
 
     private IEnumerator Disparar()
     {
-        Vector2 dir = firingPoint.position - target.position;
-        GameObject balaObj = Instantiate(bala, firingPoint.position, Quaternion.Euler(0,0,Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90));
-        BalaScript balascript = balaObj.GetComponent<BalaScript>();
-        balascript.SetTarget(target);
-        balascript.balaDmg = dmg;
+        animator.SetTrigger("anim");
+        GameObject explosion = Instantiate(onda, firingPoint);
+        OndaScript ondaScript = explosion.GetComponent<OndaScript>();
+        ondaScript.daño = dmg;
         yield return new WaitForSeconds(0.2f);
     }
 
@@ -74,11 +75,6 @@ public class ImpresoraScript : MonoBehaviour
         if (hits.Length > 0)
         {
             target = hits[0].transform;
-
-            if (this.gameObject.layer == LayerMask.NameToLayer("Tiralapiceras"))
-            {
-                Debug.DrawLine(firingPoint.transform.position, target.transform.position);
-            }
         }
     }
 
