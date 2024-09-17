@@ -282,7 +282,9 @@ public class scrBotones : MonoBehaviour
                 if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 if (boton == 3 && scrTorreta.nivel3 != 3) { scrTorreta.nivel3++; scrTorreta.dmg += 5; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
 
+                
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+                scrMejora.precioExtraParaVender += 100;
                 scrMejora.Mejorar();
             }
         }
@@ -298,6 +300,7 @@ public class scrBotones : MonoBehaviour
                 if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.25f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.dps += 5; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+                scrMejora.precioExtraParaVender += 100;
                 scrMejora.Mejorar();
             }
         }
@@ -313,6 +316,7 @@ public class scrBotones : MonoBehaviour
                 if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 1; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+                scrMejora.precioExtraParaVender += 100;
                 scrMejora.Mejorar();
             }
         }
@@ -328,6 +332,7 @@ public class scrBotones : MonoBehaviour
                 if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+                scrMejora.precioExtraParaVender += 100;
                 scrMejora.Mejorar();
             }
         }
@@ -345,6 +350,7 @@ public class scrBotones : MonoBehaviour
                 if (boton == 3 && scrTorreta.nivel3 != 3) { scrTorreta.nivel3++; scrTorreta.ganancia += 2; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
 
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+                scrMejora.precioExtraParaVender += 100;
                 scrMejora.Mejorar();
             }
         }
@@ -361,8 +367,8 @@ public class scrBotones : MonoBehaviour
     public void Vender()
     {
 
-        scrConstruirGeneral.plataActual += precioParaVender;
         MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+        scrConstruirGeneral.plataActual += precioParaVender;
         scrMejora.tileParaRenovar.GetComponent<BoxCollider2D>().enabled = true;
         scrMejora.tileParaRenovar.GetComponent<SpriteRenderer>().enabled = true;
         CerrarCuadroMejora();

@@ -28,6 +28,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Sprite btnPlaySprite1;
     [SerializeField] private Sprite btnPlaySprite2;
 
+    [SerializeField] private Image Oscuro1;
+    [SerializeField] private Image Oscuro2;
+    [SerializeField] private GameObject[] flechas;
+
     void Start()
     {
         botsVivos.Clear();
@@ -65,7 +69,12 @@ public class EnemySpawner : MonoBehaviour
         if (spawnear == false)
         {
             Image cuadroMejora = GameObject.Find("cuadroMejora").GetComponent<Image>();
+
             cuadroMejora.rectTransform.position = new Vector2(100000000, 100000000);
+
+            Oscuro1.GetComponent<Image>().enabled = !Oscuro1.GetComponent<Image>().isActiveAndEnabled;
+            Oscuro2.GetComponent<Image>().enabled = !Oscuro2.GetComponent<Image>().isActiveAndEnabled;
+
             if (ronda == 15 || ronda == 30)
             {
                 isBossFight = true;
@@ -81,6 +90,11 @@ public class EnemySpawner : MonoBehaviour
             }
             Image btnPlayImage = btnIniciarRonda.GetComponent<Image>();
             btnPlayImage.sprite = btnPlaySprite2;
+
+            foreach(GameObject flecha in flechas)
+            {
+                flecha.GetComponent<SpriteRenderer>().enabled = false;
+            }
         }
     }
     private void SpawnEnemy()
@@ -144,6 +158,14 @@ public class EnemySpawner : MonoBehaviour
 
         Image btnPlayImage = btnIniciarRonda.GetComponent<Image>();
         btnPlayImage.sprite = btnPlaySprite1;
+
+        Oscuro1.GetComponent<Image>().enabled = !Oscuro1.GetComponent<Image>().isActiveAndEnabled;
+        Oscuro2.GetComponent<Image>().enabled = !Oscuro2.GetComponent<Image>().isActiveAndEnabled;
+
+        foreach (GameObject flecha in flechas)
+        {
+            flecha.GetComponent<SpriteRenderer>().enabled = true;
+        }
     }
 
     private void ToggleSpawning(bool t)

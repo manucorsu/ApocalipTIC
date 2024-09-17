@@ -260,7 +260,8 @@ public class EnemigoScript : MonoBehaviour
 
     private void Perder()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         Morir();
         Debug.LogWarning("PERDISTE");
         //SceneManager.LoadScene("GameOver");

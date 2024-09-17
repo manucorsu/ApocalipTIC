@@ -40,7 +40,9 @@ public class MejorasScript : MonoBehaviour
 
     public GameObject tileParaRenovar;
 
+    //Variables
 
+    public float precioExtraParaVender;
     
 
     // Start is called before the first frame update
@@ -137,7 +139,7 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Daño:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
-            scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2);
+            scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
@@ -155,7 +157,7 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Daño:" + torretaScr2.nivel2; //torretaScr2.dps.ToString();
             textoMejora3.text = "";
             textoPrecioMejora.text = "$" + torretaScr2.precioMejora;
-            scrbotones.precioParaVender = Mathf.Round(torretaScr2.precio / 2);
+            scrbotones.precioParaVender = Mathf.Round(torretaScr2.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
@@ -173,7 +175,7 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Rango:" + torretaScr3.nivel2; //torretaScr3.rango.ToString();
             textoMejora3.text = "";
             textoPrecioMejora.text = "$" + torretaScr3.precioMejora;
-            scrbotones.precioParaVender = Mathf.Round(torretaScr3.precio / 2);
+            scrbotones.precioParaVender = Mathf.Round(torretaScr3.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
@@ -192,7 +194,7 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Rango:" + torretaScr4.nivel2; //torretaScr4.dps.ToString();
             textoMejora3.text = "";
             textoPrecioMejora.text = "$" + torretaScr4.precioMejora;
-            scrbotones.precioParaVender = Mathf.Round(torretaScr4.precio / 2);
+            scrbotones.precioParaVender = Mathf.Round(torretaScr4.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
@@ -210,7 +212,7 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Daño:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
-            scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2);
+            scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
@@ -227,7 +229,7 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Daño:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
-            scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2);
+            scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
@@ -244,7 +246,7 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Ganancia:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
-            scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2);
+            scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
