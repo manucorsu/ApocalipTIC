@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Boss : EnemigoScript
 {
+    public static bool isSpawningEnemies;
     private bool idle;
     private bool introDone = false;
     private Dictionary<string, float> moveAnims = new Dictionary<string, float> //viva python
@@ -113,17 +114,21 @@ public class Boss : EnemigoScript
                 GameObject[] pfbsEnemigos = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().pfbsEnemigos;
                 byte cuantos = (byte)Random.Range(1, 4);
                 animator.SetBool("spawnEnemy", true);
-                for (byte i = 0; i < cuantos; i++)
+                while (!isSpawningEnemies) yield return new WaitForEndOfFrame();
+                if (isSpawningEnemies)
                 {
-                    GameObject prefabElegido;
-                    byte rie = (byte)Random.Range(0, pfbsEnemigos.Length);
-                    prefabElegido = pfbsEnemigos[rie];
-                    GameObject nuevoEnemigo = Instantiate(prefabElegido, new Vector3(this.transform.position.x, (this.transform.position.y - 2), 0f), Quaternion.identity);
-                    nuevoEnemigo.GetComponent<EnemigoScript>().spName = targetName;
-                    EnemySpawner.botsVivos.Add(nuevoEnemigo);
-                    yield return new WaitForSeconds(1);
+                    for (byte i = 0; i < cuantos; i++)
+                    {
+                        GameObject prefabElegido;
+                        byte rie = (byte)Random.Range(0, pfbsEnemigos.Length);
+                        prefabElegido = pfbsEnemigos[rie];
+                        GameObject nuevoEnemigo = Instantiate(prefabElegido, new Vector3(this.transform.position.x, (this.transform.position.y - 2), 0f), Quaternion.identity);
+                        nuevoEnemigo.GetComponent<EnemigoScript>().spName = targetName;
+                        EnemySpawner.botsVivos.Add(nuevoEnemigo);
+                        yield return new WaitForSeconds(1);
+                    }
+                    animator.SetBool("spawnEnemy", false);
                 }
-                animator.SetBool("spawnEnemy", false);
             }
             break;
         }
