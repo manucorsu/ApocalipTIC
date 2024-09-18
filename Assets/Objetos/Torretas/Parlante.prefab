@@ -87,8 +87,8 @@ MonoBehaviour:
   precio: 600
   rango: 3
   bps: 1
-  dmg: 40
-  dmgBala: 20
+  dmg: 30
+  dmgBala: 15
   ondaSize: 1
   nivel1: 1
   nivel2: 1
