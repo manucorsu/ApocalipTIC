@@ -181,6 +181,22 @@ public class scrBotones : MonoBehaviour
             }
         }
 
+        //PARLANTE
+        if (torreta == 8)
+        {
+            foreach (GameObject tile in tiles)
+            {
+                if (tile != null)
+                {
+                    scrConstruir = tile.GetComponent<ConstruirScript>();
+                    scrConstruir.torretaSeleccionada = torretas[7];
+
+                    ParlanteScript scrParlante = torretas[7].GetComponent<ParlanteScript>();
+                    scrConstruir.precioSeleccionado = scrParlante.precio;
+                }
+            }
+        }
+
         //BIDÓN
         if (torreta == 9)
         {
@@ -348,6 +364,24 @@ public class scrBotones : MonoBehaviour
                 if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.bps+= 0.4f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 if (boton == 3 && scrTorreta.nivel3 != 3) { scrTorreta.nivel3++; scrTorreta.ganancia += 2; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+
+                MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
+                scrMejora.precioExtraParaVender += 100;
+                scrMejora.Mejorar();
+            }
+        }
+
+        //PARLANTE
+
+        if (textoMejoraTorreta.text == "Parlante")
+        {
+            ParlanteScript scrTorreta = torretaParaMejorar.GetComponent<ParlanteScript>();
+
+            if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
+            {
+                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.bps += 0.3f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+                if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.4f; scrTorreta.ondaSize += 0.25f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+                if (boton == 3 && scrTorreta.nivel3 != 3) { scrTorreta.nivel3++; scrTorreta.dmg += 5; scrTorreta.dmgBala += 5; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
 
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
                 scrMejora.precioExtraParaVender += 100;

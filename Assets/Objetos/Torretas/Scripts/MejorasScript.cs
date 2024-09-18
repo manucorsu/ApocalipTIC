@@ -28,6 +28,7 @@ public class MejorasScript : MonoBehaviour
     public GameObject tiralapiceras;
     public GameObject lanzabombuchas;
     public GameObject imán;
+    public GameObject parlante;
 
     private Button btnMejora1;
     private Button btnMejora2;
@@ -245,6 +246,23 @@ public class MejorasScript : MonoBehaviour
             textoMejora1.text = "Velocidad:" + torretaScr.nivel1; //torretaScr.bps.ToString();
             textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Ganancia:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
+            textoPrecioMejora.text = "$" + torretaScr.precioMejora;
+            scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2) + precioExtraParaVender;
+
+            btnMejora1.enabled = true;
+            btnMejora2.enabled = true;
+            btnMejora3.GetComponent<Image>().enabled = true;
+        }
+
+        //PARLANTE
+
+        if (this.gameObject == parlante)
+        {
+            ParlanteScript torretaScr = this.GetComponent<ParlanteScript>();
+            textoTorreta.text = "Parlante";
+            textoMejora1.text = "Velocidad:" + torretaScr.nivel1; //torretaScr.bps.ToString();
+            textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
+            textoMejora3.text = "Daño:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2) + precioExtraParaVender;
 

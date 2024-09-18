@@ -403,10 +403,13 @@ MonoBehaviour:
     type: 3}
   "im\xE1n": {fileID: 1019053526506977521, guid: ee5f3988cf40a0741a86346a37007b66,
     type: 3}
+  parlante: {fileID: 5345216299105041138, guid: db31bcd32a09a534c9c84b68ab527d01,
+    type: 3}
   scrbotones: {fileID: 0}
   mainCamera: {fileID: 0}
   canvasTransform: {fileID: 0}
   tileParaRenovar: {fileID: 0}
+  precioExtraParaVender: 0
 --- !u!1 &6966831421037618975
 GameObject:
   m_ObjectHideFlags: 0

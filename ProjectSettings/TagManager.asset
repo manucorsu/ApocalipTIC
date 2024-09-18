@@ -11,6 +11,7 @@ TagManager:
   - torreta
   - BalaImpresora
   - Bombucha
+  - "L\xEDmite"
   layers:
   - Default
   - TransparentFX

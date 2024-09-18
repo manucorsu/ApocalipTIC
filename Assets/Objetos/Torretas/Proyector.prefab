@@ -359,10 +359,15 @@ MonoBehaviour:
     type: 3}
   lanzabombuchas: {fileID: 6129792462237073539, guid: aa99b3ddceb2f3646be79cf705e4d571,
     type: 3}
+  "im\xE1n": {fileID: 1019053526506977521, guid: ee5f3988cf40a0741a86346a37007b66,
+    type: 3}
+  parlante: {fileID: 5345216299105041138, guid: db31bcd32a09a534c9c84b68ab527d01,
+    type: 3}
   scrbotones: {fileID: 0}
   mainCamera: {fileID: 0}
   canvasTransform: {fileID: 0}
   tileParaRenovar: {fileID: 0}
+  precioExtraParaVender: 0
 --- !u!1 &2296560995809869553
 GameObject:
   m_ObjectHideFlags: 0

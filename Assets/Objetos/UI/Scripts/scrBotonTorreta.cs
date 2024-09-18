@@ -63,6 +63,13 @@ public class scrBotonTorreta : MonoBehaviour, IPointerEnterHandler, IPointerExit
             cuadroTorreta.SetActive(true);
         }
 
+        if (this.gameObject == GameObject.Find("btnParlante"))
+        {
+            txtTítuloTorreta.text = "Parlante";
+            txtDescTorreta.text = "Daña en área y dispara ocho proyectiles.";
+            cuadroTorreta.SetActive(true);
+        }
+        
         if (this.gameObject == GameObject.Find("btnBidón"))
         {
             txtTítuloTorreta.text = "Bidón";

@@ -19,17 +19,31 @@ public class ParlanteScript : MonoBehaviour
 
     //Variables
 
+    public float precio;
     public float rango;
     public float bps;
     private float cooldown;
     public float dmg;
     public float dmgBala;
+    public float ondaSize = 1;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    public float nivel1 = 1;
+    public float nivel2 = 1;
+    public float nivel3 = 1;
 
-    }
+    public float precioMejora;
+
+    private Vector2[] directions = new Vector2[]
+   {
+        new Vector2(1, 0),     // Right
+        new Vector2(1, 1),     // Up-right
+        new Vector2(0, 1),     // Up
+        new Vector2(-1, 1),    // Up-left
+        new Vector2(-1, 0),    // Left
+        new Vector2(-1, -1),   // Down-left
+        new Vector2(0, -1),    // Down
+        new Vector2(1, -1)     // Down-right
+   };
 
     // Update is called once per frame
     void Update()
@@ -63,8 +77,16 @@ public class ParlanteScript : MonoBehaviour
     {
         animator.SetTrigger("anim");
         GameObject explosion = Instantiate(onda, firingPoint);
+        explosion.transform.localScale = new Vector3(ondaSize, ondaSize, 1);
         OndaScript ondaScript = explosion.GetComponent<OndaScript>();
         ondaScript.daño = dmg;
+        for (int i = 0; i < 8; i++)
+        {
+            GameObject balaMusical = Instantiate(bala, firingPoint);
+            BalaMusicalScript balaScript = balaMusical.GetComponent<BalaMusicalScript>();
+            balaScript.direction = directions[i];
+            balaScript.daño = dmgBala;
+        }
         yield return new WaitForSeconds(0.2f);
     }
 
