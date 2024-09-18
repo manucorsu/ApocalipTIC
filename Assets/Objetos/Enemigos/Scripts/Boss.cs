@@ -128,6 +128,7 @@ public class Boss : EnemigoScript
                         yield return new WaitForSeconds(1);
                     }
                     animator.SetBool("spawnEnemy", false);
+                    while (isSpawningEnemies) yield return new WaitForEndOfFrame();
                 }
             }
             break;
