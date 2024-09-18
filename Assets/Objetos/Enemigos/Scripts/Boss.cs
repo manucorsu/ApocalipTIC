@@ -68,7 +68,7 @@ public class Boss : EnemigoScript
                 }
             }
         }
-        Vector3 target = new Vector3();
+        Vector3 target;
         string targetName = "";
         while (false != true)
         {
@@ -128,6 +128,7 @@ public class Boss : EnemigoScript
                         yield return new WaitForSeconds(1);
                     }
                     animator.SetBool("spawnEnemy", false);
+                    while (isSpawningEnemies) yield return new WaitForEndOfFrame();
                 }
             }
             break;
@@ -165,10 +166,23 @@ public class Boss : EnemigoScript
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S) && idle)
+        if (idle)
         {
-            Debug.Log("s");
-            StartCoroutine(MoveTo(new string[] { "J1" }, new string[] { "MoveLeft" }, true, "MoveDown"));
+            DoRandomBehaviour();
+        }
+    }
+
+    private void DoRandomBehaviour()
+    {
+        byte rand = (byte)Random.Range(0, 2);
+        switch (rand)
+        {
+            case 0: //spawnear enemigos cerca de la entrada
+                StartCoroutine(MoveTo(new string[] { "J1" }, new string[] { "MoveLeft" }, true, "MoveDown"));
+                break;
+            case 1: //move back to center
+                StartCoroutine(MoveTo(new string[] { "W2" }, new string[] { "MoveLeft" }, false, "MoveDown"));
+                break;
         }
     }
 }
