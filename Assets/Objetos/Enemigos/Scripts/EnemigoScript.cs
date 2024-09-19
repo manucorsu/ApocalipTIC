@@ -260,11 +260,14 @@ public class EnemigoScript : MonoBehaviour
 
     private void Perder()
     {
-        //Time.timeScale = 1f;
-        //Time.timeScale = 1f;
+#if UNITY_EDITOR
+        Time.timeScale = 1f;
+#endif
         Morir();
         Debug.LogWarning("PERDISTE");
-        //SceneManager.LoadScene("GameOver");
+#if !UNITY_EDITOR
+        SceneManager.LoadScene("GameOver");
+#endif
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
