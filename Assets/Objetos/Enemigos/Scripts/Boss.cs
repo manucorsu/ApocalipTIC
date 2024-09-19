@@ -39,14 +39,14 @@ public class Boss : EnemigoScript
         Time.timeScale = 1f;
         btnDv.interactable = false;
         btnDvImg.sprite = dvOffSpr;
-        StartCoroutine(MoveTo(new string[] { "W1" }, new string[] { "MoveLeft" }));
+        StartCoroutine(MoveTo(new string[] { "W2" }, new string[] { "MoveLeft" }, false));
     }
     private void DoIntroLaugh()
     {
         animator.SetTrigger("introLaughTrigger");
     }
     #endregion
-    private IEnumerator MoveTo(string[] wpNames, string[] mans, bool thenSpawnEnemies = false, string finalAnim = "") // v3ify pero corrutina
+    private IEnumerator MoveTo(string[] wpNames, string[] mans, bool thenSpawnEnemies, string finalAnim = "") // v3ify pero corrutina
     {
         idle = false;
         List<float> anims = new List<float>();
@@ -131,6 +131,39 @@ public class Boss : EnemigoScript
                     while (isSpawningEnemies) yield return new WaitForEndOfFrame();
                 }
             }
+            for (int i = (wpNames.Length - 1); i >= 0; i--)
+            {
+                for (int j = (waypoints.Count - 1); j >= 0; j--)
+                {
+                    if (waypoints[j].name == wpNames[i])
+                    {
+                        target = waypoints[j].position;
+                        while (this.transform.position != target)
+                        {
+                            switch (mans[i])
+                            {
+                                case "MoveDown":
+                                    SetMoveAnim("MoveUp");
+                                    break;
+                                case "MoveLeft":
+                                    SetMoveAnim("MoveRight");
+                                    break;
+                                case "MoveRight":
+                                    SetMoveAnim("MoveLeft");
+                                    break;
+                                case "MoveUp":
+                                    SetMoveAnim("MoveDown");
+                                    break;
+                                default:
+                                    Debug.LogError("Boss: Se encontró una animación válida cuando se quiso volver al centro");
+                                    break;
+                            }
+                            this.transform.position = Vector3.MoveTowards(this.transform.position, target, spd * Time.deltaTime);
+                            yield return null; //null == esperar al siguiente frame a lo Update
+                        }
+                    }
+                }
+            }
             break;
         }
         idle = true;
@@ -174,14 +207,11 @@ public class Boss : EnemigoScript
 
     private void DoRandomBehaviour()
     {
-        byte rand = (byte)Random.Range(0, 2);
+        byte rand = (byte)Random.Range(0, 1);
         switch (rand)
         {
             case 0: //spawnear enemigos cerca de la entrada
-                StartCoroutine(MoveTo(new string[] { "J1" }, new string[] { "MoveLeft" }, true, "MoveDown"));
-                break;
-            case 1: //move back to center
-                StartCoroutine(MoveTo(new string[] { "W2" }, new string[] { "MoveLeft" }, false, "MoveDown"));
+                StartCoroutine(MoveTo(new string[] { "W2", "J1", "J2" }, new string[] { "MoveLeft", "MoveLeft", "MoveUp" }, true, "MoveDown"));
                 break;
         }
     }
