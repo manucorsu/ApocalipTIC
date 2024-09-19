@@ -128,7 +128,7 @@ public class EnemigoScript : MonoBehaviour
             secuenciaAnims.Add(2); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "W4", "W6", "G2" });
         }
-        else if (spName == "J1")
+        else if (spName == "J2")
         {
             secuenciaAnims.Add(0);
             V3ify(new string[] { "G2" });

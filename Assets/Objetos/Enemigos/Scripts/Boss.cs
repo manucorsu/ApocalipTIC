@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class Boss : EnemigoScript
 {
     public static bool isSpawningEnemies;
-    private bool idle;
+    private bool idle = false;
     private bool introDone = false;
     private Dictionary<string, float> moveAnims = new Dictionary<string, float> //viva python
     {
@@ -39,6 +40,7 @@ public class Boss : EnemigoScript
         Time.timeScale = 1f;
         btnDv.interactable = false;
         btnDvImg.sprite = dvOffSpr;
+        btnDvImg.color = Color.white;
         StartCoroutine(MoveTo(new string[] { "W2" }, new string[] { "MoveLeft" }, false));
     }
     private void DoIntroLaugh()
@@ -46,9 +48,18 @@ public class Boss : EnemigoScript
         animator.SetTrigger("introLaughTrigger");
     }
     #endregion
-    private IEnumerator MoveTo(string[] wpNames, string[] mans, bool thenSpawnEnemies, string finalAnim = "") // v3ify pero corrutina
+    private IEnumerator MoveTo(string[] wpNames, string[] mans, bool thenSpawnEnemies, string finalAnim = "", float waitTime = 3f) // v3ify pero corrutina
     {
-        idle = false;
+        /* Explicación:
+         * Se por el camino indicado en el array wpNames, 
+         * cambiando a la animación del mismo índice del array mans.
+         * Cuando llega a su objetivo final, cambia a la animación finalAnim y espera
+         * el tiempo indicado en segundos por el parámetro waitTime (default: 3), antes 
+         * de moverse de nuevo al centro del mapa recorriendo el camino dado al revés.
+         * (solo si thenGoBack es true)
+         * 
+         * Al llegar al centro del mapa, espera la mitad de waitTime antes de volver a poner
+         * idle en true.*/
         List<float> anims = new List<float>();
         if (wpNames.Length != mans.Length)
         {
@@ -90,35 +101,38 @@ public class Boss : EnemigoScript
                     }
                 }
             }
-            if (finalAnim != "")
-            {
-                SetMoveAnim(finalAnim);
-            }
+
             if (!introDone) //en la intro se mueve a un solo wp antes de reírse, pero además hace otras cosas
             {
                 DoIntroLaugh();
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(3f); //por supuesto que esta animación iba a estar hardcodeada y fea
                 canBeShot = true;
                 introDone = true;
                 if (scrBotones.dv == 1)
                 {
                     Time.timeScale = 2.5f;
                     btnDvImg.sprite = dvOnSpr;
-                } else if (scrBotones.dv == 2)
+                }
+                else if (scrBotones.dv == 2)
                 {
                     Time.timeScale = 5;
                     btnDvImg.sprite = dvOnSpr;
+                    btnDvImg.color = Color.cyan;
                 }
                 else Time.timeScale = 1;
                 btnDv.interactable = true;
                 break;
             }
-            else if (thenSpawnEnemies == true)
+            if (finalAnim != "")
+            {
+                SetMoveAnim(finalAnim);
+            }
+            if (thenSpawnEnemies == true)
             {
                 GameObject[] pfbsEnemigos = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().pfbsEnemigos;
                 byte cuantos = (byte)Random.Range(1, 4);
                 animator.SetBool("spawnEnemy", true);
-                while (!isSpawningEnemies) yield return new WaitForEndOfFrame();
+                while (!isSpawningEnemies) yield return null;
                 if (isSpawningEnemies)
                 {
                     for (byte i = 0; i < cuantos; i++)
@@ -132,9 +146,10 @@ public class Boss : EnemigoScript
                         yield return new WaitForSeconds(1);
                     }
                     animator.SetBool("spawnEnemy", false);
-                    while (isSpawningEnemies) yield return new WaitForEndOfFrame();
+                    while (isSpawningEnemies) yield return null;
                 }
             }
+            yield return new WaitForSeconds(waitTime / 3);
             for (int i = (wpNames.Length - 1); i >= 0; i--)
             {
                 for (int j = (waypoints.Count - 1); j >= 0; j--)
@@ -168,6 +183,8 @@ public class Boss : EnemigoScript
                     }
                 }
             }
+            SetMoveAnim("MoveDown");
+            yield return new WaitForSeconds(waitTime / 3);
             break;
         }
         idle = true;
@@ -211,12 +228,28 @@ public class Boss : EnemigoScript
 
     private void DoRandomBehaviour()
     {
-        byte rand = (byte)Random.Range(0, 1);
+        idle = false;
+        int rand = Random.Range(0, 2);
+        Debug.Log(rand);
         switch (rand)
         {
             case 0: //spawnear enemigos cerca de la entrada
                 StartCoroutine(MoveTo(new string[] { "W2", "J1", "J2" }, new string[] { "MoveLeft", "MoveLeft", "MoveUp" }, true, "MoveDown"));
                 break;
+            case 1: /*Sale del mapa por algún grupo de spawners, y entra por otro, esperando 5s antes de volver al centro de la misma manera.
+                     * Si le toca A o B, spawnea enemigos.*/
+                int randSGroup = Random.Range(1, 2);
+                switch (randSGroup)
+                {
+                    case 0: // C -> A
+                        StartCoroutine(MoveTo(
+                            new string[] { "W2", "C2", "J3", "A5", "J2"},
+                            new string[] { "MoveDown", "MoveRight", "MoveUp", "MoveLeft", "MoveDown", "MoveRight", "MoveDown" },
+                            true, "MoveDown", 5));
+                        break;
+                }
+                break;
+
         }
     }
 }
