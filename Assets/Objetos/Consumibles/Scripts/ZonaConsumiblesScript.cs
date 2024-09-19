@@ -69,27 +69,20 @@ public class ZonaConsumiblesScript : MonoBehaviour
         palomas.Play();
         yield return new WaitForSeconds(1);
 
-        GameObject[] enemigos = GameObject.FindGameObjectsWithTag("enemigo");
-        foreach(GameObject enemigo in enemigos)
+        for (int i = 0; i < 10; i++)
         {
-            if (enemigo != null)
+            GameObject[] enemigos = GameObject.FindGameObjectsWithTag("enemigo");
+            foreach (GameObject enemigo in enemigos)
             {
-                EnemigoScript scrEnemigo = enemigo.GetComponent<EnemigoScript>();
-                scrEnemigo.Sufrir(25);
+                if (enemigo != null)
+                {
+                    EnemigoScript scrEnemigo = enemigo.GetComponent<EnemigoScript>();
+                    scrEnemigo.Sufrir(10);
+                }
             }
+
+            yield return new WaitForSeconds(0.7f);
         }
-
-        yield return new WaitForSeconds(1);
-
-        foreach (GameObject enemigo in enemigos)
-        {
-            if (enemigo != null)
-            {
-                EnemigoScript scrEnemigo = enemigo.GetComponent<EnemigoScript>();
-                scrEnemigo.Sufrir(25);
-            }
-        }
-
         yield return new WaitForSeconds(1);
         palomas.Stop();
         yield return new WaitForSeconds(1);

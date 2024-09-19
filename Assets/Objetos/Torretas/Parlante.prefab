@@ -84,6 +84,11 @@ MonoBehaviour:
   enemigos:
     serializedVersion: 2
     m_Bits: 256
+  notas:
+  - {fileID: 21300000, guid: 16487345f5fed6748b99c17cbe7ded5d, type: 3}
+  - {fileID: 21300000, guid: f3c9c83b20aa03a45b1949ea3faad37e, type: 3}
+  - {fileID: 21300000, guid: c7fe7149510cb864f8cf3c60c0e89732, type: 3}
+  - {fileID: 21300000, guid: 56564a43a3c242f44b0421e7b748b835, type: 3}
   precio: 600
   rango: 3
   bps: 1

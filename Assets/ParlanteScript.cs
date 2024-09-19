@@ -16,6 +16,7 @@ public class ParlanteScript : MonoBehaviour
     public GameObject onda;
     public GameObject bala;
     public LayerMask enemigos;
+    public Sprite[] notas;
 
     //Variables
 
@@ -80,9 +81,11 @@ public class ParlanteScript : MonoBehaviour
         explosion.transform.localScale = new Vector3(ondaSize, ondaSize, 1);
         OndaScript ondaScript = explosion.GetComponent<OndaScript>();
         ondaScript.daño = dmg;
+        Sprite nota = notas[Random.Range(0, notas.Length)];
         for (int i = 0; i < 8; i++)
         {
             GameObject balaMusical = Instantiate(bala, firingPoint);
+            balaMusical.GetComponent<SpriteRenderer>().sprite = nota;
             BalaMusicalScript balaScript = balaMusical.GetComponent<BalaMusicalScript>();
             balaScript.direction = directions[i];
             balaScript.daño = dmgBala;

@@ -102,11 +102,11 @@ public class Boss : EnemigoScript
                 introDone = true;
                 if (scrBotones.dv == 1)
                 {
-                    Time.timeScale = 2;
+                    Time.timeScale = 2.5f;
                     btnDvImg.sprite = dvOnSpr;
                 } else if (scrBotones.dv == 2)
                 {
-                    Time.timeScale = 3;
+                    Time.timeScale = 5;
                     btnDvImg.sprite = dvOnSpr;
                 }
                 else Time.timeScale = 1;

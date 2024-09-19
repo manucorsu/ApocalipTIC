@@ -34,8 +34,8 @@ public class PauseScript : MonoBehaviour
         {
             int dv = scrBotones.dv;
 
-            if (dv == 1) Time.timeScale = 2;
-            else if (dv == 2) Time.timeScale = 3;
+            if (dv == 1) Time.timeScale = 2.5f;
+            else if (dv == 2) Time.timeScale = 5;
             else { Time.timeScale = 1; }
 
             pauseMenu.SetActive(false);

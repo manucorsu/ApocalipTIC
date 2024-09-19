@@ -269,7 +269,7 @@ public class scrBotones : MonoBehaviour
     {
         if (dv == 0)
         {
-            Time.timeScale = 2;
+            Time.timeScale = 2.5f;
             dv = 1;
             Image btDvImage = btDv.GetComponent<Image>();
             btDvImage.sprite = btDvSprite2;
@@ -277,7 +277,7 @@ public class scrBotones : MonoBehaviour
 
         else if (dv == 1)
         {
-            Time.timeScale = 3;
+            Time.timeScale = 5;
             dv = 2;
             Image btDvImage = btDv.GetComponent<Image>();
             btDvImage.color = Color.cyan;
