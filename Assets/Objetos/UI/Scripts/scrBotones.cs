@@ -39,7 +39,7 @@ public class scrBotones : MonoBehaviour
 
     //Variables
 
-    public static bool dv = false; // false si el botón de doble velocidad está inactivo, true si lo está
+    public static int dv = 0; // 0 si el botón de doble velocidad está inactivo, 1 si lo está, 2 si está en TRIPLE velocidad
 
     private void Start()
     {
@@ -267,20 +267,27 @@ public class scrBotones : MonoBehaviour
 
     public void DobleVeclocidad()
     {
-        if (dv == false)
+        if (dv == 0)
         {
             Time.timeScale = 2;
-            dv = true;
+            dv = 1;
             Image btDvImage = btDv.GetComponent<Image>();
             btDvImage.sprite = btDvSprite2;
         }
 
-        else if (dv == true)
+        else if (dv == 1)
+        {
+            Time.timeScale = 3;
+            dv = 2;
+            Image btDvImage = btDv.GetComponent<Image>();
+            btDvImage.color = Color.cyan;
+        } else if (dv == 2)
         {
             Time.timeScale = 1;
-            dv = false;
+            dv = 0;
             Image btDvImage = btDv.GetComponent<Image>();
             btDvImage.sprite = btDvSprite1;
+            btDvImage.color = Color.white;
         }
     }
 

@@ -100,9 +100,13 @@ public class Boss : EnemigoScript
                 yield return new WaitForSeconds(3f);
                 canBeShot = true;
                 introDone = true;
-                if (scrBotones.dv)
+                if (scrBotones.dv == 1)
                 {
                     Time.timeScale = 2;
+                    btnDvImg.sprite = dvOnSpr;
+                } else if (scrBotones.dv == 2)
+                {
+                    Time.timeScale = 3;
                     btnDvImg.sprite = dvOnSpr;
                 }
                 else Time.timeScale = 1;

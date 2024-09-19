@@ -32,9 +32,10 @@ public class PauseScript : MonoBehaviour
         }
         else
         {
-            bool dv = scrBotones.dv;
+            int dv = scrBotones.dv;
 
-            if (dv == true) Time.timeScale = 2;
+            if (dv == 1) Time.timeScale = 2;
+            else if (dv == 2) Time.timeScale = 3;
             else { Time.timeScale = 1; }
 
             pauseMenu.SetActive(false);
