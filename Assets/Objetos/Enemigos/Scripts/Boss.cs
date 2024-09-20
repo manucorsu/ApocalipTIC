@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class Boss : EnemigoScript
@@ -48,7 +47,7 @@ public class Boss : EnemigoScript
         animator.SetTrigger("introLaughTrigger");
     }
     #endregion
-    private IEnumerator MoveTo(string[] wpNames, string[] mans, bool thenSpawnEnemies, string finalAnim = "", float waitTime = 3f) // v3ify pero corrutina
+    private IEnumerator MoveTo(string[] wpNames, string[] mans, bool thenSpawnEnemies, string finalAnim = "", float waitTime = 3f, bool thenGoBack = true) // v3ify pero corrutina
     {
         /* Explicación:
          * Se por el camino indicado en el array wpNames, 
@@ -108,6 +107,7 @@ public class Boss : EnemigoScript
                 yield return new WaitForSeconds(3f); //por supuesto que esta animación iba a estar hardcodeada y fea
                 canBeShot = true;
                 introDone = true;
+                BossInvulnToggler.active = true;
                 if (scrBotones.dv == 1)
                 {
                     Time.timeScale = 2.5f;
@@ -150,41 +150,44 @@ public class Boss : EnemigoScript
                 }
             }
             yield return new WaitForSeconds(waitTime / 3);
-            for (int i = (wpNames.Length - 1); i >= 0; i--)
+            if (thenGoBack)
             {
-                for (int j = (waypoints.Count - 1); j >= 0; j--)
+                for (int i = (wpNames.Length - 1); i >= 0; i--)
                 {
-                    if (waypoints[j].name == wpNames[i])
+                    for (int j = (waypoints.Count - 1); j >= 0; j--)
                     {
-                        target = waypoints[j].position;
-                        while (this.transform.position != target)
+                        if (waypoints[j].name == wpNames[i])
                         {
-                            switch (mans[i])
+                            target = waypoints[j].position;
+                            while (this.transform.position != target)
                             {
-                                case "MoveDown":
-                                    SetMoveAnim("MoveUp");
-                                    break;
-                                case "MoveLeft":
-                                    SetMoveAnim("MoveRight");
-                                    break;
-                                case "MoveRight":
-                                    SetMoveAnim("MoveLeft");
-                                    break;
-                                case "MoveUp":
-                                    SetMoveAnim("MoveDown");
-                                    break;
-                                default:
-                                    Debug.LogError("Boss: Se encontró una animación válida cuando se quiso volver al centro");
-                                    break;
+                                switch (mans[i])
+                                {
+                                    case "MoveDown":
+                                        SetMoveAnim("MoveUp");
+                                        break;
+                                    case "MoveLeft":
+                                        SetMoveAnim("MoveRight");
+                                        break;
+                                    case "MoveRight":
+                                        SetMoveAnim("MoveLeft");
+                                        break;
+                                    case "MoveUp":
+                                        SetMoveAnim("MoveDown");
+                                        break;
+                                    default:
+                                        Debug.LogError("Boss: Se encontró una animación válida cuando se quiso volver al centro");
+                                        break;
+                                }
+                                this.transform.position = Vector3.MoveTowards(this.transform.position, target, spd * Time.deltaTime);
+                                yield return null; //null == esperar al siguiente frame a lo Update
                             }
-                            this.transform.position = Vector3.MoveTowards(this.transform.position, target, spd * Time.deltaTime);
-                            yield return null; //null == esperar al siguiente frame a lo Update
                         }
                     }
                 }
+                SetMoveAnim("MoveDown");
+                yield return new WaitForSeconds(waitTime / 3);
             }
-            SetMoveAnim("MoveDown");
-            yield return new WaitForSeconds(waitTime / 3);
             break;
         }
         idle = true;
@@ -229,23 +232,57 @@ public class Boss : EnemigoScript
     private void DoRandomBehaviour()
     {
         idle = false;
-        int rand = Random.Range(0, 2);
-        Debug.Log(rand);
+        int rand = Random.Range(0, 1); // por ahora que no entre al case 1 hasta que funcione bien
+        Debug.Log($"rand: {rand}");
         switch (rand)
         {
             case 0: //spawnear enemigos cerca de la entrada
                 StartCoroutine(MoveTo(new string[] { "W2", "J1", "J2" }, new string[] { "MoveLeft", "MoveLeft", "MoveUp" }, true, "MoveDown"));
                 break;
-            case 1: /*Sale del mapa por algún grupo de spawners, y entra por otro, esperando 5s antes de volver al centro de la misma manera.
-                     * Si le toca A o B, spawnea enemigos.*/
-                int randSGroup = Random.Range(1, 2);
+            case 1: // Ver case 1 jefe.jpg.
+                int randSGroup = Random.Range(0, 12);
+                Debug.Log($"rand: {randSGroup}");
                 switch (randSGroup)
                 {
-                    case 0: // C -> A
+                    case 0: // A -> B
                         StartCoroutine(MoveTo(
-                            new string[] { "W2", "C2", "J3", "A5", "J2"},
-                            new string[] { "MoveDown", "MoveRight", "MoveUp", "MoveLeft", "MoveDown", "MoveRight", "MoveDown" },
-                            true, "MoveDown", 5));
+                            new string[] { "J1", "A8", "J3", "W2" },
+                            new string[] { "MoveLeft", "MoveUp", "MoveRight", "MoveDown" }, false, "MoveDown", 4, false
+                            ));
+                        break;
+                    case 1: // A -> C
+                        StartCoroutine(MoveTo(
+                            new string[] { "J1", "A8", "J4", "C3", "W2" },
+                            new string[] { "MoveLeft", "MoveUp", "MoveRight" }, false, "MoveDown", 4, false
+                            ));
+                        break;
+                    case 2: // A -> D
+                        StartCoroutine(MoveTo(
+                            new string[] { "J1", "A5", "J5", "J6", "D4", "J7", "W2" },
+                            new string[] { "MoveLeft", "MoveUp", "MoveLeft", "MoveDown", "MoveRight", "MoveUp", "MoveLeft" },
+                            false, "MoveDown", 4, false
+                            ));
+                        break;
+
+                    case 3: // B -> A
+                        break;
+                    case 4: // B -> C
+                        break;
+                    case 5: // B -> D
+                        break;
+
+                    case 6: // C -> A
+                        break;
+                    case 7: // C -> B
+                        break;
+                    case 8: // C -> D
+                        break;
+
+                    case 9: // D -> A
+                        break;
+                    case 10: // D -> B
+                        break;
+                    case 11: // D -> C
                         break;
                 }
                 break;
