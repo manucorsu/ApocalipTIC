@@ -159,26 +159,26 @@ public class Boss : EnemigoScript
                         if (waypoints[j].name == wpNames[i])
                         {
                             target = waypoints[j].position;
-                            while (this.transform.position != target)
+                            switch (mans[i])
                             {
-                                switch (mans[i])
-                                {
-                                    case "MoveDown":
-                                        SetMoveAnim("MoveUp");
-                                        break;
-                                    case "MoveLeft":
-                                        SetMoveAnim("MoveRight");
-                                        break;
-                                    case "MoveRight":
-                                        SetMoveAnim("MoveLeft");
-                                        break;
-                                    case "MoveUp":
-                                        SetMoveAnim("MoveDown");
-                                        break;
-                                    default:
-                                        Debug.LogError("Boss: Se encontró una animación válida cuando se quiso volver al centro");
-                                        break;
-                                }
+                                case "MoveDown":
+                                    SetMoveAnim("MoveUp");
+                                    break;
+                                case "MoveLeft":
+                                    SetMoveAnim("MoveRight");
+                                    break;
+                                case "MoveRight":
+                                    SetMoveAnim("MoveLeft");
+                                    break;
+                                case "MoveUp":
+                                    SetMoveAnim("MoveDown");
+                                    break;
+                                default:
+                                    Debug.LogError("Boss: Se encontró una animación válida cuando se quiso volver al centro");
+                                    break;
+                            }
+                            if(waypoints[j].name != wpNames[wpNames.Length-1]) while (this.transform.position != target)
+                            {
                                 this.transform.position = Vector3.MoveTowards(this.transform.position, target, spd * Time.deltaTime);
                                 yield return null; //null == esperar al siguiente frame a lo Update
                             }
@@ -236,7 +236,7 @@ public class Boss : EnemigoScript
         switch (rand)
         {
             case 0: //spawnear enemigos cerca de la entrada
-                StartCoroutine(MoveTo(new string[] { "W2", "J1", "J2" }, new string[] { "MoveLeft", "MoveLeft", "MoveUp" }, true, "MoveDown"));
+                StartCoroutine(MoveTo(new string[] { "W2", "J1", "J2" }, new string[] {"MoveDown", "MoveLeft", "MoveUp" }, true, "MoveDown"));
                 break;
             case 1: // Ver case 1 jefe.jpg.
                 int randSGroup = Random.Range(0, 1);
@@ -244,7 +244,7 @@ public class Boss : EnemigoScript
                 {
                     case 0: // A -> B
                         StartCoroutine(MoveTo(
-                            new string[] { "J1", "A5", "J3", "W2" },
+                            new string[] { "J1", "A5", "J3", "J4" },
                             new string[] { "MoveLeft", "MoveUp", "MoveRight", "MoveDown" },
                             false, "MoveDown", 3f, false
                             ));
