@@ -244,8 +244,8 @@ public class Boss : EnemigoScript
                 {
                     case 0: // A -> B
                         StartCoroutine(MoveTo(
-                            new string[] { "J1", "A5", "J3", "W2"},
-                            new string[] { "MoveLeft", "MoveUp", "MoveRight", "MoveDown"},
+                            new string[] { "J1", "A5", "J3", "W2" },
+                            new string[] { "MoveLeft", "MoveUp", "MoveRight", "MoveDown" },
                             false, "MoveDown", 3f, false
                             ));
                         break;

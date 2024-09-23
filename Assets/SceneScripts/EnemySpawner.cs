@@ -34,6 +34,13 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
+        foreach(GameObject flecha in flechas)
+        {
+            if (flecha == flechas[6] || flecha == flechas[7] || flecha == flechas[8])
+            {
+                flecha.GetComponent<SpriteRenderer>().enabled = false;
+            }
+        }
         botsVivos.Clear();
         ToggleSpawning(false);
     }
@@ -165,6 +172,14 @@ public class EnemySpawner : MonoBehaviour
         foreach (GameObject flecha in flechas)
         {
             flecha.GetComponent<SpriteRenderer>().enabled = true;
+            if (flecha == flechas[6] || flecha == flechas[7] || flecha == flechas[8])
+            {
+                if (ronda < 5) flecha.GetComponent<SpriteRenderer>().enabled = false;
+            }
+            else if(flecha != flechas[2] || flecha != flechas[3] || flecha != flechas[9])
+            {
+                if (ronda == 15 || ronda == 30) flecha.GetComponent<SpriteRenderer>().enabled = false;
+            }
         }
     }
 
