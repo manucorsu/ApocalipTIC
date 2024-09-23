@@ -232,36 +232,26 @@ public class Boss : EnemigoScript
     private void DoRandomBehaviour()
     {
         idle = false;
-        int rand = Random.Range(0, 1); // por ahora que no entre al case 1 hasta que funcione bien
-        Debug.Log($"rand: {rand}");
+        int rand = Random.Range(0, 2);
         switch (rand)
         {
             case 0: //spawnear enemigos cerca de la entrada
                 StartCoroutine(MoveTo(new string[] { "W2", "J1", "J2" }, new string[] { "MoveLeft", "MoveLeft", "MoveUp" }, true, "MoveDown"));
                 break;
             case 1: // Ver case 1 jefe.jpg.
-                int randSGroup = Random.Range(0, 12);
-                Debug.Log($"rand: {randSGroup}");
+                int randSGroup = Random.Range(0, 1);
                 switch (randSGroup)
                 {
                     case 0: // A -> B
                         StartCoroutine(MoveTo(
-                            new string[] { "J1", "A8", "J3", "W2" },
-                            new string[] { "MoveLeft", "MoveUp", "MoveRight", "MoveDown" }, false, "MoveDown", 4, false
+                            new string[] { "J1", "A5", "J3", "W2"},
+                            new string[] { "MoveLeft", "MoveUp", "MoveRight", "MoveDown"},
+                            false, "MoveDown", 3f, false
                             ));
                         break;
                     case 1: // A -> C
-                        StartCoroutine(MoveTo(
-                            new string[] { "J1", "A8", "J4", "C3", "W2" },
-                            new string[] { "MoveLeft", "MoveUp", "MoveRight" }, false, "MoveDown", 4, false
-                            ));
                         break;
                     case 2: // A -> D
-                        StartCoroutine(MoveTo(
-                            new string[] { "J1", "A5", "J5", "J6", "D4", "J7", "W2" },
-                            new string[] { "MoveLeft", "MoveUp", "MoveLeft", "MoveDown", "MoveRight", "MoveUp", "MoveLeft" },
-                            false, "MoveDown", 4, false
-                            ));
                         break;
 
                     case 3: // B -> A
@@ -286,7 +276,10 @@ public class Boss : EnemigoScript
                         break;
                 }
                 break;
-
+            case 2: //to do: spawnear enemigos en B
+                break;
+            case 3: //to do: destruir alguna torreta
+                break;
         }
     }
 }

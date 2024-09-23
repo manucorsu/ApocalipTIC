@@ -12,7 +12,16 @@ public class BossInvulnToggler : MonoBehaviour
             EnemigoScript enemy = collision.gameObject.GetComponent<EnemigoScript>();
             if (enemy != null && enemy.isBoss)
             {
-                enemy.canBeShot = !enemy.canBeShot;
+                if (enemy.canBeShot)
+                {
+                    enemy.canBeShot = false;
+                    enemy.spd = 3;
+                }
+                else
+                {
+                    enemy.canBeShot = true;
+                    enemy.spd = 2;
+                }
             }
         }
     }
