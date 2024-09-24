@@ -14,34 +14,6 @@ public class PegamentoScript : MonoBehaviour
     public float anim;
     public float precio;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "enemigo")
-        {
-            EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
-            if (enemigoScr.canBeEaten == true)
-            {
-                enemigoScr.spd /= 4;
-            }
-            else
-            {
-                enemigoScr.spd = 0;
-            }
-        }
-    }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
@@ -49,13 +21,36 @@ public class PegamentoScript : MonoBehaviour
         {
             if (enemigoScr.canBeEaten == true)
             {
-                if (collision.gameObject.tag == "enemigo")
+                if (enemigoScr.isPegamentoed)
                 {
                     enemigoScr.spd = enemigoScr.spdSave;
+                    enemigoScr.isPegamentoed = false;
                 }
             }
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
+
+        if (collision.gameObject.tag == "enemigo")
+        {
+            if (enemigoScr.canBeEaten == true)
+            {
+                enemigoScr.spd = enemigoScr.slowSpd;
+            }
+            else
+            {
+                enemigoScr.spd = 0;
+            }
+        }
+
+       
+        enemigoScr.isPegamentoed = true;
+
+    }
+
 
     public void AnimationEnd()
     {

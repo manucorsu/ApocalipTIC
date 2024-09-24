@@ -44,6 +44,7 @@ public class MejorasScript : MonoBehaviour
     //Variables
 
     public float precioExtraParaVender;
+    public bool isPotenciado = false;
     
 
     // Start is called before the first frame update

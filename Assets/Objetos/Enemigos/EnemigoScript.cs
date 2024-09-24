@@ -40,6 +40,8 @@ public class EnemigoScript : MonoBehaviour
 
     private IEnumerator sufrirNicho;
     private float sufrirNichoDPS; private float nichoCooldown;
+    public bool isPegamentoed = false;
+    public float slowSpd;
 
     void Awake()
     {
@@ -54,6 +56,8 @@ public class EnemigoScript : MonoBehaviour
             Destroy(this.gameObject); //ÚNICA vez en toda la HISTORIA donde un enemigo se destruye directamente y no llamando a Morir()
         }
         BuscarPath();
+
+        slowSpd = spd / 4;
     }
 
     protected virtual void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector

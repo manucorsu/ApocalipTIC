@@ -57,8 +57,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2296560994518507484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.93, z: 0}
-  m_LocalScale: {x: 1, y: -1, z: 1}
+  m_LocalPosition: {x: 0, y: -1.44, z: 0}
+  m_LocalScale: {x: 1.5, y: -1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 2296560996440889147}
   m_RootOrder: 0
@@ -101,7 +101,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300006, guid: dc3df53ac2295b44bab61bce6d306c5b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5529412}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -297,7 +297,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   puntaRecta: {fileID: 2296560994402191477}
-  rango: 2
+  rango: 3.04
   rotationSpd: 700
   canshoot: 1
   cooldown: 3

@@ -41,7 +41,10 @@ public class ConstruirScriptGeneral : MonoBehaviour
             {
                 if (zona != null)
                 {
-                    zona.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                    if (EnemySpawner.ronda != 15 && EnemySpawner.ronda != 30)
+                    {
+                        zona.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                    } 
                 }
             }
         }

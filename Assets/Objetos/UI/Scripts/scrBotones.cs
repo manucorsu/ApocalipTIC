@@ -12,7 +12,10 @@ public class scrBotones : MonoBehaviour
     public GameObject[] tiles;
     public GameObject[] torretas;
     public GameObject cuadroTorreta;
-    public GameObject[] zonasConsumibles;
+    //public GameObject[] zonasConsumibles;
+    public ZonaConsumiblesScript[] zonasConsumibles;
+    public GameObject consumibleSeleccionado;
+    public float consumibleSeleccionadoPrecio;
 
     public GameObject[] botones;
     public GameObject[] botonesTorretas;
@@ -49,19 +52,33 @@ public class scrBotones : MonoBehaviour
         scrConstruirGeneral = sceneScripts.GetComponent<ConstruirScriptGeneral>();
     }
 
+    private void Update()
+    {
+        zonasConsumibles = FindObjectsOfType<ZonaConsumiblesScript>();
+
+        foreach (ZonaConsumiblesScript zona in zonasConsumibles)
+        {
+            scrZonaConsumible = zona;
+            scrZonaConsumible.consumibleSeleccionado = consumibleSeleccionado;
+            scrZonaConsumible.precioSeleccionado = consumibleSeleccionadoPrecio;
+        }
+    }
+
+
+
     // VALOR DE CADA VARIABLE:
     //
     // 1: TIRALÁPICES
     // 2: NICHO
     // 3: TACHO
     // 4: PROYECTOR
-    // 5: 
-    // 6: 
-    // 7: 
-    // 8: 
+    // 5: TIRALAPICERAS
+    // 6: LANZABOMBUCHAS
+    // 7: IMÁN
+    // 8: PARLANTE
     // 9: BIDÓN
     // 10: PEGAMENTO 
-    // 11:
+    // 11: PALOMAS
     // 12:
 
     public void Click(int torreta)
@@ -200,39 +217,39 @@ public class scrBotones : MonoBehaviour
         //BIDÓN
         if (torreta == 9)
         {
-            foreach (GameObject zona in zonasConsumibles)
+            foreach (ZonaConsumiblesScript zona in zonasConsumibles)
             {
-                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
-                scrZonaConsumible.consumibleSeleccionado = torretas[9];
+                scrZonaConsumible = zona;
+                consumibleSeleccionado = torretas[9];
 
                 BidónScript scrBidón = torretas[9].GetComponent<BidónScript>();
-                scrZonaConsumible.precioSeleccionado = scrBidón.precio;
+                consumibleSeleccionadoPrecio = scrBidón.precio;
             }
         }
 
         //PEGAMENTO
         if (torreta == 10)
         {
-            foreach (GameObject zona in zonasConsumibles)
+            foreach (ZonaConsumiblesScript zona in zonasConsumibles)
             {
-                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
-                scrZonaConsumible.consumibleSeleccionado = torretas[10];
+                scrZonaConsumible = zona;
+                consumibleSeleccionado = torretas[10];
 
                 PegamentoScript scrPegamento = torretas[10].GetComponent<PegamentoScript>();
-                scrZonaConsumible.precioSeleccionado = scrPegamento.precio;
+                consumibleSeleccionadoPrecio = scrPegamento.precio;
             }
         }
 
         //PALOMAS
         if (torreta == 11)
         {
-            foreach (GameObject zona in zonasConsumibles)
+            foreach (ZonaConsumiblesScript zona in zonasConsumibles)
             {
-                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
-                scrZonaConsumible.consumibleSeleccionado = torretas[11];
+                scrZonaConsumible = zona;
+                consumibleSeleccionado = torretas[11];
 
-                scrPalomas scrPaloma = torretas[11].GetComponent<scrPalomas>();
-                scrZonaConsumible.precioSeleccionado = scrPaloma.precio;
+                scrPalomas scrpalomas = torretas[11].GetComponent<scrPalomas>();
+                consumibleSeleccionadoPrecio = scrpalomas.precio;
             }
         }
 
@@ -320,7 +337,7 @@ public class scrBotones : MonoBehaviour
 
             if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
             {
-                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.25f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.2f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.dps += 5; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
                 scrMejora.precioExtraParaVender += 100;
@@ -352,7 +369,7 @@ public class scrBotones : MonoBehaviour
 
             if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
             {
-                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.4f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
                 scrMejora.precioExtraParaVender += 100;

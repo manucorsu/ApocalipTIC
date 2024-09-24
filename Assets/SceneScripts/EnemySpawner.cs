@@ -195,4 +195,15 @@ public class EnemySpawner : MonoBehaviour
         }
         spawnear = t;
     }
+
+    public void ActivarConsumibles(bool estado)
+    {
+        Oscuro2.GetComponent<Image>().enabled = !estado;
+        ConstruirScriptGeneral construirScript = GetComponent<ConstruirScriptGeneral>();
+
+        foreach (GameObject zona in construirScript.consumiblesZonas)
+        {
+            zona.GetComponent<BoxCollider2D>().enabled = estado;
+        }
+    }
 }
