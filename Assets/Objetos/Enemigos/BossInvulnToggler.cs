@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossInvulnToggler : MonoBehaviour
 {
-    public static bool active = false;
+    public bool active = false;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (active)

@@ -8,6 +8,7 @@ public class Boss : EnemigoScript
     public static bool isSpawningEnemies;
     private bool idle = false;
     private bool introDone = false;
+    private GameObject bits;
     private Dictionary<string, float> moveAnims = new Dictionary<string, float> //viva python
     {
         {"MoveDown", 0f},
@@ -17,6 +18,19 @@ public class Boss : EnemigoScript
     };
 
     #region behaviour
+    private string FindOppositeAnim(string an)
+    {
+        switch (an)
+        {
+            case "MoveDown": return "MoveUp";
+            case "MoveLeft": return "MoveRight";
+            case "MoveRight": return "MoveLeft";
+            case "MoveUp": return "MoveDown";
+            default:
+                Debug.LogError("Boss: Se encontró una animación válida cuando se quiso volver al centro");
+                return "MoveDown";
+        }
+    }
     private void SetMoveAnim(string an)
     {
         if (moveAnims.ContainsKey(an))
@@ -107,7 +121,6 @@ public class Boss : EnemigoScript
                 yield return new WaitForSeconds(3f); //por supuesto que esta animación iba a estar hardcodeada y fea
                 canBeShot = true;
                 introDone = true;
-                BossInvulnToggler.active = true;
                 if (scrBotones.dv == 1)
                 {
                     Time.timeScale = 2.5f;
@@ -121,6 +134,14 @@ public class Boss : EnemigoScript
                 }
                 else Time.timeScale = 1;
                 btnDv.interactable = true;
+
+                foreach (Transform hijo in bits.transform)
+                {
+                    if (hijo != bits)
+                    {
+                        hijo.GetComponent<BossInvulnToggler>().active = true;
+                    }
+                }
                 break;
             }
             if (finalAnim != "")
@@ -159,29 +180,14 @@ public class Boss : EnemigoScript
                         if (waypoints[j].name == wpNames[i])
                         {
                             target = waypoints[j].position;
-                            switch (mans[i])
-                            {
-                                case "MoveDown":
-                                    SetMoveAnim("MoveUp");
-                                    break;
-                                case "MoveLeft":
-                                    SetMoveAnim("MoveRight");
-                                    break;
-                                case "MoveRight":
-                                    SetMoveAnim("MoveLeft");
-                                    break;
-                                case "MoveUp":
-                                    SetMoveAnim("MoveDown");
-                                    break;
-                                default:
-                                    Debug.LogError("Boss: Se encontró una animación válida cuando se quiso volver al centro");
-                                    break;
-                            }
-                            if(waypoints[j].name != wpNames[wpNames.Length-1]) while (this.transform.position != target)
-                            {
-                                this.transform.position = Vector3.MoveTowards(this.transform.position, target, spd * Time.deltaTime);
-                                yield return null; //null == esperar al siguiente frame a lo Update
-                            }
+                            string a = FindOppositeAnim(mans[i]);
+                            Debug.Log(a);
+                            SetMoveAnim(a);
+                            while (this.transform.position != target)
+                                {
+                                    this.transform.position = Vector3.MoveTowards(this.transform.position, target, spd * Time.deltaTime);
+                                    yield return null; //null == esperar al siguiente frame a lo Update
+                                }
                         }
                     }
                 }
@@ -205,6 +211,8 @@ public class Boss : EnemigoScript
         introDone = false;
         canBeShot = false;
         idle = false;
+        bits = GameObject.Find("BITS");
+        if (bits == null) Debug.LogError("Boss: No se encontró el empty contenedor de los InvulnTogglers.");
         btnDv = GameObject.Find("btnDobleVelocidad").GetComponent<Button>();
         btnDvImg = GameObject.Find("btnDobleVelocidad").GetComponent<Image>();
         GameObject padreSpawners = GameObject.Find("Spawners");
@@ -236,7 +244,9 @@ public class Boss : EnemigoScript
         switch (rand)
         {
             case 0: //spawnear enemigos cerca de la entrada
-                StartCoroutine(MoveTo(new string[] { "W2", "J1", "J2" }, new string[] {"MoveDown", "MoveLeft", "MoveUp" }, true, "MoveDown"));
+                StartCoroutine(MoveTo(new string[] { "W2", "J1", "J2" },
+                    new string[] { "MoveLeft", "MoveLeft", "MoveUp" },
+                    true, "MoveDown"));
                 break;
             case 1: // Ver case 1 jefe.jpg.
                 int randSGroup = Random.Range(0, 1);

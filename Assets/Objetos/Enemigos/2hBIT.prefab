@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 1592724239625860918}
   - component: {fileID: 127362634333909105}
   m_Layer: 0
-  m_Name: 2BIT
+  m_Name: 2hBIT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230,3 +230,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7863e9f71fcea2c48b49a4747d0b55f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 0
