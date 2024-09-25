@@ -12,10 +12,8 @@ public class scrBotones : MonoBehaviour
     public GameObject[] tiles;
     public GameObject[] torretas;
     public GameObject cuadroTorreta;
-    //public GameObject[] zonasConsumibles;
-    public ZonaConsumiblesScript[] zonasConsumibles;
+    public GameObject[] zonasConsumibles;
     public GameObject consumibleSeleccionado;
-    public float consumibleSeleccionadoPrecio;
 
     public GameObject[] botones;
     public GameObject[] botonesTorretas;
@@ -54,14 +52,7 @@ public class scrBotones : MonoBehaviour
 
     private void Update()
     {
-        zonasConsumibles = FindObjectsOfType<ZonaConsumiblesScript>();
-
-        foreach (ZonaConsumiblesScript zona in zonasConsumibles)
-        {
-            scrZonaConsumible = zona;
-            scrZonaConsumible.consumibleSeleccionado = consumibleSeleccionado;
-            scrZonaConsumible.precioSeleccionado = consumibleSeleccionadoPrecio;
-        }
+       
     }
 
 
@@ -214,42 +205,43 @@ public class scrBotones : MonoBehaviour
             }
         }
 
+
         //BIDÓN
         if (torreta == 9)
         {
-            foreach (ZonaConsumiblesScript zona in zonasConsumibles)
+            foreach (GameObject zona in zonasConsumibles)
             {
-                scrZonaConsumible = zona;
-                consumibleSeleccionado = torretas[9];
+                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                scrZonaConsumible.consumibleSeleccionado = torretas[9];
 
                 BidónScript scrBidón = torretas[9].GetComponent<BidónScript>();
-                consumibleSeleccionadoPrecio = scrBidón.precio;
+                scrZonaConsumible.precioSeleccionado = scrBidón.precio;
             }
         }
 
         //PEGAMENTO
         if (torreta == 10)
         {
-            foreach (ZonaConsumiblesScript zona in zonasConsumibles)
+            foreach (GameObject zona in zonasConsumibles)
             {
-                scrZonaConsumible = zona;
-                consumibleSeleccionado = torretas[10];
+                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                scrZonaConsumible.consumibleSeleccionado = torretas[10];
 
                 PegamentoScript scrPegamento = torretas[10].GetComponent<PegamentoScript>();
-                consumibleSeleccionadoPrecio = scrPegamento.precio;
+                scrZonaConsumible.precioSeleccionado = scrPegamento.precio;
             }
         }
 
         //PALOMAS
         if (torreta == 11)
         {
-            foreach (ZonaConsumiblesScript zona in zonasConsumibles)
+            foreach (GameObject zona in zonasConsumibles)
             {
-                scrZonaConsumible = zona;
-                consumibleSeleccionado = torretas[11];
+                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                scrZonaConsumible.consumibleSeleccionado = torretas[11];
 
-                scrPalomas scrpalomas = torretas[11].GetComponent<scrPalomas>();
-                consumibleSeleccionadoPrecio = scrpalomas.precio;
+                scrPalomas scrPaloma = torretas[11].GetComponent<scrPalomas>();
+                scrZonaConsumible.precioSeleccionado = scrPaloma.precio;
             }
         }
 

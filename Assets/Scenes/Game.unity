@@ -13341,6 +13341,7 @@ MonoBehaviour:
   torretas: []
   cuadroTorreta: {fileID: 0}
   zonasConsumibles: []
+  consumibleSeleccionado: {fileID: 0}
   botones: []
   botonesTorretas: []
   botonesConsumibles: []
@@ -19827,7 +19828,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106914361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.842, y: 3.558, z: 0}
+  m_LocalPosition: {x: 3.842, y: 3.558, z: -0.1}
   m_LocalScale: {x: 12.236269, y: 33.48589, z: 1.3408008}
   m_Children: []
   m_Father: {fileID: 1175502165}
@@ -21747,7 +21748,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398770149}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.799, y: -3.037, z: 0}
+  m_LocalPosition: {x: 5.799, y: -3.037, z: -0.1}
   m_LocalScale: {x: 13.217046, y: 32.505108, z: 1.3408008}
   m_Children: []
   m_Father: {fileID: 1175502165}
@@ -22738,6 +22739,7 @@ MonoBehaviour:
   - {fileID: 1863991463}
   - {fileID: 1398770149}
   - {fileID: 1106914361}
+  consumibleSeleccionado: {fileID: 0}
   botones:
   - {fileID: 878903000}
   - {fileID: 1446011154}
@@ -24234,7 +24236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661311563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.325, y: 0.304, z: 0}
+  m_LocalPosition: {x: 3.325, y: 0.304, z: -0.1}
   m_LocalScale: {x: 117.59558, y: 11.365308, z: 1.3551208}
   m_Children: []
   m_Father: {fileID: 1175502165}
@@ -26236,7 +26238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863991463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.657, y: 0.304, z: 0}
+  m_LocalPosition: {x: -4.657, y: 0.304, z: -0.1}
   m_LocalScale: {x: 17.818905, y: 75.00517, z: 1.3551208}
   m_Children: []
   m_Father: {fileID: 1175502165}

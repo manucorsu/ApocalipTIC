@@ -59,6 +59,8 @@ MonoBehaviour:
   canBeEaten: 1
   canBeShot: 1
   spName: 
+  isPegamentoed: 0
+  slowSpd: 0
 --- !u!50 &7411269467034504210
 Rigidbody2D:
   serializedVersion: 4
@@ -180,7 +182,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7411269467034504211}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a572f578ab58974fa10c09a4e2cc225, type: 3}
   m_Name: 
