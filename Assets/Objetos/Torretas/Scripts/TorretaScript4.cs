@@ -67,7 +67,7 @@ public class TorretaScript4 : MonoBehaviour
                 foreach (RaycastHit2D enemigos in hits2)
                 {
                     EnemigoScript enemigoScript = target.gameObject.GetComponent<EnemigoScript>();
-                    if (enemigoScript != null)
+                    if (enemigoScript != null && enemigoScript.canBeShot)
                     {
                         if (enemigos.transform == target.transform && enemigoScript.spd > 0)
                         {
@@ -92,6 +92,9 @@ public class TorretaScript4 : MonoBehaviour
 
     private void RotateTowardsTarget()
     {
+        Boss boss = target.gameObject.GetComponent<Boss>();
+        if (boss != null && boss.introDone == true && boss.canBeShot == false) return; //que no busque al jefe si no se le puede disparar (salvo durante la intro porque queda épico)
+
         float angulo = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angulo + 90));
 

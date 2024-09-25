@@ -13,7 +13,7 @@ public class ImanScript : TorretaScript
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -27,10 +27,15 @@ public class ImanScript : TorretaScript
             }
             FindTarget();
             return;
-        } else
+        }
+        else
         {
-            animator.SetFloat("anim", 1);
-            isAbsorbing = true;
+            if (target.GetComponent<EnemigoScript>().isBoss) return;
+            else
+            {
+                animator.SetFloat("anim", 1);
+                isAbsorbing = true;
+            }
         }
 
         RotateTowardsTarget();
@@ -49,7 +54,7 @@ public class ImanScript : TorretaScript
                 {
                     if (target.GetComponent<EnemigoScript>().canBeShot)
                     {
-                        GameObject basura = Instantiate(tuerca, new Vector2 (target.position.x, target.position.y), Quaternion.identity);
+                        GameObject basura = Instantiate(tuerca, new Vector2(target.position.x, target.position.y), Quaternion.identity);
                         TornilloScript basuraScript = basura.GetComponent<TornilloScript>();
                         basuraScript.torreta = this.gameObject;
                         basuraScript.puntaTorreta = punta.gameObject;

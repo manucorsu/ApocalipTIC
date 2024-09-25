@@ -7,7 +7,7 @@ public class Boss : EnemigoScript
 {
     public static bool isSpawningEnemies;
     private bool idle = false;
-    private bool introDone = false;
+    public bool introDone = false;
     private GameObject bits;
     private Dictionary<string, float> moveAnims = new Dictionary<string, float> //viva python
     {
@@ -16,8 +16,6 @@ public class Boss : EnemigoScript
         {"MoveRight", 2f},
         {"MoveUp", 3f}
     };
-
-    #region behaviour
     private string FindOppositeAnim(string an)
     {
         switch (an)
@@ -42,7 +40,7 @@ public class Boss : EnemigoScript
             Debug.LogError($"SetMoveAnim: No existe la key {an} en el diccionario de moveAnims!!");
         }
     }
-    #region la intro
+
     private Button btnDv;
     private Image btnDvImg;
     [SerializeField] private Sprite dvOnSpr;
@@ -57,11 +55,12 @@ public class Boss : EnemigoScript
         GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().ActivarConsumibles(false);
         StartCoroutine(MoveTo(new string[] { "W2" }, new string[] { "MoveLeft" }, false));
     }
+
     private void DoIntroLaugh()
     {
         animator.SetTrigger("introLaughTrigger");
     }
-    #endregion
+
     private IEnumerator MoveTo(string[] wpNames, string[] mans, bool thenSpawnEnemies, string finalAnim = "", float waitTime = 3f, bool thenGoBack = true) // v3ify pero corrutina
     {
         /* Explicación:
@@ -191,7 +190,6 @@ public class Boss : EnemigoScript
         }
         idle = true;
     }
-    #endregion
 
     private void Awake()
     {
@@ -221,6 +219,7 @@ public class Boss : EnemigoScript
     {
         DoIntro();
     }
+
     private void Update()
     {
         if (idle)
@@ -237,7 +236,7 @@ public class Boss : EnemigoScript
         {
             case 0: //spawnear enemigos cerca de la entrada
                 StartCoroutine(MoveTo(
-                    new string[] { "W2", "J1", "J2" },
+                    new string[] { "J4", "J1", "J2" },
                     new string[] { "MoveLeft", "MoveLeft", "MoveUp" },
                     true, "MoveDown"));
                 break;

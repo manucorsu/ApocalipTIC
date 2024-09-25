@@ -50,7 +50,8 @@ public class ImpresoraScript : MonoBehaviour
             {
                 if (target.GetComponent<EnemigoScript>().canBeShot)
                 {
-                    
+                    Boss boss = target.gameObject.GetComponent<Boss>();
+                    if (boss != null && boss.introDone && boss.canBeShot == false) return; //que no busque al jefe si no se le puede disparar (salvo durante la intro porque queda épico)
                     StartCoroutine(Disparar());
                     cooldown = 0f;
                 }
