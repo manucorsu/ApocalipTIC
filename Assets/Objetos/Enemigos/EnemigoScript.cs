@@ -40,7 +40,7 @@ public class EnemigoScript : MonoBehaviour
 
     private IEnumerator sufrirNicho;
     private float sufrirNichoDPS; private float nichoCooldown;
-    public bool isPegamentoed = false;
+    public bool isPegamentoed;
     public float slowSpd;
 
     void Awake()
@@ -81,6 +81,7 @@ public class EnemigoScript : MonoBehaviour
         spdSave = this.spd;
         construirscr = GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>();
         if (construirscr == null) Debug.LogError("construirscr fue null en EnemigoScript!!");
+        isPegamentoed = false;
     }
 
     private void BuscarPath()

@@ -54,6 +54,7 @@ public class Boss : EnemigoScript
         btnDv.interactable = false;
         btnDvImg.sprite = dvOffSpr;
         btnDvImg.color = Color.white;
+        GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().ActivarConsumibles(false);
         StartCoroutine(MoveTo(new string[] { "W2" }, new string[] { "MoveLeft" }, false));
     }
     private void DoIntroLaugh()
@@ -135,13 +136,7 @@ public class Boss : EnemigoScript
                 else Time.timeScale = 1;
                 btnDv.interactable = true;
 
-                foreach (Transform hijo in bits.transform)
-                {
-                    if (hijo != bits)
-                    {
-                        hijo.GetComponent<BossInvulnToggler>().active = true;
-                    }
-                }
+                GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().ActivarConsumibles(true);
                 break;
             }
             if (finalAnim != "")
