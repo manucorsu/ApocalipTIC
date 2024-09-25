@@ -14,6 +14,7 @@ public class ImpresoraScript : MonoBehaviour
     public Transform firingPoint;
     public GameObject bala;
     public LayerMask enemigos;
+    public Animator animImpresora;
 
     //Variables
 
@@ -59,6 +60,8 @@ public class ImpresoraScript : MonoBehaviour
 
     private IEnumerator Disparar()
     {
+        animImpresora.SetTrigger("anim");
+        yield return new WaitForSeconds(0.3f);
         Vector2 dir = firingPoint.position - target.position;
         GameObject balaObj = Instantiate(bala, firingPoint.position, Quaternion.Euler(0,0,Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90));
         BalaScript balascript = balaObj.GetComponent<BalaScript>();

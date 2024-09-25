@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 90569944807207532}
   - component: {fileID: 8927986160456419835}
   - component: {fileID: 8927986160456419834}
-  - component: {fileID: 4734479789888312537}
   m_Layer: 8
   m_Name: NOUSAR!!!HPBARTEST
   m_TagString: enemigo
@@ -176,28 +175,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4734479789888312537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 90569944807207505}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a572f578ab58974fa10c09a4e2cc225, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  consumibleSeleccionado: {fileID: 0}
-  sceneScripts: {fileID: 0}
-  scrConstruir: {fileID: 0}
-  zonasConsumibles:
-    serializedVersion: 2
-    m_Bits: 0
-  zonaConsumible: {fileID: 0}
-  scrZona: {fileID: 0}
-  palomas: {fileID: 0}
-  precioSeleccionado: 0
 --- !u!1 &4621390568934154858
 GameObject:
   m_ObjectHideFlags: 0

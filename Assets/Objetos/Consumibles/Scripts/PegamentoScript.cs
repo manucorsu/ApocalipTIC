@@ -32,10 +32,12 @@ public class PegamentoScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
-
         if (collision.gameObject.tag == "enemigo")
         {
+
+            EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
+
+
             if (enemigoScr.canBeEaten == true)
             {
                 enemigoScr.spd = enemigoScr.slowSpd;
@@ -44,10 +46,8 @@ public class PegamentoScript : MonoBehaviour
             {
                 enemigoScr.spd = 0;
             }
+            enemigoScr.isPegamentoed = true;
         }
-
-       
-        enemigoScr.isPegamentoed = true;
 
     }
 

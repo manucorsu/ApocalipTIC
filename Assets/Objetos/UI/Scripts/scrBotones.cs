@@ -70,7 +70,7 @@ public class scrBotones : MonoBehaviour
     // 9: BIDÓN
     // 10: PEGAMENTO 
     // 11: PALOMAS
-    // 12:
+    // 12: NETBOOK
 
     public void Click(int torreta)
     {
@@ -244,6 +244,20 @@ public class scrBotones : MonoBehaviour
                 scrZonaConsumible.precioSeleccionado = scrPaloma.precio;
             }
         }
+
+        //NETBOOK
+        if (torreta == 12)
+        {
+            foreach (GameObject zona in zonasConsumibles)
+            {
+                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                scrZonaConsumible.consumibleSeleccionado = torretas[12];
+
+                ElectricosaScript scrNetbook = torretas[12].GetComponent<ElectricosaScript>();
+                scrZonaConsumible.precioSeleccionado = scrNetbook.precio;
+            }
+        }
+
 
 
 
