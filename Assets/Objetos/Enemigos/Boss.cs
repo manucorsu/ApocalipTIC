@@ -27,7 +27,7 @@ public class Boss : EnemigoScript
             case "MoveRight": return "MoveLeft";
             case "MoveUp": return "MoveDown";
             default:
-                Debug.LogError("Boss: Se encontró una animación válida cuando se quiso volver al centro");
+                Debug.LogError($"{an} no es una man válida");
                 return "MoveDown";
         }
     }
@@ -175,14 +175,12 @@ public class Boss : EnemigoScript
                         if (waypoints[j].name == wpNames[i])
                         {
                             target = waypoints[j].position;
-                            string a = FindOppositeAnim(mans[i]);
-                            Debug.Log(a);
-                            SetMoveAnim(a);
                             while (this.transform.position != target)
-                                {
-                                    this.transform.position = Vector3.MoveTowards(this.transform.position, target, spd * Time.deltaTime);
-                                    yield return null; //null == esperar al siguiente frame a lo Update
-                                }
+                            {
+                                this.transform.position = Vector3.MoveTowards(this.transform.position, target, spd * Time.deltaTime);
+                                yield return null; //null == esperar al siguiente frame a lo Update
+                            }
+                            SetMoveAnim(FindOppositeAnim(mans[i]));
                         }
                     }
                 }
@@ -207,7 +205,6 @@ public class Boss : EnemigoScript
         canBeShot = false;
         idle = false;
         bits = GameObject.Find("BITS");
-        if (bits == null) Debug.LogError("Boss: No se encontró el empty contenedor de los InvulnTogglers.");
         btnDv = GameObject.Find("btnDobleVelocidad").GetComponent<Button>();
         btnDvImg = GameObject.Find("btnDobleVelocidad").GetComponent<Image>();
         GameObject padreSpawners = GameObject.Find("Spawners");
@@ -218,7 +215,7 @@ public class Boss : EnemigoScript
                 this.waypoints.Add(s.transform);
             }
         }
-        if (EnemySpawner.isBossFight == false) Debug.LogWarning("El jefe spawneó cuando EnemySpawner.isBossFight era false.");
+        if (EnemySpawner.isBossFight == false) Debug.LogError("El jefe spawneó cuando EnemySpawner.isBossFight era false.");
     }
     private void Start()
     {
@@ -239,7 +236,8 @@ public class Boss : EnemigoScript
         switch (rand)
         {
             case 0: //spawnear enemigos cerca de la entrada
-                StartCoroutine(MoveTo(new string[] { "W2", "J1", "J2" },
+                StartCoroutine(MoveTo(
+                    new string[] { "W2", "J1", "J2" },
                     new string[] { "MoveLeft", "MoveLeft", "MoveUp" },
                     true, "MoveDown"));
                 break;
@@ -285,6 +283,23 @@ public class Boss : EnemigoScript
                 break;
             case 3: //to do: destruir alguna torreta
                 break;
+        }
+    }
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+        if (collision.gameObject.CompareTag("bits") && introDone)
+        {
+            if (canBeShot)
+            {
+                this.spd = 3.5f;
+                canBeShot = false;
+            }
+            else
+            {
+                this.spd = 2;
+                canBeShot = true;
+            }
         }
     }
 }

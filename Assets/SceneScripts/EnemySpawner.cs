@@ -144,7 +144,6 @@ public class EnemySpawner : MonoBehaviour
             enemigoScript.spName = spawners[ris].name;
 
             botsASpawnear--;
-            //botsVivos.Add(nuevoEnemigo);
             tiempoDesdeUltimoSpawn = 0;
         }
         else

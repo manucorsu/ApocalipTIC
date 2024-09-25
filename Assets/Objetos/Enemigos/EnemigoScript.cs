@@ -192,7 +192,7 @@ public class EnemigoScript : MonoBehaviour
         else { return; }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Bala2") //el chorro de agua
         {
@@ -222,8 +222,11 @@ public class EnemigoScript : MonoBehaviour
         else
         {
             BalaScript bala = collision.gameObject.GetComponent<BalaScript>();
-            Sufrir(bala.balaDmg);
-            Destroy(bala.gameObject);
+            if(bala != null)
+            {
+                Sufrir(bala.balaDmg);
+                Destroy(bala.gameObject);
+            }
         }
     }
 

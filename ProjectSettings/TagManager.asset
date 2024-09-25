@@ -12,6 +12,7 @@ TagManager:
   - BalaImpresora
   - Bombucha
   - "L\xEDmite"
+  - bits
   layers:
   - Default
   - TransparentFX
