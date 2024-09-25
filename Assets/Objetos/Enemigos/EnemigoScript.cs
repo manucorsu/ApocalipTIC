@@ -42,6 +42,7 @@ public class EnemigoScript : MonoBehaviour
     private float sufrirNichoDPS; private float nichoCooldown;
     public bool isPegamentoed;
     public float slowSpd;
+    public GameObject explosionMuerte;
 
     void Awake()
     {
@@ -260,6 +261,7 @@ public class EnemigoScript : MonoBehaviour
 
     public virtual void Morir()
     {
+        Instantiate(explosionMuerte, transform.position, Quaternion.identity);
         this.spd = 0;
         EnemySpawner.botsVivos.Remove(this.gameObject);
         construirscr.plataActual += plata;
