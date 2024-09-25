@@ -61,6 +61,8 @@ MonoBehaviour:
   spName: 
   isPegamentoed: 0
   slowSpd: 0
+  explosionMuerte: {fileID: 6545438287314071777, guid: 295ede5d751d3eb489416efcc1b3ce27,
+    type: 3}
 --- !u!50 &90569944807207504
 Rigidbody2D:
   serializedVersion: 4

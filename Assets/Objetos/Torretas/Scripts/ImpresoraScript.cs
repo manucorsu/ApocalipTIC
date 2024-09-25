@@ -62,11 +62,14 @@ public class ImpresoraScript : MonoBehaviour
     {
         animImpresora.SetTrigger("anim");
         yield return new WaitForSeconds(0.3f);
-        Vector2 dir = firingPoint.position - target.position;
-        GameObject balaObj = Instantiate(bala, firingPoint.position, Quaternion.Euler(0,0,Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90));
-        BalaScript balascript = balaObj.GetComponent<BalaScript>();
-        balascript.SetTarget(target);
-        balascript.balaDmg = dmg;
+        if (target != null)
+        {
+            Vector2 dir = firingPoint.position - target.position;
+            GameObject balaObj = Instantiate(bala, firingPoint.position, Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90));
+            BalaScript balascript = balaObj.GetComponent<BalaScript>();
+            balascript.SetTarget(target);
+            balascript.balaDmg = dmg;
+        }
         yield return new WaitForSeconds(0.2f);
     }
 
