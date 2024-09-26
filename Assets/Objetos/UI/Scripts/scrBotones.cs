@@ -52,7 +52,7 @@ public class scrBotones : MonoBehaviour
 
     private void Update()
     {
-       
+
     }
 
 
@@ -304,7 +304,8 @@ public class scrBotones : MonoBehaviour
             dv = 2;
             Image btDvImage = btDv.GetComponent<Image>();
             btDvImage.color = Color.cyan;
-        } else if (dv == 2)
+        }
+        else if (dv == 2)
         {
             Time.timeScale = 1;
             dv = 0;
@@ -328,7 +329,7 @@ public class scrBotones : MonoBehaviour
                 if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 if (boton == 3 && scrTorreta.nivel3 != 3) { scrTorreta.nivel3++; scrTorreta.dmg += 5; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
 
-                
+
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
                 scrMejora.precioExtraParaVender += 100;
                 scrMejora.Mejorar();
@@ -391,7 +392,7 @@ public class scrBotones : MonoBehaviour
 
             if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
             {
-                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.bps+= 0.4f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.bps += 0.4f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
                 if (boton == 3 && scrTorreta.nivel3 != 3) { scrTorreta.nivel3++; scrTorreta.ganancia += 2; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
 

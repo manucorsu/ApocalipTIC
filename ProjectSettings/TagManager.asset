@@ -13,6 +13,7 @@ TagManager:
   - Bombucha
   - "L\xEDmite"
   - bits
+  - BossTeleporter
   layers:
   - Default
   - TransparentFX

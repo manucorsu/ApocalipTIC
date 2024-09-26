@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Boss : EnemigoScript
 {
+    private float baseSpd = 2f;
+    private float fastSpd = 12f;
     public static bool isSpawningEnemies;
     private bool idle = false;
     public bool introDone = false;
@@ -16,7 +18,6 @@ public class Boss : EnemigoScript
         {"MoveRight", 2f},
         {"MoveUp", 3f}
     };
-    public bool teleportMe = false;
     private string FindOppositeAnim(string an)
     {
         switch (an)
@@ -201,6 +202,7 @@ public class Boss : EnemigoScript
         base.AsignarTodo();
         introDone = false;
         canBeShot = false;
+        baseSpd = spd;
         idle = false;
         bits = GameObject.Find("BITS");
         btnDv = GameObject.Find("btnDobleVelocidad").GetComponent<Button>();
@@ -231,7 +233,7 @@ public class Boss : EnemigoScript
     private void DoRandomBehaviour()
     {
         idle = false;
-        int rand = Random.Range(0, 2);
+        int rand = 1/*Random.Range(0, 2)*/;
         switch (rand)
         {
             case 0: //spawnear enemigos cerca de la entrada
@@ -241,22 +243,24 @@ public class Boss : EnemigoScript
                     true, "MoveDown"));
                 break;
             case 1: // Ver case 1 jefe.jpg.
-                int randSGroup = Random.Range(0, 1);
+                int randSGroup = Random.Range(0, 2);
                 switch (randSGroup)
                 {
                     case 0: // A -> B
+                        fastSpd = 4;
                         StartCoroutine(MoveTo(
-                            new string[] { "J1", "A5", "J3", "J4" },
+                            new string[] { "J1", "A8", "J3", "J4" },
                             new string[] { "MoveLeft", "MoveUp", "MoveRight", "MoveDown" },
-                            false, "MoveDown", 3f, false
+                            false, "MoveDown", 3, false
                             ));
                         break;
                     case 1: // A -> C
-                        teleportMe = true;
-                        //StartCoroutine(MoveTo(
-                        //    new string[] { "J1", "A5", "J3", "J5", "J1" },
-                        //    new string[]
-                        //    ));
+                        fastSpd = 24;
+                        StartCoroutine(MoveTo(
+                            new string[] { "J1", "A8", "J5", "C2", "J4" },
+                            new string[] { "MoveLeft", "MoveUp", "MoveRight", "MoveDown", "MoveLeft" },
+                            false, "MoveDown", 3, false
+                            ));
                         break;
                     case 2: // A -> D
                         break;
@@ -296,12 +300,12 @@ public class Boss : EnemigoScript
         {
             if (canBeShot)
             {
-                this.spd = 3.5f;
+                this.spd = fastSpd;
                 canBeShot = false;
             }
             else
             {
-                this.spd = 2;
+                this.spd = baseSpd;
                 canBeShot = true;
             }
         }

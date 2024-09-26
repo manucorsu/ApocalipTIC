@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        foreach(GameObject flecha in flechas)
+        foreach (GameObject flecha in flechas)
         {
             if (flecha == flechas[6] || flecha == flechas[7] || flecha == flechas[8])
             {
@@ -72,7 +72,7 @@ public class EnemySpawner : MonoBehaviour
                 TerminarRonda();
             }
         }
-        test = botsVivos;   
+        test = botsVivos;
     }
     public void EmpezarRonda()
     {
@@ -101,7 +101,7 @@ public class EnemySpawner : MonoBehaviour
             Image btnPlayImage = btnIniciarRonda.GetComponent<Image>();
             btnPlayImage.sprite = btnPlaySprite2;
 
-            foreach(GameObject flecha in flechas)
+            foreach (GameObject flecha in flechas)
             {
                 flecha.GetComponent<SpriteRenderer>().enabled = false;
             }
@@ -178,7 +178,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (ronda < 5) flecha.GetComponent<SpriteRenderer>().enabled = false;
             }
-            else if(flecha != flechas[2] || flecha != flechas[3] || flecha != flechas[9])
+            else if (flecha != flechas[2] || flecha != flechas[3] || flecha != flechas[9])
             {
                 if (ronda == 15 || ronda == 30) flecha.GetComponent<SpriteRenderer>().enabled = false;
             }
