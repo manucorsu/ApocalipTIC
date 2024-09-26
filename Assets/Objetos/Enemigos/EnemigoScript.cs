@@ -43,7 +43,7 @@ public class EnemigoScript : MonoBehaviour
     public bool isPegamentoed;
     public float slowSpd;
     public GameObject explosionMuerte;
-
+    public Color colorExplosion;
     void Awake()
     {
         AsignarTodo();
@@ -261,7 +261,8 @@ public class EnemigoScript : MonoBehaviour
 
     public virtual void Morir()
     {
-        Instantiate(explosionMuerte, transform.position, Quaternion.identity);
+        GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
+        explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
         this.spd = 0;
         EnemySpawner.botsVivos.Remove(this.gameObject);
         construirscr.plataActual += plata;

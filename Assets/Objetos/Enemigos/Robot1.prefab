@@ -62,6 +62,7 @@ MonoBehaviour:
   slowSpd: 0
   explosionMuerte: {fileID: 6545438287314071777, guid: 295ede5d751d3eb489416efcc1b3ce27,
     type: 3}
+  colorExplosion: {r: 1, g: 1, b: 1, a: 1}
 --- !u!50 &4711819497900499443
 Rigidbody2D:
   serializedVersion: 4
