@@ -53,7 +53,7 @@ public class Boss : EnemigoScript
         btnDvImg.sprite = dvOffSpr;
         btnDvImg.color = Color.white;
         GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().ActivarConsumibles(false);
-        StartCoroutine(MoveTo(new string[] { "W2" }, new string[] { "MoveLeft" }, false));
+        StartCoroutine(MoveTo(new string[] { "J4" }, new string[] { "MoveLeft" }, false));
     }
 
     private void DoIntroLaugh()
@@ -157,7 +157,6 @@ public class Boss : EnemigoScript
                         prefabElegido = pfbsEnemigos[rie];
                         GameObject nuevoEnemigo = Instantiate(prefabElegido, new Vector3(this.transform.position.x, (this.transform.position.y - 2), 0f), Quaternion.identity);
                         nuevoEnemigo.GetComponent<EnemigoScript>().spName = targetName;
-                        EnemySpawner.botsVivos.Add(nuevoEnemigo);
                         yield return new WaitForSeconds(1);
                     }
                     animator.SetBool("spawnEnemy", false);

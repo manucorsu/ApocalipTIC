@@ -223,7 +223,7 @@ public class EnemigoScript : MonoBehaviour
         else
         {
             BalaScript bala = collision.gameObject.GetComponent<BalaScript>();
-            if(bala != null)
+            if (bala != null)
             {
                 Sufrir(bala.balaDmg);
                 Destroy(bala.gameObject);
@@ -261,10 +261,13 @@ public class EnemigoScript : MonoBehaviour
 
     public virtual void Morir()
     {
-        GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
-        explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
-        this.spd = 0;
+        if (!isBoss)
+        {
+            GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
+            explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
+        }
         EnemySpawner.botsVivos.Remove(this.gameObject);
+        this.spd = 0;
         construirscr.plataActual += plata;
         Destroy(this.gameObject);
     }
