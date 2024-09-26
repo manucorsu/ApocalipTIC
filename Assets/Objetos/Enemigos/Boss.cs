@@ -16,6 +16,7 @@ public class Boss : EnemigoScript
         {"MoveRight", 2f},
         {"MoveUp", 3f}
     };
+    public bool teleportMe = false;
     private string FindOppositeAnim(string an)
     {
         switch (an)
@@ -251,6 +252,11 @@ public class Boss : EnemigoScript
                             ));
                         break;
                     case 1: // A -> C
+                        teleportMe = true;
+                        //StartCoroutine(MoveTo(
+                        //    new string[] { "J1", "A5", "J3", "J5", "J1" },
+                        //    new string[]
+                        //    ));
                         break;
                     case 2: // A -> D
                         break;
