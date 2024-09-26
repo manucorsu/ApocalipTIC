@@ -33,6 +33,10 @@ public class TorretaScript4 : MonoBehaviour
     public float nivel1 = 1;
     public float nivel2 = 1;
 
+    public int idleRotationPoint = 0;
+    public bool isIdle;
+    private float idleRotationCooldown = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,27 +46,44 @@ public class TorretaScript4 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null)
+        if (isIdle)
         {
-            FindTarget();
+            if (Quaternion.Angle(punta.rotation, Quaternion.Euler(new Vector3(0f, 0f, idleRotationPoint))) < 0.1f)
+            {
+                if (idleRotationCooldown > 0.75f)
+                {
+                    idleRotationPoint = Random.Range(0, 360);
+                    idleRotationCooldown = 0;
+                }
 
-            return;
+                idleRotationCooldown += Time.deltaTime;
+            }
+            else
+            {
+                punta.rotation = Quaternion.RotateTowards(punta.rotation, Quaternion.Euler(new Vector3(0f, 0f, idleRotationPoint)), rotationSpd * Time.deltaTime);
+            }
         }
 
-        if (canshoot)
+        if (target == null)
         {
-            RotateTowardsTarget();
+            isIdle = true;
+            FindTarget();
+            return;
         }
 
 
         if (!CheckTargetRange())
         {
+            isIdle = true;
             target = null;
         }
         else
         {
             if (canshoot)
             {
+                isIdle = false;
+                RotateTowardsTarget();
+
                 hits2 = Physics2D.LinecastAll(transform.position, puntaRecta.position, enemigos);
                 foreach (RaycastHit2D enemigos in hits2)
                 {
@@ -75,8 +96,12 @@ public class TorretaScript4 : MonoBehaviour
                         }
                     }
                 }
-            }
+            } 
         }
+
+        //Animacion Idle
+
+       
 
     }
 

@@ -47,7 +47,7 @@ public class TorretaScript2 : MonoBehaviour
             return;
         }
 
-        RotateTowardsTarget();
+      
 
         if (!CheckTargetRange())
         {
@@ -56,6 +56,8 @@ public class TorretaScript2 : MonoBehaviour
         }
         else
         {
+            RotateTowardsTarget();
+
             if (isShooting == false)
             {
                 isShooting = true;

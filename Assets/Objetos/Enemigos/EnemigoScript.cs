@@ -261,8 +261,11 @@ public class EnemigoScript : MonoBehaviour
 
     public virtual void Morir()
     {
-        GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
-        explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
+        if (canBeEaten)
+        {
+            GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
+            explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
+        }
         this.spd = 0;
         EnemySpawner.botsVivos.Remove(this.gameObject);
         construirscr.plataActual += plata;

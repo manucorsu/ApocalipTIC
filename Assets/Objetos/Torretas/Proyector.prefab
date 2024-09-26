@@ -368,6 +368,7 @@ MonoBehaviour:
   canvasTransform: {fileID: 0}
   tileParaRenovar: {fileID: 0}
   precioExtraParaVender: 0
+  isPotenciado: 0
 --- !u!1 &2296560995809869553
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6644534078951359466}
   - component: {fileID: 6644534078951359465}
   - component: {fileID: 6644534078951359464}
+  - component: {fileID: 4326265414130432292}
   m_Layer: 0
   m_Name: Netbook
   m_TagString: Untagged
@@ -95,3 +96,22 @@ MonoBehaviour:
   duracion: 20
   rango: 4
   precio: 300
+--- !u!95 &4326265414130432292
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6644534078951359471}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b17c6cfbecaa3964ea77d53269c3f0f1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
