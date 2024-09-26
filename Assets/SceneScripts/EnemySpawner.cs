@@ -32,6 +32,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Image Oscuro2;
     [SerializeField] private GameObject[] flechas;
 
+    [SerializeField] private List<GameObject> test;
+
     void Start()
     {
         foreach(GameObject flecha in flechas)
@@ -70,6 +72,7 @@ public class EnemySpawner : MonoBehaviour
                 TerminarRonda();
             }
         }
+        test = botsVivos;   
     }
     public void EmpezarRonda()
     {

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -223,7 +223,7 @@ public class EnemigoScript : MonoBehaviour
         else
         {
             BalaScript bala = collision.gameObject.GetComponent<BalaScript>();
-            if(bala != null)
+            if (bala != null)
             {
                 Sufrir(bala.balaDmg);
                 Destroy(bala.gameObject);
@@ -262,12 +262,13 @@ public class EnemigoScript : MonoBehaviour
     public virtual void Morir()
     {
         if (canBeEaten)
+        if (!isBoss)
         {
             GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
             explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
         }
-        this.spd = 0;
         EnemySpawner.botsVivos.Remove(this.gameObject);
+        this.spd = 0;
         construirscr.plataActual += plata;
         Destroy(this.gameObject);
     }
