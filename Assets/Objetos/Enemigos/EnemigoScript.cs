@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using UnityEngine;
 
 public class EnemigoScript : MonoBehaviour
@@ -9,7 +8,7 @@ public class EnemigoScript : MonoBehaviour
     [Header("Animación")]
     protected Animator animator;
     protected List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
-    private Color baseColor = new Color(255, 255, 255, 255);
+    private Color baseColor = Color.white;
     [SerializeField] private Color hurtColor;
     public GameObject explosionMuerte;
     public Color colorExplosion;
@@ -17,6 +16,7 @@ public class EnemigoScript : MonoBehaviour
 
     #region Enemigos generados por el jefe
     [SerializeField] private Material solidWhite;
+    private Material defaultMat;
     #endregion
 
     #region Stats
@@ -66,10 +66,7 @@ public class EnemigoScript : MonoBehaviour
 
         slowSpd = spd / 4;
     }
-    //private IEnumerator BossMinionMovement(string[] path)
-    //{
-    //    yield return new WaitForSeconds(0.5f);
-    //}
+
     protected virtual void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
     {
         StopAllCoroutines();
@@ -81,6 +78,7 @@ public class EnemigoScript : MonoBehaviour
         spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
         animator = this.gameObject.GetComponent<Animator>();
         padreWaypoints = GameObject.Find("PadreWaypoints");
+        defaultMat = new Material(Shader.Find("Sprites/Default"));
         foreach (Transform hijo in padreWaypoints.transform)
         {
             if (hijo != padreWaypoints)
@@ -92,6 +90,26 @@ public class EnemigoScript : MonoBehaviour
         construirscr = GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>();
         if (construirscr == null) Debug.LogError("construirscr fue null en EnemigoScript!!");
         isPegamentoed = false;
+    }
+    private IEnumerator BossMinionMove(string[] path)
+    {
+        canBeShot = false;
+        canBeEaten = false;
+        SpriteRenderer sr = this.GetComponent<SpriteRenderer>();
+        while (false != true)
+        {
+            for (byte i = 1; i < 5; i++)
+            {
+                sr.material = solidWhite;
+                yield return new WaitForSeconds(1 / i);
+                sr.material = defaultMat;
+                yield return new WaitForSeconds(1 / (2 * i));
+            }
+            break;
+        }
+        canBeShot = true;
+        canBeEaten = true;
+        V3ify(path);
     }
 
     private void BuscarPath()
@@ -146,7 +164,7 @@ public class EnemigoScript : MonoBehaviour
         else if (spName == "J2")
         {
             secuenciaAnims.Add(0);
-            V3ify(new string[] { "G2" });
+            StartCoroutine(BossMinionMove(new string[] { "G2" }));
         }
     }
     private void V3ify(string[] camino)

@@ -10,7 +10,6 @@ public class Boss : EnemigoScript
     public static bool isSpawningEnemies;
     private bool idle = false;
     public bool introDone = false;
-    private GameObject bits;
     private Dictionary<string, float> moveAnims = new Dictionary<string, float> //viva python
     {
         {"MoveDown", 0f},
@@ -143,7 +142,7 @@ public class Boss : EnemigoScript
             if (thenSpawnEnemies == true)
             {
                 GameObject[] pfbsEnemigos = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().pfbsEnemigos;
-                byte cuantos = (byte)Random.Range(1, 4);
+                byte cuantos = (byte)Random.Range(3, 7);
                 animator.SetBool("spawnEnemy", true);
                 while (!isSpawningEnemies) yield return null;
                 if (isSpawningEnemies)
@@ -201,7 +200,6 @@ public class Boss : EnemigoScript
         canBeShot = false;
         baseSpd = spd;
         idle = false;
-        bits = GameObject.Find("BITS");
         btnDv = GameObject.Find("btnDobleVelocidad").GetComponent<Button>();
         btnDvImg = GameObject.Find("btnDobleVelocidad").GetComponent<Image>();
         GameObject padreSpawners = GameObject.Find("Spawners");
@@ -230,7 +228,7 @@ public class Boss : EnemigoScript
     private void DoRandomBehaviour()
     {
         idle = false;
-        int rand = Random.Range(0, 2);
+        int rand = Random.Range(0,2);
         switch (rand)
         {
             case 0: //spawnear enemigos cerca de la entrada
