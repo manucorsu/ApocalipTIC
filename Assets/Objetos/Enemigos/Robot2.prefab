@@ -48,6 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hurtColor: {r: 0.8490566, g: 0.21226415, b: 0.21226415, a: 1}
+  explosionMuerte: {fileID: 6545438287314071777, guid: 295ede5d751d3eb489416efcc1b3ce27,
+    type: 3}
+  colorExplosion: {r: 0.48584908, g: 0.67336303, b: 1, a: 1}
+  solidWhite: {fileID: 2100000, guid: 73fa6ee842c7da24ea3b26f170eaeac5, type: 2}
   isBoss: 0
   minRonda: 1
   baseHP: 150
@@ -57,12 +61,9 @@ MonoBehaviour:
   plata: 20
   canBeEaten: 1
   canBeShot: 1
-  spName: 
   isPegamentoed: 0
   slowSpd: 0
-  explosionMuerte: {fileID: 6545438287314071777, guid: 295ede5d751d3eb489416efcc1b3ce27,
-    type: 3}
-  colorExplosion: {r: 0.48584908, g: 0.67336303, b: 1, a: 1}
+  spName: 
 --- !u!50 &7411269467034504210
 Rigidbody2D:
   serializedVersion: 4

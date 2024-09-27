@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EnemigoScript : MonoBehaviour
 {
-
-    #region anim
+    #region Animación
+    [Header("Animación")]
     protected Animator animator;
     protected List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
     private Color baseColor = new Color(255, 255, 255, 255);
     [SerializeField] private Color hurtColor;
+    public GameObject explosionMuerte;
+    public Color colorExplosion;
     #endregion
 
-    #region stats
+    #region Enemigos generados por el jefe
+    [SerializeField] private Material solidWhite;
+    #endregion
+
+    #region Stats
     [Header("Stats")]
     public bool isBoss;
     public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
@@ -25,14 +31,16 @@ public class EnemigoScript : MonoBehaviour
     public bool canBeEaten = true;
     public bool canBeShot = true;
     private SpriteRenderer spriteRenderer;
+    public bool isPegamentoed;
+    public float slowSpd;
     #endregion
 
-    [HideInInspector] private ConstruirScriptGeneral construirscr; // ni idea fue Marcos
+    private ConstruirScriptGeneral construirscr; // ni idea fue Marcos
 
     #region nav
     private GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
     protected List<Transform> waypoints = new List<Transform>(); //todos los waypoints
-    public string spName; //en qué spawn point (ubicación) apareció. setteado EnemySpawner SACANDO que sea el jefe, que asigna su propio spawnpoint
+    [HideInInspector] public string spName; //en qué spawn point (ubicación) apareció. setteado EnemySpawner SACANDO que sea el jefe, que asigna su propio spawnpoint
     protected List<Vector3> v3Camino = new List<Vector3>();
     protected byte wi = 0; //waypoint index
     protected bool siguiendo = false; //ver final de V3ify()
@@ -40,10 +48,8 @@ public class EnemigoScript : MonoBehaviour
 
     private IEnumerator sufrirNicho;
     private float sufrirNichoDPS; private float nichoCooldown;
-    public bool isPegamentoed;
-    public float slowSpd;
-    public GameObject explosionMuerte;
-    public Color colorExplosion;
+
+
     void Awake()
     {
         AsignarTodo();
@@ -60,7 +66,10 @@ public class EnemigoScript : MonoBehaviour
 
         slowSpd = spd / 4;
     }
-
+    //private IEnumerator BossMinionMovement(string[] path)
+    //{
+    //    yield return new WaitForSeconds(0.5f);
+    //}
     protected virtual void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
     {
         StopAllCoroutines();
@@ -262,11 +271,11 @@ public class EnemigoScript : MonoBehaviour
     public virtual void Morir()
     {
         if (canBeEaten)
-        if (!isBoss)
-        {
-            GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
-            explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
-        }
+            if (!isBoss)
+            {
+                GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
+                explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
+            }
         EnemySpawner.botsVivos.Remove(this.gameObject);
         this.spd = 0;
         construirscr.plataActual += plata;

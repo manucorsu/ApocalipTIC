@@ -63,7 +63,7 @@ public class Boss : EnemigoScript
         animator.SetTrigger("introLaughTrigger");
     }
 
-    private IEnumerator MoveTo(string[] wpNames, string[] mans, bool thenSpawnEnemies, string finalAnim = "", float waitTime = 3f, bool thenGoBack = true) // v3ify pero corrutina
+    private IEnumerator MoveTo(string[] wpNames, string[] mans, bool thenSpawnEnemies, string finalAnim = "MoveDown", float waitTime = 3f, bool thenGoBack = true) // v3ify pero corrutina
     {
         /* Explicación:
          * Se por el camino indicado en el array wpNames, 
@@ -140,10 +140,6 @@ public class Boss : EnemigoScript
                 GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().ActivarConsumibles(true);
                 break;
             }
-            if (finalAnim != "")
-            {
-                SetMoveAnim(finalAnim);
-            }
             if (thenSpawnEnemies == true)
             {
                 GameObject[] pfbsEnemigos = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().pfbsEnemigos;
@@ -165,6 +161,7 @@ public class Boss : EnemigoScript
                     while (isSpawningEnemies) yield return null;
                 }
             }
+            SetMoveAnim(finalAnim);
             yield return new WaitForSeconds(waitTime / 3);
             if (thenGoBack)
             {
@@ -233,7 +230,7 @@ public class Boss : EnemigoScript
     private void DoRandomBehaviour()
     {
         idle = false;
-        int rand = 1/*Random.Range(0, 2)*/;
+        int rand = Random.Range(0, 2);
         switch (rand)
         {
             case 0: //spawnear enemigos cerca de la entrada
@@ -243,7 +240,7 @@ public class Boss : EnemigoScript
                     true, "MoveDown"));
                 break;
             case 1: // Ver case 1 jefe.jpg.
-                int randSGroup = Random.Range(0, 2);
+                int randSGroup = Random.Range(0, 3);
                 switch (randSGroup)
                 {
                     case 0: // A -> B
@@ -255,14 +252,20 @@ public class Boss : EnemigoScript
                             ));
                         break;
                     case 1: // A -> C
-                        fastSpd = 24;
+                        fastSpd = 12;
                         StartCoroutine(MoveTo(
-                            new string[] { "J1", "A8", "J5", "C2", "J4" },
-                            new string[] { "MoveLeft", "MoveUp", "MoveRight", "MoveDown", "MoveLeft" },
+                            new string[] { "J1", "A8", "J10", "J5", "C2", "J4" },
+                            new string[] { "MoveLeft", "MoveUp", "MoveRight", "MoveRight", "MoveDown", "MoveLeft" },
                             false, "MoveDown", 3, false
                             ));
                         break;
                     case 2: // A -> D
+                        fastSpd = 12;
+                        StartCoroutine(MoveTo(
+                            new string[] { "J1", "A8", "J6", "J7", "J8", "J9", "J4" },
+                            new string[] { "MoveLeft", "MoveUp", "MoveLeft", "MoveDown", "MoveRight", "MoveUp", "MoveLeft" },
+                            false, "MoveDown", 3, false
+                            ));
                         break;
 
                     case 3: // B -> A
@@ -303,7 +306,7 @@ public class Boss : EnemigoScript
                 this.spd = fastSpd;
                 canBeShot = false;
             }
-            else
+            else if (!idle)
             {
                 this.spd = baseSpd;
                 canBeShot = true;
