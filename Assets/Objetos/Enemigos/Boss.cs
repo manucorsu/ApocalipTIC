@@ -240,7 +240,7 @@ public class Boss : EnemigoScript
                     true, "MoveDown"));
                 break;
             case 1: // Ver case 1 jefe.jpg.
-                int randSGroup = 5;
+                int randSGroup = 9;
                 switch (randSGroup)
                 {
                     case 0: // A -> B
@@ -285,22 +285,46 @@ public class Boss : EnemigoScript
                             ));
                         break;
                     case 5: // B -> D
-                        fastSpd = 24;
+                        fastSpd = 12;
                         StartCoroutine(MoveTo(
-                            new string[] {"J10", "J5", "J11", "J12", "J8", "J9", "J4"},
-                            new string[] {"MoveUp", "MoveRight", "MoveDown", "MoveDown", "MoveLeft", "MoveUp", "MoveLeft"},
+                            new string[] { "J10", "J5", "J11", "J12", "J8", "J9", "J4" },
+                            new string[] { "MoveUp", "MoveRight", "MoveDown", "MoveDown", "MoveLeft", "MoveUp", "MoveLeft" },
                             false, "MoveDown", 3, false
                             ));
                         break;
 
                     case 6: // C -> A
+                        fastSpd = 12;
+                        StartCoroutine(MoveTo(
+                            new string[] { "C2", "J5", "J10", "A8", "J1", "J4" },
+                            new string[] { "MoveRight", "MoveUp", "MoveLeft", "MoveLeft", "MoveDown", "MoveRight" },
+                            false, "MoveDown", 3, false
+                            ));
                         break;
                     case 7: // C -> B
+                        fastSpd = 8;
+                        StartCoroutine(MoveTo(
+                            new string[] { "C2", "J5", "J10", "J4" },
+                            new string[] { "MoveRight", "MoveUp", "MoveLeft", "MoveDown" },
+                            false, "MoveDown", 3, false
+                            ));
                         break;
                     case 8: // C -> D
+                        fastSpd = 8;
+                        StartCoroutine(MoveTo(
+                            new string[] { "C3", "J12", "J8", "J9", "J4" },
+                            new string[] { "MoveRight", "MoveDown", "MoveLeft", "MoveUp", "MoveLeft" },
+                            false, "MoveDown", 3, false
+                            ));
                         break;
 
                     case 9: // D -> A
+                        fastSpd = 12;
+                        StartCoroutine(MoveTo(
+                            new string[] {"J9","J8", "J7", "J6", "A5", "J1", "J4"},
+                            new string[] {"MoveRight", "MoveDown", "MoveLeft", "MoveUp", "MoveRight", "MoveDown", "MoveRight"},
+                            false, "MoveDown", 3, false
+                            ));
                         break;
                     case 10: // D -> B
                         break;

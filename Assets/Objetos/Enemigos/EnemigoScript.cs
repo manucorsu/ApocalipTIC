@@ -107,9 +107,10 @@ public class EnemigoScript : MonoBehaviour
             }
             break;
         }
+        V3ify(path);
+        yield return new WaitForSeconds(1);
         canBeShot = true;
         canBeEaten = true;
-        V3ify(path);
     }
 
     private void BuscarPath()
