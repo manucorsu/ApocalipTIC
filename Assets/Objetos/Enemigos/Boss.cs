@@ -153,8 +153,10 @@ public class Boss : EnemigoScript
                         byte rie = (byte)Random.Range(0, pfbsEnemigos.Length);
                         prefabElegido = pfbsEnemigos[rie];
                         GameObject nuevoEnemigo = Instantiate(prefabElegido, new Vector3(this.transform.position.x, (this.transform.position.y - 2), 0f), Quaternion.identity);
-                        nuevoEnemigo.GetComponent<EnemigoScript>().spName = targetName;
-                        yield return new WaitForSeconds(1);
+                        EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
+                        enemigoScript.spName = targetName;
+                        while (enemigoScript.canBeShot == false) yield return null;
+                        yield return new WaitForSeconds(1f);
                     }
                     animator.SetBool("spawnEnemy", false);
                     while (isSpawningEnemies) yield return null;
@@ -228,7 +230,7 @@ public class Boss : EnemigoScript
     private void DoRandomBehaviour()
     {
         idle = false;
-        int rand = Random.Range(0,2);
+        int rand = 1;
         switch (rand)
         {
             case 0: //spawnear enemigos cerca de la entrada
@@ -238,7 +240,7 @@ public class Boss : EnemigoScript
                     true, "MoveDown"));
                 break;
             case 1: // Ver case 1 jefe.jpg.
-                int randSGroup = Random.Range(0, 3);
+                int randSGroup = 5;
                 switch (randSGroup)
                 {
                     case 0: // A -> B
@@ -267,10 +269,28 @@ public class Boss : EnemigoScript
                         break;
 
                     case 3: // B -> A
+                        fastSpd = 4;
+                        StartCoroutine(MoveTo(
+                            new string[] { "J3", "A8", "J1", "J4" },
+                            new string[] { "MoveUp", "MoveLeft", "MoveDown", "MoveRight" },
+                            false, "MoveDown", 3, false
+                            ));
                         break;
                     case 4: // B -> C
+                        fastSpd = 8;
+                        StartCoroutine(MoveTo(
+                            new string[] { "J10", "J5", "C2", "J4" },
+                            new string[] { "MoveUp", "MoveRight", "MoveDown", "MoveLeft" },
+                            false, "MoveDown", 3, false
+                            ));
                         break;
                     case 5: // B -> D
+                        fastSpd = 24;
+                        StartCoroutine(MoveTo(
+                            new string[] {"J10", "J5", "J11", "J12", "J8", "J9", "J4"},
+                            new string[] {"MoveUp", "MoveRight", "MoveDown", "MoveDown", "MoveLeft", "MoveUp", "MoveLeft"},
+                            false, "MoveDown", 3, false
+                            ));
                         break;
 
                     case 6: // C -> A
