@@ -66,7 +66,7 @@ public class ImpresoraScript : MonoBehaviour
         if (target != null)
         {
             Vector2 dir = firingPoint.position - target.position;
-            GameObject balaObj = Instantiate(bala, firingPoint.position, Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90));
+            GameObject balaObj = Instantiate(bala, firingPoint.position, Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 180));
             BalaScript balascript = balaObj.GetComponent<BalaScript>();
             balascript.SetTarget(target);
             balascript.balaDmg = dmg;
