@@ -275,7 +275,6 @@ public class EnemigoScript : MonoBehaviour
 
     public IEnumerator Stun(float daño, float tiempo)
     {
-        float spdSave = this.spd;
         hp -= daño;
         if (hp <= 0)
         {
