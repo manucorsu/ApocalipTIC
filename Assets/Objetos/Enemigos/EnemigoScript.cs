@@ -297,9 +297,7 @@ public class EnemigoScript : MonoBehaviour
 
     public virtual void Morir()
     {
-        if (canBeEaten)
-        {
-            if (!isBoss)
+            if (!isBoss && canBeEaten)
             {
                 GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
                 explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
@@ -308,7 +306,6 @@ public class EnemigoScript : MonoBehaviour
             this.spd = 0;
             construirscr.plataActual += plata;
             Destroy(this.gameObject);
-        }
     }
 
     private void Perder()
