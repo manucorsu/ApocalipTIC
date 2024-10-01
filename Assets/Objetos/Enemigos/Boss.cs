@@ -390,10 +390,7 @@ public class Boss : EnemigoScript
         base.Morir();
         foreach (GameObject enemigo in EnemySpawner.botsVivos)
         {
-            if (enemigo != this.gameObject)
-            {
-                enemigo.GetComponent<EnemigoScript>().Morir();
-            }
+            if (enemigo != this.gameObject) enemigo.GetComponent<EnemigoScript>().Morir();
         }
     }
 }

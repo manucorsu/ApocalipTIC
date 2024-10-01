@@ -24,6 +24,7 @@ public class EnemySpawner : MonoBehaviour
     private float tiempoDesdeUltimoSpawn;
     public static List<GameObject> botsVivos = new List<GameObject>();
     private byte botsASpawnear;
+    private Boss boss;
 
     [SerializeField] private Sprite btnPlaySprite1;
     [SerializeField] private Sprite btnPlaySprite2;
@@ -56,21 +57,13 @@ public class EnemySpawner : MonoBehaviour
 #endif
         if (spawnear == true)
         {
-            if (!isBossFight)
-            {
-                tiempoDesdeUltimoSpawn += Time.deltaTime;
-
-                if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0)
-                {
-                    SpawnEnemy();
-                }
-            }
-            if (botsVivos.Count <= 0 && botsASpawnear <= 0)
-            {
-                TerminarRonda();
-            }
+            tiempoDesdeUltimoSpawn += Time.deltaTime;
+            if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0) SpawnEnemy();
+            if (botsVivos.Count <= 0 && botsASpawnear <= 0) TerminarRonda();
         }
+
     }
+
     public void EmpezarRonda()
     {
         if (spawnear == false)
@@ -85,9 +78,8 @@ public class EnemySpawner : MonoBehaviour
             if (ronda == 15 || ronda == 30)
             {
                 isBossFight = true;
-                Boss jefe = Instantiate(prefabBoss, new Vector3(14.5f, 0.5f, 0), Quaternion.identity).GetComponent<Boss>();
-                ToggleSpawning(true); /* hay cosas que dependen de esta variable (aunque si es 
-                                           * pelea de jefe no va a hacer nada en el update)*/
+                boss = Instantiate(prefabBoss, new Vector3(14.5f, 0.5f, 0), Quaternion.identity).GetComponent<Boss>();
+                ToggleSpawning(true);
             }
             else
             {
@@ -106,58 +98,41 @@ public class EnemySpawner : MonoBehaviour
     }
     private void SpawnEnemy()
     {
-        if (!isBossFight)
+        if (boss != null && boss.introDone == false) return;
+        GameObject prefabElegido;
+        while (false != true)
         {
-            GameObject prefabElegido;
-            while (false != true)
-            {
-                byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
-                prefabElegido = pfbsEnemigos[rie];
-                if (prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda)
-                {
-                    break;
-                }
-            }
-
-            Transform loc;
-            byte ris;
-            while (false != true)
-            {
-                ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
-                loc = spawners[ris].transform;
-                if (loc.name[0] == 'A')
-                {
-                    if (ronda >= 5)
-                    {
-                        break;
-                    }
-                }
-                else
-                {
-                    break;
-                }
-            }
-
-            GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
-
-            EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
-            enemigoScript.spName = spawners[ris].name;
-
-            botsASpawnear--;
-            tiempoDesdeUltimoSpawn = 0;
+            byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
+            prefabElegido = pfbsEnemigos[rie];
+            if (prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda) break;
         }
-        else
+
+        Transform loc;
+        byte ris;
+        while (false != true)
         {
-            Debug.Log("spawneando jefe");
-            GameObject boss = Instantiate(prefabBoss, spawners[17].transform.position, Quaternion.identity); //spawners[17] = spawner C3.
-            boss.GetComponent<Boss>().spName = spawners[17].name;
-            botsVivos.Add(boss);
+            ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
+            loc = spawners[ris].transform;
+            if (loc.name[0] == 'A')
+            {
+                if (ronda >= 5) break;
+            }
+            else break;
         }
+
+        GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
+
+        EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
+        enemigoScript.spName = spawners[ris].name;
+
+        botsASpawnear--;
+        tiempoDesdeUltimoSpawn = 0;
     }
 
     public void TerminarRonda()
     {
         botsVivos.Clear();
+        if (isBossFight) boss = null;
         ronda++;
         ToggleSpawning(false);
         tiempoDesdeUltimoSpawn = 0;
@@ -175,9 +150,9 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (ronda < 5) flecha.GetComponent<SpriteRenderer>().enabled = false;
             }
-            else if (flecha != flechas[2] || flecha != flechas[3] || flecha != flechas[9])
+            if (flecha == flechas[2] || flecha == flechas[3] || flecha == flechas[9])
             {
-                if (ronda == 15 || ronda == 30) flecha.GetComponent<SpriteRenderer>().enabled = false;
+                if (ronda == 15 || ronda == 30) flecha.GetComponent<SpriteRenderer>().color = new Color(217, 54, 54, 255);
             }
         }
     }
