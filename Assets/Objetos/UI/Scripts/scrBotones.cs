@@ -439,5 +439,10 @@ public class scrBotones : MonoBehaviour
         CerrarCuadroMejora();
         Destroy(torretaParaMejorar);
     }
+
+    public void tutoBotón()
+    {
+
+    }
 }
 

@@ -17,6 +17,7 @@ public class TorretaScript : MonoBehaviour
     public LayerMask enemigos;
     public Animator animator;
     public LineRenderer lr;
+    public Transform puntaRaycast;
 
     //Variables
 
@@ -50,11 +51,17 @@ public class TorretaScript : MonoBehaviour
 
         RotateTowardsTarget();
 
-        if (lr != null && target != null)
+        if (lr != null)
         {
-            lr.SetPosition(0, firingPoint.transform.position);
-            lr.SetPosition(1, target.transform.position);
-        }
+            if (target != null)
+            {
+                lr.SetPosition(0, firingPoint.transform.position);
+                lr.SetPosition(1, target.transform.position);
+            } else
+            {
+                lr.enabled = false;
+            }
+        } 
 
         if (!CheckTargetRange())
         {
@@ -98,7 +105,8 @@ public class TorretaScript : MonoBehaviour
 
     private void FindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, rango, new Vector2(transform.position.x, transform.position.y), 0f, enemigos);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, rango, new Vector2(transform.position.x, transform.position.y), 0f, enemigos); 
+        
 
         if (hits.Length > 0)
         {
@@ -106,7 +114,12 @@ public class TorretaScript : MonoBehaviour
 
             if (lr != null)
             {
-                lr.enabled = true;
+                RaycastHit2D[] hits2 = Physics2D.LinecastAll(transform.position, puntaRaycast.position, enemigos);
+
+                if (hits2.Length > 0)
+                {
+                    lr.enabled = true;
+                }
             }
         } else
         {
