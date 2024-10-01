@@ -7,7 +7,7 @@ public class BombuchaScript : MonoBehaviour
     //Objetos
 
     public Rigidbody2D rb;
-    private Transform target;
+    public Transform target;
     private SpriteRenderer sr;
     public GameObject explosion;
 

@@ -253,8 +253,11 @@ public class EnemigoScript : MonoBehaviour
             BalaScript bala = collision.gameObject.GetComponent<BalaScript>();
             if (bala != null)
             {
-                Sufrir(bala.balaDmg);
-                Destroy(bala.gameObject);
+                if (bala.target == transform)
+                {
+                    Sufrir(bala.balaDmg);
+                    Destroy(bala.gameObject);
+                }
             }
         }
     }
