@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Boss : EnemigoScript
 {
-    private float baseHP;
     private float baseSpd = 2f;
     private float fastSpd = 12f;
     public static bool isSpawningEnemies;
@@ -204,7 +203,6 @@ public class Boss : EnemigoScript
     protected override void AsignarTodo()
     {
         base.AsignarTodo();
-        baseHP = hp;
         introDone = false;
         canBeShot = false;
         baseSpd = spd;
