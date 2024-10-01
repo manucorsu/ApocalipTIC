@@ -8,7 +8,7 @@ public class BalaScript : MonoBehaviour
     //Objetos
 
     public Rigidbody2D rb;
-    private Transform target;
+    public Transform target;
     private SpriteRenderer sr;
 
     //Variables
@@ -51,6 +51,9 @@ public class BalaScript : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "enemigo") Destroy(this.gameObject);
+        if (collision.gameObject == target)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

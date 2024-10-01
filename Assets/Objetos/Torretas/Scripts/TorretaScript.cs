@@ -16,6 +16,7 @@ public class TorretaScript : MonoBehaviour
     public GameObject bala;
     public LayerMask enemigos;
     public Animator animator;
+    public LineRenderer lr;
 
     //Variables
 
@@ -48,6 +49,13 @@ public class TorretaScript : MonoBehaviour
         }
 
         RotateTowardsTarget();
+
+        if (lr != null && target != null)
+        {
+            lr.SetPosition(0, firingPoint.transform.position);
+            lr.SetPosition(1, target.transform.position);
+        }
+
         if (!CheckTargetRange())
         {
             target = null;
@@ -65,6 +73,7 @@ public class TorretaScript : MonoBehaviour
                 }
             }
         }
+
     }
 
     private IEnumerator Disparar()
@@ -95,9 +104,15 @@ public class TorretaScript : MonoBehaviour
         {
             target = hits[0].transform;
 
-            if (this.gameObject.layer == LayerMask.NameToLayer("Tiralapiceras"))
+            if (lr != null)
             {
-                Debug.DrawLine(firingPoint.transform.position, target.transform.position);
+                lr.enabled = true;
+            }
+        } else
+        {
+            if (lr != null)
+            {
+                lr.enabled = false;
             }
         }
     }

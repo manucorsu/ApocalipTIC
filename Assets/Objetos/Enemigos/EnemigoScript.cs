@@ -258,8 +258,11 @@ public class EnemigoScript : MonoBehaviour
             BalaScript bala = collision.gameObject.GetComponent<BalaScript>();
             if (bala != null)
             {
-                Sufrir(bala.balaDmg);
-                Destroy(bala.gameObject);
+                if (bala.target == transform)
+                {
+                    Sufrir(bala.balaDmg);
+                    Destroy(bala.gameObject);
+                }
             }
         }
     }
@@ -281,7 +284,6 @@ public class EnemigoScript : MonoBehaviour
 
     public IEnumerator Stun(float daño, float tiempo)
     {
-        float spdSave = this.spd;
         hp -= daño;
         if (hp <= 0)
         {
