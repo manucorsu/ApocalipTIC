@@ -23,7 +23,7 @@ public class EnemigoScript : MonoBehaviour
     [Header("Stats")]
     public bool isBoss;
     public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
-    [SerializeField] private float baseHP;
+    [SerializeField] protected float baseHP;
     public float hp;
     public float spd; //speed
     [HideInInspector] public float spdSave;

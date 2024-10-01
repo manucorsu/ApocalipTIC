@@ -32,8 +32,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Image Oscuro2;
     [SerializeField] private GameObject[] flechas;
 
-    [SerializeField] private List<GameObject> test;
-
     void Start()
     {
         foreach (GameObject flecha in flechas)
@@ -55,24 +53,23 @@ public class EnemySpawner : MonoBehaviour
             ronda = 15;
             txtRonda.text = "override ronda 15";
         }
-#endif 
+#endif
         if (spawnear == true)
         {
-            tiempoDesdeUltimoSpawn += Time.deltaTime;
-            if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0)
+            if (!isBossFight)
             {
-                if (isBossFight == false)
+                tiempoDesdeUltimoSpawn += Time.deltaTime;
+
+                if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0)
                 {
-                    if (botsASpawnear > 0) SpawnEnemy();
+                    SpawnEnemy();
                 }
-                else SpawnEnemy();
             }
             if (botsVivos.Count <= 0 && botsASpawnear <= 0)
             {
                 TerminarRonda();
             }
         }
-        test = botsVivos;
     }
     public void EmpezarRonda()
     {
@@ -89,7 +86,8 @@ public class EnemySpawner : MonoBehaviour
             {
                 isBossFight = true;
                 Boss jefe = Instantiate(prefabBoss, new Vector3(14.5f, 0.5f, 0), Quaternion.identity).GetComponent<Boss>();
-                ToggleSpawning(true);
+                ToggleSpawning(true); /* hay cosas que dependen de esta variable (aunque si es 
+                                           * pelea de jefe no va a hacer nada en el update)*/
             }
             else
             {
@@ -108,44 +106,53 @@ public class EnemySpawner : MonoBehaviour
     }
     private void SpawnEnemy()
     {
-        GameObject prefabElegido;
-     
-        while (false != true)
+        if (!isBossFight)
         {
-            byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
-            prefabElegido = pfbsEnemigos[rie];
-            if (prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda)
+            GameObject prefabElegido;
+            while (false != true)
             {
-                break;
-            }
-        }
-
-        Transform loc;
-        byte ris;
-        while (false != true)
-        {
-            ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
-            loc = spawners[ris].transform;
-            if (loc.name[0] == 'A')
-            {
-                if (ronda >= 5)
+                byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
+                prefabElegido = pfbsEnemigos[rie];
+                if (prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda)
                 {
                     break;
                 }
             }
-            else
+
+            Transform loc;
+            byte ris;
+            while (false != true)
             {
-                break;
+                ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
+                loc = spawners[ris].transform;
+                if (loc.name[0] == 'A')
+                {
+                    if (ronda >= 5)
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    break;
+                }
             }
+
+            GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
+
+            EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
+            enemigoScript.spName = spawners[ris].name;
+
+            botsASpawnear--;
+            tiempoDesdeUltimoSpawn = 0;
         }
-
-        GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
-
-        EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
-        enemigoScript.spName = spawners[ris].name;
-
-        botsASpawnear--;
-        tiempoDesdeUltimoSpawn = 0;
+        else
+        {
+            Debug.Log("spawneando jefe");
+            GameObject boss = Instantiate(prefabBoss, spawners[17].transform.position, Quaternion.identity); //spawners[17] = spawner C3.
+            boss.GetComponent<Boss>().spName = spawners[17].name;
+            botsVivos.Add(boss);
+        }
     }
 
     public void TerminarRonda()
@@ -177,14 +184,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void ToggleSpawning(bool t)
     {
-        if (t == true)
-        {
-            txtRonda.text = "";
-        }
-        else
-        {
-            txtRonda.text = $"Empezando RONDA {ronda}/30";
-        }
+        if (t == true) txtRonda.text = "";
+        else txtRonda.text = $"Empezando RONDA {ronda}/30";
         spawnear = t;
     }
 
