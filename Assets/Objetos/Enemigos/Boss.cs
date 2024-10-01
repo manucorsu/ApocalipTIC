@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Boss : EnemigoScript
 {
+    private float baseHP;
     private float baseSpd = 2f;
     private float fastSpd = 12f;
     public static bool isSpawningEnemies;
@@ -17,6 +18,7 @@ public class Boss : EnemigoScript
         {"MoveRight", 2f},
         {"MoveUp", 3f}
     };
+    public bool killMe = false;
     private string FindOppositeAnim(string an)
     {
         switch (an)
@@ -155,8 +157,12 @@ public class Boss : EnemigoScript
                         GameObject nuevoEnemigo = Instantiate(prefabElegido, new Vector3(this.transform.position.x, (this.transform.position.y - 2), 0f), Quaternion.identity);
                         EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
                         enemigoScript.spName = targetName;
-                        while (enemigoScript.canBeShot == false) yield return null;
-                        yield return new WaitForSeconds(1f);
+                        while (false != true)
+                        {
+                            if (enemigoScript.canBeShot) break;
+                            yield return null;
+                        }
+                        yield return new WaitForSeconds(1.5f);
                     }
                     animator.SetBool("spawnEnemy", false);
                     while (isSpawningEnemies) yield return null;
@@ -198,6 +204,7 @@ public class Boss : EnemigoScript
     protected override void AsignarTodo()
     {
         base.AsignarTodo();
+        baseHP = hp;
         introDone = false;
         canBeShot = false;
         baseSpd = spd;
@@ -223,14 +230,21 @@ public class Boss : EnemigoScript
     {
         if (idle)
         {
-            DoRandomBehaviour();
+            if (EnemySpawner.ronda == 15 && hp <= (baseHP / 2))
+            {
+                killMe = true;
+                spd = 8;
+                fastSpd = 8;
+                StartCoroutine(MoveTo(new string[] { "J11" }, new string[] { "MoveRight" }, false));
+            }
+            else DoRandomBehaviour();
         }
     }
 
     private void DoRandomBehaviour()
     {
         idle = false;
-        int rand = 1;
+        int rand = Random.Range(0, 3);
         switch (rand)
         {
             case 0: //spawnear enemigos cerca de la entrada
@@ -240,7 +254,7 @@ public class Boss : EnemigoScript
                     true, "MoveDown"));
                 break;
             case 1: // Ver case 1 jefe.jpg.
-                int randSGroup = 9;
+                int randSGroup = Random.Range(0, 12);
                 switch (randSGroup)
                 {
                     case 0: // A -> B
@@ -321,20 +335,32 @@ public class Boss : EnemigoScript
                     case 9: // D -> A
                         fastSpd = 12;
                         StartCoroutine(MoveTo(
-                            new string[] {"J9","J8", "J7", "J6", "A5", "J1", "J4"},
-                            new string[] {"MoveRight", "MoveDown", "MoveLeft", "MoveUp", "MoveRight", "MoveDown", "MoveRight"},
+                            new string[] { "J9", "J8", "J7", "J6", "A5", "J1", "J4" },
+                            new string[] { "MoveRight", "MoveDown", "MoveLeft", "MoveUp", "MoveRight", "MoveDown", "MoveRight" },
                             false, "MoveDown", 3, false
                             ));
                         break;
                     case 10: // D -> B
+                        fastSpd = 12;
+                        StartCoroutine(MoveTo(
+                            new string[] { "J9", "J8", "J12", "J11", "J5", "J3", "J4" },
+                            new string[] { "MoveRight", "MoveDown", "MoveRight", "MoveUp", "MoveLeft", "MoveLeft", "MoveDown" },
+                            false, "MoveDown", 3, false
+                            ));
                         break;
                     case 11: // D -> C
+                        fastSpd = 8;
+                        StartCoroutine(MoveTo(
+                            new string[] { "J9", "J8", "J12", "C3", "J4" },
+                            new string[] { "MoveRight", "MoveDown", "MoveRight", "MoveUp", "MoveLeft" },
+                            false, "MoveDown", 3, false
+                            ));
                         break;
                 }
                 break;
             case 2: //to do: spawnear enemigos en B
-                break;
-            case 3: //to do: destruir alguna torreta
+                StartCoroutine(MoveTo(new string[] { "J4", "J13" }, new string[] { "MoveUp", "MoveUp" },
+                    true, "MoveDown", 3, true));
                 break;
         }
     }
@@ -352,6 +378,23 @@ public class Boss : EnemigoScript
             {
                 this.spd = baseSpd;
                 canBeShot = true;
+            }
+        }
+    }
+
+    public override void Sufrir(float dmg)
+    {
+        if (!killMe) base.Sufrir(dmg);
+    }
+
+    public override void Morir()
+    {
+        base.Morir();
+        foreach (GameObject enemigo in EnemySpawner.botsVivos)
+        {
+            if (enemigo != this.gameObject)
+            {
+                enemigo.GetComponent<EnemigoScript>().Morir();
             }
         }
     }

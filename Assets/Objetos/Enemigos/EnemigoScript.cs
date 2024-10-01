@@ -46,7 +46,7 @@ public class EnemigoScript : MonoBehaviour
     protected bool siguiendo = false; //ver final de V3ify()
     #endregion
 
-    private IEnumerator sufrirNicho;
+    IEnumerator sufrirNicho;
     private float sufrirNichoDPS; private float nichoCooldown;
 
 
@@ -108,7 +108,7 @@ public class EnemigoScript : MonoBehaviour
             break;
         }
         V3ify(path);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         canBeShot = true;
         canBeEaten = true;
     }
@@ -166,6 +166,11 @@ public class EnemigoScript : MonoBehaviour
         {
             secuenciaAnims.Add(0);
             StartCoroutine(BossMinionMove(new string[] { "G2" }));
+        }
+        else if (spName == "J13")
+        {
+            secuenciaAnims.Add(0); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
+            StartCoroutine(BossMinionMove(new string[] { "J4", "J1", "G2" }));
         }
     }
     private void V3ify(string[] camino)
@@ -264,6 +269,7 @@ public class EnemigoScript : MonoBehaviour
 
     private IEnumerator SufrirNicho()
     {
+        if (isBoss && GetComponent<Boss>().killMe) StopCoroutine(sufrirNicho);
         while (false != true)
         {
             StartCoroutine(HurtVFX(1));
@@ -292,15 +298,17 @@ public class EnemigoScript : MonoBehaviour
     public virtual void Morir()
     {
         if (canBeEaten)
+        {
             if (!isBoss)
             {
                 GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
                 explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
             }
-        EnemySpawner.botsVivos.Remove(this.gameObject);
-        this.spd = 0;
-        construirscr.plataActual += plata;
-        Destroy(this.gameObject);
+            EnemySpawner.botsVivos.Remove(this.gameObject);
+            this.spd = 0;
+            construirscr.plataActual += plata;
+            Destroy(this.gameObject);
+        }
     }
 
     private void Perder()

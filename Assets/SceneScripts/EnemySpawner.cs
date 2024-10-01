@@ -58,14 +58,14 @@ public class EnemySpawner : MonoBehaviour
 #endif 
         if (spawnear == true)
         {
-            if (!isBossFight)
+            tiempoDesdeUltimoSpawn += Time.deltaTime;
+            if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0)
             {
-                tiempoDesdeUltimoSpawn += Time.deltaTime;
-
-                if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0)
+                if (isBossFight == false)
                 {
-                    SpawnEnemy();
+                    if (botsASpawnear > 0) SpawnEnemy();
                 }
+                else SpawnEnemy();
             }
             if (botsVivos.Count <= 0 && botsASpawnear <= 0)
             {
@@ -89,8 +89,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 isBossFight = true;
                 Boss jefe = Instantiate(prefabBoss, new Vector3(14.5f, 0.5f, 0), Quaternion.identity).GetComponent<Boss>();
-                ToggleSpawning(true); /* hay cosas que dependen de esta variable (aunque si es 
-                                       * pelea de jefe no va a hacer nada en el update)*/
+                ToggleSpawning(true);
             }
             else
             {
@@ -109,53 +108,44 @@ public class EnemySpawner : MonoBehaviour
     }
     private void SpawnEnemy()
     {
-        if (!isBossFight)
+        GameObject prefabElegido;
+     
+        while (false != true)
         {
-            GameObject prefabElegido;
-            while (false != true)
+            byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
+            prefabElegido = pfbsEnemigos[rie];
+            if (prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda)
             {
-                byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
-                prefabElegido = pfbsEnemigos[rie];
-                if (prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda)
+                break;
+            }
+        }
+
+        Transform loc;
+        byte ris;
+        while (false != true)
+        {
+            ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
+            loc = spawners[ris].transform;
+            if (loc.name[0] == 'A')
+            {
+                if (ronda >= 5)
                 {
                     break;
                 }
             }
-
-            Transform loc;
-            byte ris;
-            while (false != true)
+            else
             {
-                ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
-                loc = spawners[ris].transform;
-                if (loc.name[0] == 'A')
-                {
-                    if (ronda >= 5)
-                    {
-                        break;
-                    }
-                }
-                else
-                {
-                    break;
-                }
+                break;
             }
-
-            GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
-
-            EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
-            enemigoScript.spName = spawners[ris].name;
-
-            botsASpawnear--;
-            tiempoDesdeUltimoSpawn = 0;
         }
-        else
-        {
-            Debug.Log("spawneando jefe");
-            GameObject boss = Instantiate(prefabBoss, spawners[17].transform.position, Quaternion.identity); //spawners[17] = spawner C3.
-            boss.GetComponent<Boss>().spName = spawners[17].name;
-            botsVivos.Add(boss);
-        }
+
+        GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
+
+        EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
+        enemigoScript.spName = spawners[ris].name;
+
+        botsASpawnear--;
+        tiempoDesdeUltimoSpawn = 0;
     }
 
     public void TerminarRonda()
