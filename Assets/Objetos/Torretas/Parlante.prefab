@@ -93,7 +93,7 @@ MonoBehaviour:
   rango: 3
   bps: 1
   dmg: 30
-  dmgBala: 15
+  dmgBala: 10
   ondaSize: 1
   nivel1: 1
   nivel2: 1
@@ -134,6 +134,7 @@ MonoBehaviour:
   canvasTransform: {fileID: 0}
   tileParaRenovar: {fileID: 0}
   precioExtraParaVender: 0
+  isPotenciado: 0
 --- !u!61 &61228687238621942
 BoxCollider2D:
   m_ObjectHideFlags: 0

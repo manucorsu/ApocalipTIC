@@ -7,21 +7,39 @@ public class ElectricosaScript : MonoBehaviour
 {
     public float duracion;
     public float rango;
-    private bool isWorking = true;
+    private bool isWorking = false;
+    public float yPosition;
+
     public GameObject zonaNetbook;
     private GameObject zona;
     RaycastHit2D[] hits;
+    public GameObject aura;
+    private List<GameObject> aurasGeneradas = new List<GameObject>();
+    
 
     public float precio;
 
     private void Start()
     {
-        StartCoroutine(Duracion());
+        yPosition = transform.position.y;
+        transform.position = new Vector2(transform.position.x, 6.5f);
     }
 
     private void Update()
     {
         FindTarget();
+
+        if (transform.position.y <= yPosition)
+        {
+            if (GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
+            {
+                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                zona = Instantiate(zonaNetbook, transform.position, Quaternion.identity);
+                isWorking = true;
+                GetComponent<Animator>().SetTrigger("anim");
+                StartCoroutine(Duracion());
+            }
+        }
     }
 
 
@@ -39,6 +57,8 @@ public class ElectricosaScript : MonoBehaviour
                 {
                     if (torretaMejorada.GetComponent<MejorasScript>().isPotenciado == false && isWorking == true)
                     {
+                        aurasGeneradas.Add(Instantiate(aura, torretaMejorada.transform.position, Quaternion.identity));
+
                         if (torretaMejorada.GetComponent<TorretaScript>() != null) { torretaMejorada.GetComponent<TorretaScript>().dmg++; torretaMejorada.GetComponent<TorretaScript>().rango += 0.5f; torretaMejorada.GetComponent<TorretaScript>().bps += 0.5f; }
                         if (torretaMejorada.GetComponent<TorretaScript2>() != null) { torretaMejorada.GetComponent<TorretaScript2>().dps++; torretaMejorada.GetComponent<TorretaScript2>().cooldown -= 0.2f; }
                         if (torretaMejorada.GetComponent<TorretaScript3>() != null) { torretaMejorada.GetComponent<TorretaScript3>().cooldown--; torretaMejorada.GetComponent<TorretaScript3>().rango += 0.5f; }
@@ -59,12 +79,18 @@ public class ElectricosaScript : MonoBehaviour
 
         yield return new WaitForSeconds(duracion); 
 
+
         while(zona.transform.localScale.x > 0)
         {
             zona.transform.localScale = new Vector2(zona.transform.localScale.x - 0.1f, zona.transform.localScale.y - 0.1f);
             yield return null;
         }
         Destroy(zona);
+
+        foreach(GameObject aura in aurasGeneradas)
+        {
+            Destroy(aura);
+        }
 
         foreach (RaycastHit2D torreta in hits)
         {
@@ -88,6 +114,7 @@ public class ElectricosaScript : MonoBehaviour
                         torretaMejorada.GetComponent<MejorasScript>().isPotenciado = false;
                         isWorking = false;
                     }
+
                 }
             }
         }
@@ -105,10 +132,6 @@ public class ElectricosaScript : MonoBehaviour
         
     }
 
-    public void AnimationEnd()
-    {
-        zona = Instantiate(zonaNetbook, transform.position, Quaternion.identity);
-    }
 
     private void OnDrawGizmosSelected()
     {
