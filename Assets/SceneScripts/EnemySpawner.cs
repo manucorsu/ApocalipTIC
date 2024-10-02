@@ -54,10 +54,11 @@ public class EnemySpawner : MonoBehaviour
             ronda = 15;
             txtRonda.text = "override ronda 15";
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1) && spawnear == false)
+        if (Input.GetKeyDown(KeyCode.Alpha4) && spawnear == false)
         {
-            ronda = 14;
-            txtRonda.text = "override ronda 14";
+            ConstruirScriptGeneral construirscr = GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>();
+            construirscr.plataActual += 10000;
+            txtRonda.text = "Te regalé 10 mil pesos. De nada";
         }
 #endif
         if (spawnear == true)

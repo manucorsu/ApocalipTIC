@@ -387,17 +387,16 @@ public class Boss : EnemigoScript
 
     public override void Morir()
     {
-        foreach (GameObject enemigo in EnemySpawner.botsVivos)
+        for (int i = EnemySpawner.botsVivos.Count - 1; i >= 0; i--)
         {
+            GameObject enemigo = EnemySpawner.botsVivos[i];
             if (enemigo != this.gameObject)
             {
                 EnemigoScript enemigoScript = enemigo.GetComponent<EnemigoScript>();
-                if (enemigoScript != null)
-                {
-                    enemigoScript.Morir();
-                }
+                if (enemigoScript != null) enemigoScript.Morir();
             }
         }
+        GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().TerminarRonda();
         base.Morir();
     }
     private void Escape()
