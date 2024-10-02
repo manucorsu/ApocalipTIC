@@ -54,6 +54,11 @@ public class EnemySpawner : MonoBehaviour
             ronda = 15;
             txtRonda.text = "override ronda 15";
         }
+        if (Input.GetKeyDown(KeyCode.Alpha1) && spawnear == false)
+        {
+            ronda = 14;
+            txtRonda.text = "override ronda 14";
+        }
 #endif
         if (spawnear == true)
         {
@@ -79,14 +84,13 @@ public class EnemySpawner : MonoBehaviour
             {
                 isBossFight = true;
                 boss = Instantiate(prefabBoss, new Vector3(14.5f, 0.5f, 0), Quaternion.identity).GetComponent<Boss>();
-                ToggleSpawning(true);
             }
             else
             {
                 isBossFight = false;
-                ToggleSpawning(true);
-                botsASpawnear = (byte)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
             }
+            botsASpawnear = (byte)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
+            ToggleSpawning(true);
             Image btnPlayImage = btnIniciarRonda.GetComponent<Image>();
             btnPlayImage.sprite = btnPlaySprite2;
 
@@ -149,10 +153,6 @@ public class EnemySpawner : MonoBehaviour
             if (flecha == flechas[6] || flecha == flechas[7] || flecha == flechas[8])
             {
                 if (ronda < 5) flecha.GetComponent<SpriteRenderer>().enabled = false;
-            }
-            if (flecha == flechas[2] || flecha == flechas[3] || flecha == flechas[9])
-            {
-                if (ronda == 15 || ronda == 30) flecha.GetComponent<SpriteRenderer>().color = new Color(217, 54, 54, 255);
             }
         }
     }

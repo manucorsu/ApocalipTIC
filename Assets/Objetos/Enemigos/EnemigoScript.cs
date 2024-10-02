@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemigoScript : MonoBehaviour
 {
@@ -21,10 +22,11 @@ public class EnemigoScript : MonoBehaviour
 
     #region Stats
     [Header("Stats")]
-    public bool isBoss;
-    public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
+    [Header("NO TOCAR 'hp', SOLO 'baseHP'")]
     [SerializeField] protected float baseHP;
     public float hp;
+    public bool isBoss;
+    public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
     public float spd; //speed
     [HideInInspector] public float spdSave;
     public float plata; //cuánta $ recibe el jugador al mater a este enemigo.
@@ -54,7 +56,6 @@ public class EnemigoScript : MonoBehaviour
     {
         AsignarTodo();
     }
-
     void Start()
     {
         if (spName == null || spName == string.Empty && !isBoss)
@@ -222,7 +223,7 @@ public class EnemigoScript : MonoBehaviour
       //BAJO NINGUNA CIRCUNSTANCIA usar para balas "especiales" (como el chorro de agua o el proyector)
         StartCoroutine(HurtVFX(0.1f));
         hp -= dmg;
-        if (hp <= 0) Morir();
+        if (hp <= 0 && !isBoss) Morir();
         else { return; }
     }
 
@@ -297,15 +298,15 @@ public class EnemigoScript : MonoBehaviour
 
     public virtual void Morir()
     {
-            if (!isBoss && canBeEaten)
-            {
-                GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
-                explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
-            }
-            EnemySpawner.botsVivos.Remove(this.gameObject);
-            this.spd = 0;
-            construirscr.plataActual += plata;
-            Destroy(this.gameObject);
+        if (!isBoss && canBeEaten)
+        {
+            GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
+            explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
+        }
+        EnemySpawner.botsVivos.Remove(this.gameObject);
+        this.spd = 0;
+        construirscr.plataActual += plata;
+        Destroy(this.gameObject);
     }
 
     private void Perder()

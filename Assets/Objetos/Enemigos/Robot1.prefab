@@ -52,10 +52,10 @@ MonoBehaviour:
     type: 3}
   colorExplosion: {r: 1, g: 1, b: 1, a: 1}
   solidWhite: {fileID: 2100000, guid: 73fa6ee842c7da24ea3b26f170eaeac5, type: 2}
+  baseHP: 100
+  hp: 0
   isBoss: 0
   minRonda: 0
-  baseHP: 100
-  hp: 100
   spd: 2.2
   spdSave: 0
   plata: 15

@@ -226,14 +226,13 @@ public class Boss : EnemigoScript
 
     private void Update()
     {
+        if (hp < 1) hp = 1;
+
         if (idle)
         {
             if (EnemySpawner.ronda == 15 && hp <= (baseHP / 2))
             {
-                killMe = true;
-                spd = 8;
-                fastSpd = 8;
-                StartCoroutine(MoveTo(new string[] { "J11" }, new string[] { "MoveRight" }, false));
+                Escape();
             }
             else DoRandomBehaviour();
         }
@@ -378,6 +377,7 @@ public class Boss : EnemigoScript
                 canBeShot = true;
             }
         }
+        else if (collision.gameObject.CompareTag("BossKiller") && killMe) Morir();
     }
 
     public override void Sufrir(float dmg)
@@ -387,10 +387,30 @@ public class Boss : EnemigoScript
 
     public override void Morir()
     {
-        base.Morir();
         foreach (GameObject enemigo in EnemySpawner.botsVivos)
         {
-            if (enemigo != this.gameObject) enemigo.GetComponent<EnemigoScript>().Morir();
+            if (enemigo != this.gameObject)
+            {
+                EnemigoScript enemigoScript = enemigo.GetComponent<EnemigoScript>();
+                if (enemigoScript != null)
+                {
+                    enemigoScript.Morir();
+                }
+            }
         }
+        base.Morir();
+    }
+    private void Escape()
+    {
+        idle = false;
+        killMe = true;
+        spd = 8f;
+        fastSpd = 8f;
+        StartCoroutine(MoveTo(
+            new string[] { "C3", "J11" },
+            new string[] { "MoveRight", "MoveRight" },
+            false
+            ));
+        return;
     }
 }
