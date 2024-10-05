@@ -22,9 +22,8 @@ public class EnemigoScript : MonoBehaviour
 
     #region Stats
     [Header("Stats")]
-    [Header("NO TOCAR 'hp', SOLO 'baseHP'")]
     [SerializeField] protected float baseHP;
-    public float hp;
+    [HideInInspector] public float hp;
     public bool isBoss;
     public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
     public float spd; //speed
@@ -34,7 +33,7 @@ public class EnemigoScript : MonoBehaviour
     public bool canBeShot = true;
     private SpriteRenderer spriteRenderer;
     public bool isPegamentoed;
-    public float slowSpd;
+    [HideInInspector] public float slowSpd;
     #endregion
 
     private ConstruirScriptGeneral construirscr; // ni idea fue Marcos
@@ -49,6 +48,8 @@ public class EnemigoScript : MonoBehaviour
     #endregion
 
     IEnumerator sufrirNicho;
+    private bool nichoTriggerStay = false;
+    private bool isBeingHurtByNicho = false;
     private float sufrirNichoDPS; private float nichoCooldown;
 
 
@@ -64,8 +65,6 @@ public class EnemigoScript : MonoBehaviour
             Destroy(this.gameObject); //ÚNICA vez en toda la HISTORIA donde un enemigo se destruye directamente y no llamando a Morir()
         }
         BuscarPath();
-
-        slowSpd = spd / 4;
     }
 
     protected virtual void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
@@ -74,6 +73,7 @@ public class EnemigoScript : MonoBehaviour
         EnemySpawner.botsVivos.Add(this.gameObject);
         sufrirNicho = SufrirNicho();
         hp = baseHP;
+        slowSpd = spd / 4;
         v3Camino.Clear();
         secuenciaAnims.Clear(); //cuenta como asignación? 
         spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
@@ -224,7 +224,7 @@ public class EnemigoScript : MonoBehaviour
         StartCoroutine(HurtVFX(0.1f));
         hp -= dmg;
         if (hp <= 0 && !isBoss) Morir();
-        else { return; }
+        else return;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -267,13 +267,36 @@ public class EnemigoScript : MonoBehaviour
             }
         }
     }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Bala2")
+        {
+            this.GetComponent<SpriteRenderer>().color = hurtColor;
+            nichoTriggerStay = true;
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (nichoTriggerStay)
+        {
+            isBeingHurtByNicho = true;
+            nichoTriggerStay = false;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        this.spriteRenderer.color = baseColor;
+        StopCoroutine(sufrirNicho);
+    }
 
     private IEnumerator SufrirNicho()
     {
-        if (isBoss && GetComponent<Boss>().killMe) StopCoroutine(sufrirNicho);
+        if (isBoss && GetComponent<Boss>().killMe && EnemySpawner.ronda == 15)
+        {
+            StopCoroutine(sufrirNicho);
+        }
         while (false != true)
         {
-            StartCoroutine(HurtVFX(1));
             hp -= sufrirNichoDPS;
             if (hp <= 0)
             {
@@ -317,10 +340,5 @@ public class EnemigoScript : MonoBehaviour
 #endif
         Morir();
         Debug.LogWarning("PERDISTE");
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        this.spriteRenderer.color = baseColor;
-        StopCoroutine(sufrirNicho);
     }
 }

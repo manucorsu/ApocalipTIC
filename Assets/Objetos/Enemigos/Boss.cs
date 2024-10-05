@@ -5,11 +5,20 @@ using UnityEngine.UI;
 
 public class Boss : EnemigoScript
 {
-    private float baseSpd = 2f;
+    [Header("Jefe")]
+    private float baseSpd;
     private float fastSpd = 12f;
+
     public static bool isSpawningEnemies;
+
     private bool idle = false;
+
     public bool introDone = false;
+    private Button btnDv;
+    private Image btnDvImg;
+    [SerializeField] private Sprite dvOnSpr;
+    [SerializeField] private Sprite dvOffSpr;
+
     private Dictionary<string, float> moveAnims = new Dictionary<string, float> //viva python
     {
         {"MoveDown", 0f},
@@ -17,37 +26,34 @@ public class Boss : EnemigoScript
         {"MoveRight", 2f},
         {"MoveUp", 3f}
     };
+
     public bool killMe = false;
-    private string FindOppositeAnim(string an)
+    private void Awake()
     {
-        switch (an)
-        {
-            case "MoveDown": return "MoveUp";
-            case "MoveLeft": return "MoveRight";
-            case "MoveRight": return "MoveLeft";
-            case "MoveUp": return "MoveDown";
-            default:
-                Debug.LogError($"{an} no es una man válida");
-                return "MoveDown";
-        }
+        isBoss = true;
+        AsignarTodo();
     }
-    private void SetMoveAnim(string an)
+    protected override void AsignarTodo()
     {
-        if (moveAnims.ContainsKey(an))
+        base.AsignarTodo();
+        baseSpd = spd;
+        introDone = false;
+        canBeShot = false;
+        idle = false;
+        btnDv = GameObject.Find("btnDobleVelocidad").GetComponent<Button>();
+        btnDvImg = GameObject.Find("btnDobleVelocidad").GetComponent<Image>();
+        GameObject padreSpawners = GameObject.Find("Spawners");
+        foreach (Transform s in padreSpawners.transform)
         {
-            animator.SetFloat("move", moveAnims[an]);
+            if (s != padreSpawners)
+            {
+                this.waypoints.Add(s.transform);
+            }
         }
-        else
-        {
-            Debug.LogError($"SetMoveAnim: No existe la key {an} en el diccionario de moveAnims!!");
-        }
+        explosionMuerte.GetComponent<SpriteRenderer>().sortingOrder = 32767;
+        if (EnemySpawner.isBossFight == false) Debug.LogError("El jefe spawneó cuando EnemySpawner.isBossFight era false.");
     }
-
-    private Button btnDv;
-    private Image btnDvImg;
-    [SerializeField] private Sprite dvOnSpr;
-    [SerializeField] private Sprite dvOffSpr;
-
+    private void Start() => DoIntro();
     private void DoIntro()
     {
         Time.timeScale = 1f;
@@ -56,11 +62,6 @@ public class Boss : EnemigoScript
         btnDvImg.color = Color.white;
         GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().ActivarConsumibles(false);
         StartCoroutine(MoveTo(new string[] { "J4" }, new string[] { "MoveLeft" }, false));
-    }
-
-    private void DoIntroLaugh()
-    {
-        animator.SetTrigger("introLaughTrigger");
     }
 
     private IEnumerator MoveTo(string[] wpNames, string[] mans, bool thenSpawnEnemies, string finalAnim = "MoveDown", float waitTime = 3f, bool thenGoBack = true) // v3ify pero corrutina
@@ -119,7 +120,7 @@ public class Boss : EnemigoScript
 
             if (!introDone) //en la intro se mueve a un solo wp antes de reírse, pero además hace otras cosas
             {
-                DoIntroLaugh();
+                animator.SetTrigger("introLaughTrigger");
                 yield return new WaitForSeconds(3f); //por supuesto que esta animación iba a estar hardcodeada y fea
                 canBeShot = true;
                 introDone = true;
@@ -183,7 +184,7 @@ public class Boss : EnemigoScript
                                 this.transform.position = Vector3.MoveTowards(this.transform.position, target, spd * Time.deltaTime);
                                 yield return null; //null == esperar al siguiente frame a lo Update
                             }
-                            SetMoveAnim(FindOppositeAnim(mans[i]));
+                            SetMoveAnim(FindOppositeMoveAnim(mans[i]));
                         }
                     }
                 }
@@ -195,33 +196,29 @@ public class Boss : EnemigoScript
         idle = true;
     }
 
-    private void Awake()
+    private string FindOppositeMoveAnim(string an)
     {
-        isBoss = true;
-        AsignarTodo();
-    }
-    protected override void AsignarTodo()
-    {
-        base.AsignarTodo();
-        introDone = false;
-        canBeShot = false;
-        baseSpd = spd;
-        idle = false;
-        btnDv = GameObject.Find("btnDobleVelocidad").GetComponent<Button>();
-        btnDvImg = GameObject.Find("btnDobleVelocidad").GetComponent<Image>();
-        GameObject padreSpawners = GameObject.Find("Spawners");
-        foreach (Transform s in padreSpawners.transform)
+        switch (an)
         {
-            if (s != padreSpawners)
-            {
-                this.waypoints.Add(s.transform);
-            }
+            case "MoveDown": return "MoveUp";
+            case "MoveLeft": return "MoveRight";
+            case "MoveRight": return "MoveLeft";
+            case "MoveUp": return "MoveDown";
+            default:
+                Debug.LogError($"{an} no es una man válida");
+                return "MoveDown";
         }
-        if (EnemySpawner.isBossFight == false) Debug.LogError("El jefe spawneó cuando EnemySpawner.isBossFight era false.");
     }
-    private void Start()
+    private void SetMoveAnim(string an)
     {
-        DoIntro();
+        if (moveAnims.ContainsKey(an))
+        {
+            animator.SetFloat("move", moveAnims[an]);
+        }
+        else
+        {
+            Debug.LogError($"SetMoveAnim: No existe la key {an} en el diccionario de moveAnims!!");
+        }
     }
 
     private void Update()
@@ -230,17 +227,21 @@ public class Boss : EnemigoScript
 
         if (idle)
         {
-            if (EnemySpawner.ronda == 15 && hp <= (baseHP / 2))
-            {
-                Escape();
-            }
+            if (hp <= (baseHP / 2) && !killMe) StartCoroutine(Marearse());
+            else if (killMe && hp <= 1) StartCoroutine(Marearse());
             else DoRandomBehaviour();
+        }
+        if (killMe && EnemySpawner.ronda == 15)
+        {
+            this.spd = 8f;
+            this.fastSpd = 8f;
         }
     }
 
     private void DoRandomBehaviour()
     {
         idle = false;
+        this.spd = this.baseSpd;
         int rand = Random.Range(0, 3);
         switch (rand)
         {
@@ -377,16 +378,36 @@ public class Boss : EnemigoScript
                 canBeShot = true;
             }
         }
-        else if (collision.gameObject.CompareTag("BossKiller") && killMe) Morir();
+        else if (collision.gameObject.CompareTag("BossKiller") && killMe) StartCoroutine(BossMorir());
     }
 
-    public override void Sufrir(float dmg)
+    private IEnumerator Marearse()
     {
-        if (!killMe) base.Sufrir(dmg);
+        idle = false;
+        animator.SetTrigger("goDizzy");
+        yield return new WaitForSeconds(4.6666667f);
+        killMe = true;
+        if (EnemySpawner.ronda == 15) Escapar();
+        else
+        {
+            if (hp <= 1) StartCoroutine(BossMorir());
+            else idle = true;
+        }
     }
-
-    public override void Morir()
+    private void Escapar()
     {
+        spd = 8f;
+        fastSpd = 8f;
+        StartCoroutine(MoveTo(
+            new string[] { "C3", "J11" },
+            new string[] { "MoveRight", "MoveRight" },
+            false
+            ));
+        return;
+    }
+    public IEnumerator BossMorir()
+    {
+        EnemySpawner.botsASpawnear = 0;
         for (int i = EnemySpawner.botsVivos.Count - 1; i >= 0; i--)
         {
             GameObject enemigo = EnemySpawner.botsVivos[i];
@@ -396,20 +417,20 @@ public class Boss : EnemigoScript
                 if (enemigoScript != null) enemigoScript.Morir();
             }
         }
-        GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().TerminarRonda();
-        base.Morir();
-    }
-    private void Escape()
-    {
-        idle = false;
-        killMe = true;
-        spd = 8f;
-        fastSpd = 8f;
-        StartCoroutine(MoveTo(
-            new string[] { "C3", "J11" },
-            new string[] { "MoveRight", "MoveRight" },
-            false
-            ));
-        return;
+        if (EnemySpawner.ronda == 30)
+        {
+            animator.SetTrigger("die");
+            yield return new WaitForSeconds(1.1666667f);
+            //GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
+            //Debug.Log($"name {explosion.name}, loc {explosion.transform.position}");
+            //explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
+            yield return new WaitForSeconds(3);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Win");
+        }
+        else
+        {
+            this.Morir();
+            GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().TerminarRonda();
+        }
     }
 }

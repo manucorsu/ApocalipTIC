@@ -9,8 +9,8 @@ public class EnemySpawner : MonoBehaviour
     public static bool spawnear = false;
     public static bool isBossFight = false;
 
-    [Header("Arrays")]
     [SerializeField] private GameObject prefabBoss;
+    [Header("Arrays")]
     public GameObject[] pfbsEnemigos; //cada tipo de enemigo es un prefab y está en este array
     [SerializeField] private GameObject[] spawners;
 
@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     public static byte ronda = 1;
     private float tiempoDesdeUltimoSpawn;
     public static List<GameObject> botsVivos = new List<GameObject>();
-    private byte botsASpawnear;
+    public static byte botsASpawnear;
     private Boss boss;
 
     [SerializeField] private Sprite btnPlaySprite1;
@@ -51,8 +51,16 @@ public class EnemySpawner : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.B) && spawnear == false) // debug: cambiar a ronda 15
         {
-            ronda = 15;
-            txtRonda.text = "override ronda 15";
+            switch (ronda)
+            {
+                case 15:
+                    ronda = 30;
+                    break;
+                default:
+                    ronda = 15;
+                    break;
+            }
+            txtRonda.text = $"override ronda {ronda}";
         }
         if (Input.GetKeyDown(KeyCode.Alpha4) && spawnear == false)
         {
@@ -65,7 +73,7 @@ public class EnemySpawner : MonoBehaviour
         {
             tiempoDesdeUltimoSpawn += Time.deltaTime;
             if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0) SpawnEnemy();
-            if (botsVivos.Count <= 0 && botsASpawnear <= 0) TerminarRonda();
+            if (botsVivos.Count <= 0 && botsASpawnear <= 0 && !isBossFight) TerminarRonda();
         }
 
     }

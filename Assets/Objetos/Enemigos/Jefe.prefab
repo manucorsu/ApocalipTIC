@@ -48,8 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hurtColor: {r: 0.8509804, g: 0.21176471, b: 0.21176471, a: 1}
-  explosionMuerte: {fileID: 0}
-  colorExplosion: {r: 0, g: 0, b: 0, a: 0}
+  explosionMuerte: {fileID: 6545438287314071777, guid: 295ede5d751d3eb489416efcc1b3ce27,
+    type: 3}
+  colorExplosion: {r: 0.3426486, g: 0.41509432, b: 0.37823597, a: 0}
   solidWhite: {fileID: 0}
   baseHP: 12000
   hp: 0
@@ -103,8 +104,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 32766
-  m_Sprite: {fileID: 21300000, guid: 4bf741262c4e5764c8f82216fe37d30e, type: 3}
+  m_SortingOrder: 8
+  m_Sprite: {fileID: 21300000, guid: 2824b1fd83b914e48bb9d100f0494bcd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
