@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2692484358794775448}
   - component: {fileID: 95065624503208508}
   m_Layer: 8
-  m_Name: jefe (wip)
+  m_Name: Jefe
   m_TagString: enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,20 +48,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hurtColor: {r: 0.8509804, g: 0.21176471, b: 0.21176471, a: 1}
+  explosionMuerte: {fileID: 6545438287314071777, guid: 295ede5d751d3eb489416efcc1b3ce27,
+    type: 3}
+  colorExplosion: {r: 0.3426486, g: 0.41509432, b: 0.37823597, a: 1}
+  solidWhite: {fileID: 0}
+  baseHP: 12000
+  hp: 0
   isBoss: 1
   minRonda: 0
-  baseHP: 12000
-  hp: 12000
   spd: 2
   spdSave: 0
-  plata: 1000
+  plata: 3000
   canBeEaten: 0
   canBeShot: 0
-  spName: 
   isPegamentoed: 0
   slowSpd: 0
+  spName: 
+  introDone: 0
   dvOnSpr: {fileID: 21300002, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
   dvOffSpr: {fileID: 21300000, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
+  killMe: 0
 --- !u!212 &2692484358794775461
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -98,8 +104,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 32766
-  m_Sprite: {fileID: 21300000, guid: 4bf741262c4e5764c8f82216fe37d30e, type: 3}
+  m_SortingOrder: 8
+  m_Sprite: {fileID: 21300000, guid: 2824b1fd83b914e48bb9d100f0494bcd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

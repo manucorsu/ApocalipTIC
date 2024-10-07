@@ -38,15 +38,17 @@ public class PegamentoScript : MonoBehaviour
             EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
 
 
-            if (enemigoScr.canBeEaten == true)
+            if (enemigoScr.canBeEaten == true || enemigoScr.isBoss)
+            //No sé que cosa tiene Marcos con usar canBeEaten para todo aunque esté objetivamente mal
             {
                 enemigoScr.spd = enemigoScr.slowSpd;
+                enemigoScr.isPegamentoed = true;
             }
-            else
-            {
-                enemigoScr.spd = 0;
-            }
-            enemigoScr.isPegamentoed = true;
+            //else
+            //{
+            //    enemigoScr.spd = 0;
+            //}
+            //CREO que no hace falta esto
         }
 
     }

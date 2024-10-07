@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class ExplosionMuerteScript : MonoBehaviour
 {
-    public void AnimationEnd()
-    {
-        Destroy(this.gameObject);
-    }
+    public void AnimationEnd() => Destroy(this.gameObject);
 }

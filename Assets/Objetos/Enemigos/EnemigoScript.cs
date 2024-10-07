@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemigoScript : MonoBehaviour
 {
@@ -21,10 +22,10 @@ public class EnemigoScript : MonoBehaviour
 
     #region Stats
     [Header("Stats")]
+    [SerializeField] protected float baseHP;
+    [HideInInspector] public float hp;
     public bool isBoss;
     public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
-    [SerializeField] protected float baseHP;
-    public float hp;
     public float spd; //speed
     [HideInInspector] public float spdSave;
     public float plata; //cuánta $ recibe el jugador al mater a este enemigo.
@@ -32,7 +33,7 @@ public class EnemigoScript : MonoBehaviour
     public bool canBeShot = true;
     private SpriteRenderer spriteRenderer;
     public bool isPegamentoed;
-    public float slowSpd;
+    [HideInInspector] public float slowSpd;
     #endregion
 
     private ConstruirScriptGeneral construirscr; // ni idea fue Marcos
@@ -47,6 +48,8 @@ public class EnemigoScript : MonoBehaviour
     #endregion
 
     IEnumerator sufrirNicho;
+    private bool nichoTriggerStay = false;
+    private bool isBeingHurtByNicho = false;
     private float sufrirNichoDPS; private float nichoCooldown;
 
 
@@ -54,7 +57,6 @@ public class EnemigoScript : MonoBehaviour
     {
         AsignarTodo();
     }
-
     void Start()
     {
         if (spName == null || spName == string.Empty && !isBoss)
@@ -63,8 +65,6 @@ public class EnemigoScript : MonoBehaviour
             Destroy(this.gameObject); //ÚNICA vez en toda la HISTORIA donde un enemigo se destruye directamente y no llamando a Morir()
         }
         BuscarPath();
-
-        slowSpd = spd / 4;
     }
 
     protected virtual void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
@@ -73,6 +73,7 @@ public class EnemigoScript : MonoBehaviour
         EnemySpawner.botsVivos.Add(this.gameObject);
         sufrirNicho = SufrirNicho();
         hp = baseHP;
+        slowSpd = spd / 4;
         v3Camino.Clear();
         secuenciaAnims.Clear(); //cuenta como asignación? 
         spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
@@ -222,8 +223,8 @@ public class EnemigoScript : MonoBehaviour
       //BAJO NINGUNA CIRCUNSTANCIA usar para balas "especiales" (como el chorro de agua o el proyector)
         StartCoroutine(HurtVFX(0.1f));
         hp -= dmg;
-        if (hp <= 0) Morir();
-        else { return; }
+        if (hp <= 0 && !isBoss) Morir();
+        else return;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -266,13 +267,36 @@ public class EnemigoScript : MonoBehaviour
             }
         }
     }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Bala2")
+        {
+            this.GetComponent<SpriteRenderer>().color = hurtColor;
+            nichoTriggerStay = true;
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (nichoTriggerStay)
+        {
+            isBeingHurtByNicho = true;
+            nichoTriggerStay = false;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        this.spriteRenderer.color = baseColor;
+        StopCoroutine(sufrirNicho);
+    }
 
     private IEnumerator SufrirNicho()
     {
-        if (isBoss && GetComponent<Boss>().killMe) StopCoroutine(sufrirNicho);
+        if (isBoss && GetComponent<Boss>().killMe && EnemySpawner.ronda == 15)
+        {
+            StopCoroutine(sufrirNicho);
+        }
         while (false != true)
         {
-            StartCoroutine(HurtVFX(1));
             hp -= sufrirNichoDPS;
             if (hp <= 0)
             {
@@ -297,15 +321,15 @@ public class EnemigoScript : MonoBehaviour
 
     public virtual void Morir()
     {
-            if (!isBoss && canBeEaten)
-            {
-                GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
-                explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
-            }
-            EnemySpawner.botsVivos.Remove(this.gameObject);
-            this.spd = 0;
-            construirscr.plataActual += plata;
-            Destroy(this.gameObject);
+        if (!isBoss && canBeEaten)
+        {
+            GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
+            explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
+        }
+        EnemySpawner.botsVivos.Remove(this.gameObject);
+        this.spd = 0;
+        construirscr.plataActual += plata;
+        Destroy(this.gameObject);
     }
 
     private void Perder()
@@ -316,10 +340,5 @@ public class EnemigoScript : MonoBehaviour
 #endif
         Morir();
         Debug.LogWarning("PERDISTE");
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        this.spriteRenderer.color = baseColor;
-        StopCoroutine(sufrirNicho);
     }
 }

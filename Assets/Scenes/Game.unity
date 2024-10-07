@@ -1171,7 +1171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &58063159
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30467,7 +30467,7 @@ GameObject:
   - component: {fileID: 2085025344}
   m_Layer: 0
   m_Name: J11
-  m_TagString: Untagged
+  m_TagString: BossKiller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
