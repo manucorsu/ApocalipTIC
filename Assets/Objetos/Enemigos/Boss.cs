@@ -421,10 +421,16 @@ public class Boss : EnemigoScript
         {
             animator.SetTrigger("die");
             yield return new WaitForSeconds(1.1666667f);
-            //GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
-            //Debug.Log($"name {explosion.name}, loc {explosion.transform.position}");
-            //explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
-            yield return new WaitForSeconds(3);
+            for (byte i = 0; i <= 10; i++)
+            {
+                GameObject explosion = Instantiate(explosionMuerte, this.transform.position, Quaternion.identity);
+                explosion.transform.localScale = new Vector2(1.5f, 1.5f);
+                float x = Random.Range(-1, 3); float y = Random.Range(-1, 3);
+                explosion.transform.position = new Vector3(this.transform.position.x - x,
+                                                           this.transform.position.y - y);
+                explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
+                yield return new WaitForSeconds(0.1f);
+            }
             UnityEngine.SceneManagement.SceneManager.LoadScene("Win");
         }
         else
