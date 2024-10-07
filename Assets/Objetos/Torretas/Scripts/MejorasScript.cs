@@ -110,11 +110,11 @@ public class MejorasScript : MonoBehaviour
             if (this.transform.position.x > 8) {
                 thisPosX -= 5.5f;
             }
-            if (this.transform.position.y > -5)
+            if (this.transform.position.y > 3)
             {
                 thisPosY -= 1;
             }
-            if (this.transform.position.y < 4)
+            if (this.transform.position.y < -4)
             {
                 thisPosY += 2;
             }
