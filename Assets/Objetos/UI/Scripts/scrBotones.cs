@@ -35,12 +35,15 @@ public class scrBotones : MonoBehaviour
 
     public GameObject sceneScripts;
     private ConstruirScriptGeneral scrConstruirGeneral;
-    public float precioParaVender;
     public GameObject tile;
+
+    public TutorialData[] tutorialData;
 
     //Variables
 
     public static int dv = 0; // 0 si el botón de doble velocidad está inactivo, 1 si lo está, 2 si está en TRIPLE velocidad
+    public float precioParaVender;
+    private int pasoTutorial = 0;
 
     private void Start()
     {
@@ -442,7 +445,19 @@ public class scrBotones : MonoBehaviour
 
     public void tutoBotón()
     {
+        TutorialData tutoData = tutorialData[pasoTutorial];
+        foreach(string cuadro in tutoData.cuadroOcultar)
+        {
+            GameObject.Find(cuadro).GetComponent<Image>().enabled = false;
+        }
+        foreach (string cuadro in tutoData.cuadroMostrar)
+        {
+            GameObject.Find(cuadro).GetComponent<Image>().enabled = true;
+        }
+        GameObject.Find("txtTutorial").GetComponent<TMP_Text>().text = tutoData.texto;
+        GameObject.Find("cuadroTutorial").GetComponent<Image>().rectTransform.anchoredPosition = tutoData.posicionCuadro;
 
+        pasoTutorial++;
     }
 }
 
