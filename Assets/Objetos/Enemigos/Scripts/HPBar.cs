@@ -4,33 +4,47 @@ using UnityEngine;
 
 public class HPBar : MonoBehaviour
 {
-    [field: SerializeField] public float Max { get; private set; }
-    [field: SerializeField] public float Value { get; private set; }
+    public float max;
+    public float value;
 
-    [SerializeField] private RectTransform _topBar;
-    [SerializeField] private RectTransform _btmBar;
+    [SerializeField] private float animSpd = 1;
+    [SerializeField] private RectTransform topBar;
+    [SerializeField] private RectTransform btmBar;
 
-    private float _fullWidth;
-    private float TargetWidth => Value * _fullWidth / Max;
-    
+    private float fullWidth;
+    private float TargetWidth => value * fullWidth / max;
+
+    private Coroutine updateWidthCoroutine;
+
     private void Start()
     {
-        _fullWidth = _topBar.rect.width;
+        value = max;
+        fullWidth = topBar.rect.width;
     }
 
-    public void Change(float p)
+    public void Change(float a)
     {
-        Value = Mathf.Clamp(Value+p, 0, Max);
+        value = Mathf.Clamp(value + a, 0, max);
+        if (updateWidthCoroutine != null)
+        {
+            StopCoroutine(updateWidthCoroutine);
+        }
+        updateWidthCoroutine = StartCoroutine(UpdateWidth(a));
     }
 
-    //private IEnumerator UpdateBar(float a)
-    //{
-    //    RectTransform instantBar; // la roja
-    //    if (a >= 0) instantBar = _btmBar;
-    //    else instantBar = _topBar;
+    private IEnumerator UpdateWidth(float a)
+    {
+        RectTransform instantBar = a >= 0 ? btmBar : topBar;
+        RectTransform smoothBar = a >= 0 ? topBar : btmBar;
 
-    //    RectTransform smoothBar;
-    //}
+        instantBar.sizeDelta = new Vector2(TargetWidth, instantBar.rect.height);
+        while (Mathf.Abs(instantBar.rect.width - smoothBar.rect.width) > 1)
+        {
+            smoothBar.sizeDelta = new Vector2(Mathf.Lerp(smoothBar.rect.width, TargetWidth, Time.deltaTime * animSpd), smoothBar.rect.height);
+            yield return null;
+        }
+        smoothBar.sizeDelta = new Vector2(TargetWidth, smoothBar.rect.height);
+    }
     private void Update()
     {
         float a = 25;
