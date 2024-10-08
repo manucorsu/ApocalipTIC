@@ -52,6 +52,8 @@ public class EnemigoScript : MonoBehaviour
     private bool isBeingHurtByNicho = false;
     private float sufrirNichoDPS; private float nichoCooldown;
 
+    private HPBar hpBar;
+
 
     void Awake()
     {
@@ -62,7 +64,7 @@ public class EnemigoScript : MonoBehaviour
         if (spName == null || spName == string.Empty && !isBoss)
         {
             Debug.LogError("spName == null o string.Empty. En general esto pasa cuando un enemigo no fue generado por EnemySpawner.");
-            Destroy(this.gameObject); //ÚNICA vez en toda la HISTORIA donde un enemigo se destruye directamente y no llamando a Morir()
+            //Destroy(this.gameObject); //ÚNICA vez en toda la HISTORIA donde un enemigo se destruye directamente y no llamando a Morir()
         }
         BuscarPath();
     }
@@ -73,6 +75,8 @@ public class EnemigoScript : MonoBehaviour
         EnemySpawner.botsVivos.Add(this.gameObject);
         sufrirNicho = SufrirNicho();
         hp = baseHP;
+        hpBar = GetComponentInChildren<HPBar>();
+        if (hpBar != null) hpBar.max = baseHP;
         slowSpd = spd / 4;
         v3Camino.Clear();
         secuenciaAnims.Clear(); //cuenta como asignación? 
@@ -223,6 +227,7 @@ public class EnemigoScript : MonoBehaviour
       //BAJO NINGUNA CIRCUNSTANCIA usar para balas "especiales" (como el chorro de agua o el proyector)
         StartCoroutine(HurtVFX(0.1f));
         hp -= dmg;
+        hpBar.Change(-dmg);
         if (hp <= 0 && !isBoss) Morir();
         else return;
     }
@@ -297,11 +302,7 @@ public class EnemigoScript : MonoBehaviour
         }
         while (false != true)
         {
-            hp -= sufrirNichoDPS;
-            if (hp <= 0)
-            {
-                Morir();
-            }
+            Sufrir(sufrirNichoDPS);
             yield return new WaitForSeconds(nichoCooldown);
         }
     }

@@ -25274,10 +25274,7 @@ MonoBehaviour:
   prefabBoss: {fileID: 2692484358794775451, guid: 9e5bcbd67bb4e5745b757ce9d30e392f,
     type: 3}
   pfbsEnemigos:
-  - {fileID: 4711819497900499442, guid: 924439ca9d4008b4785a60cc19bf4b96, type: 3}
-  - {fileID: 7411269467034504211, guid: 03e6fc9d4bd3b3d459c497b365e0ed6f, type: 3}
-  - {fileID: 4651135590154431685, guid: 89d228bcfe23e574b84c03bef66528be, type: 3}
-  - {fileID: 7248669529481216566, guid: 80ef8cc524fc9fc4db25c47d96df07ca, type: 3}
+  - {fileID: 7676014431366369071, guid: aee8bddf95daf204fafa39fd3e53c902, type: 3}
   spawners:
   - {fileID: 116802921}
   - {fileID: 627240442}
