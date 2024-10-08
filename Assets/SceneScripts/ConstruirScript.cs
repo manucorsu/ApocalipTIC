@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ConstruirScript : MonoBehaviour
 {
@@ -67,6 +68,21 @@ public class ConstruirScript : MonoBehaviour
             }
         }
 
+        if (GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().pasoTutorial == 4)
+        {
+            GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().tutoBotón();
+            foreach (GameObject tile in GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>().tiles)
+            {
+                if (tile != null)
+                {
+                    tile.GetComponent<BoxCollider2D>().enabled = false;
+                    tile.GetComponent<SpriteRenderer>().enabled = false;
+                }
+            }
+            Image botonSí = GameObject.Find("btnSí").GetComponent<Image>();
+            botonSí.enabled = true;
+            botonSí.rectTransform.anchoredPosition = new Vector2(botonSí.rectTransform.anchoredPosition.x - 1000, botonSí.rectTransform.anchoredPosition.y);
+        }
 
     }
 

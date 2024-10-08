@@ -10,13 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40d65df366659c04fa9540cb249fd6ec, type: 3}
-  m_Name: TutorialData(1)
+  m_Name: TutorialData(2)
   m_EditorClassIdentifier: 
-  cuadroOcultar:
-  - Bloqueo (1)
-  cuadroMostrar:
-  - Oscuro 1
-  - Oscuro 2
-  - Bloqueo (2)
+  cuadroOcultar: []
+  cuadroMostrar: []
   posicionCuadro: {x: 268, y: -90}
-  texto: "Este es el <color=red>mapa</color>, ac\xE1 transcurre toda la magia, admiralo. "
+  texto: Los <color=red>enemigos</color> van a venir hacia el pasillo sin flechas.

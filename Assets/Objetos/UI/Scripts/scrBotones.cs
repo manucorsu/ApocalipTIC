@@ -43,7 +43,7 @@ public class scrBotones : MonoBehaviour
 
     public static int dv = 0; // 0 si el botón de doble velocidad está inactivo, 1 si lo está, 2 si está en TRIPLE velocidad
     public float precioParaVender;
-    private int pasoTutorial = 0;
+    public int pasoTutorial = 0;
 
     private void Start()
     {
@@ -289,6 +289,11 @@ public class scrBotones : MonoBehaviour
             imagen2.sprite = btTorretaSprite2;
 
         }
+
+        if (pasoTutorial == 3)
+        {
+            tutoBotón();
+        }
     }
 
     public void DobleVeclocidad()
@@ -422,8 +427,6 @@ public class scrBotones : MonoBehaviour
                 scrMejora.Mejorar();
             }
         }
-
-
     }
 
     public void CerrarCuadroMejora()
@@ -462,10 +465,19 @@ public class scrBotones : MonoBehaviour
 
     public void SiTuto()
     {
-        GameObject.Find("btnNo").SetActive(false);
-        Image botonSí = GameObject.Find("btnSí").GetComponent<Image>();
-        botonSí.rectTransform.anchoredPosition = new Vector2(botonSí.rectTransform.anchoredPosition.x - 60, botonSí.rectTransform.anchoredPosition.y);
-        GameObject.Find("txtSí").GetComponent<TMP_Text>().text = ">";
+        if (pasoTutorial == 1)
+        {
+            GameObject.Find("btnNo").SetActive(false);
+            Image botonSí = GameObject.Find("btnSí").GetComponent<Image>();
+            botonSí.rectTransform.anchoredPosition = new Vector2(botonSí.rectTransform.anchoredPosition.x - 60, botonSí.rectTransform.anchoredPosition.y);
+            GameObject.Find("txtSí").GetComponent<TMP_Text>().text = "OK";
+        }
+
+        if (pasoTutorial == 3 || pasoTutorial == 6)
+        {
+            Image botonSí = GameObject.Find("btnSí").GetComponent<Image>();
+            botonSí.rectTransform.anchoredPosition = new Vector2(botonSí.rectTransform.anchoredPosition.x + 1000, botonSí.rectTransform.anchoredPosition.y);
+        }
     }
 }
 
