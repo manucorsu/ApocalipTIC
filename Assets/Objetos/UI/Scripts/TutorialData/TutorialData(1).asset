@@ -15,8 +15,7 @@ MonoBehaviour:
   cuadroOcultar:
   - Bloqueo (1)
   cuadroMostrar:
+  - Oscuro 1
   - Bloqueo (2)
-  - Bloqueo (3)
-  - Bloqueo (4)
-  posicionCuadro: {x: 20, y: 20}
-  texto: Holaaaaa
+  posicionCuadro: {x: 268, y: -90}
+  texto: "Este es el <color=red>mapa</color>, ac\xE1 transcurre toda la magia. "

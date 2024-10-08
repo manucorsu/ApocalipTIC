@@ -459,5 +459,13 @@ public class scrBotones : MonoBehaviour
 
         pasoTutorial++;
     }
+
+    public void SiTuto()
+    {
+        GameObject.Find("btnNo").SetActive(false);
+        Image botonSí = GameObject.Find("btnSí").GetComponent<Image>();
+        botonSí.rectTransform.anchoredPosition = new Vector2(botonSí.rectTransform.anchoredPosition.x - 60, botonSí.rectTransform.anchoredPosition.y);
+        GameObject.Find("txtSí").GetComponent<TMP_Text>().text = ">";
+    }
 }
 
