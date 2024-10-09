@@ -216,7 +216,7 @@ public class EnemigoScript : MonoBehaviour
             }
         }
     }
-    private IEnumerator HurtVFX(float d)
+    private IEnumerator HurtVFX(float d = 0.1f)
     {
         this.spriteRenderer.color = hurtColor;
         yield return new WaitForSeconds(d);
