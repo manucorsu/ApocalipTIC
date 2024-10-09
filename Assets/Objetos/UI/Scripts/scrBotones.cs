@@ -298,6 +298,11 @@ public class scrBotones : MonoBehaviour
 
     public void DobleVeclocidad()
     {
+        if (pasoTutorial == 11)
+        {
+            return;
+        }
+
         if (dv == 0)
         {
             Time.timeScale = 2.5f;
@@ -325,6 +330,11 @@ public class scrBotones : MonoBehaviour
 
     public void BtnMejora(int boton)
     {
+        if (pasoTutorial == 7 || pasoTutorial == 8)
+        {
+            return;
+        }
+
         //TIRALÁPICES / TIRALAPÍCERAS / LANZABOMBUCHAS
 
         if (textoMejoraTorreta.text == "Tiralápices" || textoMejoraTorreta.text == "Tiralapiceras" || textoMejoraTorreta.text == "Lanzabombuchas")
@@ -429,38 +439,73 @@ public class scrBotones : MonoBehaviour
         }
     }
 
-    public void CerrarCuadroMejora()
+    public void CerrarCuadroMejora(bool esBotón)
     {
+        if (esBotón)
+        {
+            if (pasoTutorial == 7 || pasoTutorial == 8)
+            {
+                return;
+            }
+        }
+
         Image cuadroMejora = GameObject.Find("cuadroMejora").GetComponent<Image>();
         cuadroMejora.rectTransform.position = new Vector2(10000, 10000);
     }
 
     public void Vender()
     {
+        if (pasoTutorial == 7)
+        {
+            return;
+        }
 
         MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
         scrConstruirGeneral.plataActual += precioParaVender;
         scrMejora.tileParaRenovar.GetComponent<BoxCollider2D>().enabled = true;
         scrMejora.tileParaRenovar.GetComponent<SpriteRenderer>().enabled = true;
-        CerrarCuadroMejora();
+        CerrarCuadroMejora(false);
         Destroy(torretaParaMejorar);
+
+        if (pasoTutorial == 8)
+        {
+            tutoBotón();
+
+            foreach (GameObject tile in GetComponent<ConstruirScriptGeneral>().tiles)
+            {
+                if (tile != null)
+                {
+                    tile.GetComponent<BoxCollider2D>().enabled = true;
+                    tile.GetComponent<SpriteRenderer>().enabled = true;
+                }
+            }
+
+            Image botonSí = GameObject.Find("btnSí").GetComponent<Image>();
+            botonSí.rectTransform.anchoredPosition = new Vector2(botonSí.rectTransform.anchoredPosition.x - 1000, botonSí.rectTransform.anchoredPosition.y);
+        }
     }
 
     public void tutoBotón()
     {
-        TutorialData tutoData = tutorialData[pasoTutorial];
-        foreach(string cuadro in tutoData.cuadroOcultar)
+        if (pasoTutorial != 12)
         {
-            GameObject.Find(cuadro).GetComponent<Image>().enabled = false;
-        }
-        foreach (string cuadro in tutoData.cuadroMostrar)
-        {
-            GameObject.Find(cuadro).GetComponent<Image>().enabled = true;
-        }
-        GameObject.Find("txtTutorial").GetComponent<TMP_Text>().text = tutoData.texto;
-        GameObject.Find("cuadroTutorial").GetComponent<Image>().rectTransform.anchoredPosition = tutoData.posicionCuadro;
+            TutorialData tutoData = tutorialData[pasoTutorial];
+            foreach (string cuadro in tutoData.cuadroOcultar)
+            {
+                GameObject.Find(cuadro).GetComponent<Image>().enabled = false;
+            }
+            foreach (string cuadro in tutoData.cuadroMostrar)
+            {
+                GameObject.Find(cuadro).GetComponent<Image>().enabled = true;
+            }
+            GameObject.Find("txtTutorial").GetComponent<TMP_Text>().text = tutoData.texto;
+            GameObject.Find("cuadroTutorial").GetComponent<Image>().rectTransform.anchoredPosition = tutoData.posicionCuadro;
 
-        pasoTutorial++;
+            pasoTutorial++;
+        } else
+        {
+            CerrarTutorial();
+        }
     }
 
     public void SiTuto()
@@ -473,11 +518,31 @@ public class scrBotones : MonoBehaviour
             GameObject.Find("txtSí").GetComponent<TMP_Text>().text = "OK";
         }
 
-        if (pasoTutorial == 3 || pasoTutorial == 6)
+        if (pasoTutorial == 3 || pasoTutorial == 6 || pasoTutorial == 8)
         {
             Image botonSí = GameObject.Find("btnSí").GetComponent<Image>();
             botonSí.rectTransform.anchoredPosition = new Vector2(botonSí.rectTransform.anchoredPosition.x + 1000, botonSí.rectTransform.anchoredPosition.y);
         }
+
+
+    }
+
+    public void CerrarTutorial()
+    {
+        GameObject.Find("cuadroTutorial").GetComponent<Image>().enabled = false;
+        GameObject.Find("txtTutorial").GetComponent<TMP_Text>().enabled = false;
+        GameObject.Find("btnSí").GetComponent<Image>().enabled = false;
+        GameObject.Find("txtSí").GetComponent<TMP_Text>().enabled = false;
+        if (GameObject.Find("txtNo") != null) { GameObject.Find("txtNo").GetComponent<TMP_Text>().enabled = false; }
+
+        GameObject.Find("Bloqueo (1)").GetComponent<Image>().enabled = false;
+        GameObject.Find("Bloqueo (2)").GetComponent<Image>().enabled = false;
+        GameObject.Find("Bloqueo (3)").GetComponent<Image>().enabled = false;
+        GameObject.Find("Oscuro 1").GetComponent<Image>().enabled = false;
+        GameObject.Find("Oscuro 2").GetComponent<Image>().enabled = true;
+        if (GameObject.Find("txtNo") != null) { GameObject.Find("btnNo").GetComponent<Image>().enabled = false; }
+
+        GetComponent<ConstruirScriptGeneral>().plataActual = 1000;
     }
 }
 

@@ -35,13 +35,6 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        foreach (GameObject flecha in flechas)
-        {
-            if (flecha == flechas[6] || flecha == flechas[7] || flecha == flechas[8])
-            {
-                flecha.GetComponent<SpriteRenderer>().enabled = false;
-            }
-        }
         botsVivos.Clear();
         ToggleSpawning(false);
     }
@@ -80,6 +73,11 @@ public class EnemySpawner : MonoBehaviour
 
     public void EmpezarRonda()
     {
+        if (GetComponent<scrBotones>().pasoTutorial == 11)
+        {
+            return;
+        }
+
         if (spawnear == false)
         {
             Image cuadroMejora = GameObject.Find("cuadroMejora").GetComponent<Image>();

@@ -81,6 +81,11 @@ public class MejorasScript : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().pasoTutorial == 5)
+        {
+            return;
+        }
+
         //EVITAR QUE EL CLICK NO ATRAVIESE LA UI
         PointerEventData pointer = new PointerEventData(EventSystem.current);
         pointer.position = Input.mousePosition;
@@ -125,6 +130,13 @@ public class MejorasScript : MonoBehaviour
         }
 
         Mejorar();
+
+        if (GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().pasoTutorial == 6)
+        {
+            GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().tutoBotón();
+            Image botonSí = GameObject.Find("btnSí").GetComponent<Image>();
+            botonSí.rectTransform.anchoredPosition = new Vector2(botonSí.rectTransform.anchoredPosition.x - 1000, botonSí.rectTransform.anchoredPosition.y);
+        }
     }
 
     public void Mejorar()
