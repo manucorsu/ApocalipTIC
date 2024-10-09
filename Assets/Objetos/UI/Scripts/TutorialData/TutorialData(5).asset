@@ -22,6 +22,7 @@ MonoBehaviour:
   - Bloqueo (10)
   - Bloqueo (11)
   - Bloqueo (12)
+  - Bloqueo (13)
   cuadroMostrar: []
   posicionCuadro: {x: 268, y: -90}
   texto: "\xA1Tremenda elecci\xF3n! Pero tambi\xE9n podemos <color=red>mejorarla</color>."
