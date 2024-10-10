@@ -50,7 +50,7 @@ public class TorretaScript4 : MonoBehaviour
         {
             if (Quaternion.Angle(punta.rotation, Quaternion.Euler(new Vector3(0f, 0f, idleRotationPoint))) < 0.1f)
             {
-                if (idleRotationCooldown > 0.75f)
+                if (idleRotationCooldown > 1)
                 {
                     idleRotationPoint = Random.Range(0, 360);
                     idleRotationCooldown = 0;

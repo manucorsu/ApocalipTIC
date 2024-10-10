@@ -15,4 +15,4 @@ MonoBehaviour:
   cuadroOcultar: []
   cuadroMostrar: []
   posicionCuadro: {x: 268, y: -90}
-  texto: Los <color=red>enemigos</color> van a venir hacia el pasillo sin flechas.
+  texto: Los <color=red>enemigos</color> van a venir hacia donde apuntan las flechas.
