@@ -28,12 +28,14 @@ public class EnemigoScript : MonoBehaviour
     public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
     public float spd; //speed
     [HideInInspector] public float spdSave;
+    [HideInInspector] public float slowSpd;
+    [HideInInspector] public float aceiteSpd;
     public float plata; //cuánta $ recibe el jugador al mater a este enemigo.
     public bool canBeEaten = true;
     public bool canBeShot = true;
     private SpriteRenderer spriteRenderer;
-    public bool isPegamentoed;
-    [HideInInspector] public float slowSpd;
+    public bool isPegamentoed = false;
+    public bool isAceitado = false;
     #endregion
 
     private ConstruirScriptGeneral construirscr; // ni idea fue Marcos
@@ -78,6 +80,7 @@ public class EnemigoScript : MonoBehaviour
         hpBar = GetComponentInChildren<HPBar>();
         if (hpBar != null) hpBar.max = baseHP;
         slowSpd = spd / 4;
+        aceiteSpd = spd * Aceite.buff;
         v3Camino.Clear();
         secuenciaAnims.Clear(); //cuenta como asignación? 
         spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();

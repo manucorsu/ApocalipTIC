@@ -5,13 +5,11 @@ using UnityEngine;
 public class Pulpo : EnemigoScript
 {
     [Header("Pulpo")]
-    [SerializeField] private GameObject aceite;
-    [SerializeField] private float speedBuffMultiplier = 1.5f;
+    [SerializeField] private GameObject aceitePfb;
 
     public override void Morir()
     {
-        //to do: spawnear la tinta y todo eso
         base.Morir();
+        Instantiate(aceitePfb, this.transform.position, Quaternion.identity);
     }
 }
-        
