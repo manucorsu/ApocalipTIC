@@ -23684,7 +23684,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA1Bienvenido a <color=blue>ApocalipTIC</color>! Te gustar\xEDa un <color=red>tutorial</color>?"
+  m_text: "\xA1Bienvenido a <color=blue>ApocalipTIC</color>! \xBFTe gustar\xEDa un
+    <color=red>tutorial</color>?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1dd5061b1f88161408151cd8544884bf, type: 2}
   m_sharedMaterial: {fileID: 21525354390360526, guid: 1dd5061b1f88161408151cd8544884bf,
@@ -23754,7 +23755,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1324871454}
-    characterCount: 51
+    characterCount: 52
     spriteCount: 0
     spaceCount: 6
     wordCount: 7
