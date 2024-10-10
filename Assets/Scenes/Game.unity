@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &13058010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1828155257520874045, guid: 095b6c44979a2ea49880d2312697a3e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 565480323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &18565243
 GameObject:
   m_ObjectHideFlags: 0
@@ -22358,6 +22364,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 2
   m_SpriteSortPoint: 0
+--- !u!1 &1145484397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1828155257520874045, guid: 095b6c44979a2ea49880d2312697a3e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1224287998}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1167040259 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3186455914960899769, guid: 5318264b66631f14eb54560412c13432,
@@ -25508,6 +25520,8 @@ MonoBehaviour:
   - {fileID: 970501742}
   - {fileID: 1718430756}
   - {fileID: 1121605913}
+  - {fileID: 1145484397}
+  - {fileID: 13058010}
 --- !u!114 &1496161649
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -106,7 +106,7 @@ public class scrBotonTorreta : MonoBehaviour, IPointerEnterHandler, IPointerExit
         if (this.gameObject == GameObject.Find("btnNetbook"))
         {
             txtTítuloTorreta.text = "Netbook";
-            txtDescTorreta.text = "Potencia a las torretas cercanas or unos segundos.";
+            txtDescTorreta.text = "Potencia a las torretas cercanas por unos segundos.";
             cuadroTorreta.SetActive(true);
             cuadroTorreta.GetComponent<RectTransform>().anchoredPosition = new Vector2(190, -31);
         }

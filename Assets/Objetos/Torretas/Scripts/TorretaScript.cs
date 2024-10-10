@@ -114,9 +114,8 @@ public class TorretaScript : MonoBehaviour
 
             if (lr != null)
             {
-                RaycastHit2D[] hits2 = Physics2D.LinecastAll(transform.position, puntaRaycast.position, enemigos);
-
-                if (hits2.Length > 0)
+                //RaycastHit2D[] hits2 = Physics2D.LinecastAll(punta.position, puntaRaycast.position, enemigos);
+                if (hits.Length > 0)
                 {
                     lr.enabled = true;
                 }
