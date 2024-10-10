@@ -42,17 +42,16 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.B) && spawnear == false) // debug: cambiar a ronda 15
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            switch (ronda)
-            {
-                case 15:
-                    ronda = 30;
-                    break;
-                default:
-                    ronda = 15;
-                    break;
-            }
+            ronda--;
+            if (ronda < 1) ronda = 1;
+            txtRonda.text = $"override ronda {ronda}";
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ronda++;
+            if (ronda > 30) ronda = 30;
             txtRonda.text = $"override ronda {ronda}";
         }
         if (Input.GetKeyDown(KeyCode.Alpha4) && spawnear == false)
