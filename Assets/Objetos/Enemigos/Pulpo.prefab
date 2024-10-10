@@ -59,15 +59,16 @@ MonoBehaviour:
   minRonda: 7
   spd: 1.5000001
   spdSave: 0
+  slowSpd: 0
+  aceiteSpd: 0
   plata: 15
   canBeEaten: 1
   canBeShot: 1
   isPegamentoed: 0
-  slowSpd: 0
+  isAceitado: 0
   spName: 
-  aceitePfb: {fileID: 2752348681759329783, guid: 8df9d79cc98bff44f98fddae24e03394,
+  aceitePfb: {fileID: 199929408812350690, guid: 8df9d79cc98bff44f98fddae24e03394,
     type: 3}
-  speedBuffMultiplier: 1.5
 --- !u!50 &1104942596153195314
 Rigidbody2D:
   serializedVersion: 4
