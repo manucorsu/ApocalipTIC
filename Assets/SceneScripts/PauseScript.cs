@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PauseScript : MonoBehaviour
 {
     public static bool isPaused = false;
-    [SerializeField] private GameObject pauseMenu; //panel PauseMenu
-    private GameObject controls; //las cosas que en winforms se llamaban controles (botones, texto) de este panel
+    [SerializeField] private GameObject pauseMenu; //panel PauseMenu dentro del canvas PauseCanvas
+    [SerializeField] private TMP_Text txtEnemiesKilled;
+    [SerializeField] private TMP_Text txtRonda;
+    [SerializeField] private TMP_Text txtEnemigosRestantes;
+    private byte botsASpawnear = 0;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -26,8 +31,18 @@ public class PauseScript : MonoBehaviour
         if (s == true)
         {
             pauseMenu.SetActive(true);
-            //if (mb == true) controls.SetActive(false);
-            //else { controls.SetActive(false); }
+            txtEnemiesKilled.text = EnemySpawner.botsEliminados.ToString();
+            txtRonda.text = $"{EnemySpawner.ronda}/30";
+            if (EnemySpawner.ronda == 15 || EnemySpawner.ronda == 30)
+            {
+                txtEnemigosRestantes.text = "al Jefe";
+            }
+            else
+            {
+                botsASpawnear = EnemySpawner.EnemyFormula(r: EnemySpawner.ronda);
+                byte enemigosRestantes = System.Convert.ToByte(botsASpawnear - EnemySpawner.botsEliminadosRonda);
+                txtEnemigosRestantes.text = $"{enemigosRestantes} más";
+            }
             Time.timeScale = 0;
         }
         else

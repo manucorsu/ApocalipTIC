@@ -54,7 +54,7 @@ public class EnemigoScript : MonoBehaviour
     private bool isBeingHurtByNicho = false;
     private float sufrirNichoDPS; private float nichoCooldown;
 
-    private HPBar hpBar;
+    protected HPBar hpBar;
 
 
     void Awake()
@@ -325,13 +325,15 @@ public class EnemigoScript : MonoBehaviour
 
     public virtual void Morir()
     {
+        this.spd = 0;
         if (!isBoss && canBeEaten)
         {
             GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
             explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
         }
+        EnemySpawner.botsEliminados++;
+        if(!EnemySpawner.isBossFight) EnemySpawner.botsEliminadosRonda++;
         EnemySpawner.botsVivos.Remove(this.gameObject);
-        this.spd = 0;
         construirscr.plataActual += plata;
         Destroy(this.gameObject);
     }
@@ -339,7 +341,6 @@ public class EnemigoScript : MonoBehaviour
     private void Perder()
     {
 #if !UNITY_EDITOR
-        Time.timeScale = 1f;
         SceneManager.LoadScene("GameOver");
 #endif
         Morir();

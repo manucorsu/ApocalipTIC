@@ -9,14 +9,12 @@ public class Aceite : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         EnemigoScript enemigo = collision.gameObject.GetComponent<EnemigoScript>();
-        if(enemigo != null && enemigo.isPegamentoed == false)
+        if (enemigo != null && enemigo.isPegamentoed == false && enemigo.canBeEaten) 
+            //no afecta al jefe, feature not bug
         {
-            if(enemigo.canBeEaten || enemigo.isBoss)
-            {
-                enemigo.spd = enemigo.aceiteSpd;
-                enemigo.isAceitado = true;
-                StartCoroutine(ExistirAceite());
-            }
+            enemigo.spd = enemigo.aceiteSpd;
+            enemigo.isAceitado = true;
+            StartCoroutine(ExistirAceite());
         }
     }
 

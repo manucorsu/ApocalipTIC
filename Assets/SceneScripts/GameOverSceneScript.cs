@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameOverSceneScript : MonoBehaviour
 {
+    private void Awake()
+    {
+        Time.timeScale = 1f;
+        scrBotones.dv = 0;
+    }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            EnemySpawner.ronda = 1;
-            SceneManager.LoadScene("Game");
-        }
+        if (Input.GetKeyDown(KeyCode.Space)) SceneManager.LoadScene("Game");
     }
 }

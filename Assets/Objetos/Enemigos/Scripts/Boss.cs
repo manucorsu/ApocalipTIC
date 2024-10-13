@@ -36,6 +36,8 @@ public class Boss : EnemigoScript
     protected override void AsignarTodo()
     {
         base.AsignarTodo();
+        if (EnemySpawner.ronda == 15) hpBar.min = baseHP / 2;
+        else hpBar.min = 1;
         baseSpd = spd;
         introDone = false;
         canBeShot = false;
@@ -223,7 +225,8 @@ public class Boss : EnemigoScript
 
     private void Update()
     {
-        if (hp < 1) hp = 1;
+        if(EnemySpawner.ronda == 15 && hp < baseHP/2) hp = baseHP/2;
+        else if (hp < 1) hp = 1;
 
         if (idle)
         {
@@ -436,6 +439,9 @@ public class Boss : EnemigoScript
         else
         {
             this.Morir();
+            EnemySpawner.botsEliminados--; //en la historia el jefe no muere en la ronda 15.
+                                           //EnemigoScript incrementa el counter igual así
+                                           //que con esto deshago eso y mantengo intacto mi precioso lore
             GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().TerminarRonda();
         }
     }

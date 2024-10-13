@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
     public Image cuadroMejora;
     public bool cuadroMejoraAbierto = false;
-    public int i;
+    public int i; //¿¿¿???
 
     // Start is called before the first frame update
     void Start()

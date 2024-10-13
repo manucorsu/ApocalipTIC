@@ -5,7 +5,9 @@ using UnityEngine;
 public class HPBar : MonoBehaviour
 {
     public float max;
+    public float min = 0;
     public float value;
+
 
     [SerializeField] private float animSpd = 1;
     [SerializeField] private RectTransform topBar;
@@ -24,7 +26,7 @@ public class HPBar : MonoBehaviour
 
     public void Change(float a)
     {
-        value = Mathf.Clamp(value + a, 0, max);
+        value = Mathf.Clamp(value + a, min, max);
         if (updateWidthCoroutine != null)
         {
             StopCoroutine(updateWidthCoroutine);

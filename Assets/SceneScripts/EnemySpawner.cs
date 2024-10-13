@@ -6,8 +6,15 @@ using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
+    #region las estáticas
     public static bool spawnear = false;
     public static bool isBossFight = false;
+    public static byte ronda = 1;
+    public static List<GameObject> botsVivos = new List<GameObject>();
+    public static byte botsASpawnear;
+    public static uint botsEliminados = 0;
+    public static byte botsEliminadosRonda = 0;
+    #endregion
 
     [SerializeField] private GameObject prefabBoss;
     [Header("Arrays")]
@@ -20,10 +27,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float dificultad = 0.75f; //scaler de dificultad
     [SerializeField] private byte r1Bots = 6; //bots de la ronda 1, usados de base para todo el resto de las rondas
     [SerializeField] private float bps = 0.5f; //bots por segundo
-    public static byte ronda = 1;
     private float tiempoDesdeUltimoSpawn;
-    public static List<GameObject> botsVivos = new List<GameObject>();
-    public static byte botsASpawnear;
     private Boss boss;
 
     [SerializeField] private Sprite btnPlaySprite1;
@@ -35,30 +39,38 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        botsVivos.Clear();
         ToggleSpawning(false);
+        isBossFight = false;
+        ronda = 1;
+        botsVivos.Clear();
+        botsASpawnear = 0;
+        botsEliminados = 0;
+        botsEliminadosRonda = 0;
     }
 
     void Update()
     {
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+        if (!spawnear)
         {
-            ronda--;
-            if (ronda < 1) ronda = 1;
-            txtRonda.text = $"override ronda {ronda}";
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ronda++;
-            if (ronda > 30) ronda = 30;
-            txtRonda.text = $"override ronda {ronda}";
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4) && spawnear == false)
-        {
-            ConstruirScriptGeneral construirscr = GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>();
-            construirscr.plataActual += 10000;
-            txtRonda.text = "Te regalé 10 mil pesos. De nada";
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                ronda--;
+                if (ronda < 1) ronda = 1;
+                txtRonda.text = $"override ronda {ronda}";
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                ronda++;
+                if (ronda > 30) ronda = 30;
+                txtRonda.text = $"override ronda {ronda}";
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                ConstruirScriptGeneral construirscr = GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>();
+                construirscr.plataActual += 10000;
+                txtRonda.text = "Te regalé 10 mil pesos. De nada";
+            }
         }
 #endif
         if (spawnear == true)
@@ -72,11 +84,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void EmpezarRonda()
     {
-        if (GetComponent<scrBotones>().pasoTutorial == 11)
-        {
-            return;
-        }
-
+        if (GetComponent<scrBotones>().pasoTutorial == 11) return;
         if (spawnear == false)
         {
             Image cuadroMejora = GameObject.Find("cuadroMejora").GetComponent<Image>();
@@ -95,7 +103,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 isBossFight = false;
             }
-            botsASpawnear = (byte)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
+            botsASpawnear = EnemyFormula(b: 6, r: ronda, d: dificultad);
             ToggleSpawning(true);
             Image btnPlayImage = btnIniciarRonda.GetComponent<Image>();
             btnPlayImage.sprite = btnPlaySprite2;
@@ -106,6 +114,12 @@ public class EnemySpawner : MonoBehaviour
             }
         }
     }
+
+    public static byte EnemyFormula(byte r, byte b = 6, float d = 0.75f)
+    {
+        return (byte)Mathf.Round(b * Mathf.Pow(r, d));
+    }
+
     private void SpawnEnemy()
     {
         if (boss != null && boss.introDone == false) return;
@@ -144,6 +158,7 @@ public class EnemySpawner : MonoBehaviour
         botsVivos.Clear();
         if (isBossFight) boss = null;
         ronda++;
+        botsEliminadosRonda = 0;
         ToggleSpawning(false);
         tiempoDesdeUltimoSpawn = 0;
 
