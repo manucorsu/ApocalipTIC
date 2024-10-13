@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 3212824467811206765}
   collider: {fileID: 3212824467811206767}
-  "da\xF1o": 3000
+  "da\xF1o": 50
   anim: 0
   precio: 75
 --- !u!58 &3212824467811206767
