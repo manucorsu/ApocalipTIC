@@ -112,6 +112,20 @@ public class EnemySpawner : MonoBehaviour
             {
                 flecha.GetComponent<SpriteRenderer>().enabled = false;
             }
+
+            foreach(GameObject tile in GetComponent<ConstruirScriptGeneral>().tiles)
+            {
+                if (tile != null)
+                {
+                    tile.GetComponent<ConstruirScript>().torretaSeleccionada = null;
+                }
+            }
+
+            foreach (GameObject boton in GetComponent<scrBotones>().botonesTorretas)
+            {
+                Image imagen = boton.GetComponent<Image>();
+                imagen.sprite = GetComponent<scrBotones>().btTorretaSprite1;
+            }
         }
     }
 
@@ -175,6 +189,17 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (ronda < 5) flecha.GetComponent<SpriteRenderer>().enabled = false;
             }
+        }
+
+        foreach (GameObject zona in GetComponent<ConstruirScriptGeneral>().consumiblesZonas)
+        {
+            zona.GetComponent<ZonaConsumiblesScript>().consumibleSeleccionado = null;
+        }
+
+        foreach (GameObject boton in GetComponent<scrBotones>().botonesConsumibles)
+        {
+            Image imagen = boton.GetComponent<Image>();
+            imagen.sprite = GetComponent<scrBotones>().btTorretaSprite1;
         }
     }
 

@@ -290,6 +290,7 @@ public class scrBotones : MonoBehaviour
 
         }
 
+
         if (pasoTutorial == 3)
         {
             tutoBotón();

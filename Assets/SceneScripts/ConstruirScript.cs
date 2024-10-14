@@ -84,6 +84,15 @@ public class ConstruirScript : MonoBehaviour
             botonSí.rectTransform.anchoredPosition = new Vector2(botonSí.rectTransform.anchoredPosition.x - 1000, botonSí.rectTransform.anchoredPosition.y);
         }
 
+        foreach (GameObject boton in GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().botones)
+        {
+            if (GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>().plataActual - boton.GetComponent<scrBotonTorreta>().precio < 0)
+            {
+                Image imagen = boton.GetComponent<Image>();
+                imagen.sprite = GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().btTorretaSprite1;
+            }
+        }
+
     }
 
     private void OnMouseEnter()

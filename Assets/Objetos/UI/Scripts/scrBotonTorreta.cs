@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.UI;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
@@ -9,8 +9,24 @@ using UnityEngine.EventSystems;
 public class scrBotonTorreta : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject cuadroTorreta;
+    public float precio;
     [SerializeField] private TMP_Text txtTítuloTorreta;
     [SerializeField] private TMP_Text txtDescTorreta;
+
+    private void Update()
+    {
+        if (GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>().plataActual - precio >= 0)
+        {
+            GetComponent<Button>().enabled = true;
+            transform.Find("pricetag").GetComponent<TMP_Text>().color = Color.black;
+            transform.Find("BloqueoBotón").GetComponent<Image>().enabled = false;
+        } else
+        {
+            GetComponent<Button>().enabled = false;
+            transform.Find("pricetag").GetComponent<TMP_Text>().color = Color.white;
+            transform.Find("BloqueoBotón").GetComponent<Image>().enabled = true;
+        }
+    } 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
