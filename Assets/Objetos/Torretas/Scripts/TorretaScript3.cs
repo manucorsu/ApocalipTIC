@@ -66,14 +66,14 @@ public class TorretaScript3 : MonoBehaviour
 
     }
 
-
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-#if UNITY_EDITOR
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, rango);
-#endif
     }
+#endif
+
 
     private IEnumerator Comer()
     {

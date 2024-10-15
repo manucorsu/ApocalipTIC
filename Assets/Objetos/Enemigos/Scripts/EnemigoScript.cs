@@ -10,7 +10,7 @@ public class EnemigoScript : MonoBehaviour
     protected Animator animator;
     protected List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
     private Color baseColor = Color.white;
-    [SerializeField] private Color hurtColor;
+    [SerializeField] private Color hurtColor = new Color(217, 54, 54);
     public GameObject explosionMuerte;
     public Color colorExplosion;
     [HideInInspector] public float currentMan;

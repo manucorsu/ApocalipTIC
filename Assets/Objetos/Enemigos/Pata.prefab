@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1086273804874777727}
+  - component: {fileID: 114194969716945956}
   - component: {fileID: 1086273804874777721}
   - component: {fileID: 1086273804874777716}
   - component: {fileID: 1086273804874777723}
   - component: {fileID: 1086273804874777722}
-  - component: {fileID: 114194969716945956}
   m_Layer: 8
   m_Name: Pata
   m_TagString: enemigo
@@ -36,6 +36,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114194969716945956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086273804874777717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f933a33c866bb6444b6f848ed4dc5c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurtColor: {r: 0.8509804, g: 0.21176471, b: 0.21176471, a: 1}
+  explosionMuerte: {fileID: 6545438287314071777, guid: 295ede5d751d3eb489416efcc1b3ce27,
+    type: 3}
+  colorExplosion: {r: 0.23921569, g: 0.4862745, b: 0.5372549, a: 1}
+  currentMan: 0
+  solidWhite: {fileID: 2100000, guid: 73fa6ee842c7da24ea3b26f170eaeac5, type: 2}
+  baseHP: 300
+  hp: 0
+  isBoss: 0
+  minRonda: 9
+  spd: 2
+  spdSave: 0
+  slowSpd: 0
+  aceiteSpd: 0
+  plata: 50
+  canBeEaten: 1
+  canBeShot: 1
+  isPegamentoed: 0
+  isAceitado: 0
+  spName: 
+  v3Camino: []
+  pfbPatito: {fileID: 6926818039991358201, guid: f5238311d728def48b86b32a760b28d9,
+    type: 3}
+  viva: 1
 --- !u!50 &1086273804874777721
 Rigidbody2D:
   serializedVersion: 4
@@ -140,18 +176,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114194969716945956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086273804874777717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f933a33c866bb6444b6f848ed4dc5c88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6560930853157771164
 PrefabInstance:
   m_ObjectHideFlags: 0

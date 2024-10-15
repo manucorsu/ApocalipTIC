@@ -46,6 +46,9 @@ public class EnemySpawner : MonoBehaviour
         botsASpawnear = 0;
         botsEliminados = 0;
         botsEliminadosRonda = 0;
+        PauseScript.r1Bots = r1Bots;
+        PauseScript.ronda = ronda;
+        PauseScript.dificultad = dificultad;
     }
 
     void Update()
@@ -103,7 +106,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 isBossFight = false;
             }
-            botsASpawnear = EnemyFormula(b: 6, r: ronda, d: dificultad);
+            botsASpawnear = EnemyFormula(r1Bots, ronda, dificultad);
             ToggleSpawning(true);
             Image btnPlayImage = btnIniciarRonda.GetComponent<Image>();
             btnPlayImage.sprite = btnPlaySprite2;
@@ -129,10 +132,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public static byte EnemyFormula(byte r, byte b = 6, float d = 0.75f)
-    {
-        return (byte)Mathf.Round(b * Mathf.Pow(r, d));
-    }
+    public static byte EnemyFormula(byte r1b, byte r, float d) => (byte)Mathf.Round(r1b * Mathf.Pow(r, d));
 
     private void SpawnEnemy()
     {
@@ -172,6 +172,7 @@ public class EnemySpawner : MonoBehaviour
         botsVivos.Clear();
         if (isBossFight) boss = null;
         ronda++;
+        PauseScript.ronda = ronda;
         botsEliminadosRonda = 0;
         ToggleSpawning(false);
         tiempoDesdeUltimoSpawn = 0;

@@ -18,7 +18,6 @@ public class Patito : EnemigoScript
         while (madre.viva)
         {
             this.spd /= this.madre.spd;
-            
         }
         base.Update();
     }

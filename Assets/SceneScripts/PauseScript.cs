@@ -6,6 +6,10 @@ using UnityEngine;
 public class PauseScript : MonoBehaviour
 {
     public static bool isPaused = false;
+    public static byte r1Bots = 6;
+    public static byte ronda = 1;
+    public static float dificultad = 0.75f;
+
     [SerializeField] private GameObject pauseMenu; //panel PauseMenu dentro del canvas PauseCanvas
     [SerializeField] private TMP_Text txtEnemiesKilled;
     [SerializeField] private TMP_Text txtRonda;
@@ -39,7 +43,7 @@ public class PauseScript : MonoBehaviour
             }
             else
             {
-                botsASpawnear = EnemySpawner.EnemyFormula(r: EnemySpawner.ronda);
+                botsASpawnear = EnemySpawner.EnemyFormula(r1Bots, ronda, dificultad);
                 byte enemigosRestantes = System.Convert.ToByte(botsASpawnear - EnemySpawner.botsEliminadosRonda);
                 txtEnemigosRestantes.text = $"{enemigosRestantes} más";
             }
