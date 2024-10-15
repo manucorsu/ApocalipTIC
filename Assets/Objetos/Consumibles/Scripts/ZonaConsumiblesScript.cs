@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ZonaConsumiblesScript : MonoBehaviour
 {
@@ -58,6 +59,16 @@ public class ZonaConsumiblesScript : MonoBehaviour
                         scrConstruir.plataActual -= precioSeleccionado;
                         StartCoroutine(Palomas());
                     }
+                }
+            }
+
+
+            foreach (GameObject boton in GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().botones)
+            {
+                if (GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>().plataActual - boton.GetComponent<scrBotonTorreta>().precio < 0)
+                {
+                    Image imagen = boton.GetComponent<Image>();
+                    imagen.sprite = GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().btTorretaSprite1;
                 }
             }
         }

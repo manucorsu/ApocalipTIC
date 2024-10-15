@@ -45,6 +45,7 @@ public class MejorasScript : MonoBehaviour
 
     public float precioExtraParaVender;
     public bool isPotenciado = false;
+    private float precioParaMejorar;
     
 
     // Start is called before the first frame update
@@ -81,7 +82,7 @@ public class MejorasScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().pasoTutorial == 5)
+        if (sceneScripts.GetComponent<scrBotones>().pasoTutorial == 5)
         {
             return;
         }
@@ -131,9 +132,9 @@ public class MejorasScript : MonoBehaviour
 
         Mejorar();
 
-        if (GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().pasoTutorial == 6)
+        if (sceneScripts.GetComponent<scrBotones>().pasoTutorial == 6)
         {
-            GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().tutoBotón();
+            sceneScripts.GetComponent<scrBotones>().tutoBotón();
             Image botonSí = GameObject.Find("btnSí").GetComponent<Image>();
             botonSí.rectTransform.anchoredPosition = new Vector2(botonSí.rectTransform.anchoredPosition.x - 1000, botonSí.rectTransform.anchoredPosition.y);
         }
@@ -141,8 +142,6 @@ public class MejorasScript : MonoBehaviour
 
     public void Mejorar()
     {
-        
-
         //TIRALÁPICES
 
         if (this.gameObject == tiralápices)
@@ -153,12 +152,17 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Daño:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
+            precioParaMejorar = torretaScr.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
             btnMejora3.enabled = true;
             btnMejora3.GetComponent<Image>().enabled = true;
+
+            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else {btnMejora3.GetComponent<Button>().interactable = true; }
         }
 
         //NICHO
@@ -171,12 +175,16 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Daño:" + torretaScr2.nivel2; //torretaScr2.dps.ToString();
             textoMejora3.text = "";
             textoPrecioMejora.text = "$" + torretaScr2.precioMejora;
+            precioParaMejorar = torretaScr2.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr2.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
             btnMejora3.enabled = false;
             btnMejora3.GetComponent<Image>().enabled = false;
+
+            if (torretaScr2.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr2.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
         }
 
         //TACHO
@@ -189,12 +197,16 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Rango:" + torretaScr3.nivel2; //torretaScr3.rango.ToString();
             textoMejora3.text = "";
             textoPrecioMejora.text = "$" + torretaScr3.precioMejora;
+            precioParaMejorar = torretaScr3.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr3.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
             btnMejora3.enabled = false;
             btnMejora3.GetComponent<Image>().enabled = false;
+
+            if (torretaScr3.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr3.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
 
         }
 
@@ -208,12 +220,16 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Rango:" + torretaScr4.nivel2; //torretaScr4.dps.ToString();
             textoMejora3.text = "";
             textoPrecioMejora.text = "$" + torretaScr4.precioMejora;
+            precioParaMejorar = torretaScr4.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr4.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
             btnMejora3.enabled = false;
             btnMejora3.GetComponent<Image>().enabled = false;
+
+            if (torretaScr4.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr4.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
         }
 
         //TIRALAPICERAS
@@ -226,11 +242,16 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Daño:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
+            precioParaMejorar = torretaScr.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
             btnMejora3.GetComponent<Image>().enabled = true;
+
+            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else {btnMejora3.GetComponent<Button>().interactable = true; }
         }
 
         //LANZABOMBUCHAS
@@ -243,11 +264,16 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Daño:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
+            precioParaMejorar = torretaScr.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
             btnMejora3.GetComponent<Image>().enabled = true;
+
+            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else {btnMejora3.GetComponent<Button>().interactable = true; }
         }
 
         //IMÁN
@@ -260,11 +286,16 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Ganancia:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
+            precioParaMejorar = torretaScr.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
             btnMejora3.GetComponent<Image>().enabled = true;
+
+            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else {btnMejora3.GetComponent<Button>().interactable = true; }
         }
 
         //PARLANTE
@@ -277,17 +308,26 @@ public class MejorasScript : MonoBehaviour
             textoMejora2.text = "Rango:" + torretaScr.nivel2; //torretaScr.rango.ToString();
             textoMejora3.text = "Daño:" + torretaScr.nivel3; //torretaScr.dmg.ToString();
             textoPrecioMejora.text = "$" + torretaScr.precioMejora;
+            precioParaMejorar = torretaScr.precioMejora;
             scrbotones.precioParaVender = Mathf.Round(torretaScr.precio / 2) + precioExtraParaVender;
 
             btnMejora1.enabled = true;
             btnMejora2.enabled = true;
             btnMejora3.GetComponent<Image>().enabled = true;
+
+            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else {btnMejora3.GetComponent<Button>().interactable = true; }
         }
 
         scrbotones.torretaParaMejorar = this.gameObject;
 
+        if (sceneScripts.GetComponent<ConstruirScriptGeneral>().plataActual - precioParaMejorar < 0)
+        {
+            btnMejora1.GetComponent<Button>().interactable = false;
+            btnMejora2.GetComponent<Button>().interactable = false;
+            btnMejora3.GetComponent<Button>().interactable = false;
+        }
     }
-
-
 
     }
