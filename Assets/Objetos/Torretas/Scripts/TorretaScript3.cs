@@ -85,6 +85,8 @@ public class TorretaScript3 : MonoBehaviour
             targetscr.spd = 0;
             targetscr.canBeEaten = false;
 
+
+
             anima = 0;
             animator.SetFloat("anim", anima);
 
@@ -104,7 +106,10 @@ public class TorretaScript3 : MonoBehaviour
             }
 
             canEat = false;
-            targetscr.Morir();
+
+            Pulpo pulpo = target.GetComponent<Pulpo>();
+            if (pulpo == null) targetscr.Morir();
+            else pulpo.MorirTacho();
 
             animator.enabled = true;
             anima = 1;

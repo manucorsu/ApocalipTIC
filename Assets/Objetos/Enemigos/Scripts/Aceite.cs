@@ -5,6 +5,7 @@ using UnityEngine;
 public class Aceite : MonoBehaviour
 {
     public static float buff = 4.5f;
+    public bool live = true;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -20,7 +21,7 @@ public class Aceite : MonoBehaviour
 
     private IEnumerator ExistirAceite()
     {
-        yield return new WaitForSeconds(0.666667f + 15f);
+        yield return new WaitForSeconds(0.666667f + 10f);
         SpriteRenderer sr = this.gameObject.GetComponent<SpriteRenderer>();
         Color newColor = sr.color;
         while (newColor.a > 0)
@@ -46,5 +47,19 @@ public class Aceite : MonoBehaviour
                 }
             }
         }
+    }
+
+    public IEnumerator TomarAceite()
+    {
+        SpriteRenderer sr = this.gameObject.GetComponent<SpriteRenderer>();
+        Color newColor = sr.color;
+        while (newColor.a > 0)
+        {
+            newColor.a -= 0.05f;
+            sr.color = newColor;
+            yield return null;
+        }
+        live = false;
+        Destroy(this.gameObject);
     }
 }
