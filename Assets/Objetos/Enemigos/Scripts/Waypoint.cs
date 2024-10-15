@@ -2,7 +2,4 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Patito : EnemigoScript
-{
-    
-}
+public class Waypoint : MonoBehaviour { }

@@ -26,6 +26,7 @@ public class EnemigoScript : MonoBehaviour
     [SerializeField] protected float baseHP;
     [HideInInspector] public float hp;
     public bool isBoss;
+    public bool isPatito;
     public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
     public float spd; //speed
     [HideInInspector] public float spdSave;
@@ -48,6 +49,7 @@ public class EnemigoScript : MonoBehaviour
     [HideInInspector] public List<Vector3> v3Camino = new List<Vector3>();
     protected byte wi = 0; //waypoint index
     protected bool siguiendo = false; //ver final de V3ify()
+    protected Vector3 currentWaypoint;
     #endregion
 
     IEnumerator sufrirNicho;
@@ -207,7 +209,8 @@ public class EnemigoScript : MonoBehaviour
         if (siguiendo == true)
         {
             ChangeManParaNoJefes(secuenciaAnims[wi]);
-            this.transform.position = Vector3.MoveTowards(this.transform.position, v3Camino[wi], spd * Time.deltaTime);
+            currentWaypoint = v3Camino[wi];
+            this.transform.position = Vector3.MoveTowards(this.transform.position, currentWaypoint, spd * Time.deltaTime);
 
             if (transform.position == v3Camino[wi])
             {
@@ -339,12 +342,5 @@ public class EnemigoScript : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void Perder()
-    {
-#if !UNITY_EDITOR
-        SceneManager.LoadScene("GameOver");
-#endif
-        Morir();
-        Debug.LogWarning("PERDISTE");
-    }
+    private void Perder() => SceneManager.LoadScene("GameOver");
 }

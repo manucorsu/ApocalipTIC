@@ -6,31 +6,37 @@ public class Pata : EnemigoScript
 {
     [Header("Pata")]
     [SerializeField] private GameObject pfbPatito;
-    public bool viva = true;
-    private List<Patito> patitos = new List<Patito>();
-
+    [HideInInspector] public bool canDie = false;
     protected override void Start()
     {
         if (pfbPatito == null) throw new System.Exception("pfbPatito fue null!");
         base.Start();
-        StartCoroutine(SpawnearPatitos());
     }
 
-    public override void Morir()
+    public override void Morir() => StartCoroutine(MorirPata());
+    private IEnumerator MorirPata()
     {
-        viva = false;
-        foreach (Patito patito in patitos) patito.spd = patito.baseSpd;
-        base.Morir();
-    }
-    private IEnumerator SpawnearPatitos() {
+        while (canDie == false)
+        {
+            if (hp < 1) hp = 1;
+            yield return null;
+        }
+        this.spd = 0;
         for (byte i = 1; i < 4; i++)
         {
-            Patito patito = Instantiate(pfbPatito, this.transform.position, Quaternion.identity).GetComponent<Patito>();
-            patito.madre = this;
-            patito.baseSpd = patito.spd;
-            patito.spd -= (this.spd/2.5f);
-            patitos.Add(patito);
-            yield return new WaitForSeconds(1.5f);
+            EnemigoScript patito = Instantiate(pfbPatito, this.transform.position, Quaternion.identity).GetComponent<EnemigoScript>();
+            patito.spName = GetWaypointNameFromV3(currentWaypoint);
+            yield return new WaitForSeconds(1);
         }
+        base.Morir();
+    }
+
+    private string GetWaypointNameFromV3(Vector3 v)
+    {
+        foreach(Transform w in waypoints)
+        {
+            if (v == w.position) return w.gameObject.name;
+        }
+        return "W2";
     }
 }
