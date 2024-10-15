@@ -5,6 +5,7 @@ using UnityEngine;
 public class Patito : EnemigoScript
 {
     [HideInInspector] public Pata madre;
+    [HideInInspector] public float baseSpd;
 
     protected override void Start()
     {
@@ -15,10 +16,17 @@ public class Patito : EnemigoScript
 
     protected override void Update()
     {
-        while (madre.viva)
-        {
-            this.spd /= this.madre.spd;
-        }
+        //if (madre.viva)
+        //{
+        //    float x = madre.gameObject.transform.position.x;
+        //    float y = madre.gameObject.transform.position.y;
+
+        //    this.transform.position = Vector3.MoveTowards(
+        //        this.transform.position,
+        //        new Vector3(x, y, this.transform.position.z),
+        //        spd * Time.deltaTime);
+        //}
+        //else
         base.Update();
     }
 }
