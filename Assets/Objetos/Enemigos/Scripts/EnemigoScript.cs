@@ -13,6 +13,7 @@ public class EnemigoScript : MonoBehaviour
     [SerializeField] private Color hurtColor;
     public GameObject explosionMuerte;
     public Color colorExplosion;
+    [HideInInspector] public float currentMan;
     #endregion
 
     #region Enemigos generados por el jefe
@@ -44,7 +45,7 @@ public class EnemigoScript : MonoBehaviour
     private GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
     protected List<Transform> waypoints = new List<Transform>(); //todos los waypoints
     [HideInInspector] public string spName; //en qué spawn point (ubicación) apareció. setteado EnemySpawner SACANDO que sea el jefe, que asigna su propio spawnpoint
-    protected List<Vector3> v3Camino = new List<Vector3>();
+    [HideInInspector] public List<Vector3> v3Camino = new List<Vector3>();
     protected byte wi = 0; //waypoint index
     protected bool siguiendo = false; //ver final de V3ify()
     #endregion
@@ -61,14 +62,9 @@ public class EnemigoScript : MonoBehaviour
     {
         AsignarTodo();
     }
-    void Start()
+    protected virtual void Start()
     {
-        if (spName == null || spName == string.Empty && !isBoss)
-        {
-            Debug.LogError("spName == null o string.Empty. En general esto pasa cuando un enemigo no fue generado por EnemySpawner.");
-            //Destroy(this.gameObject); //ÚNICA vez en toda la HISTORIA donde un enemigo se destruye directamente y no llamando a Morir()
-        }
-        BuscarPath();
+        if (!isBoss) BuscarPath();
     }
 
     protected virtual void AsignarTodo() //asigna todos los valores que no quería asignar desde el inspector
@@ -200,12 +196,17 @@ public class EnemigoScript : MonoBehaviour
         v3Camino = vl;
         siguiendo = true; //activar el update, básicamente
     }
-
-    private void Update()
+    protected void ChangeManParaNoJefes(float m)
+    { //fix rápido a algo que debería haberse hecho como en el jefe
+        // cuando empecé el proyecto
+        currentMan = m;
+        animator.SetFloat("anim", m);
+    }
+    protected virtual void Update()
     {
         if (siguiendo == true)
         {
-            animator.SetFloat("anim", secuenciaAnims[wi]);
+            ChangeManParaNoJefes(secuenciaAnims[wi]);
             this.transform.position = Vector3.MoveTowards(this.transform.position, v3Camino[wi], spd * Time.deltaTime);
 
             if (transform.position == v3Camino[wi])
@@ -332,7 +333,7 @@ public class EnemigoScript : MonoBehaviour
             explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
         }
         EnemySpawner.botsEliminados++;
-        if(!EnemySpawner.isBossFight) EnemySpawner.botsEliminadosRonda++;
+        if (!EnemySpawner.isBossFight) EnemySpawner.botsEliminadosRonda++;
         EnemySpawner.botsVivos.Remove(this.gameObject);
         construirscr.plataActual += plata;
         Destroy(this.gameObject);

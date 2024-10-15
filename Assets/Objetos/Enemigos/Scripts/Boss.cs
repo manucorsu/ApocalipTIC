@@ -55,7 +55,11 @@ public class Boss : EnemigoScript
         explosionMuerte.GetComponent<SpriteRenderer>().sortingOrder = 32767;
         if (EnemySpawner.isBossFight == false) Debug.LogError("El jefe spawneó cuando EnemySpawner.isBossFight era false.");
     }
-    private void Start() => DoIntro();
+    protected override void Start()
+    {
+        DoIntro();
+        base.Start();
+    }
     private void DoIntro()
     {
         Time.timeScale = 1f;
@@ -223,9 +227,9 @@ public class Boss : EnemigoScript
         }
     }
 
-    private void Update()
+    protected override void Update()
     {
-        if(EnemySpawner.ronda == 15 && hp < baseHP/2) hp = baseHP/2;
+        if (EnemySpawner.ronda == 15 && hp < baseHP / 2) hp = baseHP / 2;
         else if (hp < 1) hp = 1;
 
         if (idle)
