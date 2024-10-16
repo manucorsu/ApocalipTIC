@@ -34,6 +34,7 @@ public class ElectricosaScript : MonoBehaviour
             if (GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
             {
                 GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                transform.position = new Vector2(transform.position.x, yPosition);
                 zona = Instantiate(zonaNetbook, transform.position, Quaternion.identity);
                 isWorking = true;
                 GetComponent<Animator>().SetTrigger("anim");
