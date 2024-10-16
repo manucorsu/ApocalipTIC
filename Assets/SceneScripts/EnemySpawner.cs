@@ -35,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private Image Oscuro1;
     [SerializeField] private Image Oscuro2;
-    [SerializeField] private GameObject[] flechas;
+    public GameObject[] flechas;
 
     void Start()
     {
