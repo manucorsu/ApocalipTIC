@@ -39,6 +39,9 @@ public class scrBotones : MonoBehaviour
 
     public TutorialData[] tutorialData;
 
+    Color[] coloresBotones;
+
+
     //Variables
 
     public static int dv = 0; // 0 si el botón de doble velocidad está inactivo, 1 si lo está, 2 si está en TRIPLE velocidad
@@ -544,6 +547,16 @@ public class scrBotones : MonoBehaviour
         if (GameObject.Find("txtNo") != null) { GameObject.Find("btnNo").GetComponent<Image>().enabled = false; }
 
         GetComponent<ConstruirScriptGeneral>().plataActual = 1000;
+
+        GameObject[] flechas = sceneScripts.GetComponent<EnemySpawner>().flechas;
+        foreach (GameObject flecha in flechas)
+        {
+            flecha.GetComponent<SpriteRenderer>().enabled = true;
+            if (flecha == flechas[6] || flecha == flechas[7] || flecha == flechas[8])
+            {
+                if (EnemySpawner.ronda < 5) flecha.GetComponent<SpriteRenderer>().enabled = false;
+            }
+        }
     }
 }
 
