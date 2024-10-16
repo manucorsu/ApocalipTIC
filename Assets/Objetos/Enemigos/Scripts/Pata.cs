@@ -6,37 +6,42 @@ public class Pata : EnemigoScript
 {
     [Header("Pata")]
     [SerializeField] private GameObject pfbPatito;
-    [HideInInspector] public bool canDie = false;
+
     protected override void Start()
     {
         if (pfbPatito == null) throw new System.Exception("pfbPatito fue null!");
-        base.Start();
+        else base.Start();
     }
 
     public override void Morir() => StartCoroutine(MorirPata());
+
     private IEnumerator MorirPata()
     {
-        while (canDie == false)
-        {
-            if (hp < 1) hp = 1;
-            yield return null;
-        }
-        this.spd = 0;
         for (byte i = 1; i < 4; i++)
         {
-            EnemigoScript patito = Instantiate(pfbPatito, this.transform.position, Quaternion.identity).GetComponent<EnemigoScript>();
-            patito.spName = GetWaypointNameFromV3(currentWaypoint);
-            yield return new WaitForSeconds(1);
+            Patito patito = Instantiate(pfbPatito, this.transform.position, Quaternion.identity).GetComponent<Patito>();
+            patito.siguiendo = false;
+            List<Vector3> movPatito = new List<Vector3>();
+            List<float> animsPatito = new List<float>();
+            for(byte j = wi; i < this.v3Camino.Count; i++)
+            {
+                movPatito.Add(this.v3Camino[j]);
+                animsPatito.Add(this.secuenciaAnims[j]);
+            }
+            patito.v3Camino = movPatito;
+            patito.secuenciaAnims = animsPatito;
+            patito.siguiendo = true;
+            yield return new WaitForSeconds(0.5f);
         }
         base.Morir();
     }
 
     private string GetWaypointNameFromV3(Vector3 v)
     {
-        foreach(Transform w in waypoints)
+        foreach (Transform w in waypoints)
         {
             if (v == w.position) return w.gameObject.name;
         }
-        return "W2";
+        throw new System.Exception("GetWaypointNameFromV3: No se encontró ese v3 en la lista de waypoints");
     }
 }

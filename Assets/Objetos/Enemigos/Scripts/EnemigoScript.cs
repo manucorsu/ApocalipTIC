@@ -8,7 +8,7 @@ public class EnemigoScript : MonoBehaviour
     #region Animación
     [Header("Animación")]
     protected Animator animator;
-    protected List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
+    [HideInInspector] public List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
     private Color baseColor = Color.white;
     [SerializeField] private Color hurtColor = new Color(217, 54, 54);
     public GameObject explosionMuerte;
@@ -23,10 +23,10 @@ public class EnemigoScript : MonoBehaviour
 
     #region Stats
     [Header("Stats")]
+    public bool isLarge = false;
     [SerializeField] protected float baseHP;
     [HideInInspector] public float hp;
     public bool isBoss;
-    public bool isPatito;
     public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
     public float spd; //speed
     [HideInInspector] public float spdSave;
@@ -40,7 +40,7 @@ public class EnemigoScript : MonoBehaviour
     public bool isAceitado = false;
     #endregion
 
-    private ConstruirScriptGeneral construirscr; // ni idea fue Marcos
+    protected ConstruirScriptGeneral construirscr; // ni idea fue Marcos
 
     #region nav
     private GameObject padreWaypoints; //no es un array porque eso requeriría que cada waypoint sea un prefab
@@ -48,13 +48,12 @@ public class EnemigoScript : MonoBehaviour
     [HideInInspector] public string spName; //en qué spawn point (ubicación) apareció. setteado EnemySpawner SACANDO que sea el jefe, que asigna su propio spawnpoint
     [HideInInspector] public List<Vector3> v3Camino = new List<Vector3>();
     protected byte wi = 0; //waypoint index
-    protected bool siguiendo = false; //ver final de V3ify()
+    [HideInInspector] public bool siguiendo = false; //ver final de V3ify()
     protected Vector3 currentWaypoint;
     #endregion
 
     IEnumerator sufrirNicho;
     private bool nichoTriggerStay = false;
-    private bool isBeingHurtByNicho = false;
     private float sufrirNichoDPS; private float nichoCooldown;
 
     protected HPBar hpBar;
@@ -87,17 +86,14 @@ public class EnemigoScript : MonoBehaviour
         defaultMat = new Material(Shader.Find("Sprites/Default"));
         foreach (Transform hijo in padreWaypoints.transform)
         {
-            if (hijo != padreWaypoints)
-            {
-                waypoints.Add(hijo.transform);
-            }
+            if (hijo != padreWaypoints) waypoints.Add(hijo.transform);
         }
         spdSave = this.spd;
         construirscr = GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>();
         if (construirscr == null) Debug.LogError("construirscr fue null en EnemigoScript!!");
         isPegamentoed = false;
     }
-    private IEnumerator BossMinionMove(string[] path)
+    private IEnumerator BossMinionMove(string[] path, bool flash = true)
     {
         canBeShot = false;
         canBeEaten = false;
@@ -148,6 +144,11 @@ public class EnemigoScript : MonoBehaviour
             secuenciaAnims.Add(0); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "W2", "W5", "G3" });
         }
+        else if(spName == "BL1" || spName == "BL2")
+        {
+            secuenciaAnims.Add(0); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
+            V3ify(new string[] { "J4", "J1", "G2" });
+        }
         else if (spName == "C1" || spName == "C2" || spName == "C3")
         {
             secuenciaAnims.Add(1); secuenciaAnims.Add(0);
@@ -158,6 +159,11 @@ public class EnemigoScript : MonoBehaviour
             secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "W6", "G2" });
         }
+        else if(spName == "CL1" || spName == "CL2")
+        {
+            secuenciaAnims.Add(1); secuenciaAnims.Add(0);
+            V3ify(new string[] { "J1", "G2" });
+        }
         else if (spName == "D1" || spName == "D3" || spName == "D5")
         {
             secuenciaAnims.Add(2); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
@@ -167,6 +173,11 @@ public class EnemigoScript : MonoBehaviour
         {
             secuenciaAnims.Add(2); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "W4", "W6", "G2" });
+        }
+        else if(spName == "DL1" || spName == "DL2")
+        {
+            secuenciaAnims.Add(2); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
+            V3ify(new string[] { "J9", "J1", "G2" });
         }
         else if (spName == "J2")
         {
@@ -212,15 +223,9 @@ public class EnemigoScript : MonoBehaviour
             currentWaypoint = v3Camino[wi];
             this.transform.position = Vector3.MoveTowards(this.transform.position, currentWaypoint, spd * Time.deltaTime);
 
-            if (transform.position == v3Camino[wi])
-            {
-                wi++;
-            }
+            if (transform.position == v3Camino[wi]) wi++;
 
-            if (wi == v3Camino.Count)
-            {
-                Perder();
-            }
+            if (wi == v3Camino.Count) Perder();
         }
     }
     private IEnumerator HurtVFX(float d = 0.1f)
@@ -291,7 +296,6 @@ public class EnemigoScript : MonoBehaviour
     {
         if (nichoTriggerStay)
         {
-            isBeingHurtByNicho = true;
             nichoTriggerStay = false;
         }
     }

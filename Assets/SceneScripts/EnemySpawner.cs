@@ -41,6 +41,7 @@ public class EnemySpawner : MonoBehaviour
     {
         ToggleSpawning(false);
         isBossFight = false;
+        txtRonda.text = "Empezando RONDA 1/30";
         ronda = 1;
         botsVivos.Clear();
         botsASpawnear = 0;
@@ -76,13 +77,12 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 #endif
-        if (spawnear == true)
+        if (spawnear)
         {
             tiempoDesdeUltimoSpawn += Time.deltaTime;
             if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0) SpawnEnemy();
             if (botsVivos.Count <= 0 && botsASpawnear <= 0 && !isBossFight) TerminarRonda();
         }
-
     }
 
     public void EmpezarRonda()
@@ -132,7 +132,11 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public static byte EnemyFormula(byte r1b, byte r, float d) => (byte)Mathf.Round(r1b * Mathf.Pow(r, d));
+    public static byte EnemyFormula(byte r1, byte x, float d)
+    {
+        //https://www.desmos.com/calculator/hxfiurzdve
+        return (byte)Mathf.Round(r1 * Mathf.Pow(x, d));
+    }
 
     private void SpawnEnemy()
     {
@@ -151,7 +155,14 @@ public class EnemySpawner : MonoBehaviour
         {
             ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
             loc = spawners[ris].transform;
-            if (loc.name[0] == 'A')
+            bool enemyIsLarge = prefabElegido.GetComponent<EnemigoScript>().isLarge;
+            if (enemyIsLarge)
+            {
+                string sn = spawners[ris].name;
+                Debug.Log(sn);
+                if (sn == "A5" || sn == "A8" || sn[1] == 'L') { Debug.LogWarning(sn); break; }
+            }
+            else if (loc.name[0] == 'A')
             {
                 if (ronda >= 5) break;
             }
