@@ -7,9 +7,10 @@ public class HPBar : MonoBehaviour
     public float max;
     public float min = 0;
     public float value;
-
+    private bool active = true;
 
     [SerializeField] private float animSpd = 1;
+    [SerializeField] private GameObject barBg;
     [SerializeField] private RectTransform topBar;
     [SerializeField] private RectTransform btmBar;
 
@@ -26,12 +27,15 @@ public class HPBar : MonoBehaviour
 
     public void Change(float a)
     {
-        value = Mathf.Clamp(value + a, min, max);
-        if (updateWidthCoroutine != null)
+        if (active)
         {
-            StopCoroutine(updateWidthCoroutine);
+            value = Mathf.Clamp(value + a, min, max);
+            if (updateWidthCoroutine != null)
+            {
+                StopCoroutine(updateWidthCoroutine);
+            }
+            updateWidthCoroutine = StartCoroutine(UpdateWidth(a));
         }
-        updateWidthCoroutine = StartCoroutine(UpdateWidth(a));
     }
 
     private IEnumerator UpdateWidth(float a)
@@ -47,16 +51,9 @@ public class HPBar : MonoBehaviour
         }
         smoothBar.sizeDelta = new Vector2(TargetWidth, smoothBar.rect.height);
     }
-    private void Update()
+    public void SetActive(bool state)
     {
-        float a = 25;
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Change(a);
-        }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            Change(-a);
-        }
+        barBg.SetActive(state);
+        active = state;
     }
 }

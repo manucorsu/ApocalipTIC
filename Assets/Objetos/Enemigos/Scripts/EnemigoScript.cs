@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class EnemigoScript : MonoBehaviour
 {
@@ -47,9 +48,10 @@ public class EnemigoScript : MonoBehaviour
     protected List<Transform> waypoints = new List<Transform>(); //todos los waypoints
     [HideInInspector] public string spName; //en qué spawn point (ubicación) apareció. setteado EnemySpawner SACANDO que sea el jefe, que asigna su propio spawnpoint
     [HideInInspector] public List<Vector3> v3Camino = new List<Vector3>();
-    protected byte wi = 0; //waypoint index
+    [HideInInspector] public byte wi = 0; //waypoint index
     [HideInInspector] public bool siguiendo = false; //ver final de V3ify()
-    protected Vector3 currentWaypoint;
+    [HideInInspector] public Vector3 currentWaypoint;
+    private bool reachedGoal = false;
     #endregion
 
     IEnumerator sufrirNicho;
@@ -59,7 +61,7 @@ public class EnemigoScript : MonoBehaviour
     protected HPBar hpBar;
 
 
-    void Awake()
+    private void Awake()
     {
         AsignarTodo();
     }
@@ -144,7 +146,7 @@ public class EnemigoScript : MonoBehaviour
             secuenciaAnims.Add(0); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "W2", "W5", "G3" });
         }
-        else if(spName == "BL1" || spName == "BL2")
+        else if (spName == "BL1" || spName == "BL2")
         {
             secuenciaAnims.Add(0); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "J4", "J1", "G2" });
@@ -159,7 +161,7 @@ public class EnemigoScript : MonoBehaviour
             secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "W6", "G2" });
         }
-        else if(spName == "CL1" || spName == "CL2")
+        else if (spName == "CL1" || spName == "CL2")
         {
             secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "J1", "G2" });
@@ -174,7 +176,7 @@ public class EnemigoScript : MonoBehaviour
             secuenciaAnims.Add(2); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "W4", "W6", "G2" });
         }
-        else if(spName == "DL1" || spName == "DL2")
+        else if (spName == "DL1" || spName == "DL2")
         {
             secuenciaAnims.Add(2); secuenciaAnims.Add(1); secuenciaAnims.Add(0);
             V3ify(new string[] { "J9", "J1", "G2" });
@@ -225,7 +227,7 @@ public class EnemigoScript : MonoBehaviour
 
             if (transform.position == v3Camino[wi]) wi++;
 
-            if (wi == v3Camino.Count) Perder();
+            if (wi == v3Camino.Count) siguiendo = false;
         }
     }
     private IEnumerator HurtVFX(float d = 0.1f)
@@ -260,16 +262,23 @@ public class EnemigoScript : MonoBehaviour
             StartCoroutine(Stun(proyector.dps, proyector.stunTime));
         }
 
-        else if (collision.gameObject.tag == "ignorar") //pegamento, bidón.
+        else if (collision.gameObject.CompareTag("ignorar")) //pegamento, bidón.
         {
             return;
         }
 
-        else if (collision.gameObject.tag == "Bombucha")
+        else if (collision.gameObject.CompareTag("Bombucha"))
         {
             BombuchaScript bala = collision.gameObject.GetComponent<BombuchaScript>();
             Sufrir(bala.balaDmg);
             Destroy(bala.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Goal"))
+        {
+            if (!reachedGoal)
+            {
+                LoseLife();
+            }
         }
         else
         {
@@ -284,6 +293,7 @@ public class EnemigoScript : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.name == "Bala2")
@@ -346,5 +356,18 @@ public class EnemigoScript : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void Perder() => SceneManager.LoadScene("GameOver");
+    private void LoseLife()
+    {
+        this.gameObject.GetComponent<Collider2D>().enabled = false;
+        this.plata = 0;
+        this.colorExplosion = colorExplosion = new Color(this.colorExplosion.r, this.colorExplosion.g, this.colorExplosion.b, 0);
+        Morir();
+        EnemySpawner.vidas--;
+        TMP_Text txtVidasTemp = GameObject.Find("txtVidasTEMP").GetComponent<TMP_Text>();
+        txtVidasTemp.text = $"{EnemySpawner.vidas}/3 vidas";
+        reachedGoal = true;
+#if !UNITY_EDITOR
+        if (EnemySpawner.vidas == 0) SceneManager.LoadScene("GameOver");
+#endif
+    }
 }

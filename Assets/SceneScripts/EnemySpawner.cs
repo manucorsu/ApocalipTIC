@@ -7,6 +7,7 @@ using TMPro;
 public class EnemySpawner : MonoBehaviour
 {
     #region las estáticas
+    public static byte vidas = 3;
     public static bool spawnear = false;
     public static bool isBossFight = false;
     public static byte ronda = 1;
@@ -40,6 +41,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         ToggleSpawning(false);
+        vidas = 3;
         isBossFight = false;
         txtRonda.text = "Empezando RONDA 1/30";
         ronda = 1;
@@ -92,7 +94,7 @@ public class EnemySpawner : MonoBehaviour
         {
             Image cuadroMejora = GameObject.Find("cuadroMejora").GetComponent<Image>();
 
-            cuadroMejora.rectTransform.position = new Vector2(100000000, 100000000);
+            cuadroMejora.rectTransform.position = new Vector2(100000000, 100000000); //jaja
 
             Oscuro1.GetComponent<Image>().enabled = !Oscuro1.GetComponent<Image>().isActiveAndEnabled;
             Oscuro2.GetComponent<Image>().enabled = !Oscuro2.GetComponent<Image>().isActiveAndEnabled;
@@ -116,7 +118,7 @@ public class EnemySpawner : MonoBehaviour
                 flecha.GetComponent<SpriteRenderer>().enabled = false;
             }
 
-            foreach(GameObject tile in GetComponent<ConstruirScriptGeneral>().tiles)
+            foreach (GameObject tile in GetComponent<ConstruirScriptGeneral>().tiles)
             {
                 if (tile != null)
                 {
@@ -155,12 +157,12 @@ public class EnemySpawner : MonoBehaviour
         {
             ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
             loc = spawners[ris].transform;
-            bool enemyIsLarge = prefabElegido.GetComponent<EnemigoScript>().isLarge;
-            if (enemyIsLarge)
+            if(prefabElegido.GetComponent<Pata>() != null)
             {
-                string sn = spawners[ris].name;
-                Debug.Log(sn);
-                if (sn == "A5" || sn == "A8" || sn[1] == 'L') { Debug.LogWarning(sn); break; }
+                if (loc.gameObject.name == "A5" || loc.gameObject.name == "A8")
+                {
+                    break;
+                }
             }
             else if (loc.name[0] == 'A')
             {

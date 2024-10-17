@@ -231,7 +231,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 32766
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &213634133220727628
 MonoBehaviour:
@@ -288,6 +288,7 @@ MonoBehaviour:
   min: 0
   value: 0
   animSpd: 1
+  barBg: {fileID: 213634133998273347}
   topBar: {fileID: 213634132516953610}
   btmBar: {fileID: 213634133289152204}
 --- !u!1 &213634133289152205

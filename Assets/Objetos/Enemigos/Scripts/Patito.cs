@@ -4,28 +4,45 @@ using UnityEngine;
 
 public class Patito : EnemigoScript
 {
+    [HideInInspector] public Pata madre;
+    private bool libre = false;
+    private float patitoBaseSpd;
+
     protected override void Start()
     {
-        StartCoroutine(WaitUntilReady());
+        if (madre == null)
+        {
+            throw new System.Exception("Todos los patitos deben tener una madre cuando spawnean.");
+        }
+        patitoBaseSpd = this.spd;
     }
-
-    private IEnumerator WaitUntilReady()
+    protected override void Update()
     {
-        while (siguiendo == false) yield return null;
+        if (libre == false)
+        {
+            this.spd = 0;
+            this.hp = float.MaxValue;
+            this.canBeShot = false;
+            this.canBeEaten = false;
+            this.hpBar.SetActive(false);
+            this.siguiendo = false;
+        }
+        base.Update();
+    }
+    public void Liberar()
+    {
+        this.spd = patitoBaseSpd;
+        this.hp = this.baseHP;
+        this.canBeShot = true;
+        this.canBeEaten = true;
+        this.siguiendo = true;
+        this.hpBar.SetActive(true);
+        libre = true;
         base.Start();
     }
-
     public override void Morir()
     {
-        this.spd = 0;
-        if (!isBoss && canBeEaten)
-        {
-            GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
-            explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
-        }
-        construirscr.plataActual += plata;
-        EnemySpawner.botsEliminados++;
-        EnemySpawner.botsVivos.Remove(this.gameObject);
-        Destroy(this.gameObject);
+        base.Morir();
+        EnemySpawner.botsEliminadosRonda--;
     }
 }

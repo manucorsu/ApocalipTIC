@@ -44,7 +44,7 @@ public class PauseScript : MonoBehaviour
             else
             {
                 botsASpawnear = EnemySpawner.EnemyFormula(r1Bots, ronda, dificultad);
-                byte enemigosRestantes = System.Convert.ToByte(botsASpawnear - EnemySpawner.botsEliminadosRonda);
+                int enemigosRestantes = botsASpawnear - EnemySpawner.botsEliminadosRonda;
                 txtEnemigosRestantes.text = $"{enemigosRestantes} más";
             }
             Time.timeScale = 0;
@@ -55,7 +55,7 @@ public class PauseScript : MonoBehaviour
 
             if (dv == 1) Time.timeScale = 2.5f;
             else if (dv == 2) Time.timeScale = 5;
-            else { Time.timeScale = 1; }
+            else Time.timeScale = 1;
 
             pauseMenu.SetActive(false);
         }

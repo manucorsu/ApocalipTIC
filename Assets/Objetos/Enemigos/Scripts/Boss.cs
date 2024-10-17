@@ -157,11 +157,12 @@ public class Boss : EnemigoScript
                 {
                     for (byte i = 0; i < cuantos; i++)
                     {
-                        GameObject prefabElegido = null;
-                        while (prefabElegido == null || prefabElegido.GetComponent<Pata>() != null)
+                        GameObject prefabElegido;
+                        while (false != true)
                         {
                             byte rie = (byte)Random.Range(0, pfbsEnemigos.Length);
                             prefabElegido = pfbsEnemigos[rie];
+                            if (prefabElegido.GetComponent<EnemigoScript>().isLarge == false) break;
                             yield return null;
                         }
                         GameObject nuevoEnemigo = Instantiate(prefabElegido, new Vector3(this.transform.position.x, (this.transform.position.y - 2), 0f), Quaternion.identity);
