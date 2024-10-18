@@ -16167,6 +16167,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sellSfx: {fileID: 0}
+  velSfx1: {fileID: 0}
+  velSfx2: {fileID: 0}
+  velSfx3: {fileID: 0}
   tiles: []
   torretas: []
   cuadroTorreta: {fileID: 0}
@@ -28389,6 +28392,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sellSfx: {fileID: 8300000, guid: 63a602ec2c9089a49b995000652bcb4d, type: 3}
+  velSfx1: {fileID: 8300000, guid: 5482f94ab860b9f428e94e1e21bfb385, type: 3}
+  velSfx2: {fileID: 8300000, guid: 60d9294b829fa824fb3be2d7b8a75089, type: 3}
+  velSfx3: {fileID: 8300000, guid: 5f7aa12204ee10f4cbd876de39c6ed36, type: 3}
   tiles:
   - {fileID: 1648316704}
   - {fileID: 145562677}

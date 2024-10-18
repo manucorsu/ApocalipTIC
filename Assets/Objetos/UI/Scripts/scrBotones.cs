@@ -7,8 +7,13 @@ using System;
 
 public class scrBotones : MonoBehaviour
 {
+    [Header("Audio clips")]
     [SerializeField] private AudioClip sellSfx;
-    //Objetos
+    [SerializeField] private AudioClip velSfx1;
+    [SerializeField] private AudioClip velSfx2;
+    [SerializeField] private AudioClip velSfx3;
+
+    [Header("Objetos")]
     private ConstruirScript scrConstruir;
     private ZonaConsumiblesScript scrZonaConsumible;
     public GameObject[] tiles;
@@ -44,7 +49,7 @@ public class scrBotones : MonoBehaviour
     Color[] coloresBotones;
 
 
-    //Variables
+    [Header("Variables")]
 
     public static int dv = 0; // 0 si el botón de doble velocidad está inactivo, 1 si lo está, 2 si está en TRIPLE velocidad
     public float precioParaVender;
@@ -302,7 +307,7 @@ public class scrBotones : MonoBehaviour
         }
     }
 
-    public void DobleVeclocidad()
+    public void DobleVeclocidad()//veclocidad
     {
         if (pasoTutorial == 11)
         {
@@ -311,6 +316,12 @@ public class scrBotones : MonoBehaviour
 
         if (dv == 0)
         {
+            try { SoundManager.instance.PlaySound(velSfx2); }
+            catch (NullReferenceException)
+            {
+                Debug.LogError("NullReferenceExeception: El singleton de SoundManager fue null.\n" +
+                            "NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
+            }
             Time.timeScale = 2.5f;
             dv = 1;
             Image btDvImage = btDv.GetComponent<Image>();
@@ -319,6 +330,12 @@ public class scrBotones : MonoBehaviour
 
         else if (dv == 1)
         {
+            try { SoundManager.instance.PlaySound(velSfx3); }
+            catch (NullReferenceException)
+            {
+                Debug.LogError("NullReferenceExeception: El singleton de SoundManager fue null.\n" +
+                            "NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
+            }
             Time.timeScale = 5;
             dv = 2;
             Image btDvImage = btDv.GetComponent<Image>();
@@ -326,6 +343,12 @@ public class scrBotones : MonoBehaviour
         }
         else if (dv == 2)
         {
+            try { SoundManager.instance.PlaySound(velSfx1); }
+            catch (NullReferenceException)
+            {
+                Debug.LogError("NullReferenceExeception: El singleton de SoundManager fue null.\n" +
+                            "NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
+            }
             Time.timeScale = 1;
             dv = 0;
             Image btDvImage = btDv.GetComponent<Image>();
@@ -519,6 +542,12 @@ public class scrBotones : MonoBehaviour
         {
             CerrarTutorial();
         }
+        try { SoundManager.instance.PlayUIClick(); }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("NullReferenceExeception: El singleton de SoundManager fue null.\n" +
+                        "NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
+        }
     }
 
     public void SiTuto()
@@ -565,6 +594,12 @@ public class scrBotones : MonoBehaviour
             {
                 if (EnemySpawner.ronda < 5) flecha.GetComponent<SpriteRenderer>().enabled = false;
             }
+        }
+        try { SoundManager.instance.PlayUIClick(); }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("NullReferenceExeception: El singleton de SoundManager fue null.\n" +
+                        "NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
         }
     }
 }

@@ -1,6 +1,6 @@
 [
   {
-    "file_name": "SFX_BUY.wav",
+    "filenames": [ "SFX_BUY.wav" ],
     "sound_url": "https://freesound.org/people/GowlerMusic/sounds/360453/",
     "sound_name": "Cash Register",
     "author_url": "https://freesound.org/people/GowlerMusic/",
@@ -9,7 +9,7 @@
     "license_name": "Attribution 4.0"
   },
   {
-    "file_name": "SFX_SELL.wav",
+    "filenames": [ "SFX_SELL.wav" ],
     "sound_url": "https://shapeforms.itch.io/shapeforms-audio-free-sfx",
     "sound_name": "The Mint – Coins and Money Preview/Coins in Sack Dropped on Soft Surface.wav",
     "author_url": "https://shapeforms.itch.io/",
@@ -18,7 +18,16 @@
     "license_name": "Shapeforms License Agreement"
   },
   {
-    "file_name":  "SFX_UI_CLICK.wav",
+    "filenames": [ "SFX_UI_1V.wav", "SFX_UI_2V", "SFX_UI_3V" ],
+    "sound_url": "https://freesound.org/people/plasterbrain/sounds/402451/",
+    "sound_name": "Fast Forward",
+    "author_url": "https://freesound.org/people/plasterbrain/",
+    "author_name": "plasterbrain",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "license_name": "Creative Commons 0"
+  },
+  {
+    "filenames": [ "SFX_UI_CLICK.wav" ],
     "sound_url": "https://freesound.org/people/florianreichelt/sounds/683098/",
     "sound_name": "click",
     "author_url": "https://freesound.org/people/florianreichelt/",
