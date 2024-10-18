@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ConstruirScript : MonoBehaviour
 {
-
+    [SerializeField] private AudioClip buySfx;
     //Objetos
     [HideInInspector] public GameObject sceneScripts;
     public GameObject torretaSeleccionada = null;
@@ -60,6 +60,12 @@ public class ConstruirScript : MonoBehaviour
             if (torretaSeleccionada != null)
             {
                 GameObject torreta = Instantiate(torretaSeleccionada, transform.position, Quaternion.identity);
+                try { SoundManager.instance.PlaySound(buySfx, 0.5f); }
+                catch (System.NullReferenceException)
+                {
+                    Debug.LogError("NullReferenceExeception: El singleton de SoundManager fue null.\n" +
+                        "NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
+                }
                 MejorasScript torretaScr = torreta.GetComponent<MejorasScript>();
                 torretaScr.tileParaRenovar = this.gameObject;
                 scrConstruir.plataActual -= precioSeleccionado;

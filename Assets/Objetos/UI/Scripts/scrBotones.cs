@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class scrBotones : MonoBehaviour
 {
+    [SerializeField] private AudioClip sellSfx;
     //Objetos
     private ConstruirScript scrConstruir;
     private ZonaConsumiblesScript scrZonaConsumible;
@@ -470,6 +472,12 @@ public class scrBotones : MonoBehaviour
         scrMejora.tileParaRenovar.GetComponent<SpriteRenderer>().enabled = true;
         CerrarCuadroMejora(false);
         Destroy(torretaParaMejorar);
+        try { SoundManager.instance.PlaySound(sellSfx); }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("NullReferenceExeception: El singleton de SoundManager fue null.\n" +
+                        "NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
+        }
 
         if (pasoTutorial == 8)
         {
@@ -506,7 +514,8 @@ public class scrBotones : MonoBehaviour
             GameObject.Find("cuadroTutorial").GetComponent<Image>().rectTransform.anchoredPosition = tutoData.posicionCuadro;
 
             pasoTutorial++;
-        } else
+        }
+        else
         {
             CerrarTutorial();
         }

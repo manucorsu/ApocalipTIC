@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ZonaConsumiblesScript : MonoBehaviour
 {
 
+    [SerializeField] private AudioClip buySfx;
     //Objetos
 
     public GameObject consumibleSeleccionado = null;
@@ -51,8 +52,15 @@ public class ZonaConsumiblesScript : MonoBehaviour
                 if (consumibleSeleccionado.name != "Palomas") //Bidón / Pegamento
                 {
                     Instantiate(consumibleSeleccionado, mouseWorldPos, Quaternion.identity);
+                    try { SoundManager.instance.PlaySound(buySfx, 0.5f); }
+                    catch (System.NullReferenceException)
+                    {
+                        Debug.LogError("NullReferenceExeception: El singleton de SoundManager fue null.\n" +
+                            "NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
+                    }
                     scrConstruir.plataActual -= precioSeleccionado;
-                } else //Palomas
+                }
+                else //Palomas
                 {
                     if (!isPalomas)
                     {
