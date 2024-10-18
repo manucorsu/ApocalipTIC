@@ -26,8 +26,8 @@ public class StartMenu : MonoBehaviour
         if (clickedBtn != null)
         {
             Image btnImg = clickedBtn.GetComponent<Image>();
-            SoundManager.instance.PlayUIClick();
             SoundManager.instance.ToggleSFX(btnImg);
+            SoundManager.instance.PlayUIClick();
         }
     }
     public void ToggleMusAjustes()
