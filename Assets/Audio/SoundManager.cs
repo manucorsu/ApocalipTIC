@@ -10,8 +10,8 @@ public class SoundManager : MonoBehaviour
     private bool musOn = true;
     [SerializeField] private AudioSource sfxPlayer;
     [SerializeField] private AudioClip uiClick;
-    [SerializeField] private Sprite btnOnSpr;
-    [SerializeField] private Sprite btnOffSpr;
+    public Sprite onSpr;
+    public Sprite offSpr;
 
     private void Awake()
     {
@@ -38,13 +38,13 @@ public class SoundManager : MonoBehaviour
     public void ToggleSFX(Image callerButtonImg)
     {
         sfxOn = !sfxOn;
-        if (callerButtonImg.sprite == btnOnSpr)
+        if (callerButtonImg.sprite == onSpr)
         {
-            callerButtonImg.sprite = btnOffSpr;
+            callerButtonImg.sprite = offSpr;
         }
-        else if (callerButtonImg.sprite == btnOffSpr)
+        else if (callerButtonImg.sprite == offSpr)
         {
-            callerButtonImg.sprite = btnOnSpr;
+            callerButtonImg.sprite = onSpr;
         }
         else
         {
@@ -55,17 +55,27 @@ public class SoundManager : MonoBehaviour
     public void ToggleMus(Image callerButtonImg)
     {
         musOn = !musOn;
-        if(callerButtonImg.sprite == btnOnSpr)
+        if(callerButtonImg.sprite == onSpr)
         {
-            callerButtonImg.sprite = btnOffSpr;
+            callerButtonImg.sprite = offSpr;
         }
-        else if(callerButtonImg.sprite == btnOffSpr)
+        else if(callerButtonImg.sprite == offSpr)
         {
-            callerButtonImg.sprite = btnOnSpr;
+            callerButtonImg.sprite = onSpr;
         }
         else
         {
             throw new System.Exception($"{callerButtonImg.sprite.name} is an invalid sprite for mus toggler.");
         }
+    }
+
+    public Dictionary<string, bool> GetStates()
+        // devuelve el estado de sfxOn en [0]
+        // y el estado de musOn en [1]
+    {
+        Dictionary<string, bool> output = new Dictionary<string, bool>();
+        output.Add("sfxOn", sfxOn);
+        output.Add("musOn", musOn);
+        return output;
     }
 }

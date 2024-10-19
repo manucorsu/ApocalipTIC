@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class EnemySpawner : MonoBehaviour
     public static byte botsASpawnear;
     public static uint botsEliminados = 0;
     public static byte botsEliminadosRonda = 0;
+    private CustomRangeInt lteCount = new CustomRangeInt(0, 2);
+    private string[] lastThreeEnemies = new string[] { "", "", "" };
     #endregion
 
     [SerializeField] private GameObject prefabBoss;
@@ -135,9 +138,17 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public static byte EnemyFormula(byte r1, byte x, float d)
+    //https://www.desmos.com/calculator/hxfiurzdve
     {
-        //https://www.desmos.com/calculator/hxfiurzdve
         return (byte)Mathf.Round(r1 * Mathf.Pow(x, d));
+    }
+
+    public static void PrintArr(string[] arr, string arrName = "")
+    {
+        string str = "[" + string.Join(", ", arr) + "]";
+
+        if (arrName == "") Debug.Log(str);
+        else Debug.Log($"{arrName}: {str}");
     }
 
     private void SpawnEnemy()
@@ -148,7 +159,15 @@ public class EnemySpawner : MonoBehaviour
         {
             byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
             prefabElegido = pfbsEnemigos[rie];
-            if (prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda) break;
+            if (prefabElegido.GetComponent<Pata>() == null || lastThreeEnemies.Contains("Pata") == false)
+            {
+                if (prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda)
+                {
+                    lastThreeEnemies[lteCount] = prefabElegido.name;
+                    lteCount++;
+                    break;
+                }
+            }
         }
 
         Transform loc;
@@ -157,7 +176,7 @@ public class EnemySpawner : MonoBehaviour
         {
             ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
             loc = spawners[ris].transform;
-            if(prefabElegido.GetComponent<Pata>() != null)
+            if (prefabElegido.GetComponent<Pata>() != null)
             {
                 if (loc.gameObject.name == "A5" || loc.gameObject.name == "A8")
                 {

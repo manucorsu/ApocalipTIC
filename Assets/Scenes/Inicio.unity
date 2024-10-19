@@ -1320,8 +1320,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxPlayer: {fileID: 922729189}
   uiClick: {fileID: 8300000, guid: cd557dc5faf3fd241a6f0c2d27c0cba0, type: 3}
-  btnOnSpr: {fileID: 21300000, guid: f30cbe27ac9962449824d14468aa301c, type: 3}
-  btnOffSpr: {fileID: 21300004, guid: f30cbe27ac9962449824d14468aa301c, type: 3}
+  onSpr: {fileID: 21300000, guid: f30cbe27ac9962449824d14468aa301c, type: 3}
+  offSpr: {fileID: 21300004, guid: f30cbe27ac9962449824d14468aa301c, type: 3}
 --- !u!4 &1321572929
 Transform:
   m_ObjectHideFlags: 0

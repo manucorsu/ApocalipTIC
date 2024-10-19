@@ -12,6 +12,8 @@ public class scrBotones : MonoBehaviour
     [SerializeField] private AudioClip velSfx1;
     [SerializeField] private AudioClip velSfx2;
     [SerializeField] private AudioClip velSfx3;
+    [SerializeField] private AudioClip upgradeSfx;
+    [SerializeField] private AudioClip upgradeMaxSfx;
 
     [Header("Objetos")]
     private ConstruirScript scrConstruir;
@@ -305,6 +307,8 @@ public class scrBotones : MonoBehaviour
         {
             tutoBotón();
         }
+
+        SoundManager.instance.PlayUIClick();
     }
 
     public void DobleVeclocidad()//veclocidad
@@ -316,12 +320,7 @@ public class scrBotones : MonoBehaviour
 
         if (dv == 0)
         {
-            try { SoundManager.instance.PlaySound(velSfx2); }
-            catch (NullReferenceException)
-            {
-                Debug.LogError("NullReferenceExeception: El singleton de SoundManager fue null.\n" +
-                            "NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
-            }
+            SoundManager.instance.PlaySound(velSfx2);
             Time.timeScale = 2.5f;
             dv = 1;
             Image btDvImage = btDv.GetComponent<Image>();
@@ -330,12 +329,7 @@ public class scrBotones : MonoBehaviour
 
         else if (dv == 1)
         {
-            try { SoundManager.instance.PlaySound(velSfx3); }
-            catch (NullReferenceException)
-            {
-                Debug.LogError("NullReferenceExeception: El singleton de SoundManager fue null.\n" +
-                            "NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
-            }
+            SoundManager.instance.PlaySound(velSfx3);
             Time.timeScale = 5;
             dv = 2;
             Image btDvImage = btDv.GetComponent<Image>();
@@ -343,12 +337,7 @@ public class scrBotones : MonoBehaviour
         }
         else if (dv == 2)
         {
-            try { SoundManager.instance.PlaySound(velSfx1); }
-            catch (NullReferenceException)
-            {
-                Debug.LogError("NullReferenceExeception: El singleton de SoundManager fue null.\n" +
-                            "NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
-            }
+            SoundManager.instance.PlaySound(velSfx1);
             Time.timeScale = 1;
             dv = 0;
             Image btDvImage = btDv.GetComponent<Image>();
@@ -372,10 +361,33 @@ public class scrBotones : MonoBehaviour
 
             if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
             {
-                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.bps++; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
-                if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
-                if (boton == 3 && scrTorreta.nivel3 != 3) { scrTorreta.nivel3++; scrTorreta.dmg += 5; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
-
+                if (boton == 1 && scrTorreta.nivel1 != 3)
+                {
+                    scrTorreta.nivel1++;
+                    if (scrTorreta.nivel1 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.bps++;
+                    scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
+                    scrTorreta.precioMejora += 100;
+                }
+                if (boton == 2 && scrTorreta.nivel2 != 3)
+                {
+                    scrTorreta.nivel2++;
+                    if (scrTorreta.nivel2 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.rango += 0.5f;
+                    scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
+                    scrTorreta.precioMejora += 100;
+                }
+                if (boton == 3 && scrTorreta.nivel3 != 3)
+                {
+                    scrTorreta.nivel3++;
+                    if (scrTorreta.nivel3 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.dmg += 5;
+                    scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
+                    scrTorreta.precioMejora += 100;
+                }
 
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
                 scrMejora.precioExtraParaVender += 100;
@@ -391,8 +403,24 @@ public class scrBotones : MonoBehaviour
 
             if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
             {
-                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.2f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
-                if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.dps += 5; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+                if (boton == 1 && scrTorreta.nivel1 != 3)
+                {
+                    scrTorreta.nivel1++;
+                    if (scrTorreta.nivel1 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.cooldown -= 0.2f;
+                    scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
+                    scrTorreta.precioMejora += 100;
+                }
+                if (boton == 2 && scrTorreta.nivel2 != 3)
+                {
+                    scrTorreta.nivel2++;
+                    if (scrTorreta.nivel2 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.dps += 5;
+                    scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
+                    scrTorreta.precioMejora += 100;
+                }
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
                 scrMejora.precioExtraParaVender += 100;
                 scrMejora.Mejorar();
@@ -407,8 +435,23 @@ public class scrBotones : MonoBehaviour
 
             if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
             {
-                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 1; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
-                if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+                if (boton == 1 && scrTorreta.nivel1 != 3)
+                {
+                    scrTorreta.nivel1++;
+                    if (scrTorreta.nivel1 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.cooldown -= 1; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
+                    scrTorreta.precioMejora += 100;
+                }
+                if (boton == 2 && scrTorreta.nivel2 != 3)
+                {
+                    scrTorreta.nivel2++;
+                    if (scrTorreta.nivel2 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.rango += 0.5f;
+                    scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
+                    scrTorreta.precioMejora += 100;
+                }
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
                 scrMejora.precioExtraParaVender += 100;
                 scrMejora.Mejorar();
@@ -423,8 +466,24 @@ public class scrBotones : MonoBehaviour
 
             if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
             {
-                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.cooldown -= 0.4f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
-                if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+                if (boton == 1 && scrTorreta.nivel1 != 3)
+                {
+                    scrTorreta.nivel1++;
+                    if (scrTorreta.nivel1 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.cooldown -= 0.4f;
+                    scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
+                    scrTorreta.precioMejora += 100;
+                }
+                if (boton == 2 && scrTorreta.nivel2 != 3)
+                {
+                    scrTorreta.nivel2++;
+                    if (scrTorreta.nivel2 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.rango += 0.5f;
+                    scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
+                    scrTorreta.precioMejora += 100;
+                }
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
                 scrMejora.precioExtraParaVender += 100;
                 scrMejora.Mejorar();
@@ -439,9 +498,32 @@ public class scrBotones : MonoBehaviour
 
             if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
             {
-                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.bps += 0.4f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
-                if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.5f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
-                if (boton == 3 && scrTorreta.nivel3 != 3) { scrTorreta.nivel3++; scrTorreta.ganancia += 2; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+                if (boton == 1 && scrTorreta.nivel1 != 3)
+                {
+                    scrTorreta.nivel1++;
+                    if (scrTorreta.nivel1 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.bps += 0.4f;
+                    scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
+                    scrTorreta.precioMejora += 100;
+                }
+                if (boton == 2 && scrTorreta.nivel2 != 3)
+                {
+                    scrTorreta.nivel2++;
+                    if (scrTorreta.nivel2 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.rango += 0.5f;
+                    scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
+                    scrTorreta.precioMejora += 100;
+                }
+                if (boton == 3 && scrTorreta.nivel3 != 3)
+                {
+                    scrTorreta.nivel3++;
+                    if (scrTorreta.nivel3 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.ganancia += 2; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
+                    scrTorreta.precioMejora += 100;
+                }
 
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
                 scrMejora.precioExtraParaVender += 100;
@@ -457,9 +539,32 @@ public class scrBotones : MonoBehaviour
 
             if ((scrConstruirGeneral.plataActual - scrTorreta.precioMejora) >= 0)
             {
-                if (boton == 1 && scrTorreta.nivel1 != 3) { scrTorreta.nivel1++; scrTorreta.bps += 0.3f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
-                if (boton == 2 && scrTorreta.nivel2 != 3) { scrTorreta.nivel2++; scrTorreta.rango += 0.4f; scrTorreta.ondaSize += 0.25f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
-                if (boton == 3 && scrTorreta.nivel3 != 3) { scrTorreta.nivel3++; scrTorreta.dmg += 5; scrTorreta.dmgBala += 5; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100; }
+                if (boton == 1 && scrTorreta.nivel1 != 3)
+                {
+                    scrTorreta.nivel1++;
+                    if (scrTorreta.nivel1 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.bps += 0.3f;
+                    scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
+                    scrTorreta.precioMejora += 100;
+                }
+                if (boton == 2 && scrTorreta.nivel2 != 3)
+                {
+                    scrTorreta.nivel2++;
+                    if (scrTorreta.nivel2 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.rango += 0.4f; scrTorreta.ondaSize += 0.25f; scrConstruirGeneral.plataActual -= scrTorreta.precioMejora; scrTorreta.precioMejora += 100;
+                }
+                if (boton == 3 && scrTorreta.nivel3 != 3)
+                {
+                    scrTorreta.nivel3++;
+                    if (scrTorreta.nivel3 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
+                    else SoundManager.instance.PlaySound(upgradeSfx, 3);
+                    scrTorreta.dmg += 5;
+                    scrTorreta.dmgBala += 5;
+                    scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
+                    scrTorreta.precioMejora += 100;
+                }
 
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
                 scrMejora.precioExtraParaVender += 100;
@@ -495,13 +600,7 @@ public class scrBotones : MonoBehaviour
         scrMejora.tileParaRenovar.GetComponent<SpriteRenderer>().enabled = true;
         CerrarCuadroMejora(false);
         Destroy(torretaParaMejorar);
-        try { SoundManager.instance.PlaySound(sellSfx); }
-        catch (NullReferenceException)
-        {
-            Debug.LogError("NullReferenceExeception: El singleton de SoundManager fue null.\n" +
-                        "NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
-        }
-
+        SoundManager.instance.PlaySound(sellSfx, volume: 2);
         if (pasoTutorial == 8)
         {
             tutoBotón();

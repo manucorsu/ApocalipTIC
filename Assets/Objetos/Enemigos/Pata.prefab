@@ -62,7 +62,7 @@ MonoBehaviour:
   baseHP: 300
   hp: 0
   isBoss: 0
-  minRonda: 9
+  minRonda: 10
   spd: 2
   spdSave: 0
   slowSpd: 0
@@ -74,7 +74,9 @@ MonoBehaviour:
   isAceitado: 0
   spName: 
   v3Camino: []
+  wi: 0
   siguiendo: 0
+  currentWaypoint: {x: 0, y: 0, z: 0}
   patitos:
   - {fileID: 9090683695533555971}
   - {fileID: 5790160759110559030}
