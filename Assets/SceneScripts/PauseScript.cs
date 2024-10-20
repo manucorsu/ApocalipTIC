@@ -82,6 +82,7 @@ public class PauseScript : MonoBehaviour
                 int enemigosRestantes = botsASpawnear - EnemySpawner.botsEliminadosRonda;
                 txtEnemigosRestantes.text = $"{enemigosRestantes} más";
             }
+            SoundManager.instance.PlayUIClick();
             Time.timeScale = 0;
         }
         else
