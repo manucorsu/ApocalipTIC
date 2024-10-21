@@ -99,6 +99,25 @@ public class ConstruirScript : MonoBehaviour
             }
         }
 
+
+        if (sceneScripts.GetComponent<scrBotones>().pasoTutorial == 5)
+        {
+
+            foreach (GameObject boton in sceneScripts.GetComponent<scrBotones>().botonesTorretas)
+            {
+                Image imagen = boton.GetComponent<Image>();
+                imagen.sprite = sceneScripts.GetComponent<scrBotones>().btTorretaSprite1;
+            }
+
+            foreach(GameObject tile in sceneScripts.GetComponent<scrBotones>().tiles)
+            {
+                if (tile != null)
+                {
+                    tile.GetComponent<ConstruirScript>().torretaSeleccionada = null;
+                }
+            }
+        }
+
     }
 
     private void OnMouseEnter()

@@ -220,60 +220,57 @@ public class scrBotones : MonoBehaviour
             }
         }
 
-
-        //BIDÓN
-        if (torreta == 9)
-        {
-            foreach (GameObject zona in zonasConsumibles)
+            //BIDÓN
+            if (torreta == 9)
             {
-                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
-                scrZonaConsumible.consumibleSeleccionado = torretas[9];
+                foreach (GameObject zona in zonasConsumibles)
+                {
+                    scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                    scrZonaConsumible.consumibleSeleccionado = torretas[9];
 
-                BidónScript scrBidón = torretas[9].GetComponent<BidónScript>();
-                scrZonaConsumible.precioSeleccionado = scrBidón.precio;
+                    BidónScript scrBidón = torretas[9].GetComponent<BidónScript>();
+                    scrZonaConsumible.precioSeleccionado = scrBidón.precio;
+                }
             }
-        }
 
-        //PEGAMENTO
-        if (torreta == 10)
-        {
-            foreach (GameObject zona in zonasConsumibles)
+            //PEGAMENTO
+            if (torreta == 10)
             {
-                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
-                scrZonaConsumible.consumibleSeleccionado = torretas[10];
+                foreach (GameObject zona in zonasConsumibles)
+                {
+                    scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                    scrZonaConsumible.consumibleSeleccionado = torretas[10];
 
-                PegamentoScript scrPegamento = torretas[10].GetComponent<PegamentoScript>();
-                scrZonaConsumible.precioSeleccionado = scrPegamento.precio;
+                    PegamentoScript scrPegamento = torretas[10].GetComponent<PegamentoScript>();
+                    scrZonaConsumible.precioSeleccionado = scrPegamento.precio;
+                }
             }
-        }
 
-        //PALOMAS
-        if (torreta == 11)
-        {
-            foreach (GameObject zona in zonasConsumibles)
+            //PALOMAS
+            if (torreta == 11)
             {
-                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
-                scrZonaConsumible.consumibleSeleccionado = torretas[11];
+                foreach (GameObject zona in zonasConsumibles)
+                {
+                    scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                    scrZonaConsumible.consumibleSeleccionado = torretas[11];
 
-                scrPalomas scrPaloma = torretas[11].GetComponent<scrPalomas>();
-                scrZonaConsumible.precioSeleccionado = scrPaloma.precio;
+                    scrPalomas scrPaloma = torretas[11].GetComponent<scrPalomas>();
+                    scrZonaConsumible.precioSeleccionado = scrPaloma.precio;
+                }
             }
-        }
 
-        //NETBOOK
-        if (torreta == 12)
-        {
-            foreach (GameObject zona in zonasConsumibles)
+            //NETBOOK
+            if (torreta == 12)
             {
-                scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
-                scrZonaConsumible.consumibleSeleccionado = torretas[12];
+                foreach (GameObject zona in zonasConsumibles)
+                {
+                    scrZonaConsumible = zona.GetComponent<ZonaConsumiblesScript>();
+                    scrZonaConsumible.consumibleSeleccionado = torretas[12];
 
-                ElectricosaScript scrNetbook = torretas[12].GetComponent<ElectricosaScript>();
-                scrZonaConsumible.precioSeleccionado = scrNetbook.precio;
+                    ElectricosaScript scrNetbook = torretas[12].GetComponent<ElectricosaScript>();
+                    scrZonaConsumible.precioSeleccionado = scrNetbook.precio;
+                }
             }
-        }
-
-
 
 
         if (botones[torreta - 1].tag == "botonTorreta")
@@ -366,7 +363,7 @@ public class scrBotones : MonoBehaviour
                     scrTorreta.nivel1++;
                     if (scrTorreta.nivel1 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
                     else SoundManager.instance.PlaySound(upgradeSfx, 3);
-                    scrTorreta.bps++;
+                    scrTorreta.bps+= 0.25f;
                     scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
                     scrTorreta.precioMejora += 100;
                 }
@@ -665,7 +662,21 @@ public class scrBotones : MonoBehaviour
             botonSí.rectTransform.anchoredPosition = new Vector2(botonSí.rectTransform.anchoredPosition.x + 1000, botonSí.rectTransform.anchoredPosition.y);
         }
 
+        if (pasoTutorial == 11)
+        {
+            consumibleSeleccionado = null;
 
+            foreach(GameObject zona in zonasConsumibles)
+            {
+                zona.GetComponent<ZonaConsumiblesScript>().consumibleSeleccionado = null;
+            }
+
+            foreach (GameObject boton in botonesConsumibles)
+            {
+                Image imagen = boton.GetComponent<Image>();
+                imagen.sprite = btTorretaSprite1;
+            }
+        }
     }
 
     public void CerrarTutorial()

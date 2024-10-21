@@ -142,6 +142,11 @@ public class MejorasScript : MonoBehaviour
 
     public void Mejorar()
     {
+
+        btnMejora1.GetComponent<Button>().enabled = true;
+        btnMejora2.GetComponent<Button>().enabled = true;
+        btnMejora3.GetComponent<Button>().enabled = true;
+
         //TIRALÁPICES
 
         if (this.gameObject == tiralápices)
@@ -293,9 +298,9 @@ public class MejorasScript : MonoBehaviour
             btnMejora2.enabled = true;
             btnMejora3.GetComponent<Image>().enabled = true;
 
-            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
-            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
-            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else {btnMejora3.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else { btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else { btnMejora2.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else { btnMejora3.GetComponent<Button>().interactable = true; }
         }
 
         //PARLANTE
