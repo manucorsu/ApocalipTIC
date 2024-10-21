@@ -199,6 +199,8 @@ MonoBehaviour:
   nivel2: 1
   nivel3: 1
   precioMejora: 300
+  tlapicesShootSfx: {fileID: 0}
+  tlapicerasShootSfx: {fileID: 8300000, guid: c444d403baade4842a3a642c3b86f0d0, type: 3}
 --- !u!61 &6400177473217007745
 BoxCollider2D:
   m_ObjectHideFlags: 0

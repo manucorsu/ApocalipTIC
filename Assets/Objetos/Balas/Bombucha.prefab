@@ -132,7 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3561281254872249492}
+  target: {fileID: 0}
   explosion: {fileID: 5379513908081993539, guid: a9334656aaa017046866a7bbae3a8114,
     type: 3}
   balaSpd: 10
   balaDmg: 0
+  bbchPopSfx: {fileID: 8300000, guid: 5f2dda6461366f543b152b7f1bb2fea6, type: 3}

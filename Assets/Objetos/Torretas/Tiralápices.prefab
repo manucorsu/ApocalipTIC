@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e1ba6456130ea43b87a43d20a1ccbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tlShootSfx: {fileID: 8300000, guid: 1b395ba118236fd46839d414f01a251e, type: 3}
   punta: {fileID: 7696407428886232023}
   target: {fileID: 0}
   firingPoint: {fileID: 7696407427299006118}
@@ -195,6 +196,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   animator: {fileID: 0}
+  lr: {fileID: 0}
+  puntaRaycast: {fileID: 0}
   rango: 3.35
   rotationSpd: 1000
   bps: 1
@@ -265,6 +268,7 @@ MonoBehaviour:
   canvasTransform: {fileID: 0}
   tileParaRenovar: {fileID: 0}
   precioExtraParaVender: 0
+  isPotenciado: 0
 --- !u!1 &7696407428886232020
 GameObject:
   m_ObjectHideFlags: 0

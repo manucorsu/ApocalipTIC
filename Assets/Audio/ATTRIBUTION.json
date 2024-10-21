@@ -1,5 +1,14 @@
 [
   {
+    "filenames": [ "SFX_BBCH_POP.wav" ],
+    "sound_url": "https://freesound.org/people/steveygos93/sounds/93569/",
+    "sound_name": "waterballoon.wav",
+    "author_url": "https://freesound.org/people/steveygos93/",
+    "author_name": "steveygos93",
+    "license_url": "http://creativecommons.org/licenses/by/3.0/",
+    "license_name": "Attribution 3.0"
+  }
+  {
     "filenames": [ "SFX_BUY.wav" ],
     "sound_url": "https://freesound.org/people/GowlerMusic/sounds/360453/",
     "sound_name": "Cash Register",
@@ -14,8 +23,27 @@
     "sound_name": "The Mint – Coins and Money Preview/Coins in Sack Dropped on Soft Surface.wav",
     "author_url": "https://shapeforms.itch.io/",
     "author_name": "Shapeforms",
-    "license_url": "https://shapeforms.itch.io/shapeforms-audio-free-sfx", //can be found in download
-    "license_name": "Shapeforms License Agreement"
+    "license_url": "https://shapeforms.itch.io/shapeforms-audio-free-sfx",
+    "license_name": "Shapeforms License Agreement",
+    "comment": "License can be found in download."
+  },
+  {
+    "filenames": [ "SFX_TLAPICERAS_SHOOT" ],
+    "sound_url": "https://freesound.org/people/GO_s0unds123/sounds/730351/",
+    "sound_name": "Bullet Fly By",
+    "author_url": "https://freesound.org/people/GO_s0unds123/",
+    "author_name": "GO_s0unds123",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "license_name": "Creative Commons 0"
+  }
+  {
+    "filenames": [ "SFX_TLAPICES_SHOOT" ],
+    "sound_url": "https://freesound.org/people/saturdaysoundguy/sounds/391444/",
+    "sound_name": "Arrow Whoosh 2 .R.wav",
+    "author_url": "https://freesound.org/people/saturdaysoundguy/",
+    "author_name": "saturdaysoundguy",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "license_name": "Creative Commons 0"
   },
   {
     "filenames": [ "SFX_UI_1V.wav", "SFX_UI_2V", "SFX_UI_3V" ],
@@ -34,7 +62,7 @@
     "author_name": "florianreichelt",
     "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
     "license_name": "Creative Commons 0"
-  }
+  },
   {
     "filenames": [ "SFX_UPGRADE_MAX.wav" ],
     "sound_url": "https://freesound.org/people/plasterbrain/sounds/464908/",

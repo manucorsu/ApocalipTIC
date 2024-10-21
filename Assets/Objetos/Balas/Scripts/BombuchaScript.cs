@@ -10,11 +10,12 @@ public class BombuchaScript : MonoBehaviour
     public Transform target;
     private SpriteRenderer sr;
     public GameObject explosion;
-
     //Variables
 
     public float balaSpd;
     public float balaDmg;
+
+    [SerializeField] private AudioClip bbchPopSfx;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +51,8 @@ public class BombuchaScript : MonoBehaviour
         if (collision.gameObject.tag == "enemigo")
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
-            if (collision.gameObject.tag == "enemigo") Destroy(this.gameObject);
+            SoundManager.instance.PlaySound(bbchPopSfx, 2);
+            Destroy(this.gameObject);
         }
     }
 }
