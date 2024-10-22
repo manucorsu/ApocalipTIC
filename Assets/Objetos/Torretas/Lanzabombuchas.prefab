@@ -217,11 +217,11 @@ MonoBehaviour:
   animator: {fileID: 0}
   lr: {fileID: 0}
   puntaRaycast: {fileID: 0}
-  rango: 4
+  rango: 3
   rotationSpd: 1000
-  bps: 0.7
+  bps: 0.6
   precio: 400
-  dmg: 20
+  dmg: 15
   nivel1: 1
   nivel2: 1
   nivel3: 1
