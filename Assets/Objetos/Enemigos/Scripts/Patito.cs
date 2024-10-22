@@ -22,7 +22,7 @@ public class Patito : EnemigoScript
         {
             this.spd = 0;
             this.hp = float.MaxValue;
-            this.canBeShot = false;
+            this.canBeShot = false; this.gameObject.layer = 0; this.gameObject.tag = "Untagged";
             this.canBeEaten = false;
             this.hpBar.SetActive(false);
             this.siguiendo = false;
@@ -33,7 +33,7 @@ public class Patito : EnemigoScript
     {
         this.spd = patitoBaseSpd;
         this.hp = this.baseHP;
-        this.canBeShot = true;
+        this.canBeShot = true; this.gameObject.layer = 8; this.gameObject.tag = "enemigo";
         this.canBeEaten = true;
         this.siguiendo = true;
         this.hpBar.SetActive(true);

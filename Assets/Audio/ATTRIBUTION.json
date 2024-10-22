@@ -1,12 +1,43 @@
 [
   {
+    "filenames": [ "SFX_BBCH_POP.wav" ],
+    "sound_url": "https://freesound.org/people/steveygos93/sounds/93569/",
+    "sound_name": "waterballoon.wav",
+    "author_url": "https://freesound.org/people/steveygos93/",
+    "author_name": "steveygos93",
+    "license_url": "http://creativecommons.org/licenses/by/3.0/",
+    "license_name": "Attribution 3.0",
+    "comment": null
+  },
+  {
     "filenames": [ "SFX_BUY.wav" ],
     "sound_url": "https://freesound.org/people/GowlerMusic/sounds/360453/",
     "sound_name": "Cash Register",
     "author_url": "https://freesound.org/people/GowlerMusic/",
     "author_name": "GowlerMusic",
     "license_url": "https://creativecommons.org/licenses/by/4.0/",
-    "license_name": "Attribution 4.0"
+    "license_name": "Attribution 4.0",
+    "comment": null
+  },
+  {
+    "filenames": [ "SFX_IMPR_SHOOT.wav" ],
+    "sound_url": "https://freesound.org/people/musita182/sounds/261267/",
+    "sound_name": "Soccer Kick.wav",
+    "author_url": "https://freesound.org/people/musita182/",
+    "author_name": "musita182",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "license_name": "Creative Commons 0",
+    "comment": "This and 'Soccer Kick.wav' were combined to make SFX_IMPR_SHOOT."
+  },
+  {
+    "filenames": [ "SFX_IMPR_SHOOT.wav" ],
+    "sound_url": "https://freesound.org/people/aerror/sounds/330420/",
+    "sound_name": "3d-printer_2.wav",
+    "author_url": "https://freesound.org/people/aerror/",
+    "author_name": "aerror",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "license_name": "Creative Commons 0",
+    "comment": "This and '3d-printer_2.wav' were combined to make SFX_IMPR_SHOOT."
   },
   {
     "filenames": [ "SFX_SELL.wav" ],
@@ -14,17 +45,69 @@
     "sound_name": "The Mint – Coins and Money Preview/Coins in Sack Dropped on Soft Surface.wav",
     "author_url": "https://shapeforms.itch.io/",
     "author_name": "Shapeforms",
-    "license_url": "https://shapeforms.itch.io/shapeforms-audio-free-sfx", //can be found in download
-    "license_name": "Shapeforms License Agreement"
+    "license_url": "https://shapeforms.itch.io/shapeforms-audio-free-sfx",
+    "license_name": "Shapeforms License Agreement",
+    "comment": "License can be found in download."
   },
   {
-    "filenames": [ "SFX_UI_1V.wav", "SFX_UI_2V", "SFX_UI_3V" ],
+    "filenames": [ "SFX_TACHO_ASPIRAR.wav" ],
+    "sound_url": "https://freesound.org/people/buzbe20/sounds/389755/",
+    "sound_name": "Vacuum cleaner on off.wav",
+    "author_url": "https://freesound.org/people/buzbe20/",
+    "author_name": "buzbe20",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "license_name": "Creative Commons 0",
+    "comment": null
+  },
+  {
+    "filenames": [ "SFX_TACHO_ERUCTAR.wav" ],
+    "sound_url": "https://freesound.org/people/Krystal666/sounds/695940/",
+    "sound_name": "Burp.mp3",
+    "author_url": "https://freesound.org/people/Krystal666/",
+    "author_name": "Krystal666",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license_name": "Attribution 4.0",
+    "comment": null
+  },
+  {
+    "filenames": [ "SFX_TACHO_MASTICAR.wav" ],
+    "sound_url": "https://freesound.org/people/IneQuation/sounds/27877/",
+    "sound_name": "munching.wav",
+    "author_url": "https://freesound.org/people/IneQuation/",
+    "author_name": "IneQuation",
+    "license_url": "http://creativecommons.org/licenses/by/3.0/",
+    "license_name": "Attribution 3.0",
+    "comment": null
+  }
+  {
+    "filenames": [ "SFX_TLAPICERAS_SHOOT.wav" ],
+    "sound_url": "https://freesound.org/people/GO_s0unds123/sounds/730351/",
+    "sound_name": "Bullet Fly By",
+    "author_url": "https://freesound.org/people/GO_s0unds123/",
+    "author_name": "GO_s0unds123",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "license_name": "Creative Commons 0",
+    "comment": null
+  },
+  {
+    "filenames": [ "SFX_TLAPICES_SHOOT.wav" ],
+    "sound_url": "https://freesound.org/people/saturdaysoundguy/sounds/391444/",
+    "sound_name": "Arrow Whoosh 2 .R.wav",
+    "author_url": "https://freesound.org/people/saturdaysoundguy/",
+    "author_name": "saturdaysoundguy",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "license_name": "Creative Commons 0",
+    "comment": null
+  },
+  {
+    "filenames": [ "SFX_UI_1V.wav", "SFX_UI_2V.wav", "SFX_UI_3V.wav" ],
     "sound_url": "https://freesound.org/people/plasterbrain/sounds/402451/",
     "sound_name": "Fast Forward",
     "author_url": "https://freesound.org/people/plasterbrain/",
     "author_name": "plasterbrain",
     "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
-    "license_name": "Creative Commons 0"
+    "license_name": "Creative Commons 0",
+    "comment": null
   },
   {
     "filenames": [ "SFX_UI_CLICK.wav" ],
@@ -33,8 +116,9 @@
     "author_url": "https://freesound.org/people/florianreichelt/",
     "author_name": "florianreichelt",
     "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
-    "license_name": "Creative Commons 0"
-  }
+    "license_name": "Creative Commons 0",
+    "comment": null
+  },
   {
     "filenames": [ "SFX_UPGRADE_MAX.wav" ],
     "sound_url": "https://freesound.org/people/plasterbrain/sounds/464908/",
@@ -42,6 +126,7 @@
     "author_url": "https://freesound.org/people/plasterbrain/",
     "author_name": "plasterbrain",
     "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
-    "license_name": "Creative Commons 0"
+    "license_name": "Creative Commons 0",
+    "commment": null
   }
 ]

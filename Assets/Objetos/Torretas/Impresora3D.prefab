@@ -81,6 +81,7 @@ MonoBehaviour:
   rango: 7
   bps: 0.3
   dmg: 10
+  imprShootSfx: {fileID: 8300000, guid: be62cdb54688b31428691419cd378ea3, type: 3}
 --- !u!1 &183548438635500408
 GameObject:
   m_ObjectHideFlags: 0

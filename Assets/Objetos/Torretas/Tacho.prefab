@@ -108,6 +108,9 @@ MonoBehaviour:
   precioMejora: 300
   nivel1: 1
   nivel2: 1
+  tachoAspirarSfx: {fileID: 8300000, guid: 193d18b00dc4a084bb5b22db42bca6f4, type: 3}
+  tachoMasticarSfx: {fileID: 8300000, guid: 98a5d233067b66d41bd075509e22ba14, type: 3}
+  tachoEructarSfx: {fileID: 8300000, guid: d41d295f70d7c9f48a580d7132ec808e, type: 3}
 --- !u!95 &6947866215203442200
 Animator:
   serializedVersion: 3

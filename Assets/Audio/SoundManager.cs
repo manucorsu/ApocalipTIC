@@ -24,10 +24,15 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public void PlayUIClick() => PlaySound(uiClick, 3);
+    public void PlayUIClick() => PlaySound(uiClick);
 
     public void PlaySound(AudioClip clip, float volume = 1)
     {
+        if(volume < 0 || volume > 1)
+        {
+            Application.Quit();
+            throw new System.ArgumentOutOfRangeException("volume", "Volume debe ser un float entre 0 y 1 porque Unity.");
+        }
         if (sfxOn && clip != null)
         {
             sfxPlayer.volume = volume;

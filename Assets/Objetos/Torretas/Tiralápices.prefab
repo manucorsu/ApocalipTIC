@@ -195,6 +195,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   animator: {fileID: 0}
+  lr: {fileID: 0}
+  puntaRaycast: {fileID: 0}
   rango: 3.35
   rotationSpd: 1000
   bps: 1
@@ -204,6 +206,9 @@ MonoBehaviour:
   nivel2: 1
   nivel3: 1
   precioMejora: 300
+  isTiralapiceras: 0
+  tlapicesShootSfx: {fileID: 8300000, guid: 1b395ba118236fd46839d414f01a251e, type: 3}
+  tlapicerasShootSfx: {fileID: 0}
 --- !u!61 &61211374871425584
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -265,6 +270,7 @@ MonoBehaviour:
   canvasTransform: {fileID: 0}
   tileParaRenovar: {fileID: 0}
   precioExtraParaVender: 0
+  isPotenciado: 0
 --- !u!1 &7696407428886232020
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,8 +28,12 @@ public class TorretaScript3 : MonoBehaviour
     public float nivel1 = 1;
     public float nivel2 = 1;
 
-    // Start is called before the first frame update
-    void Start()
+    [Header("SFX")]
+    [SerializeField] private AudioClip tachoAspirarSfx;
+    [SerializeField] private AudioClip tachoMasticarSfx;
+    [SerializeField] private AudioClip tachoEructarSfx;
+
+    private void Start()
     {
         if (this.gameObject.GetComponent<Animator>() != null)
         {
@@ -38,8 +42,7 @@ public class TorretaScript3 : MonoBehaviour
         animator.SetFloat("anim", anima);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (target == null)
         {
@@ -89,6 +92,7 @@ public class TorretaScript3 : MonoBehaviour
 
             anima = 0;
             animator.SetFloat("anim", anima);
+            SoundManager.instance.PlaySound(tachoAspirarSfx);
 
             while (target.position != transform.position)
             {
@@ -106,6 +110,7 @@ public class TorretaScript3 : MonoBehaviour
             }
 
             canEat = false;
+            SoundManager.instance.PlaySound(tachoMasticarSfx, 0.8f);
 
             Pulpo pulpo = target.GetComponent<Pulpo>();
             if (pulpo == null) targetscr.Morir();
@@ -118,7 +123,7 @@ public class TorretaScript3 : MonoBehaviour
             yield return new WaitForSeconds(cooldown);
 
             canEat = true;
-
+            SoundManager.instance.PlaySound(tachoEructarSfx, 0.75f);
             anima = 2;
             animator.SetFloat("anim", anima);
         }
