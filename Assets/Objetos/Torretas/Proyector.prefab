@@ -303,10 +303,12 @@ MonoBehaviour:
   cooldown: 3
   dps: 5
   stunTime: 0.5
-  precio: 225
+  precio: 250
   precioMejora: 300
   nivel1: 1
   nivel2: 1
+  idleRotationPoint: 0
+  isIdle: 0
 --- !u!61 &61836983161528572
 BoxCollider2D:
   m_ObjectHideFlags: 0

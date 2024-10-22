@@ -336,6 +336,7 @@ MonoBehaviour:
   canvasTransform: {fileID: 0}
   tileParaRenovar: {fileID: 0}
   precioExtraParaVender: 0
+  isPotenciado: 0
 --- !u!114 &1019053526506977522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,10 +357,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   animator: {fileID: 1019053526211481577}
+  lr: {fileID: 0}
+  puntaRaycast: {fileID: 0}
   rango: 5
   rotationSpd: 1000
   bps: 1
-  precio: 500
+  precio: 600
   dmg: 0
   nivel1: 1
   nivel2: 1

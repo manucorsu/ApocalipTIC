@@ -363,7 +363,7 @@ public class scrBotones : MonoBehaviour
                     scrTorreta.nivel1++;
                     if (scrTorreta.nivel1 == 3) SoundManager.instance.PlaySound(upgradeMaxSfx, 0.5f);
                     else SoundManager.instance.PlaySound(upgradeSfx, 3);
-                    scrTorreta.bps+= 0.25f;
+                    scrTorreta.bps+= 0.15f;
                     scrConstruirGeneral.plataActual -= scrTorreta.precioMejora;
                     scrTorreta.precioMejora += 100;
                 }

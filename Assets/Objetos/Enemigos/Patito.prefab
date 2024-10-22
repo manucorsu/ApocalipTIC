@@ -71,7 +71,9 @@ MonoBehaviour:
   isAceitado: 0
   spName: 
   v3Camino: []
+  wi: 0
   siguiendo: 0
+  currentWaypoint: {x: 0, y: 0, z: 0}
   madre: {fileID: 0}
 --- !u!50 &6926818039991358197
 Rigidbody2D:
