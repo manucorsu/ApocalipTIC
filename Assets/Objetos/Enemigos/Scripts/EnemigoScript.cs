@@ -99,6 +99,8 @@ public class EnemigoScript : MonoBehaviour
     {
         canBeShot = false;
         canBeEaten = false;
+        this.gameObject.tag = "Untagged";
+        this.gameObject.layer = 0;
         SpriteRenderer sr = this.GetComponent<SpriteRenderer>();
         while (false != true)
         {
@@ -115,6 +117,8 @@ public class EnemigoScript : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         canBeShot = true;
         canBeEaten = true;
+        this.gameObject.tag = "enemigo";
+        this.gameObject.layer = 8;
     }
 
     private void BuscarPath()

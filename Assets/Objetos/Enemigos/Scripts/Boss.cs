@@ -62,6 +62,7 @@ public class Boss : EnemigoScript
     }
     private void DoIntro()
     {
+        PauseScript.canPause = false;
         Time.timeScale = 1f;
         btnDv.interactable = false;
         btnDvImg.sprite = dvOffSpr;
@@ -145,6 +146,7 @@ public class Boss : EnemigoScript
                 btnDv.interactable = true;
 
                 GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().ActivarConsumibles(true);
+                PauseScript.canPause = true;
                 break;
             }
             if (thenSpawnEnemies == true)

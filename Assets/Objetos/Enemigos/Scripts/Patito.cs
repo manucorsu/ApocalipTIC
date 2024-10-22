@@ -15,31 +15,42 @@ public class Patito : EnemigoScript
             throw new System.Exception("Todos los patitos deben tener una madre cuando spawnean.");
         }
         patitoBaseSpd = this.spd;
+        this.spd = madre.spd;
+        this.spName = madre.spName;
+        this.transform.parent = null;
+        base.Start();
     }
+
     protected override void Update()
     {
-        if (libre == false)
+        if (!libre)
         {
-            this.spd = 0;
+            this.spd = madre.spd;
             this.hp = float.MaxValue;
             this.canBeShot = false; this.gameObject.layer = 0; this.gameObject.tag = "Untagged";
             this.canBeEaten = false;
             this.hpBar.SetActive(false);
-            this.siguiendo = false;
         }
+        List<string> wsl = new List<string>();
+        foreach(Vector3 v in v3Camino)
+        {
+            wsl.Add(v.ToString());
+        }
+        EnemySpawner.PrintArr(wsl.ToArray());
+        Debug.Log(this.spd);
         base.Update();
     }
+
     public void Liberar()
     {
         this.spd = patitoBaseSpd;
         this.hp = this.baseHP;
         this.canBeShot = true; this.gameObject.layer = 8; this.gameObject.tag = "enemigo";
         this.canBeEaten = true;
-        this.siguiendo = true;
         this.hpBar.SetActive(true);
         libre = true;
-        base.Start();
     }
+
     public override void Morir()
     {
         base.Morir();
