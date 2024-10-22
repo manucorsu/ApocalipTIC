@@ -42,7 +42,7 @@ public class Pata : EnemigoScript
     {
         foreach (GameObject patito in patitos)
         {
-            patito.GetComponent<Patito>().Liberar();
+            if(patito != null) patito.GetComponent<Patito>().Liberar();
         }
         base.Morir();
     }

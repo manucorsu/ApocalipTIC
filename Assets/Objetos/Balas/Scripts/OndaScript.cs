@@ -24,7 +24,7 @@ public class OndaScript : MonoBehaviour
         if (collision.tag == "enemigo")
         {
             EnemigoScript enemigoScript = collision.GetComponent<EnemigoScript>();
-            enemigoScript.Sufrir(daño);
+           if(enemigoScript != null) enemigoScript.Sufrir(daño);
         }
     }
 
