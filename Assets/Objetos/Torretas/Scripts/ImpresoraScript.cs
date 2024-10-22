@@ -23,6 +23,8 @@ public class ImpresoraScript : MonoBehaviour
     private float cooldown;
     public float dmg;
 
+    [SerializeField] private AudioClip imprShootSfx;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +72,7 @@ public class ImpresoraScript : MonoBehaviour
             BalaScript balascript = balaObj.GetComponent<BalaScript>();
             balascript.SetTarget(target);
             balascript.balaDmg = dmg;
+            SoundManager.instance.PlaySound(imprShootSfx);
         }
         yield return new WaitForSeconds(0.2f);
     }

@@ -187,7 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e1ba6456130ea43b87a43d20a1ccbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tlShootSfx: {fileID: 8300000, guid: 1b395ba118236fd46839d414f01a251e, type: 3}
   punta: {fileID: 7696407428886232023}
   target: {fileID: 0}
   firingPoint: {fileID: 7696407427299006118}
@@ -207,6 +206,9 @@ MonoBehaviour:
   nivel2: 1
   nivel3: 1
   precioMejora: 300
+  isTiralapiceras: 0
+  tlapicesShootSfx: {fileID: 8300000, guid: 1b395ba118236fd46839d414f01a251e, type: 3}
+  tlapicerasShootSfx: {fileID: 0}
 --- !u!61 &61211374871425584
 BoxCollider2D:
   m_ObjectHideFlags: 0
