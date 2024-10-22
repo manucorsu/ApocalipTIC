@@ -6,10 +6,12 @@ using UnityEditor;
 public class ParlanteScript : MonoBehaviour
 {
 
-    //BALLESTA
+    //PARLANTE
+
 
     //Objetos
 
+    [SerializeField] private AudioClip parlanteSfx;
     public Animator animator;
     public Transform target;
     public Transform firingPoint;
@@ -79,6 +81,7 @@ public class ParlanteScript : MonoBehaviour
 
     private IEnumerator Disparar()
     {
+        SoundManager.instance.PlaySound(parlanteSfx, 0.2f);
         animator.SetTrigger("anim");
         GameObject explosion = Instantiate(onda, firingPoint);
         explosion.transform.localScale = new Vector3(ondaSize, ondaSize, 1);

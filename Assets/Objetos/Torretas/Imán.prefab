@@ -368,6 +368,10 @@ MonoBehaviour:
   nivel2: 1
   nivel3: 1
   precioMejora: 300
+  isTiralapiceras: 0
+  tlapicesShootSfx: {fileID: 0}
+  tlapicerasShootSfx: {fileID: 0}
+  imanShootSfx: {fileID: 8300000, guid: 2d4eaf4e87da9b14e9384bc94adb6ff6, type: 3}
   isAbsorbing: 0
   tuerca: {fileID: 8322502603656006398, guid: 05a0fe38827c7c945a630aeee47fedab, type: 3}
   ganancia: 0

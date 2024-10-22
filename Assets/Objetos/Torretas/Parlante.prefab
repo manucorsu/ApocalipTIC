@@ -4777,6 +4777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d342b60b182dc47b85cd2e2481f9c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parlanteSfx: {fileID: 8300000, guid: 7930600dc3c37e04b933dd7428fe4269, type: 3}
   animator: {fileID: 5345216299184722508}
   target: {fileID: 0}
   firingPoint: {fileID: 5345216297734168729}

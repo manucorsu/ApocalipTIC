@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
     private bool sfxOn = true;
     private bool musOn = true;
-    [SerializeField] private AudioSource sfxPlayer;
+    [SerializeField] public AudioSource sfxPlayer;
     [SerializeField] private AudioClip uiClick;
     public Sprite onSpr;
     public Sprite offSpr;
@@ -35,7 +35,7 @@ public class SoundManager : MonoBehaviour
         }
         if (sfxOn && clip != null)
         {
-            sfxPlayer.volume = volume;
+            sfxPlayer.volume = volume -0.15f;
             sfxPlayer.PlayOneShot(clip);
         }
     }

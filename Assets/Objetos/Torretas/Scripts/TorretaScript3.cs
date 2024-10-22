@@ -109,12 +109,14 @@ public class TorretaScript3 : MonoBehaviour
                 yield return null;
             }
 
-            canEat = false;
-            SoundManager.instance.PlaySound(tachoMasticarSfx, 0.8f);
-
             Pulpo pulpo = target.GetComponent<Pulpo>();
             if (pulpo == null) targetscr.Morir();
             else pulpo.MorirTacho();
+
+            canEat = false;
+            SoundManager.instance.PlaySound(tachoMasticarSfx, 0.8f);
+
+            
 
             animator.enabled = true;
             anima = 1;

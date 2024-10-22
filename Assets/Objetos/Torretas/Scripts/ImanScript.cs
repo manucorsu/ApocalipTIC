@@ -5,6 +5,7 @@ using UnityEditor;
 
 public class ImanScript : TorretaScript
 {
+    [SerializeField] private AudioClip imanShootSfx;
     private float cooldownIman;
     public bool isAbsorbing = false;
     public GameObject tuerca;
@@ -54,6 +55,7 @@ public class ImanScript : TorretaScript
                 {
                     if (target.GetComponent<EnemigoScript>().canBeShot)
                     {
+                        SoundManager.instance.PlaySound(imanShootSfx, 0.1f);
                         GameObject basura = Instantiate(tuerca, new Vector2(target.position.x, target.position.y), Quaternion.identity);
                         TornilloScript basuraScript = basura.GetComponent<TornilloScript>();
                         basuraScript.torreta = this.gameObject;
