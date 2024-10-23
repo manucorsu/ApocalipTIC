@@ -46,7 +46,6 @@ public class TorretaScript2 : MonoBehaviour
             FindTarget();
             return;
         }
-
       
 
         if (!CheckTargetRange())

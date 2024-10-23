@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip uiClick;
     public Sprite onSpr;
     public Sprite offSpr;
+    public bool isChorroSound = false;
 
     private void Awake()
     {

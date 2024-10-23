@@ -190,7 +190,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   lr: {fileID: 9188380607990603109}
   puntaRaycast: {fileID: 5826033931610194972}
-  rango: 4.89
+  rango: 5.41
   rotationSpd: 800
   bps: 0.3
   precio: 500

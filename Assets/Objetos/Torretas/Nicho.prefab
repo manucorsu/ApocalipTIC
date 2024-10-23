@@ -314,6 +314,7 @@ MonoBehaviour:
   enemigos:
     serializedVersion: 2
     m_Bits: 256
+  sfxChorro: {fileID: 8300000, guid: f508531144d26ff4ebbcf2eb03838a3b, type: 3}
   dps: 15.5
   rango: 3
   rotationSpd: 300

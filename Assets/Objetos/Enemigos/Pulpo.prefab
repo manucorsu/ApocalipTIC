@@ -69,6 +69,7 @@ MonoBehaviour:
   canBeShot: 1
   isPegamentoed: 0
   isAceitado: 0
+  sfxChorro: {fileID: 8300000, guid: 4ca615ba623e6d34bba7c246724cd74f, type: 3}
   spName: 
   v3Camino: []
   wi: 0

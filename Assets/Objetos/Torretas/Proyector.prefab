@@ -297,6 +297,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   puntaRecta: {fileID: 2296560994402191477}
+  sfxRayo: {fileID: 8300000, guid: bd387c1044b0d88458b182c777680601, type: 3}
   rango: 3.04
   rotationSpd: 700
   canshoot: 1
