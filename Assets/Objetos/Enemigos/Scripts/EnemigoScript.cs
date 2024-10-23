@@ -60,7 +60,6 @@ public class EnemigoScript : MonoBehaviour
 
     protected HPBar hpBar;
 
-
     private void Awake()
     {
         AsignarTodo();
@@ -366,12 +365,7 @@ public class EnemigoScript : MonoBehaviour
         this.plata = 0;
         this.colorExplosion = colorExplosion = new Color(this.colorExplosion.r, this.colorExplosion.g, this.colorExplosion.b, 0);
         Morir();
-        EnemySpawner.vidas--;
-        TMP_Text txtVidasTemp = GameObject.Find("txtVidasTEMP").GetComponent<TMP_Text>();
-        txtVidasTemp.text = $"{EnemySpawner.vidas}/3 vidas";
+        Corazones.instance.LoseLife();
         reachedGoal = true;
-#if !UNITY_EDITOR
-        if (EnemySpawner.vidas == 0) SceneManager.LoadScene("GameOver");
-#endif
     }
 }
