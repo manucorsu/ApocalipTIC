@@ -8,6 +8,7 @@ using System;
 
 public class PauseScript : MonoBehaviour
 {
+    public static bool canPause = false;
     public static bool isPaused = false;
     public static byte r1Bots = 6;
     public static byte ronda = 1;
@@ -23,7 +24,15 @@ public class PauseScript : MonoBehaviour
     [SerializeField] private LevelChanger levelChanger;
 
     private byte botsASpawnear = 0;
-
+        
+    private void Awake()
+    {
+        canPause = false;
+        isPaused = false;
+        r1Bots = 6;
+        ronda = 1;
+        dificultad = 0.75f;
+    }
     private void Start()
     {
         try
@@ -48,6 +57,7 @@ public class PauseScript : MonoBehaviour
         {
             Debug.LogError("NullReferenceExeception: Probablemente el singleton de SoundManager fue null.\n" +
                         "NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
+            Application.Quit();
         }
     }
 
@@ -65,35 +75,38 @@ public class PauseScript : MonoBehaviour
     // pero no quería hacer un panel nuevo que sea igual al fondo el panel este, reciclo,
     // usando este panel desactivando los controles (ver definición de controles) si mb == true
     {
-
-        isPaused = s;
-        if (s == true)
+        if (canPause)
         {
-            pauseMenu.SetActive(true);
-            txtEnemiesKilled.text = EnemySpawner.botsEliminados.ToString();
-            txtRonda.text = $"{EnemySpawner.ronda}/30";
-            if (EnemySpawner.ronda == 15 || EnemySpawner.ronda == 30)
+            isPaused = s;
+            SoundManager.instance.PlayUIClick();
+            if (s == true)
             {
-                txtEnemigosRestantes.text = "al Jefe";
+                pauseMenu.SetActive(true);
+                txtEnemiesKilled.text = EnemySpawner.botsEliminados.ToString();
+                txtRonda.text = $"{EnemySpawner.ronda}/30";
+                if (EnemySpawner.ronda == 15 || EnemySpawner.ronda == 30)
+                {
+                    txtEnemigosRestantes.text = "al Jefe";
+                }
+                else
+                {
+                    botsASpawnear = EnemySpawner.EnemyFormula(r1Bots, ronda, dificultad);
+                    int enemigosRestantes = botsASpawnear - EnemySpawner.botsEliminadosRonda;
+                    txtEnemigosRestantes.text = $"{enemigosRestantes} más";
+                }
+                Time.timeScale = 0;
             }
             else
             {
-                botsASpawnear = EnemySpawner.EnemyFormula(r1Bots, ronda, dificultad);
-                int enemigosRestantes = botsASpawnear - EnemySpawner.botsEliminadosRonda;
-                txtEnemigosRestantes.text = $"{enemigosRestantes} más";
+                if (menuConfirmDialogBg.activeInHierarchy) menuConfirmDialogBg.SetActive(false);
+                int dv = scrBotones.dv;
+
+                if (dv == 1) Time.timeScale = 2.5f;
+                else if (dv == 2) Time.timeScale = 5;
+                else Time.timeScale = 1;
+
+                pauseMenu.SetActive(false);
             }
-            SoundManager.instance.PlayUIClick();
-            Time.timeScale = 0;
-        }
-        else
-        {
-            int dv = scrBotones.dv;
-
-            if (dv == 1) Time.timeScale = 2.5f;
-            else if (dv == 2) Time.timeScale = 5;
-            else Time.timeScale = 1;
-
-            pauseMenu.SetActive(false);
         }
     }
 
@@ -127,7 +140,7 @@ public class PauseScript : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        foreach(GameObject enemigo in EnemySpawner.botsVivos)
+        foreach (GameObject enemigo in EnemySpawner.botsVivos)
         {
             enemigo.GetComponent<EnemigoScript>().spd = 0;
         }

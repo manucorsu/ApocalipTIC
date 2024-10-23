@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
 
 public class scrBotones : MonoBehaviour
 {
@@ -705,6 +703,7 @@ public class scrBotones : MonoBehaviour
                 if (EnemySpawner.ronda < 5) flecha.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
+        PauseScript.canPause = true;
         try { SoundManager.instance.PlayUIClick(); }
         catch (NullReferenceException)
         {

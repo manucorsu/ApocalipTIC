@@ -13,6 +13,19 @@ public class Pata : EnemigoScript
         {
             throw new System.Exception("El array de patitos está vacío.");
         }
+        switch (spName[0])
+        {
+            case 'C':
+                patitos[0].transform.localPosition = new Vector3(1.5f, -0.5f);
+                patitos[1].transform.localPosition = new Vector3(2.5f, -0.5f);
+                patitos[2].transform.localPosition = new Vector3(3.5f, -0.5f);
+                break;
+            case 'D':
+                patitos[0].transform.localPosition = new Vector3(0, -2);
+                patitos[1].transform.localPosition = new Vector3(0, -3.5f);
+                patitos[2].transform.localPosition = new Vector3(0, -5);
+                break;
+        }
         foreach (GameObject patito in patitos)
         {
             Patito patitoScript = patito.GetComponent<Patito>();
@@ -29,13 +42,7 @@ public class Pata : EnemigoScript
     {
         foreach (GameObject patito in patitos)
         {
-            patito.transform.parent = null;
-            Patito pScr = patito.GetComponent<Patito>();
-            pScr.v3Camino = this.v3Camino;
-            pScr.secuenciaAnims = this.secuenciaAnims;
-            pScr.wi = this.wi;
-            pScr.currentWaypoint = this.currentWaypoint;
-            pScr.Liberar();
+            if(patito != null) patito.GetComponent<Patito>().Liberar();
         }
         base.Morir();
     }

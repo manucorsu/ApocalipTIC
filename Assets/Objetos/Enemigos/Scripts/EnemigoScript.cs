@@ -60,7 +60,6 @@ public class EnemigoScript : MonoBehaviour
 
     protected HPBar hpBar;
 
-
     private void Awake()
     {
         AsignarTodo();
@@ -99,6 +98,8 @@ public class EnemigoScript : MonoBehaviour
     {
         canBeShot = false;
         canBeEaten = false;
+        this.gameObject.tag = "Untagged";
+        this.gameObject.layer = 0;
         SpriteRenderer sr = this.GetComponent<SpriteRenderer>();
         while (false != true)
         {
@@ -115,6 +116,8 @@ public class EnemigoScript : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         canBeShot = true;
         canBeEaten = true;
+        this.gameObject.tag = "enemigo";
+        this.gameObject.layer = 8;
     }
 
     private void BuscarPath()
@@ -362,12 +365,7 @@ public class EnemigoScript : MonoBehaviour
         this.plata = 0;
         this.colorExplosion = colorExplosion = new Color(this.colorExplosion.r, this.colorExplosion.g, this.colorExplosion.b, 0);
         Morir();
-        EnemySpawner.vidas--;
-        TMP_Text txtVidasTemp = GameObject.Find("txtVidasTEMP").GetComponent<TMP_Text>();
-        txtVidasTemp.text = $"{EnemySpawner.vidas}/3 vidas";
+        Corazones.instance.LoseLife();
         reachedGoal = true;
-#if !UNITY_EDITOR
-        if (EnemySpawner.vidas == 0) SceneManager.LoadScene("GameOver");
-#endif
     }
 }

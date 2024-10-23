@@ -62,6 +62,7 @@ public class Boss : EnemigoScript
     }
     private void DoIntro()
     {
+        PauseScript.canPause = false;
         Time.timeScale = 1f;
         btnDv.interactable = false;
         btnDvImg.sprite = dvOffSpr;
@@ -145,12 +146,13 @@ public class Boss : EnemigoScript
                 btnDv.interactable = true;
 
                 GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().ActivarConsumibles(true);
+                PauseScript.canPause = true;
                 break;
             }
             if (thenSpawnEnemies == true)
             {
                 GameObject[] pfbsEnemigos = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().pfbsEnemigos;
-                byte cuantos = (byte)Random.Range(3, 7);
+                int cuantos = Random.Range(3, 7);
                 animator.SetBool("spawnEnemy", true);
                 while (!isSpawningEnemies) yield return null;
                 if (isSpawningEnemies)
@@ -286,8 +288,8 @@ public class Boss : EnemigoScript
                     case 2: // A -> D
                         fastSpd = 12;
                         StartCoroutine(MoveTo(
-                            new string[] { "J1", "A8", "J6", "J7", "J8", "J9", "J4" },
-                            new string[] { "MoveLeft", "MoveUp", "MoveLeft", "MoveDown", "MoveRight", "MoveUp", "MoveLeft" },
+                            new string[] { "J1", "A8", "J6", "J7", "J14", "J8", "J9", "J4" },
+                            new string[] { "MoveLeft", "MoveUp", "MoveLeft", "MoveDown", "MoveRight", "MoveRight", "MoveUp", "MoveLeft" },
                             false, "MoveDown", 3, false
                             ));
                         break;
@@ -345,8 +347,8 @@ public class Boss : EnemigoScript
                     case 9: // D -> A
                         fastSpd = 12;
                         StartCoroutine(MoveTo(
-                            new string[] { "J9", "J8", "J7", "J6", "A5", "J1", "J4" },
-                            new string[] { "MoveRight", "MoveDown", "MoveLeft", "MoveUp", "MoveRight", "MoveDown", "MoveRight" },
+                            new string[] { "J9", "J8", "J14", "J7", "J6", "A5", "J1", "J4" },
+                            new string[] { "MoveRight", "MoveDown", "MoveLeft", "MoveLeft", "MoveUp", "MoveRight", "MoveDown", "MoveRight" },
                             false, "MoveDown", 3, false
                             ));
                         break;

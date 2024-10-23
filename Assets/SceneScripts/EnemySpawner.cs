@@ -16,8 +16,6 @@ public class EnemySpawner : MonoBehaviour
     public static byte botsASpawnear;
     public static uint botsEliminados = 0;
     public static byte botsEliminadosRonda = 0;
-    private CustomRangeInt lteCount = new CustomRangeInt(0, 2);
-    private string[] lastThreeEnemies = new string[] { "", "", "" };
     #endregion
 
     [SerializeField] private GameObject prefabBoss;
@@ -159,14 +157,9 @@ public class EnemySpawner : MonoBehaviour
         {
             byte rie = (byte)Random.Range(0, pfbsEnemigos.Length); //RIE = Random Index para el array de Enemigos™
             prefabElegido = pfbsEnemigos[rie];
-            if (prefabElegido.GetComponent<Pata>() == null || lastThreeEnemies.Contains("Pata") == false)
+            if (prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda)
             {
-                if (prefabElegido.GetComponent<EnemigoScript>().minRonda <= ronda)
-                {
-                    lastThreeEnemies[lteCount] = prefabElegido.name;
-                    lteCount++;
-                    break;
-                }
+                break;
             }
         }
 
@@ -176,9 +169,9 @@ public class EnemySpawner : MonoBehaviour
         {
             ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
             loc = spawners[ris].transform;
-            if (prefabElegido.GetComponent<Pata>() != null)
+            if (prefabElegido.GetComponent<EnemigoScript>().isLarge)
             {
-                if (loc.gameObject.name == "A5" || loc.gameObject.name == "A8")
+                if (loc.gameObject.name == "A5" || loc.gameObject.name == "A8" || loc.gameObject.name[1] == 'L')
                 {
                     break;
                 }
