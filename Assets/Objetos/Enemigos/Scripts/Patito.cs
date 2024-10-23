@@ -31,12 +31,6 @@ public class Patito : EnemigoScript
             this.canBeEaten = false;
             this.hpBar.SetActive(false);
         }
-        List<string> wsl = new List<string>();
-        foreach(Vector3 v in v3Camino)
-        {
-            wsl.Add(v.ToString());
-        }
-        EnemySpawner.PrintArr(wsl.ToArray());
         Debug.Log(this.spd);
         base.Update();
     }

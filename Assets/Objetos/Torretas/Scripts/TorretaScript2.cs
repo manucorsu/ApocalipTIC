@@ -32,10 +32,12 @@ public class TorretaScript2 : MonoBehaviour
     public float nivel1 = 1;
     public float nivel2 = 1;
 
+
     // Start is called before the first frame update
     void Start()
     {
         balascr2 = bala.GetComponent<BalaScript2>();
+        balascr2.dps = this.dps;
     }
 
     // Update is called once per frame

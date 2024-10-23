@@ -54,9 +54,9 @@ public class EnemigoScript : MonoBehaviour
     private bool reachedGoal = false;
     #endregion
 
-    IEnumerator sufrirNicho;
-    private bool nichoTriggerStay = false;
-    private float sufrirNichoDPS; private float nichoCooldown;
+    //IEnumerator sufrirNicho;
+    //private bool nichoTriggerStay = false;
+    //private float sufrirNichoDPS; private float nichoCooldown;
 
     protected HPBar hpBar;
 
@@ -73,7 +73,7 @@ public class EnemigoScript : MonoBehaviour
     {
         StopAllCoroutines();
         EnemySpawner.botsVivos.Add(this.gameObject);
-        sufrirNicho = SufrirNicho();
+       // sufrirNicho = SufrirNicho();
         hp = baseHP;
         hpBar = GetComponentInChildren<HPBar>();
         if (hpBar != null) hpBar.max = baseHP;
@@ -243,6 +243,7 @@ public class EnemigoScript : MonoBehaviour
     { // Sufrir daño causado por PROYECTILES (balas que usan el BalaScript).
       //BAJO NINGUNA CIRCUNSTANCIA usar para balas "especiales" (como el chorro de agua o el proyector)
         StartCoroutine(HurtVFX(0.1f));
+        Debug.Log(dmg);
         hp -= dmg;
         hpBar.Change(-dmg);
         if (hp <= 0 && !isBoss) Morir();
@@ -254,9 +255,9 @@ public class EnemigoScript : MonoBehaviour
         if (collision.gameObject.name == "Bala2") //el chorro de agua
         {
             TorretaScript2 nicho = collision.gameObject.transform.root.gameObject.GetComponent<TorretaScript2>();
-            sufrirNichoDPS = nicho.dps;
-            nichoCooldown = nicho.cooldown;
-            StartCoroutine(sufrirNicho);
+            //sufrirNichoDPS = nicho.dps;
+            //nichoCooldown = nicho.cooldown;
+            //StartCoroutine(sufrirNicho);
         }
 
         else if (collision.gameObject.name == "Bala4") //el proyector
@@ -296,40 +297,31 @@ public class EnemigoScript : MonoBehaviour
             }
         }
     }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.name == "Bala2")
-        {
-            this.GetComponent<SpriteRenderer>().color = hurtColor;
-            nichoTriggerStay = true;
-        }
-    }
     private void FixedUpdate()
     {
-        if (nichoTriggerStay)
-        {
-            nichoTriggerStay = false;
-        }
+        //if (nichoTriggerStay)
+        //{
+        //    nichoTriggerStay = false;
+        //}
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         this.spriteRenderer.color = baseColor;
-        StopCoroutine(sufrirNicho);
+       // StopCoroutine(sufrirNicho);
     }
 
-    private IEnumerator SufrirNicho()
-    {
-        if (isBoss && GetComponent<Boss>().killMe && EnemySpawner.ronda == 15)
-        {
-            StopCoroutine(sufrirNicho);
-        }
-        while (false != true)
-        {
-            Sufrir(sufrirNichoDPS);
-            yield return new WaitForSeconds(nichoCooldown);
-        }
-    }
+    //private IEnumerator SufrirNicho()
+    //{
+    //    if (isBoss && GetComponent<Boss>().killMe && EnemySpawner.ronda == 15)
+    //    {
+    //        StopCoroutine(sufrirNicho);
+    //    }
+    //    while (false != true)
+    //    {
+    //        Sufrir(sufrirNichoDPS);
+    //        yield return new WaitForSeconds(nichoCooldown);
+    //    }
+    //}
 
     public IEnumerator Stun(float daño, float tiempo)
     {
