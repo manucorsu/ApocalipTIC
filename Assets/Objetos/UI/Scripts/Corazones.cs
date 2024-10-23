@@ -7,7 +7,7 @@ public class Corazones : MonoBehaviour
 {
     public static Corazones instance;
     [SerializeField] private GameObject[] corazones;
-    private readonly bool[] statusCorazones = new bool[] { false, false, false };
+    private bool[] statusCorazones = new bool[] { false, false, false };
     //cada corazón está en `false` si NO está roto y en `true` si está roto
 
     private void Awake()
