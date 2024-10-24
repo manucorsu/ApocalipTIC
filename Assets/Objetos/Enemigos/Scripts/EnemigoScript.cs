@@ -243,7 +243,6 @@ public class EnemigoScript : MonoBehaviour
     { // Sufrir daño causado por PROYECTILES (balas que usan el BalaScript).
       //BAJO NINGUNA CIRCUNSTANCIA usar para balas "especiales" (como el chorro de agua o el proyector)
         StartCoroutine(HurtVFX(0.1f));
-        Debug.Log(dmg);
         hp -= dmg;
         hpBar.Change(-dmg);
         if (hp <= 0 && !isBoss) Morir();
