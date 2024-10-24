@@ -17,7 +17,6 @@ public class TorretaScript2 : MonoBehaviour
     private BalaScript2 balascr2;
     public RaycastHit2D[] hits;
 
-
     //Variables
 
     public float dps;
@@ -37,7 +36,7 @@ public class TorretaScript2 : MonoBehaviour
     void Start()
     {
         balascr2 = bala.GetComponent<BalaScript2>();
-        balascr2.dps = this.dps;
+        balascr2.nichoPadre = this;
     }
 
     // Update is called once per frame
@@ -48,7 +47,7 @@ public class TorretaScript2 : MonoBehaviour
             FindTarget();
             return;
         }
-      
+
 
         if (!CheckTargetRange())
         {
@@ -69,13 +68,13 @@ public class TorretaScript2 : MonoBehaviour
 
         if (isShooting)
         {
+            balascr2.dps = this.dps;
             bala.gameObject.SetActive(true);
             if (balascr2.anim != 2)
             {
                 balascr2.anim = 1;
             }
         }
-
     }
 
 
@@ -104,7 +103,10 @@ public class TorretaScript2 : MonoBehaviour
         if (target != null)
         {
             Boss boss = target.gameObject.GetComponent<Boss>();
-            if (boss != null && boss.introDone == true && boss.canBeShot == false) return; //que no busque al jefe si no se le puede disparar (salvo durante la intro porque queda épico)
+            if (boss != null)
+            {
+                if (boss.canBeShot == false && boss.introDone == true) return;
+            } //que no busque al jefe si no se le puede disparar (salvo durante la intro porque queda épico)
             float angulo = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angulo - 90));
 

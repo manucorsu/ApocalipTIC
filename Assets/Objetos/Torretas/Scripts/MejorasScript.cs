@@ -46,7 +46,7 @@ public class MejorasScript : MonoBehaviour
     public float precioExtraParaVender;
     public bool isPotenciado = false;
     private float precioParaMejorar;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -109,11 +109,12 @@ public class MejorasScript : MonoBehaviour
         if (EnemySpawner.spawnear == false)
         {
             cuadroMejora.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, this.transform.TransformPoint(Vector3.zero));
-           
+
             float thisPosX = this.transform.position.x + 2.5f;
             float thisPosY = this.transform.position.y;
 
-            if (this.transform.position.x > 8) {
+            if (this.transform.position.x > 8)
+            {
                 thisPosX -= 5.5f;
             }
             if (this.transform.position.y > 3)
@@ -165,9 +166,9 @@ public class MejorasScript : MonoBehaviour
             btnMejora3.enabled = true;
             btnMejora3.GetComponent<Image>().enabled = true;
 
-            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
-            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
-            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else {btnMejora3.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else { btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else { btnMejora2.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else { btnMejora3.GetComponent<Button>().interactable = true; }
         }
 
         //NICHO
@@ -188,8 +189,8 @@ public class MejorasScript : MonoBehaviour
             btnMejora3.enabled = false;
             btnMejora3.GetComponent<Image>().enabled = false;
 
-            if (torretaScr2.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
-            if (torretaScr2.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
+            if (torretaScr2.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else { btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr2.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else { btnMejora2.GetComponent<Button>().interactable = true; }
         }
 
         //TACHO
@@ -210,8 +211,8 @@ public class MejorasScript : MonoBehaviour
             btnMejora3.enabled = false;
             btnMejora3.GetComponent<Image>().enabled = false;
 
-            if (torretaScr3.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
-            if (torretaScr3.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
+            if (torretaScr3.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else { btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr3.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else { btnMejora2.GetComponent<Button>().interactable = true; }
 
         }
 
@@ -233,8 +234,8 @@ public class MejorasScript : MonoBehaviour
             btnMejora3.enabled = false;
             btnMejora3.GetComponent<Image>().enabled = false;
 
-            if (torretaScr4.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
-            if (torretaScr4.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
+            if (torretaScr4.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else { btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr4.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else { btnMejora2.GetComponent<Button>().interactable = true; }
         }
 
         //TIRALAPICERAS
@@ -254,9 +255,9 @@ public class MejorasScript : MonoBehaviour
             btnMejora2.enabled = true;
             btnMejora3.GetComponent<Image>().enabled = true;
 
-            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
-            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
-            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else {btnMejora3.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else { btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else { btnMejora2.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else { btnMejora3.GetComponent<Button>().interactable = true; }
         }
 
         //LANZABOMBUCHAS
@@ -276,9 +277,9 @@ public class MejorasScript : MonoBehaviour
             btnMejora2.enabled = true;
             btnMejora3.GetComponent<Image>().enabled = true;
 
-            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
-            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
-            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else {btnMejora3.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else { btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else { btnMejora2.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else { btnMejora3.GetComponent<Button>().interactable = true; }
         }
 
         //IMÁN
@@ -320,9 +321,9 @@ public class MejorasScript : MonoBehaviour
             btnMejora2.enabled = true;
             btnMejora3.GetComponent<Image>().enabled = true;
 
-            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else {btnMejora1.GetComponent<Button>().interactable = true; }
-            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else {btnMejora2.GetComponent<Button>().interactable = true; }
-            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else {btnMejora3.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel1 == 3) { btnMejora1.GetComponent<Button>().interactable = false; } else { btnMejora1.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel2 == 3) { btnMejora2.GetComponent<Button>().interactable = false; } else { btnMejora2.GetComponent<Button>().interactable = true; }
+            if (torretaScr.nivel3 == 3) { btnMejora3.GetComponent<Button>().interactable = false; } else { btnMejora3.GetComponent<Button>().interactable = true; }
         }
 
         scrbotones.torretaParaMejorar = this.gameObject;
@@ -335,4 +336,4 @@ public class MejorasScript : MonoBehaviour
         }
     }
 
-    }
+}

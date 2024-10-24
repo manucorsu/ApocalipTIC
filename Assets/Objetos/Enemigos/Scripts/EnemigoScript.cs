@@ -254,7 +254,7 @@ public class EnemigoScript : MonoBehaviour
     {
         if (collision.gameObject.name == "Bala2") //el chorro de agua
         {
-            TorretaScript2 nicho = collision.gameObject.transform.root.gameObject.GetComponent<TorretaScript2>();
+           // TorretaScript2 nicho = collision.gameObject.transform.root.gameObject.GetComponent<TorretaScript2>();
             //sufrirNichoDPS = nicho.dps;
             //nichoCooldown = nicho.cooldown;
             //StartCoroutine(sufrirNicho);
@@ -306,7 +306,7 @@ public class EnemigoScript : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        this.spriteRenderer.color = baseColor;
+        //this.spriteRenderer.color = baseColor;
        // StopCoroutine(sufrirNicho);
     }
 

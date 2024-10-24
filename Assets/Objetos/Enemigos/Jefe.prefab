@@ -71,7 +71,9 @@ MonoBehaviour:
   isAceitado: 0
   spName: 
   v3Camino: []
+  wi: 0
   siguiendo: 0
+  currentWaypoint: {x: 0, y: 0, z: 0}
   introDone: 0
   dvOnSpr: {fileID: 21300002, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
   dvOffSpr: {fileID: 21300000, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
@@ -159,7 +161,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!95 &2098798442564997296
 Animator:

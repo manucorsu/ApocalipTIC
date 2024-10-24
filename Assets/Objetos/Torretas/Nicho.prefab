@@ -113,9 +113,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25852fdbb6efbe1429f5b5b54db92dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nichoPadre: {fileID: 0}
   animator: {fileID: 5962855182431712527}
   anim: 1
   info: 0
+  dps: 0
 --- !u!60 &8014415506125743138
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -314,7 +316,6 @@ MonoBehaviour:
   enemigos:
     serializedVersion: 2
     m_Bits: 256
-  sfxChorro: {fileID: 8300000, guid: f508531144d26ff4ebbcf2eb03838a3b, type: 3}
   dps: 15.5
   rango: 3
   rotationSpd: 300
