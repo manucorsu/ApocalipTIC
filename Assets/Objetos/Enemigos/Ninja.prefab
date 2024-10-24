@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 6385835040096920349}
   - component: {fileID: 3422201626965454608}
   - component: {fileID: 2732808150933183971}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ninja
-  m_TagString: Untagged
+  m_TagString: enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,6 +74,8 @@ MonoBehaviour:
   wi: 0
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
+  transparentAlpha:
+    value: 0
 --- !u!212 &3915830564777598510
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -294,6 +296,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 213634133220727635, guid: 79c05819618b5654a9d1b5a3bd6a1bec,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 213634133998273347, guid: 79c05819618b5654a9d1b5a3bd6a1bec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79c05819618b5654a9d1b5a3bd6a1bec, type: 3}

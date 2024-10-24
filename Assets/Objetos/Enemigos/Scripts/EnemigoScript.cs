@@ -10,7 +10,7 @@ public class EnemigoScript : MonoBehaviour
     [Header("Animación")]
     protected Animator animator;
     [HideInInspector] public List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
-    private Color baseColor = Color.white;
+    protected Color baseColor = Color.white;
     [SerializeField] private Color hurtColor = new Color(217, 54, 54);
     public GameObject explosionMuerte;
     public Color colorExplosion;
@@ -36,7 +36,7 @@ public class EnemigoScript : MonoBehaviour
     public float plata; //cuánta $ recibe el jugador al mater a este enemigo.
     public bool canBeEaten = true;
     public bool canBeShot = true;
-    private SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
     public bool isPegamentoed = false;
     public bool isAceitado = false;
     #endregion
@@ -54,10 +54,6 @@ public class EnemigoScript : MonoBehaviour
     private bool reachedGoal = false;
     #endregion
 
-    //IEnumerator sufrirNicho;
-    //private bool nichoTriggerStay = false;
-    //private float sufrirNichoDPS; private float nichoCooldown;
-
     protected HPBar hpBar;
 
     private void Awake()
@@ -73,7 +69,6 @@ public class EnemigoScript : MonoBehaviour
     {
         StopAllCoroutines();
         EnemySpawner.botsVivos.Add(this.gameObject);
-       // sufrirNicho = SufrirNicho();
         hp = baseHP;
         hpBar = GetComponentInChildren<HPBar>();
         if (hpBar != null) hpBar.max = baseHP;
@@ -238,6 +233,7 @@ public class EnemigoScript : MonoBehaviour
         this.spriteRenderer.color = hurtColor;
         yield return new WaitForSeconds(d);
         this.spriteRenderer.color = baseColor;
+
     }
     public virtual void Sufrir(float dmg)
     { // Sufrir daño causado por PROYECTILES (balas que usan el BalaScript).
@@ -253,10 +249,7 @@ public class EnemigoScript : MonoBehaviour
     {
         if (collision.gameObject.name == "Bala2") //el chorro de agua
         {
-           // TorretaScript2 nicho = collision.gameObject.transform.root.gameObject.GetComponent<TorretaScript2>();
-            //sufrirNichoDPS = nicho.dps;
-            //nichoCooldown = nicho.cooldown;
-            //StartCoroutine(sufrirNicho);
+            return; //(se maneja en BalaScript2)
         }
 
         else if (collision.gameObject.name == "Bala4") //el proyector
@@ -296,31 +289,6 @@ public class EnemigoScript : MonoBehaviour
             }
         }
     }
-    private void FixedUpdate()
-    {
-        //if (nichoTriggerStay)
-        //{
-        //    nichoTriggerStay = false;
-        //}
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        //this.spriteRenderer.color = baseColor;
-       // StopCoroutine(sufrirNicho);
-    }
-
-    //private IEnumerator SufrirNicho()
-    //{
-    //    if (isBoss && GetComponent<Boss>().killMe && EnemySpawner.ronda == 15)
-    //    {
-    //        StopCoroutine(sufrirNicho);
-    //    }
-    //    while (false != true)
-    //    {
-    //        Sufrir(sufrirNichoDPS);
-    //        yield return new WaitForSeconds(nichoCooldown);
-    //    }
-    //}
 
     public IEnumerator Stun(float daño, float tiempo)
     {
