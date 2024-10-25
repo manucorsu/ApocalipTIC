@@ -62,11 +62,12 @@ public class TorretaScript : MonoBehaviour
             {
                 lr.SetPosition(0, firingPoint.transform.position);
                 lr.SetPosition(1, target.transform.position);
-            } else
+            }
+            else
             {
                 lr.enabled = false;
             }
-        } 
+        }
 
         if (!CheckTargetRange())
         {
@@ -115,8 +116,8 @@ public class TorretaScript : MonoBehaviour
 
     private void FindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, rango, new Vector2(transform.position.x, transform.position.y), 0f, enemigos); 
-        
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, rango, new Vector2(transform.position.x, transform.position.y), 0f, enemigos);
+
 
         if (hits.Length > 0)
         {
@@ -130,7 +131,8 @@ public class TorretaScript : MonoBehaviour
                     lr.enabled = true;
                 }
             }
-        } else
+        }
+        else
         {
             if (lr != null)
             {
@@ -143,6 +145,8 @@ public class TorretaScript : MonoBehaviour
     {
         Boss boss = target.gameObject.GetComponent<Boss>();
         if (boss != null && boss.introDone && boss.canBeShot == false) return; //que no busque al jefe si no se le puede disparar (salvo durante la intro porque queda épico)
+        Ninja ninja = target.GetComponent<Ninja>();
+        if (ninja != null && ninja.Invisible) return;
         float angulo = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angulo + 90));
 

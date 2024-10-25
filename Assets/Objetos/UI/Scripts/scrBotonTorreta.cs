@@ -57,7 +57,7 @@ public class scrBotonTorreta : MonoBehaviour, IPointerEnterHandler, IPointerExit
         if (this.gameObject == GameObject.Find("btnProyector"))
         {
             txtTítuloTorreta.text = "Proyector";
-            txtDescTorreta.text = "Ciega a los enemigos frenándolos por un tiempo.";
+            txtDescTorreta.text = "Lanza un flash que frena enemigos y revela bots invisibles.";
             cuadroTorreta.SetActive(true);
             cuadroTorreta.GetComponent<RectTransform>().anchoredPosition = new Vector2(-140, -31);
         }

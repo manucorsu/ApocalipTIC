@@ -107,6 +107,10 @@ public class TorretaScript2 : MonoBehaviour
             {
                 if (boss.canBeShot == false && boss.introDone == true) return;
             } //que no busque al jefe si no se le puede disparar (salvo durante la intro porque queda épico)
+
+            Ninja ninja = target.GetComponent<Ninja>();
+            if (ninja != null && ninja.Invisible) return;
+
             float angulo = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angulo - 90));
 

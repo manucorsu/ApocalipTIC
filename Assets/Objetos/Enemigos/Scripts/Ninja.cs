@@ -27,33 +27,30 @@ public class Ninja : EnemigoScript
             case true:
                 canBeEaten = false;
                 canBeShot = false;
-                this.gameObject.tag = "Untagged";
-                this.gameObject.layer = 0;
                 break;
             case false:
                 canBeEaten = true;
                 canBeShot = true;
-                this.gameObject.tag = "enemigo";
-                this.gameObject.layer = 8;
                 break;
         }
         Invisible = status;
-        if(time > 0)
+        if (time > 0)
         {
             float elapsedTime = 0;
-            while(elapsedTime < time)
+            while (elapsedTime < time)
             {
                 elapsedTime += Time.deltaTime;
 
                 float newTransparency;
-                if(status == true) newTransparency = Mathf.Lerp(1, transparentAlpha, elapsedTime/time);
-                else newTransparency = Mathf.Lerp(transparentAlpha,1, elapsedTime/time);
+                if (status == true) newTransparency = Mathf.Lerp(1, transparentAlpha, elapsedTime / time);
+                else newTransparency = Mathf.Lerp(transparentAlpha, 1, elapsedTime / time);
 
                 ChangeSpriteRendererAlpha(newTransparency);
 
                 yield return null;
             }
         }
+        //PONER SFX ACÁ PONER SFX ACÁ PONER SFX ACÁ PONER SFX ACÁ
         if (status == true) ChangeSpriteRendererAlpha(transparentAlpha);
         else ChangeSpriteRendererAlpha(1);
     }

@@ -9,7 +9,7 @@ public class CustomRangeFloat : ISerializationCallbackReceiver
 {
     private int min;
     private int max;
-    [SerializeField]private float value;
+    [SerializeField] private float value;
 
     public float Value
     {
@@ -26,11 +26,11 @@ public class CustomRangeFloat : ISerializationCallbackReceiver
 
     public void OnBeforeSerialize()
     {
-        value = Mathf.Clamp(value, min, max);  
+        value = Mathf.Clamp(value, min, max);
     }
     public void OnAfterDeserialize()
     {
-        value = Mathf.Clamp(value,min,max);
+        value = Mathf.Clamp(value, min, max);
     }
 
     public static implicit operator float(CustomRangeFloat crf)

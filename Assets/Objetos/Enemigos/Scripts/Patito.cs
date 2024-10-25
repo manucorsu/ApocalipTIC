@@ -31,7 +31,6 @@ public class Patito : EnemigoScript
             this.canBeEaten = false;
             this.hpBar.SetActive(false);
         }
-        Debug.Log(this.spd);
         base.Update();
     }
 
