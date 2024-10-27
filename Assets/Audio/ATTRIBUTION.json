@@ -20,6 +20,16 @@
     "comment": null
   },
   {
+    "filenames": [ "SFX_NINJA_REVEAL.wav" ],
+    "sound_url": "https://freesound.org/people/GammaGool/sounds/735062/",
+    "sound_name": "Fast Warp In",
+    "author_url": "https://freesound.org/people/GammaGool/",
+    "author_name": "GammaGool",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "license_name": "Creative Commons 0",
+    "comment": null
+  },
+  {
     "filenames": [ "SFX_IMPR_SHOOT.wav" ],
     "sound_url": "https://freesound.org/people/musita182/sounds/261267/",
     "sound_name": "Soccer Kick.wav",
@@ -78,7 +88,7 @@
     "license_url": "http://creativecommons.org/licenses/by/3.0/",
     "license_name": "Attribution 3.0",
     "comment": null
-  }
+  },
   {
     "filenames": [ "SFX_TLAPICERAS_SHOOT.wav" ],
     "sound_url": "https://freesound.org/people/GO_s0unds123/sounds/730351/",

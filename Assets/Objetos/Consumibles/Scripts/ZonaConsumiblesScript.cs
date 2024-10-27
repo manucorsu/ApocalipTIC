@@ -37,7 +37,7 @@ public class ZonaConsumiblesScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isPaused = PauseScript.isPaused;
+        isPaused = PauseScript.Instance.IsPaused;
         consumibleSeleccionado = scrZona.consumibleSeleccionado;
     }
 

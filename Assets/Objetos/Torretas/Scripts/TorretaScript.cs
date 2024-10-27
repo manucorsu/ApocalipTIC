@@ -60,6 +60,12 @@ public class TorretaScript : MonoBehaviour
         {
             if (target != null)
             {
+                Ninja ninja = target.GetComponent<Ninja>();
+                Boss boss = target.GetComponent<Boss>();  
+                if ((ninja != null && ninja.Invisible) || (boss != null && boss.introDone && boss.canBeShot == true)) 
+                { 
+                    lr.enabled = false; return; 
+                }
                 lr.SetPosition(0, firingPoint.transform.position);
                 lr.SetPosition(1, target.transform.position);
             }

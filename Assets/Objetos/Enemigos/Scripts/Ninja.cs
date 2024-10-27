@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ninja : EnemigoScript
 {
     [SerializeField] private CustomRangeFloat transparentAlpha = new CustomRangeFloat(0, 1, 0);
+    [SerializeField] private AudioClip ninjaRevealSfx;
     public bool Invisible { get; private set; }
 
     protected override void Start()
@@ -36,6 +37,7 @@ public class Ninja : EnemigoScript
         Invisible = status;
         if (time > 0)
         {
+            SoundManager.instance.PlaySound(ninjaRevealSfx, 0.5f);
             float elapsedTime = 0;
             while (elapsedTime < time)
             {
@@ -50,7 +52,6 @@ public class Ninja : EnemigoScript
                 yield return null;
             }
         }
-        //PONER SFX ACÁ PONER SFX ACÁ PONER SFX ACÁ PONER SFX ACÁ
         if (status == true) ChangeSpriteRendererAlpha(transparentAlpha);
         else ChangeSpriteRendererAlpha(1);
     }
@@ -59,14 +60,5 @@ public class Ninja : EnemigoScript
     {
         CustomRangeFloat a = new CustomRangeFloat(0, 1, alpha);
         this.spriteRenderer.color = new Color(this.spriteRenderer.color.r, this.spriteRenderer.color.g, this.spriteRenderer.color.b, a);
-    }
-
-    protected override void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            SetInvis(!Invisible, 1);
-        }
-        base.Update();
     }
 }

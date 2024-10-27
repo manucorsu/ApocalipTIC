@@ -4,15 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
 public class PauseScript : MonoBehaviour
 {
-    public static bool canPause = false;
-    public static bool isPaused = false;
-    public static byte r1Bots = 6;
-    public static byte ronda = 1;
-    public static float dificultad = 0.75f;
+    public static PauseScript Instance { get; private set; }
+    public bool canPause = false;
+    public bool IsPaused { get; private set; } = false;
+    public byte botsRonda = 6; // equivalente a botsASpawnear de EnemySpawner.
 
     [SerializeField] private GameObject pauseMenu; //panel PauseMenu dentro del canvas PauseCanvas
     [SerializeField] private TMP_Text txtEnemiesKilled;
@@ -22,16 +20,14 @@ public class PauseScript : MonoBehaviour
     [SerializeField] private Button btnMusToggler;
     [SerializeField] private GameObject menuConfirmDialogBg;
     [SerializeField] private LevelChanger levelChanger;
-
-    private byte botsASpawnear = 0;
         
     private void Awake()
     {
-        canPause = false;
-        isPaused = false;
-        r1Bots = 6;
-        ronda = 1;
-        dificultad = 0.75f;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else Instance = this;
     }
     private void Start()
     {
@@ -53,10 +49,9 @@ public class PauseScript : MonoBehaviour
             }
             else btnMusToggler.image.sprite = offSpr;
         }
-        catch (NullReferenceException)
+        catch (System.NullReferenceException)
         {
-            Debug.LogError("NullReferenceExeception: Probablemente el singleton de SoundManager fue null.\n" +
-                        "NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
+            Debug.LogError("NullReferenceExeception: Probablemente el singleton de SoundManager fue null. NUNCA inicies Game directamente, siempre pasá por Inicio primero.");
             Application.Quit();
         }
     }
@@ -65,7 +60,7 @@ public class PauseScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SetPause(!isPaused);
+            SetPause(!IsPaused);
         }
     }
 
@@ -77,7 +72,7 @@ public class PauseScript : MonoBehaviour
     {
         if (canPause)
         {
-            isPaused = s;
+            IsPaused = s;
             SoundManager.instance.PlayUIClick();
             if (s == true)
             {
@@ -90,8 +85,7 @@ public class PauseScript : MonoBehaviour
                 }
                 else
                 {
-                    botsASpawnear = EnemySpawner.EnemyFormula(r1Bots, ronda, dificultad);
-                    int enemigosRestantes = botsASpawnear - EnemySpawner.botsEliminadosRonda;
+                    int enemigosRestantes = botsRonda - EnemySpawner.botsEliminadosRonda;
                     txtEnemigosRestantes.text = $"{enemigosRestantes} más";
                 }
                 Time.timeScale = 0;

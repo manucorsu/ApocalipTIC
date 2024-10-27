@@ -703,7 +703,7 @@ public class scrBotones : MonoBehaviour
                 if (EnemySpawner.ronda < 5) flecha.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
-        PauseScript.canPause = true;
+        PauseScript.Instance.canPause = true;
         try { SoundManager.instance.PlayUIClick(); }
         catch (NullReferenceException)
         {

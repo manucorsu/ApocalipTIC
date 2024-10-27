@@ -28,7 +28,7 @@ public class ConstruirScript : MonoBehaviour
 
     void Update()
     {
-        isPaused = PauseScript.isPaused;
+        isPaused = PauseScript.Instance.IsPaused;
 
 
     }

@@ -32,11 +32,11 @@ public class SoundManager : MonoBehaviour
         if(volume < 0 || volume > 1)
         {
             Application.Quit();
-            throw new System.ArgumentOutOfRangeException("volume", "Volume debe ser un float entre 0 y 1 porque Unity.");
+            throw new System.ArgumentOutOfRangeException("volume", "volume debe ser un float entre 0 y 1 porque Unity.");
         }
         if (sfxOn && clip != null)
         {
-            sfxPlayer.volume = volume -0.15f;
+            sfxPlayer.volume = volume;
             sfxPlayer.PlayOneShot(clip);
         }
     }
@@ -79,9 +79,11 @@ public class SoundManager : MonoBehaviour
         // devuelve el estado de sfxOn en [0]
         // y el estado de musOn en [1]
     {
-        Dictionary<string, bool> output = new Dictionary<string, bool>();
-        output.Add("sfxOn", sfxOn);
-        output.Add("musOn", musOn);
+        Dictionary<string, bool> output = new Dictionary<string, bool>
+        {
+            { "sfxOn", sfxOn },
+            { "musOn", musOn }
+        };
         return output;
     }
 }

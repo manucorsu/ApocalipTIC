@@ -114,7 +114,7 @@ public class TorretaScript3 : MonoBehaviour
             else pulpo.MorirTacho();
 
             canEat = false;
-            SoundManager.instance.PlaySound(tachoMasticarSfx, 0.8f);
+            SoundManager.instance.PlaySound(tachoMasticarSfx, 1f);
 
             
 

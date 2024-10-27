@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("Sistema de rondas")]
     [SerializeField] private TMP_Text txtRonda;
     [SerializeField] private GameObject btnIniciarRonda; // No sé por qué no anda .enabled si es Button así que voy a usar SetActive 🤷
-    [SerializeField] private float dificultad = 0.75f; //scaler de dificultad
+    [SerializeField] private CustomRangeFloat dificultad = new CustomRangeFloat(0, 1.114f, 1); //scaler de dificultad
     [SerializeField] private byte r1Bots = 6; //bots de la ronda 1, usados de base para todo el resto de las rondas
     [SerializeField] private float bps = 0.5f; //bots por segundo
     private float tiempoDesdeUltimoSpawn;
@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Image Oscuro1;
     [SerializeField] private Image Oscuro2;
     public GameObject[] flechas;
-
+    private Transform lastLoc;
     void Start()
     {
         ToggleSpawning(false);
@@ -50,36 +50,32 @@ public class EnemySpawner : MonoBehaviour
         botsASpawnear = 0;
         botsEliminados = 0;
         botsEliminadosRonda = 0;
-        PauseScript.r1Bots = r1Bots;
-        PauseScript.ronda = ronda;
-        PauseScript.dificultad = dificultad;
     }
 
     void Update()
     {
-#if UNITY_EDITOR
-        if (!spawnear)
+        if (MessageBox.Instance.CheatsEnabled && !spawnear)
         {
             if (Input.GetKeyDown(KeyCode.Alpha0))
             {
                 ronda--;
                 if (ronda < 1) ronda = 1;
                 txtRonda.text = $"override ronda {ronda}";
+                PauseScript.Instance.botsRonda = EnemyFormula();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 ronda++;
                 if (ronda > 30) ronda = 30;
                 txtRonda.text = $"override ronda {ronda}";
+                PauseScript.Instance.botsRonda = EnemyFormula();
             }
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 ConstruirScriptGeneral construirscr = GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>();
-                construirscr.plataActual += 10000;
-                txtRonda.text = "Te regalé 10 mil pesos. De nada";
+                construirscr.plataActual += 1000;
             }
         }
-#endif
         if (spawnear)
         {
             tiempoDesdeUltimoSpawn += Time.deltaTime;
@@ -93,6 +89,7 @@ public class EnemySpawner : MonoBehaviour
         if (GetComponent<scrBotones>().pasoTutorial == 11) return;
         if (spawnear == false)
         {
+            SoundManager.instance.PlayUIClick();
             Image cuadroMejora = GameObject.Find("cuadroMejora").GetComponent<Image>();
 
             cuadroMejora.rectTransform.position = new Vector2(100000000, 100000000); //jaja
@@ -109,7 +106,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 isBossFight = false;
             }
-            botsASpawnear = EnemyFormula(r1Bots, ronda, dificultad);
+            botsASpawnear = EnemyFormula();
             ToggleSpawning(true);
             Image btnPlayImage = btnIniciarRonda.GetComponent<Image>();
             btnPlayImage.sprite = btnPlaySprite2;
@@ -135,10 +132,19 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public static byte EnemyFormula(byte r1, byte x, float d)
+    private byte EnemyFormula()
     //https://www.desmos.com/calculator/hxfiurzdve
     {
-        return (byte)Mathf.Round(r1 * Mathf.Pow(x, d));
+        if(ronda < 1 || ronda > 30)
+        {
+            throw new System.ArgumentOutOfRangeException("ronda", "ronda debe ser un número entre 1 y 30 incl.");
+        }
+        ulong res = (ulong)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
+        if(res < 1 || res > 255)
+        {
+            throw new System.ArgumentOutOfRangeException("r1 y/o d","r1 y/o d son muy grandes o muy chicos porque la cantidad de bots dio negativa o mayor a 255.");
+        }
+        else return (byte)res;
     }
 
     public static void PrintArr(string[] arr, string arrName = "")
@@ -169,19 +175,23 @@ public class EnemySpawner : MonoBehaviour
         {
             ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
             loc = spawners[ris].transform;
-            if (prefabElegido.GetComponent<EnemigoScript>().isLarge)
+            if (loc != lastLoc)
             {
-                if (loc.gameObject.name == "A5" || loc.gameObject.name == "A8" || loc.gameObject.name[1] == 'L')
+                if (prefabElegido.GetComponent<EnemigoScript>().isLarge)
                 {
-                    break;
+                    if (loc.gameObject.name == "A5" || loc.gameObject.name == "A8" || loc.gameObject.name[1] == 'L')
+                    {
+                        break;
+                    }
                 }
+                else if (loc.name[0] == 'A')
+                {
+                    if (ronda >= 5) break;
+                }
+                else break;
             }
-            else if (loc.name[0] == 'A')
-            {
-                if (ronda >= 5) break;
-            }
-            else break;
         }
+        lastLoc = loc;
 
         GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
 
@@ -197,7 +207,8 @@ public class EnemySpawner : MonoBehaviour
         botsVivos.Clear();
         if (isBossFight) boss = null;
         ronda++;
-        PauseScript.ronda = ronda;
+
+        PauseScript.Instance.botsRonda = EnemyFormula();
         botsEliminadosRonda = 0;
         ToggleSpawning(false);
         tiempoDesdeUltimoSpawn = 0;
@@ -226,6 +237,17 @@ public class EnemySpawner : MonoBehaviour
         {
             Image imagen = boton.GetComponent<Image>();
             imagen.sprite = GetComponent<scrBotones>().btTorretaSprite1;
+        }
+
+        switch (ronda)
+        {
+            case 15:
+                MessageBox.Instance.Show("Cuidado...",
+                    "Felicitaciones por llegar a la Ronda 15. Como tal vez te esperabas porque llegaste a la mitad del juego, en esta ronda tendrás tu primer encuentro con el <b><color=red>Jefe</color></b>. Mucha suerte.");
+                break;
+            case 30:
+                MessageBox.Instance.Show("(15 * 2) = 30", "El <b><color=red>Jefe</color></b> ha vuelto, y está el doble de enojado que antes. Si lográs derrotarlo, por fin podrás poner un fin a la invasión y salvar el L4. Mucha suerte.");
+                break;
         }
     }
 

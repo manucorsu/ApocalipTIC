@@ -7,8 +7,8 @@ using UnityEngine;
 [System.Serializable]
 public class CustomRangeFloat : ISerializationCallbackReceiver
 {
-    private int min;
-    private int max;
+    private float min;
+    private float max;
     [SerializeField] private float value;
 
     public float Value
@@ -17,7 +17,7 @@ public class CustomRangeFloat : ISerializationCallbackReceiver
         set => this.value = Mathf.Clamp(value, min, max);
     }
 
-    public CustomRangeFloat(int minIncluive, int maxIncluive, float initialValue)
+    public CustomRangeFloat(float minIncluive, float maxIncluive, float initialValue)
     {
         this.min = minIncluive;
         this.max = maxIncluive;
