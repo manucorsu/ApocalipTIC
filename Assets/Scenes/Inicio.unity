@@ -1322,6 +1322,9 @@ MonoBehaviour:
   uiClick: {fileID: 8300000, guid: cd557dc5faf3fd241a6f0c2d27c0cba0, type: 3}
   onSpr: {fileID: 21300000, guid: f30cbe27ac9962449824d14468aa301c, type: 3}
   offSpr: {fileID: 21300004, guid: f30cbe27ac9962449824d14468aa301c, type: 3}
+  isChorroSound: 0
+  audioSource: {fileID: 0}
+  temaPrincipal: {fileID: 8300000, guid: de0edc05b9340b043951f1fad9aeff2c, type: 3}
 --- !u!4 &1321572929
 Transform:
   m_ObjectHideFlags: 0
@@ -1347,11 +1350,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: de0edc05b9340b043951f1fad9aeff2c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

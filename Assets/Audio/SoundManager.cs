@@ -13,6 +13,8 @@ public class SoundManager : MonoBehaviour
     public Sprite onSpr;
     public Sprite offSpr;
     public bool isChorroSound = false;
+    public AudioSource audioSource;
+    public AudioClip temaPrincipal;
 
     private void Awake()
     {
@@ -23,6 +25,8 @@ public class SoundManager : MonoBehaviour
         else instance = this;
 
         DontDestroyOnLoad(this);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void PlayUIClick() => PlaySound(uiClick);
@@ -38,6 +42,20 @@ public class SoundManager : MonoBehaviour
         {
             sfxPlayer.volume = volume;
             sfxPlayer.PlayOneShot(clip);
+        }
+    }
+
+    public void PlayMus(AudioClip clip, float volume = 1) { 
+        
+        if (volume < 0 || volume > 1)
+        {
+            Application.Quit();
+            throw new System.ArgumentOutOfRangeException("volume", "volume debe ser un float entre 0 y 1 porque Unity.");
+        }
+        if (musOn && clip != null)
+        {
+            audioSource.volume = volume;
+            audioSource.PlayOneShot(clip);
         }
     }
 
@@ -61,6 +79,15 @@ public class SoundManager : MonoBehaviour
     public void ToggleMus(Image callerButtonImg)
     {
         musOn = !musOn;
+
+        if (musOn)
+        {
+            audioSource.volume = 1;
+        } else
+        {
+            audioSource.volume = 0;
+        }
+
         if(callerButtonImg.sprite == onSpr)
         {
             callerButtonImg.sprite = offSpr;
