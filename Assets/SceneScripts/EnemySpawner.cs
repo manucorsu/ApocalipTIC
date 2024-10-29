@@ -239,16 +239,16 @@ public class EnemySpawner : MonoBehaviour
             imagen.sprite = GetComponent<scrBotones>().btTorretaSprite1;
         }
 
-        switch (ronda)
-        {
-            case 15:
-                MessageBox.Instance.Show("Cuidado...",
-                    "Felicitaciones por llegar a la Ronda 15. Como tal vez te esperabas porque llegaste a la mitad del juego, en esta ronda tendrás tu primer encuentro con el <b><color=red>Jefe</color></b>. Mucha suerte.");
-                break;
-            case 30:
-                MessageBox.Instance.Show("(15 * 2) = 30", "El <b><color=red>Jefe</color></b> ha vuelto, y está el doble de enojado que antes. Si lográs derrotarlo, por fin podrás poner un fin a la invasión y salvar el L4. Mucha suerte.");
-                break;
-        }
+        //switch (ronda)
+        //{
+        //    case 15:
+        //        MessageBox.Instance.Show("Cuidado...",
+        //            "Felicitaciones por llegar a la Ronda 15. Como tal vez te esperabas porque llegaste a la mitad del juego, en esta ronda tendrás tu primer encuentro con el <b><color=red>Jefe</color></b>. Mucha suerte.");
+        //        break;
+        //    case 30:
+        //        MessageBox.Instance.Show("(15 * 2) = 30", "El <b><color=red>Jefe</color></b> ha vuelto, y está el doble de enojado que antes. Si lográs derrotarlo, por fin podrás poner un fin a la invasión y salvar el L4. Mucha suerte.");
+        //        break;
+        //}
     }
 
     private void ToggleSpawning(bool t)

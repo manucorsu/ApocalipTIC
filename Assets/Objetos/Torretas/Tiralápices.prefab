@@ -199,9 +199,9 @@ MonoBehaviour:
   puntaRaycast: {fileID: 0}
   rango: 3.35
   rotationSpd: 1000
-  bps: 1
+  bps: 0.85
   precio: 100
-  dmg: 25
+  dmg: 20
   nivel1: 1
   nivel2: 1
   nivel3: 1
