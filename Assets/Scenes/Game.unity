@@ -1876,7 +1876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cuadroTorreta: {fileID: 936862856}
-  precio: 250
+  precio: 200
   "txtT\xEDtuloTorreta": {fileID: 1826157950}
   txtDescTorreta: {fileID: 693348763}
 --- !u!1 &104754076
@@ -27582,7 +27582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cuadroTorreta: {fileID: 936862856}
-  precio: 200
+  precio: 175
   "txtT\xEDtuloTorreta": {fileID: 1826157950}
   txtDescTorreta: {fileID: 693348763}
 --- !u!1 &1290536385
@@ -31030,7 +31030,7 @@ PrefabInstance:
     - target: {fileID: 3186455914960899774, guid: 5318264b66631f14eb54560412c13432,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3186455914960899774, guid: 5318264b66631f14eb54560412c13432,
         type: 3}
@@ -31050,7 +31050,14 @@ PrefabInstance:
     - target: {fileID: 3186455914960899774, guid: 5318264b66631f14eb54560412c13432,
         type: 3}
       propertyPath: m_text
-      value: $200
+      value: '$175
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186455914960899774, guid: 5318264b66631f14eb54560412c13432,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5318264b66631f14eb54560412c13432, type: 3}
@@ -37872,7 +37879,7 @@ PrefabInstance:
     - target: {fileID: 3186455914960899774, guid: 5318264b66631f14eb54560412c13432,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3186455914960899774, guid: 5318264b66631f14eb54560412c13432,
         type: 3}
@@ -37882,7 +37889,7 @@ PrefabInstance:
     - target: {fileID: 3186455914960899774, guid: 5318264b66631f14eb54560412c13432,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3186455914960899774, guid: 5318264b66631f14eb54560412c13432,
         type: 3}
@@ -37892,14 +37899,15 @@ PrefabInstance:
     - target: {fileID: 3186455914960899774, guid: 5318264b66631f14eb54560412c13432,
         type: 3}
       propertyPath: m_text
-      value: '$250
+      value: '$200
+
 
 '
       objectReference: {fileID: 0}
     - target: {fileID: 3186455914960899774, guid: 5318264b66631f14eb54560412c13432,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5318264b66631f14eb54560412c13432, type: 3}

@@ -64,7 +64,7 @@ MonoBehaviour:
   spdSave: 0
   slowSpd: 0
   aceiteSpd: 0
-  plata: 20
+  plata: 15
   canBeEaten: 1
   canBeShot: 1
   isPegamentoed: 0

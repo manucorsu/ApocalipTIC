@@ -304,7 +304,7 @@ MonoBehaviour:
   cooldown: 3
   dps: 5
   stunTime: 0.5
-  precio: 250
+  precio: 200
   precioMejora: 300
   nivel1: 1
   nivel2: 1
