@@ -75,7 +75,7 @@ MonoBehaviour:
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
   transparentAlpha:
-    value: 0
+    value: 0.2
   ninjaRevealSfx: {fileID: 8300000, guid: 0bd775dd365032548ba9071c863baaa3, type: 3}
 --- !u!212 &3915830564777598510
 SpriteRenderer:

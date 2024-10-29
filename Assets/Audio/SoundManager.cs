@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +13,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip uiClick;
     public Sprite onSpr;
     public Sprite offSpr;
-    public bool isChorroSound = false;
     public AudioSource audioSource;
     public AudioClip temaPrincipal;
+    private HashSet<AudioSource> loopers;
 
     private void Awake()
     {
@@ -45,6 +46,50 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlaySound(AudioSource player, AudioClip clip, float volume = 1)
+    {
+        if (volume < 0 || volume > 1)
+        {
+            Application.Quit();
+            throw new System.ArgumentOutOfRangeException("volume", "volume debe ser un float entre 0 y 1 porque Unity.");
+        }
+        if (sfxOn)
+        {
+            if (clip != null)
+            {
+                player.volume = volume;
+                player.PlayOneShot(clip);
+            }
+            else Debug.LogWarning("El clip fue null. No se reprodujo nada.");
+        }
+    }
+
+    public void LoopSound(AudioSource player, AudioClip clip, float volume = 1)
+    {
+        if (volume < 0 || volume > 1)
+        {
+            Application.Quit();
+            throw new System.ArgumentOutOfRangeException("volume", "volume debe ser un float entre 0 y 1 porque Unity.");
+        }
+        if (sfxOn)
+        {
+            if (clip != null)
+            {
+                loopers.Add(player);
+                player.volume = volume;
+                player.loop = true;
+                player.clip = clip;
+            }
+            else Debug.LogWarning("El clip fue null. No se loopeó nada.");
+        }
+    }
+
+    public void StopSoundLoop(AudioSource player)
+    {
+        loopers.Remove(player);
+        player.Stop();
+    }
+
     public void PlayMus(AudioClip clip, float volume = 1) { 
         
         if (volume < 0 || volume > 1)
@@ -62,6 +107,11 @@ public class SoundManager : MonoBehaviour
     public void ToggleSFX(Image callerButtonImg)
     {
         sfxOn = !sfxOn;
+        if(sfxOn == false)
+        {
+            List<AudioSource> loopersClone = loopers.ToList();
+            foreach (AudioSource looper in loopersClone) looper?.Stop();
+        }
         if (callerButtonImg.sprite == onSpr)
         {
             callerButtonImg.sprite = offSpr;

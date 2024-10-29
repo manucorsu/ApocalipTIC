@@ -17,18 +17,6 @@ public class BombuchaScript : MonoBehaviour
 
     [SerializeField] private AudioClip bbchPopSfx;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void SetTarget(Transform targetSet)
     {
         target = targetSet;
@@ -51,7 +39,7 @@ public class BombuchaScript : MonoBehaviour
         if (collision.gameObject.tag == "enemigo")
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
-            SoundManager.instance.PlaySound(bbchPopSfx, 0.4f);
+            SoundManager.instance.PlaySound(bbchPopSfx, 0.8f);
             Destroy(this.gameObject);
         }
     }
