@@ -134,6 +134,12 @@ public class TorretaScript : MonoBehaviour
                 //RaycastHit2D[] hits2 = Physics2D.LinecastAll(punta.position, puntaRaycast.position, enemigos);
                 if (hits.Length > 0)
                 {
+                    Ninja ninja = target.gameObject.GetComponent<Ninja>();
+                    Boss boss = target.gameObject.GetComponent<Boss>();
+                    if ((ninja != null && ninja.Invisible) || (boss != null && boss.canBeShot == false && boss.introDone))
+                    {
+                        return;
+                    }
                     lr.enabled = true;
                 }
             }

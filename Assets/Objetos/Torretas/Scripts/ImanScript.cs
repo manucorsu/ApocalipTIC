@@ -11,12 +11,6 @@ public class ImanScript : TorretaScript
     public GameObject tuerca;
     public int ganancia = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         if (target == null)
@@ -68,9 +62,6 @@ public class ImanScript : TorretaScript
         }
     }
 
-
-
-
     private void FindTarget()
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, rango, new Vector2(transform.position.x, transform.position.y), 0f, enemigos);
@@ -98,11 +89,11 @@ public class ImanScript : TorretaScript
         return Vector2.Distance(target.position, transform.position) <= rango;
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-#if UNITY_EDITOR
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, rango);
-#endif  
     }
+#endif
 }
