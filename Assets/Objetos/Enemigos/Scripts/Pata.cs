@@ -9,6 +9,7 @@ public class Pata : EnemigoScript
 
     protected override void Start()
     {
+        Debug.Log(colorExplosion.a);
         if (patitos.Length == 0)
         {
             throw new System.Exception("El array de patitos está vacío.");
@@ -40,6 +41,7 @@ public class Pata : EnemigoScript
 
     public override void Morir()
     {
+        Debug.Log(colorExplosion.a);
         foreach (GameObject patito in patitos)
         {
             if(patito != null) patito.GetComponent<Patito>().Liberar();

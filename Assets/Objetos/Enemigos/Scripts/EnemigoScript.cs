@@ -292,6 +292,8 @@ public class EnemigoScript : MonoBehaviour
 
     public IEnumerator Stun(float daño, float tiempo)
     {
+        Ninja ninja = this.gameObject.GetComponent<Ninja>(); //overridear corrutinas es un quilombo
+        if (ninja != null && ninja.Invisible) ninja.SetInvis(false, 0.5f);
         hp -= daño;
         if (hp <= 0)
         {

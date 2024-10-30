@@ -7,6 +7,15 @@ public class Ninja : EnemigoScript
     [SerializeField] private CustomRangeFloat transparentAlpha = new CustomRangeFloat(0, 1, 0);
     [SerializeField] private AudioClip ninjaRevealSfx;
     public bool Invisible { get; private set; }
+    
+    private float baseSpd;
+    private float invisSpd;
+    protected override void AsignarTodo()
+    {
+        base.AsignarTodo();
+        this.baseSpd = spd;
+        this.invisSpd = spd / 2.5f;
+    }
 
     protected override void Start()
     {
@@ -28,10 +37,12 @@ public class Ninja : EnemigoScript
             case true:
                 canBeEaten = false;
                 canBeShot = false;
+                this.spd = invisSpd;
                 break;
             case false:
                 canBeEaten = true;
                 canBeShot = true;
+                this.spd = baseSpd;
                 break;
         }
         Invisible = status;
@@ -56,7 +67,7 @@ public class Ninja : EnemigoScript
         else ChangeSpriteRendererAlpha(1);
     }
 
-    public void ChangeSpriteRendererAlpha(float alpha)
+    private void ChangeSpriteRendererAlpha(float alpha)
     {
         CustomRangeFloat a = new CustomRangeFloat(0, 1, alpha);
         this.spriteRenderer.color = new Color(this.spriteRenderer.color.r, this.spriteRenderer.color.g, this.spriteRenderer.color.b, a);
