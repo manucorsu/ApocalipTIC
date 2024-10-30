@@ -22,13 +22,13 @@ public class Corazones : MonoBehaviour
     public void LoseLife()
     {
         EnemySpawner.vidas--;
-#if !UNITY_EDITOR
-        if(EnemySpawner.vidas == 0)
-            SceneManager.LoadScene("GameOver");
-#endif
-        for(byte i = 0; i < corazones.Length; i++)
+        if (MessageBox.Instance.CheatsEnabled == false && EnemySpawner.vidas == 0)
         {
-            if(statusCorazones[i] == false)
+            SceneManager.LoadScene("GameOver");
+        }
+        for (byte i = 0; i < corazones.Length; i++)
+        {
+            if (statusCorazones[i] == false)
             {
                 corazones[i].GetComponent<Animator>().SetTrigger("romper");
                 statusCorazones[i] = true;

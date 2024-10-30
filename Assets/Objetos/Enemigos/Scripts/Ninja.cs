@@ -72,4 +72,10 @@ public class Ninja : EnemigoScript
         CustomRangeFloat a = new CustomRangeFloat(0, 1, alpha);
         this.spriteRenderer.color = new Color(this.spriteRenderer.color.r, this.spriteRenderer.color.g, this.spriteRenderer.color.b, a);
     }
+
+    public override void Sufrir(float dmg)
+    {
+        if (Invisible) return;
+        else base.Sufrir(dmg);
+    }
 }

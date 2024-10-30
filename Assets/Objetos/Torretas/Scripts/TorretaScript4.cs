@@ -89,11 +89,15 @@ public class TorretaScript4 : MonoBehaviour
                 foreach (RaycastHit2D enemigos in hits2)
                 {
                     EnemigoScript enemigoScript = target.gameObject.GetComponent<EnemigoScript>();
-                    if (enemigoScript != null && enemigoScript.canBeShot)
+                    if(enemigoScript != null)
                     {
-                        if (enemigos.transform == target.transform && enemigoScript.spd > 0)
+                        Ninja ninja = target.gameObject.GetComponent<Ninja>();
+                        if((enemigoScript.canBeShot) ||(ninja != null && ninja.Invisible))
                         {
-                            StartCoroutine(Atacar());
+                            if (enemigos.transform == target.transform && enemigoScript.spd > 0)
+                            {
+                                StartCoroutine(Atacar());
+                            }
                         }
                     }
                 }

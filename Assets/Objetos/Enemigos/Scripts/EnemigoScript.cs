@@ -51,7 +51,7 @@ public class EnemigoScript : MonoBehaviour
     [HideInInspector] public byte wi = 0; //waypoint index
     [HideInInspector] public bool siguiendo = false; //ver final de V3ify()
     [HideInInspector] public Vector3 currentWaypoint;
-    private bool reachedGoal = false;
+    [SerializeField] private bool reachedGoal = false;
     #endregion
 
     protected HPBar hpBar;
