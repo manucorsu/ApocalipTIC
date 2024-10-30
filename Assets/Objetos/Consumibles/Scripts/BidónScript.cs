@@ -35,6 +35,7 @@ public class BidónScript : MonoBehaviour
             anim = 1;
             animator.SetFloat("anim", 1);
             collider.enabled = true;
+            transform.localScale = new Vector2(1.5f, 1.5f);
             return;
         }
 

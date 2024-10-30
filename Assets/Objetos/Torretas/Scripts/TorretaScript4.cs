@@ -47,7 +47,7 @@ public class TorretaScript4 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isIdle)
+        if (isIdle && bala.activeInHierarchy == false)
         {
             if (Quaternion.Angle(punta.rotation, Quaternion.Euler(new Vector3(0f, 0f, idleRotationPoint))) < 0.1f)
             {

@@ -107,11 +107,11 @@ public class SoundManager : MonoBehaviour
     public void ToggleSFX(Image callerButtonImg)
     {
         sfxOn = !sfxOn;
-        if(sfxOn == false)
-        {
-            List<AudioSource> loopersClone = loopers.ToList();
-            foreach (AudioSource looper in loopersClone) looper?.Stop();
-        }
+        //if(sfxOn == false)
+        //{
+        //    List<AudioSource> loopersClone = loopers.ToList();
+        //    foreach (AudioSource looper in loopersClone) looper?.Stop();
+        //}
         if (callerButtonImg.sprite == onSpr)
         {
             callerButtonImg.sprite = offSpr;
