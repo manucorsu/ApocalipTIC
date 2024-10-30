@@ -16,21 +16,9 @@ public class BidónScript : MonoBehaviour
     public float anim;
     public float precio;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AnimationEnd()
     {
-        if(anim == 0)
+        if (anim == 0)
         {
             anim = 1;
             animator.SetFloat("anim", 1);
@@ -47,10 +35,15 @@ public class BidónScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "enemigo")
-        {         
-           EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();
-            enemigoScr.Sufrir(daño);
+        EnemigoScript enemigo = collision.gameObject.GetComponent<EnemigoScript>();
+        if (enemigo != null)
+        {
+            Ninja ninja = collision.gameObject.GetComponent<Ninja>();
+            if (enemigo.canBeShot || (ninja != null && ninja.Invisible))
+            {
+                if (ninja != null && ninja.Invisible) ninja.SetInvis(false, 0.5f);
+                enemigo.Sufrir(daño);
+            }
         }
     }
 }

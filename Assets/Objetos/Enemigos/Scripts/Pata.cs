@@ -9,7 +9,6 @@ public class Pata : EnemigoScript
 
     protected override void Start()
     {
-        Debug.Log(colorExplosion.a);
         if (patitos.Length == 0)
         {
             throw new System.Exception("El array de patitos está vacío.");
@@ -41,11 +40,16 @@ public class Pata : EnemigoScript
 
     public override void Morir()
     {
-        Debug.Log(colorExplosion.a);
-        foreach (GameObject patito in patitos)
-        {
-            if(patito != null) patito.GetComponent<Patito>().Liberar();
-        }
+        foreach (GameObject patito in patitos) patito?.GetComponent<Patito>().Liberar();
         base.Morir();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        if(colorExplosion.a != 1)
+        {
+            throw new System.Exception("El alpha de colorExplosion DEBE SER 1.");
+        }
     }
 }

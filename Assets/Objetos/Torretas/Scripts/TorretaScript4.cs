@@ -148,12 +148,12 @@ public class TorretaScript4 : MonoBehaviour
         canshoot = true;
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-#if UNITY_EDITOR
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, rango);
         Handles.DrawLine(transform.position, puntaRecta.position);
-#endif
     }
+#endif
 }

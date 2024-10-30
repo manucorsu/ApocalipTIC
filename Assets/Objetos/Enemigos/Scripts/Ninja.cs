@@ -9,12 +9,11 @@ public class Ninja : EnemigoScript
     public bool Invisible { get; private set; }
     
     private float baseSpd;
-    private float invisSpd;
+
     protected override void AsignarTodo()
     {
         base.AsignarTodo();
         this.baseSpd = spd;
-        this.invisSpd = spd / 2.5f;
     }
 
     protected override void Start()
@@ -37,12 +36,10 @@ public class Ninja : EnemigoScript
             case true:
                 canBeEaten = false;
                 canBeShot = false;
-                this.spd = invisSpd;
                 break;
             case false:
                 canBeEaten = true;
                 canBeShot = true;
-                this.spd = baseSpd;
                 break;
         }
         Invisible = status;

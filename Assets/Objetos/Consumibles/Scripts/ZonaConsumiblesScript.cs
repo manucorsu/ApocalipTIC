@@ -24,7 +24,6 @@ public class ZonaConsumiblesScript : MonoBehaviour
     private bool isPaused;
     private bool isPalomas = false;
 
-    // Start is called before the first frame update
     void Awake()
     {
         sceneScripts = GameObject.Find("SCENESCRIPTS");
@@ -34,7 +33,6 @@ public class ZonaConsumiblesScript : MonoBehaviour
         palomas = GameObject.Find("Palomas").GetComponent<ParticleSystem>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         isPaused = PauseScript.Instance.IsPaused;
@@ -90,12 +88,14 @@ public class ZonaConsumiblesScript : MonoBehaviour
 
         for (int i = 0; i < 10; i++)
         {
-            GameObject[] enemigos = GameObject.FindGameObjectsWithTag("enemigo");
+            GameObject[] enemigos = EnemySpawner.botsVivos.ToArray();
             foreach (GameObject enemigo in enemigos)
             {
                 if (enemigo != null)
                 {
                     EnemigoScript scrEnemigo = enemigo.GetComponent<EnemigoScript>();
+                    Ninja ninja = enemigo.GetComponent<Ninja>();
+                    if (ninja != null && ninja.Invisible) ninja.SetInvis(false, 0.5f);
                     scrEnemigo.Sufrir(10);
                 }
             }
