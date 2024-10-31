@@ -312,10 +312,13 @@ public class EnemigoScript : MonoBehaviour
     public virtual void Morir()
     {
         this.spd = 0;
-        if (!isBoss && canBeEaten)
+        if (!isBoss)
         {
-            GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
-            explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
+            if (canBeEaten || this.gameObject.GetComponent<Pata>() != null)
+            {
+                GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
+                explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
+            }
         }
         EnemySpawner.botsEliminados++;
         if (!EnemySpawner.isBossFight) EnemySpawner.botsEliminadosRonda++;
