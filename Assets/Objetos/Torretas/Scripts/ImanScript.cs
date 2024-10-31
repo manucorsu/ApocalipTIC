@@ -25,7 +25,9 @@ public class ImanScript : TorretaScript
         }
         else
         {
+            Ninja ninja = target.gameObject.GetComponent<Ninja>();
             if (target.GetComponent<EnemigoScript>().isBoss) return;
+            else if (ninja != null && ninja.Invisible) return;
             else
             {
                 animator.SetFloat("anim", 1);

@@ -52,7 +52,7 @@ MonoBehaviour:
   hurtColor: {r: 0.8509804, g: 0.21176471, b: 0.21176471, a: 1}
   explosionMuerte: {fileID: 6545438287314071777, guid: 295ede5d751d3eb489416efcc1b3ce27,
     type: 3}
-  colorExplosion: {r: 0.23921569, g: 0.4862745, b: 0.5372549, a: 1}
+  colorExplosion: {r: 0.3137255, g: 0.2, b: 0.45490196, a: 1}
   currentMan: 0
   solidWhite: {fileID: 2100000, guid: 73fa6ee842c7da24ea3b26f170eaeac5, type: 2}
   isLarge: 0
@@ -74,8 +74,9 @@ MonoBehaviour:
   wi: 0
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
+  reachedGoal: 0
   transparentAlpha:
-    value: 0.17
+    value: 0.1
   ninjaRevealSfx: {fileID: 8300000, guid: 0bd775dd365032548ba9071c863baaa3, type: 3}
 --- !u!212 &3915830564777598510
 SpriteRenderer:

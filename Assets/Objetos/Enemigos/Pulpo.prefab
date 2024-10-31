@@ -69,11 +69,13 @@ MonoBehaviour:
   canBeShot: 1
   isPegamentoed: 0
   isAceitado: 0
+  isSpawnableByJefe: 1
   spName: 
   v3Camino: []
   wi: 0
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
+  reachedGoal: 0
   aceitePfb: {fileID: 199929408812350690, guid: 8df9d79cc98bff44f98fddae24e03394,
     type: 3}
   aceite: {fileID: 0}

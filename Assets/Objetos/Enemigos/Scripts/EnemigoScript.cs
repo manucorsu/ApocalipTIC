@@ -39,6 +39,13 @@ public class EnemigoScript : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     public bool isPegamentoed = false;
     public bool isAceitado = false;
+
+    [SerializeField] private bool isSpawnableByJefe;
+    public bool IsSpawnableByJefe
+    {
+        get => isSpawnableByJefe;
+        private set => isSpawnableByJefe = value;
+    }
     #endregion
 
     protected ConstruirScriptGeneral construirscr; // ni idea fue Marcos
@@ -294,11 +301,8 @@ public class EnemigoScript : MonoBehaviour
     {
         Ninja ninja = this.gameObject.GetComponent<Ninja>(); //overridear corrutinas es un quilombo
         if (ninja != null && ninja.Invisible) ninja.SetInvis(false, 0.5f);
+        Sufrir(daño);
         hp -= daño;
-        if (hp <= 0)
-        {
-            Morir();
-        }
         this.spd = 0;
         yield return new WaitForSeconds(tiempo);
         this.spd = spdSave;

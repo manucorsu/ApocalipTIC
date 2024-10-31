@@ -69,11 +69,13 @@ MonoBehaviour:
   canBeShot: 1
   isPegamentoed: 0
   isAceitado: 0
+  isSpawnableByJefe: 1
   spName: 
   v3Camino: []
   wi: 0
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
+  reachedGoal: 0
 --- !u!50 &1679361264945231958
 Rigidbody2D:
   serializedVersion: 4

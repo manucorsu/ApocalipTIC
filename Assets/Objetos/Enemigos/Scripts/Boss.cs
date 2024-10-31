@@ -28,6 +28,7 @@ public class Boss : EnemigoScript
     };
 
     public bool killMe = false;
+    
     private void Awake()
     {
         isBoss = true;
@@ -164,7 +165,7 @@ public class Boss : EnemigoScript
                         {
                             byte rie = (byte)Random.Range(0, pfbsEnemigos.Length);
                             prefabElegido = pfbsEnemigos[rie];
-                            if (prefabElegido.GetComponent<EnemigoScript>().isLarge == false) break;
+                            if (prefabElegido.GetComponent<EnemigoScript>().IsSpawnableByJefe) break;
                             yield return null;
                         }
                         GameObject nuevoEnemigo = Instantiate(prefabElegido, new Vector3(this.transform.position.x, (this.transform.position.y - 2), 0f), Quaternion.identity);
