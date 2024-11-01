@@ -207,7 +207,10 @@ public class EnemySpawner : MonoBehaviour
         botsVivos.Clear();
         if (isBossFight) boss = null;
         ronda++;
-
+        if(ronda == 6 || ronda == 11 || ronda == 16 || ronda == 21 || ronda == 26)
+        {
+            bps += 0.25f;
+        }
         PauseScript.Instance.botsRonda = EnemyFormula();
         botsEliminadosRonda = 0;
         ToggleSpawning(false);
