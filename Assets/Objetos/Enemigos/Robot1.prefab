@@ -59,7 +59,7 @@ MonoBehaviour:
   baseHP: 100
   hp: 0
   isBoss: 0
-  minRonda: 0
+  minRonda: 1
   spd: 2.2
   spdSave: 0
   slowSpd: 0
