@@ -446,6 +446,10 @@ public class Boss : EnemigoScript
                 explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
                 yield return new WaitForSeconds(0.1f);
             }
+            SoundManager.instance.GetComponent<AudioSource>().clip = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().musica[2];
+            SoundManager.instance.GetComponent<AudioSource>().loop = false;
+            SoundManager.instance.GetComponent<AudioSource>().Play();
+
             UnityEngine.SceneManagement.SceneManager.LoadScene("Win");
         }
         else

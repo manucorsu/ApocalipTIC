@@ -30257,6 +30257,10 @@ MonoBehaviour:
   - {fileID: 1121605913}
   - {fileID: 1145484397}
   - {fileID: 13058010}
+  musica:
+  - {fileID: 8300000, guid: de0edc05b9340b043951f1fad9aeff2c, type: 3}
+  - {fileID: 8300000, guid: 960cc6ce32366e54c90591db74e28c39, type: 3}
+  - {fileID: 8300000, guid: 6a100660544ee60459c54a89e7e9a927, type: 3}
 --- !u!114 &1496161649
 MonoBehaviour:
   m_ObjectHideFlags: 0

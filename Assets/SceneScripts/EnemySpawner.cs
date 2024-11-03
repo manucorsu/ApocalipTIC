@@ -39,6 +39,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Image Oscuro2;
     public GameObject[] flechas;
     private Transform lastLoc;
+
+    public AudioClip[] musica;
+
     void Start()
     {
         ToggleSpawning(false);
@@ -100,6 +103,8 @@ public class EnemySpawner : MonoBehaviour
             if (ronda == 15 || ronda == 30)
             {
                 isBossFight = true;
+                SoundManager.instance.GetComponent<AudioSource>().clip = musica[1];
+                SoundManager.instance.GetComponent<AudioSource>().Play();
                 boss = Instantiate(prefabBoss, new Vector3(14.5f, 0.5f, 0), Quaternion.identity).GetComponent<Boss>();
             }
             else
@@ -240,6 +245,12 @@ public class EnemySpawner : MonoBehaviour
         {
             Image imagen = boton.GetComponent<Image>();
             imagen.sprite = GetComponent<scrBotones>().btTorretaSprite1;
+        }
+
+        if(ronda == 16)
+        {
+            SoundManager.instance.GetComponent<AudioSource>().clip = musica[0];
+            SoundManager.instance.GetComponent<AudioSource>().Play();
         }
 
         //switch (ronda)
