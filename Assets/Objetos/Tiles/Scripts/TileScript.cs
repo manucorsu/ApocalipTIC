@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TileScript : MonoBehaviour
 {
+    public bool isBig = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +15,7 @@ public class TileScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    
     }
 
     private void OnMouseEnter()

@@ -18,6 +18,9 @@ public class ConstruirScript : MonoBehaviour
 
     public float precioSeleccionado;
     private bool isPaused;
+    private bool isBig = true;
+    private float timer = 0;
+
     void Awake()
     {
         sceneScripts = GameObject.Find("SCENESCRIPTS");
@@ -29,6 +32,31 @@ public class ConstruirScript : MonoBehaviour
     void Update()
     {
         isPaused = PauseScript.Instance.IsPaused;
+
+        if (isBig)
+        {
+            if (timer < 1)
+            {
+                timer += Time.deltaTime;
+            } else
+            {
+                timer = 0;
+                transform.localScale = new Vector2(0.9f, 0.9f);
+                isBig = false;
+            }
+        } else
+        {
+            if (timer < 1)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                timer = 0;
+                transform.localScale = new Vector2(1, 1);
+                isBig = true;
+            }
+        }
     }
 
     private void OnMouseDown()
