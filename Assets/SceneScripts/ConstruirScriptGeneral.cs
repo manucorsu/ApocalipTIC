@@ -12,6 +12,7 @@ public class ConstruirScriptGeneral : MonoBehaviour
     public GameObject[] tiles;
     public GameObject[] consumiblesZonas;
     public TMP_Text plataActualtxt;
+    public float plataInicial;
 
     //Variables
 
@@ -20,7 +21,7 @@ public class ConstruirScriptGeneral : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        plataActual = 1000;
+        plataActual = plataInicial; ;
         plataActualtxt.text = "$" + plataActual.ToString();
     }
 

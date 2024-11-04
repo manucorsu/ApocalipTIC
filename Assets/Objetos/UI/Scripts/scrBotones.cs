@@ -692,7 +692,7 @@ public class scrBotones : MonoBehaviour
         GameObject.Find("Oscuro 2").GetComponent<Image>().enabled = true;
         if (GameObject.Find("txtNo") != null) { GameObject.Find("btnNo").GetComponent<Image>().enabled = false; }
 
-        GetComponent<ConstruirScriptGeneral>().plataActual = 1000;
+        GetComponent<ConstruirScriptGeneral>().plataActual = GetComponent<ConstruirScriptGeneral>().plataInicial;
 
         GameObject[] flechas = sceneScripts.GetComponent<EnemySpawner>().flechas;
         foreach (GameObject flecha in flechas)
