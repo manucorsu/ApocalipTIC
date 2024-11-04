@@ -213,7 +213,6 @@ MonoBehaviour:
   nichoPadre: {fileID: 0}
   animator: {fileID: 5962855182431712527}
   anim: 1
-  info: 0
   dps: 0
   audioSource: {fileID: 3886955238778601259}
   chorroSfx: {fileID: 8300000, guid: f508531144d26ff4ebbcf2eb03838a3b, type: 3}
@@ -415,7 +414,7 @@ MonoBehaviour:
   enemigos:
     serializedVersion: 2
     m_Bits: 256
-  dps: 15.5
+  dps: 17.5
   rango: 3
   rotationSpd: 300
   isShooting: 0

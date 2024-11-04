@@ -348,6 +348,7 @@ public class scrBotones : MonoBehaviour
             return;
         }
 
+
         //TIRALÁPICES / TIRALAPÍCERAS / LANZABOMBUCHAS
 
         if (textoMejoraTorreta.text == "Tiralápices" || textoMejoraTorreta.text == "Tiralapiceras" || textoMejoraTorreta.text == "Lanzabombuchas")
@@ -564,6 +565,16 @@ public class scrBotones : MonoBehaviour
                 MejorasScript scrMejora = torretaParaMejorar.GetComponent<MejorasScript>();
                 scrMejora.precioExtraParaVender += 100;
                 scrMejora.Mejorar();
+            }
+        }
+
+
+        foreach (GameObject button in GameObject.Find("SCENESCRIPTS").GetComponent<scrBotones>().botones)
+        {
+            if (GetComponent<ConstruirScriptGeneral>().plataActual - button.GetComponent<scrBotonTorreta>().precio < 0)
+            {
+                Image imagen = button.GetComponent<Image>();
+                imagen.sprite = GetComponent<scrBotones>().btTorretaSprite1;
             }
         }
     }

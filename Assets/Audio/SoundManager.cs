@@ -102,8 +102,9 @@ public class SoundManager : MonoBehaviour
     {
         if (player == null) throw new System.ArgumentNullException("player");
         if (loopers.Contains(player) == false)
-        {
-            throw new System.Exception("El player pasado no estaba loopeando");
+        {   
+            Debug.LogWarning("El player pasado no estaba loopeando. No se hizo nada.");
+            return;
         }
 
         player.loop = false;

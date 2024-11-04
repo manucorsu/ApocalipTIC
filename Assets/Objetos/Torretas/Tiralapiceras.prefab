@@ -194,7 +194,7 @@ MonoBehaviour:
   rotationSpd: 800
   bps: 0.3
   precio: 500
-  dmg: 75
+  dmg: 80
   nivel1: 1
   nivel2: 1
   nivel3: 1

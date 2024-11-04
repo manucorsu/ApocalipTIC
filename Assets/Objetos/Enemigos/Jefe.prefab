@@ -56,7 +56,7 @@ MonoBehaviour:
   currentMan: 0
   solidWhite: {fileID: 0}
   isLarge: 0
-  baseHP: 12000
+  baseHP: 30000
   hp: 0
   isBoss: 1
   minRonda: 255
