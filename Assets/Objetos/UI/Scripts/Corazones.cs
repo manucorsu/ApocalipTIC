@@ -24,6 +24,7 @@ public class Corazones : MonoBehaviour
         EnemySpawner.vidas--;
         if (MessageBox.Instance.CheatsEnabled == false && EnemySpawner.vidas == 0)
         {
+            SoundManager.Instance.StopAllSfxLoops();
             SceneManager.LoadScene("GameOver");
         }
         for (byte i = 0; i < corazones.Length; i++)

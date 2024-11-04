@@ -29,8 +29,6 @@ public class ConstruirScript : MonoBehaviour
     void Update()
     {
         isPaused = PauseScript.Instance.IsPaused;
-
-
     }
 
     private void OnMouseDown()
@@ -60,7 +58,7 @@ public class ConstruirScript : MonoBehaviour
             if (torretaSeleccionada != null)
             {
                 GameObject torreta = Instantiate(torretaSeleccionada, transform.position, Quaternion.identity);
-                try { SoundManager.instance.PlaySound(buySfx, 0.5f); }
+                try { SoundManager.Instance.PlaySound(buySfx, 0.4f); }
                 catch (System.NullReferenceException)
                 {
                     Debug.LogError("NullReferenceExeception: El singleton de SoundManager fue null.\n" +
@@ -109,7 +107,7 @@ public class ConstruirScript : MonoBehaviour
                 imagen.sprite = sceneScripts.GetComponent<scrBotones>().btTorretaSprite1;
             }
 
-            foreach(GameObject tile in sceneScripts.GetComponent<scrBotones>().tiles)
+            foreach (GameObject tile in sceneScripts.GetComponent<scrBotones>().tiles)
             {
                 if (tile != null)
                 {

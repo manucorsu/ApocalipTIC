@@ -47,19 +47,22 @@ public class MessageBox : MonoBehaviour
 
     public void Show(string title, string message)
     {
-        bg.SetActive(true);
-        txtTitle.text = title;
-        txtMessage.text = message;
+        if (!LevelChanger.Fading)
+        {
+            bg.SetActive(true);
+            txtTitle.text = title;
+            txtMessage.text = message;
 
-        SoundManager.instance.PlayUIClick();
-        previousTimeScale = Time.timeScale;
-        Time.timeScale = 0;
+            SoundManager.Instance.PlayUIClick();
+            previousTimeScale = Time.timeScale;
+            Time.timeScale = 0;
+        }
     }
 
     public void Close()
     {
         Time.timeScale = previousTimeScale;
-        SoundManager.instance.PlayUIClick();
+        SoundManager.Instance.PlayUIClick();
         bg.SetActive(false);
     }
 }

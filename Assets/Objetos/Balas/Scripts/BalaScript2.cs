@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class BalaScript2 : MonoBehaviour
@@ -11,14 +10,17 @@ public class BalaScript2 : MonoBehaviour
     private Transform target;
     public Animator animator;
     public int anim = 1;
-    public float info;
 
     private HashSet<GameObject> enemigosAfectados = new HashSet<GameObject>();
     private Coroutine hurtEnemiesCoroutine;
     [HideInInspector] public float dps;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip chorroSfx;
+
     private void OnEnable()
     {
+       SoundManager.Instance.LoopSound(audioSource, chorroSfx, 0.4f);
         if (hurtEnemiesCoroutine == null)
         {
             hurtEnemiesCoroutine = StartCoroutine(HurtEnemies());
@@ -92,6 +94,7 @@ public class BalaScript2 : MonoBehaviour
         {
             StopCoroutine(hurtEnemiesCoroutine);
             hurtEnemiesCoroutine = null;
+            SoundManager.Instance.StopSFXLoop(audioSource);
         }
     }
 }

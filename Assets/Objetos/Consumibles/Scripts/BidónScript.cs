@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class BidónScript : MonoBehaviour
 {
-
     //Objetos
 
     public Animator animator;
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     public CircleCollider2D collider;
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
 
     //Variables
 
     public float daño;
     public float anim;
     public float precio;
+    [SerializeField] private AudioClip bbchPopSfx;
+
+    private void Start()
+    {
+        SoundManager.Instance.PlaySounds(new AudioClip[] { SoundManager.Instance.BuySfx, bbchPopSfx }, new float[] { 0.4f, 1 }, 0.5f);
+    }
 
     public void AnimationEnd()
     {

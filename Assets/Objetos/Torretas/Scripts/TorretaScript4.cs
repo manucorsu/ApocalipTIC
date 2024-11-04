@@ -89,10 +89,10 @@ public class TorretaScript4 : MonoBehaviour
                 foreach (RaycastHit2D enemigos in hits2)
                 {
                     EnemigoScript enemigoScript = target.gameObject.GetComponent<EnemigoScript>();
-                    if(enemigoScript != null)
+                    if (enemigoScript != null)
                     {
                         Ninja ninja = target.gameObject.GetComponent<Ninja>();
-                        if((enemigoScript.canBeShot) ||(ninja != null && ninja.Invisible))
+                        if ((enemigoScript.canBeShot) || (ninja != null && ninja.Invisible))
                         {
                             if (enemigos.transform == target.transform && enemigoScript.spd > 0)
                             {
@@ -101,12 +101,12 @@ public class TorretaScript4 : MonoBehaviour
                         }
                     }
                 }
-            } 
+            }
         }
 
         //Animacion Idle
 
-       
+
 
     }
 
@@ -139,7 +139,7 @@ public class TorretaScript4 : MonoBehaviour
 
     public IEnumerator Atacar()
     {
-        SoundManager.instance.PlaySound(sfxRayo, 0.3f);
+        SoundManager.Instance.PlaySound(sfxRayo, 0.3f);
         canshoot = false;
         bala.SetActive(true);
         yield return new WaitForSeconds(0.45f);

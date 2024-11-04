@@ -14,6 +14,11 @@ public class PegamentoScript : MonoBehaviour
     public float anim;
     public float precio;
 
+    private void Start()
+    {
+        SoundManager.Instance.PlaySounds(new AudioClip[] { SoundManager.Instance.BuySfx }, new float[] { 0.4f }, 0.5f);
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         EnemigoScript enemigoScr = collision.gameObject.GetComponent<EnemigoScript>();

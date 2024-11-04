@@ -61,10 +61,10 @@ public class TorretaScript : MonoBehaviour
             if (target != null)
             {
                 Ninja ninja = target.GetComponent<Ninja>();
-                Boss boss = target.GetComponent<Boss>();  
-                if ((ninja != null && ninja.Invisible) || (boss != null && boss.introDone && boss.canBeShot == true)) 
-                { 
-                    lr.enabled = false; return; 
+                Boss boss = target.GetComponent<Boss>();
+                if ((ninja != null && ninja.Invisible) || (boss != null && boss.introDone && boss.canBeShot == !true))
+                {
+                    lr.enabled = false; return;
                 }
                 lr.SetPosition(0, firingPoint.transform.position);
                 lr.SetPosition(1, target.transform.position);
@@ -113,9 +113,9 @@ public class TorretaScript : MonoBehaviour
         }
         if (!isTiralapiceras)
         {
-            SoundManager.instance.PlaySound(tlapicesShootSfx, 0.4f);
+            SoundManager.Instance.PlaySound(tlapicesShootSfx, 0.4f);
         }
-        else SoundManager.instance.PlaySound(tlapicerasShootSfx, 0.4f);
+        else SoundManager.Instance.PlaySound(tlapicerasShootSfx, 0.4f);
         yield return new WaitForSeconds(0.2f);
         animator.SetFloat("anim", 0);
     }

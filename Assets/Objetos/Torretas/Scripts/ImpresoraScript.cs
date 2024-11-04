@@ -72,7 +72,7 @@ public class ImpresoraScript : MonoBehaviour
             BalaScript balascript = balaObj.GetComponent<BalaScript>();
             balascript.SetTarget(target);
             balascript.balaDmg = dmg;
-            SoundManager.instance.PlaySound(imprShootSfx, 0.4f);
+            SoundManager.Instance.PlaySound(imprShootSfx, 0.4f);
         }
         yield return new WaitForSeconds(0.2f);
     }

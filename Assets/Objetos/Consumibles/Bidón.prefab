@@ -118,6 +118,7 @@ MonoBehaviour:
   "da\xF1o": 50
   anim: 0
   precio: 75
+  bbchPopSfx: {fileID: 8300000, guid: 5f2dda6461366f543b152b7f1bb2fea6, type: 3}
 --- !u!58 &3212824467811206767
 CircleCollider2D:
   m_ObjectHideFlags: 0

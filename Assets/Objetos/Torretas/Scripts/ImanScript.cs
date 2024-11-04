@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class ImanScript : TorretaScript
 {
-    [SerializeField] private AudioClip imanShootSfx;
     private float cooldownIman;
     public bool isAbsorbing = false;
     public GameObject tuerca;
     public int ganancia = 0;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip imanSfx;
+    private bool isLoopingSfx = false;
 
     void Update()
     {
@@ -19,12 +24,20 @@ public class ImanScript : TorretaScript
             {
                 animator.SetFloat("anim", 0);
                 isAbsorbing = false;
+                isLoopingSfx = false;
+                SoundManager.Instance.StopSFXLoop(audioSource);
             }
             FindTarget();
             return;
         }
         else
         {
+            if (!isLoopingSfx)
+            {
+                SoundManager.Instance.LoopSound(audioSource, imanSfx, 0.5f);
+                isLoopingSfx = true;
+            }
+
             Ninja ninja = target.gameObject.GetComponent<Ninja>();
             if (target.GetComponent<EnemigoScript>().isBoss) return;
             else if (ninja != null && ninja.Invisible) return;
@@ -42,7 +55,6 @@ public class ImanScript : TorretaScript
         }
         else
         {
-
             if (isAbsorbing)
             {
                 cooldownIman += Time.deltaTime;
@@ -51,7 +63,6 @@ public class ImanScript : TorretaScript
                 {
                     if (target.GetComponent<EnemigoScript>().canBeShot)
                     {
-                        SoundManager.instance.PlaySound(imanShootSfx, 0.1f);
                         GameObject basura = Instantiate(tuerca, new Vector2(target.position.x, target.position.y), Quaternion.identity);
                         TornilloScript basuraScript = basura.GetComponent<TornilloScript>();
                         basuraScript.torreta = this.gameObject;

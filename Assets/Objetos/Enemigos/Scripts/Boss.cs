@@ -28,12 +28,13 @@ public class Boss : EnemigoScript
     };
 
     public bool killMe = false;
-    
+
     private void Awake()
     {
         isBoss = true;
         AsignarTodo();
     }
+
     protected override void AsignarTodo()
     {
         base.AsignarTodo();
@@ -56,6 +57,7 @@ public class Boss : EnemigoScript
         explosionMuerte.GetComponent<SpriteRenderer>().sortingOrder = 32767;
         if (EnemySpawner.isBossFight == false) Debug.LogError("El jefe spawneó cuando EnemySpawner.isBossFight era false.");
     }
+
     protected override void Start()
     {
         DoIntro();
@@ -409,6 +411,7 @@ public class Boss : EnemigoScript
             else idle = true;
         }
     }
+
     private void Escapar()
     {
         spd = 8f;
@@ -420,6 +423,7 @@ public class Boss : EnemigoScript
             ));
         return;
     }
+
     public IEnumerator BossMorir()
     {
         EnemySpawner.botsASpawnear = 0;
@@ -446,10 +450,11 @@ public class Boss : EnemigoScript
                 explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
                 yield return new WaitForSeconds(0.1f);
             }
-            SoundManager.instance.GetComponent<AudioSource>().clip = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().musica[2];
-            SoundManager.instance.GetComponent<AudioSource>().loop = false;
-            SoundManager.instance.GetComponent<AudioSource>().Play();
+            SoundManager.Instance.GetComponent<AudioSource>().clip = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().musica[2];
+            SoundManager.Instance.GetComponent<AudioSource>().loop = false;
+            SoundManager.Instance.GetComponent<AudioSource>().Play();
 
+            SoundManager.Instance.StopAllSfxLoops();
             UnityEngine.SceneManagement.SceneManager.LoadScene("Win");
         }
         else

@@ -20,13 +20,14 @@ public class scrBotonTorreta : MonoBehaviour, IPointerEnterHandler, IPointerExit
             GetComponent<Button>().enabled = true;
             transform.Find("pricetag").GetComponent<TMP_Text>().color = Color.black;
             transform.Find("BloqueoBotón").GetComponent<Image>().enabled = false;
-        } else
+        }
+        else
         {
             GetComponent<Button>().enabled = false;
             transform.Find("pricetag").GetComponent<TMP_Text>().color = Color.white;
             transform.Find("BloqueoBotón").GetComponent<Image>().enabled = true;
         }
-    } 
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {

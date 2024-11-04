@@ -11,13 +11,13 @@ public class StartMenu : MonoBehaviour
 
     public void Jugar()
     {
-        SoundManager.instance.PlayUIClick();
+        SoundManager.Instance.PlayUIClick();
         levelChanger.FadeTo("Game", 0.5f);
     }
 
     public void OpenAjustes()
     {
-        SoundManager.instance.PlayUIClick();
+        SoundManager.Instance.PlayUIClick();
         settingsBgImg.SetActive(true);
     }
     public void ToggleSfxAjustes()
@@ -26,8 +26,8 @@ public class StartMenu : MonoBehaviour
         if (clickedBtn != null)
         {
             Image btnImg = clickedBtn.GetComponent<Image>();
-            SoundManager.instance.ToggleSFX(btnImg);
-            SoundManager.instance.PlayUIClick();
+            SoundManager.Instance.ToggleSFX(btnImg);
+            SoundManager.Instance.PlayUIClick();
         }
     }
     public void ToggleMusAjustes()
@@ -36,14 +36,14 @@ public class StartMenu : MonoBehaviour
         if(clickedBtn != null)
         {
             Image btnImg = clickedBtn.GetComponent<Image>();
-            SoundManager.instance.PlayUIClick();
-            SoundManager.instance.ToggleMus(btnImg);
+            SoundManager.Instance.PlayUIClick();
+            SoundManager.Instance.ToggleMus(btnImg);
         }
     }
 
     public void CloseAjustes()
     {
-        SoundManager.instance.PlayUIClick();
+        SoundManager.Instance.PlayUIClick();
         settingsBgImg.SetActive(false);
     }
 }

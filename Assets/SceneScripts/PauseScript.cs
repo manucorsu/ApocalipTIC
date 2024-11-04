@@ -20,7 +20,7 @@ public class PauseScript : MonoBehaviour
     [SerializeField] private Button btnMusToggler;
     [SerializeField] private GameObject menuConfirmDialogBg;
     [SerializeField] private LevelChanger levelChanger;
-        
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -33,9 +33,9 @@ public class PauseScript : MonoBehaviour
     {
         try
         {
-            Dictionary<string, bool> soundStates = SoundManager.instance.GetStates();
-            Sprite onSpr = SoundManager.instance.onSpr;
-            Sprite offSpr = SoundManager.instance.offSpr;
+            Dictionary<string, bool> soundStates = SoundManager.Instance.GetStates();
+            Sprite onSpr = SoundManager.Instance.onSpr;
+            Sprite offSpr = SoundManager.Instance.offSpr;
 
             if (soundStates["sfxOn"])
             {
@@ -73,7 +73,8 @@ public class PauseScript : MonoBehaviour
         if (canPause)
         {
             IsPaused = s;
-            SoundManager.instance.PlayUIClick();
+            SoundManager.Instance.StopAllSfxLoops();
+            SoundManager.Instance.PlayUIClick();
             if (s == true)
             {
                 pauseMenu.SetActive(true);
@@ -110,8 +111,8 @@ public class PauseScript : MonoBehaviour
         if (clickedBtn != null)
         {
             Image btnImg = clickedBtn.GetComponent<Image>();
-            SoundManager.instance.ToggleSFX(btnImg);
-            SoundManager.instance.PlayUIClick();
+            SoundManager.Instance.ToggleSFX(btnImg);
+            SoundManager.Instance.PlayUIClick();
         }
     }
 
@@ -121,14 +122,14 @@ public class PauseScript : MonoBehaviour
         if (clickedBtn != null)
         {
             Image btnImg = clickedBtn.GetComponent<Image>();
-            SoundManager.instance.PlayUIClick();
-            SoundManager.instance.ToggleMus(btnImg);
+            SoundManager.Instance.PlayUIClick();
+            SoundManager.Instance.ToggleMus(btnImg);
         }
     }
 
     public void EnableMenuConfirmDialog(bool stat)
     {
-        SoundManager.instance.PlayUIClick();
+        SoundManager.Instance.PlayUIClick();
         menuConfirmDialogBg.SetActive(stat);
     }
 
@@ -139,7 +140,7 @@ public class PauseScript : MonoBehaviour
             enemigo.GetComponent<EnemigoScript>().spd = 0;
         }
         Time.timeScale = 1;
-        SoundManager.instance.PlayUIClick();
+        SoundManager.Instance.PlayUIClick();
         levelChanger.FadeTo("Inicio", 2);
     }
 }

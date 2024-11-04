@@ -81,7 +81,7 @@ public class ParlanteScript : MonoBehaviour
 
     private IEnumerator Disparar()
     {
-        SoundManager.instance.PlaySound(parlanteSfx, 0.2f);
+        SoundManager.Instance.PlaySound(parlanteSfx, 0.2f);
         animator.SetTrigger("anim");
         GameObject explosion = Instantiate(onda, firingPoint);
         explosion.transform.localScale = new Vector3(ondaSize, ondaSize, 1);

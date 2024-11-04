@@ -92,7 +92,7 @@ public class TorretaScript3 : MonoBehaviour
 
             anima = 0;
             animator.SetFloat("anim", anima);
-            SoundManager.instance.PlaySound(tachoAspirarSfx);
+            SoundManager.Instance.PlaySound(tachoAspirarSfx);
 
             while (target.position != transform.position)
             {
@@ -114,9 +114,9 @@ public class TorretaScript3 : MonoBehaviour
             else pulpo.MorirTacho();
 
             canEat = false;
-            SoundManager.instance.PlaySound(tachoMasticarSfx, 1f);
+            SoundManager.Instance.PlaySound(tachoMasticarSfx, 1f);
 
-            
+
 
             animator.enabled = true;
             anima = 1;
@@ -125,7 +125,7 @@ public class TorretaScript3 : MonoBehaviour
             yield return new WaitForSeconds(cooldown);
 
             canEat = true;
-            SoundManager.instance.PlaySound(tachoEructarSfx, 0.75f);
+            SoundManager.Instance.PlaySound(tachoEructarSfx, 0.75f);
             anima = 2;
             animator.SetFloat("anim", anima);
         }

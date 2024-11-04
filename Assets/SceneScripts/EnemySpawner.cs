@@ -57,16 +57,16 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (MessageBox.Instance.CheatsEnabled && !spawnear)
+        if (MessageBox.Instance.CheatsEnabled)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha0))
+            if (Input.GetKeyDown(KeyCode.Alpha0) && !spawnear)
             {
                 ronda--;
                 if (ronda < 1) ronda = 1;
                 txtRonda.text = $"override ronda {ronda}";
                 PauseScript.Instance.botsRonda = EnemyFormula();
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha1))
+            else if (Input.GetKeyDown(KeyCode.Alpha1) && !spawnear)
             {
                 ronda++;
                 if (ronda > 30) ronda = 30;
@@ -82,7 +82,7 @@ public class EnemySpawner : MonoBehaviour
         if (spawnear)
         {
             tiempoDesdeUltimoSpawn += Time.deltaTime;
-            if (tiempoDesdeUltimoSpawn >= (1f / bps) && botsASpawnear > 0) SpawnEnemy();
+            if (tiempoDesdeUltimoSpawn >= (1f / bps) && ((!isBossFight && botsASpawnear > 0) || isBossFight)) SpawnEnemy();
             if (botsVivos.Count <= 0 && botsASpawnear <= 0 && !isBossFight) TerminarRonda();
         }
     }
@@ -92,7 +92,7 @@ public class EnemySpawner : MonoBehaviour
         if (GetComponent<scrBotones>().pasoTutorial == 11) return;
         if (spawnear == false)
         {
-            SoundManager.instance.PlayUIClick();
+            SoundManager.Instance.PlayUIClick();
             Image cuadroMejora = GameObject.Find("cuadroMejora").GetComponent<Image>();
 
             cuadroMejora.rectTransform.position = new Vector2(100000000, 100000000); //jaja
@@ -103,8 +103,8 @@ public class EnemySpawner : MonoBehaviour
             if (ronda == 15 || ronda == 30)
             {
                 isBossFight = true;
-                SoundManager.instance.GetComponent<AudioSource>().clip = musica[1];
-                SoundManager.instance.GetComponent<AudioSource>().Play();
+                SoundManager.Instance.GetComponent<AudioSource>().clip = musica[1];
+                SoundManager.Instance.GetComponent<AudioSource>().Play();
                 boss = Instantiate(prefabBoss, new Vector3(14.5f, 0.5f, 0), Quaternion.identity).GetComponent<Boss>();
             }
             else
@@ -140,14 +140,14 @@ public class EnemySpawner : MonoBehaviour
     private byte EnemyFormula()
     //https://www.desmos.com/calculator/hxfiurzdve
     {
-        if(ronda < 1 || ronda > 30)
+        if (ronda < 1 || ronda > 30)
         {
             throw new System.ArgumentOutOfRangeException("ronda", "ronda debe ser un número entre 1 y 30 incl.");
         }
         ulong res = (ulong)Mathf.Round(r1Bots * Mathf.Pow(ronda, dificultad));
-        if(res < 1 || res > 255)
+        if (res < 1 || res > 255)
         {
-            throw new System.ArgumentOutOfRangeException("r1 y/o d","r1 y/o d son muy grandes o muy chicos porque la cantidad de bots dio negativa o mayor a 255.");
+            throw new System.ArgumentOutOfRangeException("r1 y/o d", "r1 y/o d son muy grandes o muy chicos porque la cantidad de bots dio negativa o mayor a 255.");
         }
         else return (byte)res;
     }
@@ -212,10 +212,6 @@ public class EnemySpawner : MonoBehaviour
         botsVivos.Clear();
         if (isBossFight) boss = null;
         ronda++;
-        if(ronda == 6 || ronda == 11 || ronda == 16 || ronda == 21 || ronda == 26)
-        {
-            bps += 0.25f;
-        }
         PauseScript.Instance.botsRonda = EnemyFormula();
         botsEliminadosRonda = 0;
         ToggleSpawning(false);
@@ -249,8 +245,8 @@ public class EnemySpawner : MonoBehaviour
 
         if(ronda == 16)
         {
-            SoundManager.instance.GetComponent<AudioSource>().clip = musica[0];
-            SoundManager.instance.GetComponent<AudioSource>().Play();
+            SoundManager.Instance.GetComponent<AudioSource>().clip = musica[0];
+            SoundManager.Instance.GetComponent<AudioSource>().Play();
         }
 
         //switch (ronda)

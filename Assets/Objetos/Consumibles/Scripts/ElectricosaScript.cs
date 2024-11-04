@@ -15,7 +15,9 @@ public class ElectricosaScript : MonoBehaviour
     RaycastHit2D[] hits;
     public GameObject aura;
     private List<GameObject> aurasGeneradas = new List<GameObject>();
-    
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip imanSfx; //reusar efectos de sonidos es la mejor manera de salir en un did you know gaming dentro de 30 años
 
     public float precio;
 
@@ -23,6 +25,7 @@ public class ElectricosaScript : MonoBehaviour
     {
         yPosition = transform.position.y;
         transform.position = new Vector2(transform.position.x, 6.5f);
+        SoundManager.Instance.LoopSound(audioSource, imanSfx, 0.5f);
     }
 
     private void Update()
@@ -48,7 +51,7 @@ public class ElectricosaScript : MonoBehaviour
     {
         hits = Physics2D.CircleCastAll(transform.position, rango, new Vector2(transform.position.x, transform.position.y), 0f);
 
-        foreach(RaycastHit2D torreta in hits)
+        foreach (RaycastHit2D torreta in hits)
         {
             if (torreta.collider.gameObject.tag == "torreta")
             {
@@ -59,7 +62,6 @@ public class ElectricosaScript : MonoBehaviour
                     if (torretaMejorada.GetComponent<MejorasScript>().isPotenciado == false && isWorking == true)
                     {
                         aurasGeneradas.Add(Instantiate(aura, torretaMejorada.transform.position, Quaternion.identity));
-
                         if (torretaMejorada.GetComponent<TorretaScript>() != null) { torretaMejorada.GetComponent<TorretaScript>().dmg++; torretaMejorada.GetComponent<TorretaScript>().rango += 0.5f; torretaMejorada.GetComponent<TorretaScript>().bps += 0.5f; }
                         if (torretaMejorada.GetComponent<TorretaScript2>() != null) { torretaMejorada.GetComponent<TorretaScript2>().dps++; torretaMejorada.GetComponent<TorretaScript2>().cooldown -= 0.2f; }
                         if (torretaMejorada.GetComponent<TorretaScript3>() != null) { torretaMejorada.GetComponent<TorretaScript3>().cooldown--; torretaMejorada.GetComponent<TorretaScript3>().rango += 0.5f; }
@@ -72,27 +74,27 @@ public class ElectricosaScript : MonoBehaviour
                 }
             }
         }
-        
+
     }
 
     public IEnumerator Duracion()
     {
 
-        yield return new WaitForSeconds(duracion); 
+        yield return new WaitForSeconds(duracion);
 
 
-        while(zona.transform.localScale.x > 0)
+        while (zona.transform.localScale.x > 0)
         {
             zona.transform.localScale = new Vector2(zona.transform.localScale.x - 0.1f, zona.transform.localScale.y - 0.1f);
             yield return null;
         }
         Destroy(zona);
 
-        foreach(GameObject aura in aurasGeneradas)
+        foreach (GameObject aura in aurasGeneradas)
         {
             Destroy(aura);
         }
-
+        SoundManager.Instance.StopSFXLoop(audioSource);
         foreach (RaycastHit2D torreta in hits)
         {
             if (torreta.collider.gameObject.tag == "torreta")
@@ -104,7 +106,7 @@ public class ElectricosaScript : MonoBehaviour
 
                     if (torretaMejorada.GetComponent<MejorasScript>().isPotenciado == true)
                     {
-                       
+
                         if (torretaMejorada.GetComponent<TorretaScript>() != null) { torretaMejorada.GetComponent<TorretaScript>().dmg--; torretaMejorada.GetComponent<TorretaScript>().rango -= 0.5f; torretaMejorada.GetComponent<TorretaScript>().bps -= 0.5f; }
                         if (torretaMejorada.GetComponent<TorretaScript2>() != null) { torretaMejorada.GetComponent<TorretaScript2>().dps--; torretaMejorada.GetComponent<TorretaScript2>().cooldown += 0.2f; }
                         if (torretaMejorada.GetComponent<TorretaScript3>() != null) { torretaMejorada.GetComponent<TorretaScript3>().cooldown++; torretaMejorada.GetComponent<TorretaScript3>().rango -= 0.5f; }
@@ -130,7 +132,7 @@ public class ElectricosaScript : MonoBehaviour
         }
 
         Destroy(this.gameObject);
-        
+
     }
 
 
