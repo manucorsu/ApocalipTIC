@@ -55,27 +55,26 @@ MonoBehaviour:
   colorExplosion: {r: 0.5518868, g: 1, b: 0.7738844, a: 1}
   currentMan: 0
   solidWhite: {fileID: 2100000, guid: 73fa6ee842c7da24ea3b26f170eaeac5, type: 2}
+  isSpawnableByJefe: 1
   isLarge: 0
-  baseHP: 200
+  baseHP: 225
   hp: 0
-  isBoss: 0
-  minRonda: 3
   spd: 1
   spdSave: 0
   slowSpd: 0
   aceiteSpd: 0
+  minRonda: 3
   plata: 15
   canBeEaten: 1
+  isBoss: 0
   canBeShot: 1
   isPegamentoed: 0
   isAceitado: 0
-  isSpawnableByJefe: 1
   spName: 
   v3Camino: []
   wi: 0
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
-  reachedGoal: 0
 --- !u!50 &3152198528451863279
 Rigidbody2D:
   serializedVersion: 4

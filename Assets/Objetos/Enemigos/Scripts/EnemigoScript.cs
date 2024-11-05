@@ -322,7 +322,11 @@ public class EnemigoScript : MonoBehaviour
             EnemySpawner.botsEliminados++;
             if (!EnemySpawner.isBossFight) EnemySpawner.botsEliminadosRonda++;
             EnemySpawner.botsVivos.Remove(this.gameObject);
-            construirscr.plataActual += plata;
+            construirscr.plataActual += plata; 
+            if (tacho == true)
+            {
+                Debug.Log("mematoeltacho");
+            }
             Destroy(this.gameObject);
         }
     }

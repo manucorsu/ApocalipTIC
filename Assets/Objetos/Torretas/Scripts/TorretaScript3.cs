@@ -115,19 +115,30 @@ public class TorretaScript3 : MonoBehaviour
                 }
                 else
                 {
-                    target.localScale = new Vector3(0, 0, 0);
+                    target.localScale = new Vector3(0.01f, 0.01f, 0);
                 }
                 yield return null;
             }
 
-            Pulpo pulpo = target.GetComponent<Pulpo>();
-            if (pulpo == null) targetscr.Morir(true); 
-            else pulpo.MorirTacho();
-
-            if (target != null)
+            Pulpo pulpo = target.gameObject.GetComponent<Pulpo>();
+            if (pulpo == null)
             {
-                target.GetComponent<EnemigoScript>().Morir(true);
+                targetscr.Morir(true);
+                Debug.Log("el tacho mató un enemigo por primera vez");
             }
+            else
+            {
+                pulpo.MorirTacho();
+                Debug.Log("el tacho mató un pulpo");
+            }
+
+            GameObject explosion = Instantiate(targetscr.explosionMuerte, transform.position, Quaternion.identity);
+            explosion.GetComponent<SpriteRenderer>().color = targetscr.colorExplosion;
+            EnemySpawner.botsEliminados++;
+            if (!EnemySpawner.isBossFight) EnemySpawner.botsEliminadosRonda++;
+            EnemySpawner.botsVivos.Remove(target.gameObject);
+            GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>().plataActual += targetscr.plata;
+            Destroy(target.gameObject);
 
             canEat = false;
             SoundManager.Instance.PlaySound(tachoMasticarSfx, 1f);
@@ -152,7 +163,8 @@ public class TorretaScript3 : MonoBehaviour
         if (target != null)
         {
             return Vector2.Distance(target.position, transform.position) <= rango;
-        } else
+        }
+        else
         {
             return false;
         }
