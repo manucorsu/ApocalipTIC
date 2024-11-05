@@ -312,22 +312,19 @@ public class EnemigoScript : MonoBehaviour
     }
 
 
-    public virtual void Morir()
+    public virtual void Morir(bool tacho = false)
     {
-        this.spd = 0;
-        if (!isBoss)
+        if (canBeEaten == true || (canBeEaten == false && (GetComponent<Pata>() != null || GetComponent<Boss>() != null)) || (tacho == true && canBeEaten == false))
         {
-            if (canBeEaten || this.gameObject.GetComponent<Pata>() != null)
-            {
-                GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
-                explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
-            }
+            this.spd = 0;
+            GameObject explosion = Instantiate(explosionMuerte, transform.position, Quaternion.identity);
+            explosion.GetComponent<SpriteRenderer>().color = colorExplosion;
+            EnemySpawner.botsEliminados++;
+            if (!EnemySpawner.isBossFight) EnemySpawner.botsEliminadosRonda++;
+            EnemySpawner.botsVivos.Remove(this.gameObject);
+            construirscr.plataActual += plata;
+            Destroy(this.gameObject);
         }
-        EnemySpawner.botsEliminados++;
-        if (!EnemySpawner.isBossFight) EnemySpawner.botsEliminadosRonda++;
-        EnemySpawner.botsVivos.Remove(this.gameObject);
-        construirscr.plataActual += plata;
-        Destroy(this.gameObject);
     }
 
     private void LoseLife()

@@ -44,9 +44,9 @@ public class Patito : EnemigoScript
         libre = true;
     }
 
-    public override void Morir()
+    public override void Morir(bool t)
     {
-        base.Morir();
+        base.Morir(t);
         EnemySpawner.botsEliminadosRonda--;
     }
 }

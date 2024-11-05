@@ -56,7 +56,7 @@ MonoBehaviour:
   currentMan: 0
   solidWhite: {fileID: 2100000, guid: 73fa6ee842c7da24ea3b26f170eaeac5, type: 2}
   isLarge: 0
-  baseHP: 175
+  baseHP: 200
   hp: 0
   isBoss: 0
   minRonda: 3

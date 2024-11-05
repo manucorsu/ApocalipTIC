@@ -96,7 +96,6 @@ public class TorretaScript3 : MonoBehaviour
 
         if (targetscr.canBeEaten == true && targetscr.isBoss == false)
         {
-            targetscr.hp = 999;
             targetscr.spd = 0;
             targetscr.canBeEaten = false;
 
@@ -122,12 +121,12 @@ public class TorretaScript3 : MonoBehaviour
             }
 
             Pulpo pulpo = target.GetComponent<Pulpo>();
-            if (pulpo == null) targetscr.Sufrir(12345);
+            if (pulpo == null) targetscr.Morir(true); 
             else pulpo.MorirTacho();
 
             if (target != null)
             {
-                targetscr.Sufrir(12345);
+                target.GetComponent<EnemigoScript>().Morir(true);
             }
 
             canEat = false;

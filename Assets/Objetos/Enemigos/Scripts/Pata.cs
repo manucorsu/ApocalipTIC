@@ -38,10 +38,13 @@ public class Pata : EnemigoScript
         base.Start();
     }
 
-    public override void Morir()
+    public override void Morir(bool tacho = false)
     {
-        foreach (GameObject patito in patitos)  patito?.GetComponent<Patito>().Liberar(); 
-        base.Morir();
+        foreach (GameObject patito in patitos)
+        {
+            if (patito != null) patito.GetComponent<Patito>().Liberar();
+        }
+        base.Morir(tacho);
     }
 
     protected override void Update()
