@@ -55,27 +55,26 @@ MonoBehaviour:
   colorExplosion: {r: 0.5801887, g: 0.78079784, b: 1, a: 1}
   currentMan: 0
   solidWhite: {fileID: 2100000, guid: 73fa6ee842c7da24ea3b26f170eaeac5, type: 2}
+  isSpawnableByJefe: 1
   isLarge: 0
   baseHP: 75
   hp: 0
-  isBoss: 0
-  minRonda: 4
   spd: 3
   spdSave: 0
   slowSpd: 0
   aceiteSpd: 0
+  minRonda: 4
   plata: 20
   canBeEaten: 1
+  isBoss: 0
   canBeShot: 1
   isPegamentoed: 0
   isAceitado: 0
-  isSpawnableByJefe: 1
   spName: 
   v3Camino: []
   wi: 0
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
-  reachedGoal: 0
 --- !u!50 &4957185954206258417
 Rigidbody2D:
   serializedVersion: 4
@@ -265,7 +264,7 @@ PrefabInstance:
     - target: {fileID: 213634133220727631, guid: 79c05819618b5654a9d1b5a3bd6a1bec,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.541
+      value: 0.63
       objectReference: {fileID: 0}
     - target: {fileID: 213634133220727631, guid: 79c05819618b5654a9d1b5a3bd6a1bec,
         type: 3}

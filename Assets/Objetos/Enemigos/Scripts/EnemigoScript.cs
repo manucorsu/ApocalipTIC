@@ -19,6 +19,7 @@ public class EnemigoScript : MonoBehaviour
 
     #region Enemigos generados por el jefe
     [SerializeField] private Material solidWhite;
+    [SerializeField] private bool isSpawnableByJefe;
     private Material defaultMat;
     #endregion
 
@@ -27,20 +28,22 @@ public class EnemigoScript : MonoBehaviour
     public bool isLarge = false;
     [SerializeField] protected float baseHP;
     [HideInInspector] public float hp;
-    public bool isBoss;
-    public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
     public float spd; //speed
     [HideInInspector] public float spdSave;
     [HideInInspector] public float slowSpd;
     [HideInInspector] public float aceiteSpd;
+    public byte minRonda; //algunos enemigos más difíciles solo pueden aparecer en rondas más avanzadas. asignar desde inspector.
     public float plata; //cuánta $ recibe el jugador al mater a este enemigo.
     public bool canBeEaten = true;
-    public bool canBeShot = true;
-    protected SpriteRenderer spriteRenderer;
-    public bool isPegamentoed = false;
-    public bool isAceitado = false;
 
-    [SerializeField] private bool isSpawnableByJefe;
+    [HideInInspector] public bool isBoss;
+
+
+    [HideInInspector] public bool canBeShot = true;
+    protected SpriteRenderer sr;
+    [HideInInspector] public bool isPegamentoed = false;
+    [HideInInspector] public bool isAceitado = false;
+
     public bool IsSpawnableByJefe
     {
         get => isSpawnableByJefe;
@@ -58,7 +61,7 @@ public class EnemigoScript : MonoBehaviour
     [HideInInspector] public byte wi = 0; //waypoint index
     [HideInInspector] public bool siguiendo = false; //ver final de V3ify()
     [HideInInspector] public Vector3 currentWaypoint;
-    [SerializeField] private bool reachedGoal = false;
+    private bool reachedGoal = false;
     #endregion
 
     protected HPBar hpBar;
@@ -83,7 +86,7 @@ public class EnemigoScript : MonoBehaviour
         aceiteSpd = spd * Aceite.buff;
         v3Camino.Clear();
         secuenciaAnims.Clear(); //cuenta como asignación? 
-        spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+        sr = this.gameObject.GetComponent<SpriteRenderer>();
         animator = this.gameObject.GetComponent<Animator>();
         padreWaypoints = GameObject.Find("PadreWaypoints");
         defaultMat = new Material(Shader.Find("Sprites/Default"));
@@ -115,7 +118,6 @@ public class EnemigoScript : MonoBehaviour
             break;
         }
         V3ify(path);
-        yield return new WaitForSeconds(1.5f);
         canBeShot = true;
         canBeEaten = true;
         this.gameObject.tag = "enemigo";
@@ -237,11 +239,12 @@ public class EnemigoScript : MonoBehaviour
     }
     private IEnumerator HurtVFX(float d = 0.1f)
     {
-        this.spriteRenderer.color = hurtColor;
+        this.sr.color = hurtColor;
         yield return new WaitForSeconds(d);
-        this.spriteRenderer.color = baseColor;
+        this.sr.color = baseColor;
 
     }
+
     public virtual void Sufrir(float dmg)
     { // Sufrir daño causado por PROYECTILES (balas que usan el BalaScript).
       //BAJO NINGUNA CIRCUNSTANCIA usar para balas "especiales" (como el chorro de agua o el proyector)

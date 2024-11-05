@@ -30201,6 +30201,8 @@ MonoBehaviour:
   - {fileID: 8607095792333958548, guid: 8b04f3cfe3babdd4196426961ca8162e, type: 3}
   - {fileID: 8607095792333958548, guid: 8b04f3cfe3babdd4196426961ca8162e, type: 3}
   - {fileID: 7100805056013139157, guid: 930753798ea2a6144919deee90caa52b, type: 3}
+  - {fileID: 6975784307275976894, guid: 56eb747826c4d0243b8a683f5ebe4345, type: 3}
+  - {fileID: 6975784307275976894, guid: 56eb747826c4d0243b8a683f5ebe4345, type: 3}
   spawners:
   - {fileID: 116802921}
   - {fileID: 627240442}

@@ -47,7 +47,7 @@ public class Pata : EnemigoScript
     protected override void Update()
     {
         base.Update();
-        if(colorExplosion.a != 1)
+        if (colorExplosion.a != 1)
         {
             throw new System.Exception("El alpha de colorExplosion DEBE SER 1.");
         }
