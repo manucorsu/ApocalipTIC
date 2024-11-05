@@ -25,6 +25,9 @@ public class Corazones : MonoBehaviour
         if (MessageBox.Instance.CheatsEnabled == false && EnemySpawner.vidas == 0)
         {
             SoundManager.Instance.StopAllSfxLoops();
+            SoundManager.Instance.GetComponent<AudioSource>().clip = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().musica[3];
+            SoundManager.Instance.GetComponent<AudioSource>().Play();
+            SoundManager.Instance.GetComponent<AudioSource>().loop = false;
             SceneManager.LoadScene("GameOver");
         }
         for (byte i = 0; i < corazones.Length; i++)
