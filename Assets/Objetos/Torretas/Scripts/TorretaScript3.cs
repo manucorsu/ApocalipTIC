@@ -52,6 +52,14 @@ public class TorretaScript3 : MonoBehaviour
                 return;
             }
         }
+
+        if (canEat == false)
+        {
+            if (!CheckTargetRange())
+            {
+                target = null;
+            }
+        }
     }
 
     private void FindTarget()
@@ -59,11 +67,15 @@ public class TorretaScript3 : MonoBehaviour
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, rango, new Vector2(transform.position.x, transform.position.y), 0f, enemigos);
         if (hits.Length > 0)
         {
-            target = hits[0].transform;
-
-            if (canEat)
+            Ninja ninja = hits[0].collider.GetComponent<Ninja>();
+            if (hits[0].collider.GetComponent<Pata>() == null && hits[0].collider.GetComponent<Boss>() == null && (ninja == null || ninja.Invisible == false))
             {
-                StartCoroutine(Comer());
+                target = hits[0].transform;
+
+                if (canEat && target.GetComponent<EnemigoScript>().canBeEaten == true)
+                {
+                    StartCoroutine(Comer());
+                }
             }
         }
 
@@ -110,8 +122,13 @@ public class TorretaScript3 : MonoBehaviour
             }
 
             Pulpo pulpo = target.GetComponent<Pulpo>();
-            if (pulpo == null) targetscr.Morir();
+            if (pulpo == null) targetscr.Sufrir(12345);
             else pulpo.MorirTacho();
+
+            if (target != null)
+            {
+                targetscr.Sufrir(12345);
+            }
 
             canEat = false;
             SoundManager.Instance.PlaySound(tachoMasticarSfx, 1f);
@@ -128,6 +145,17 @@ public class TorretaScript3 : MonoBehaviour
             SoundManager.Instance.PlaySound(tachoEructarSfx, 0.75f);
             anima = 2;
             animator.SetFloat("anim", anima);
+        }
+    }
+
+    private bool CheckTargetRange()
+    {
+        if (target != null)
+        {
+            return Vector2.Distance(target.position, transform.position) <= rango;
+        } else
+        {
+            return false;
         }
     }
 

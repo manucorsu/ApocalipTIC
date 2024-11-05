@@ -40,7 +40,7 @@ public class Pata : EnemigoScript
 
     public override void Morir()
     {
-        foreach (GameObject patito in patitos) patito?.GetComponent<Patito>().Liberar();
+        foreach (GameObject patito in patitos)  patito?.GetComponent<Patito>().Liberar(); 
         base.Morir();
     }
 
