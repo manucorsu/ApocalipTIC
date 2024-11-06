@@ -1,22 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Corazones : MonoBehaviour
 {
-    public static Corazones instance;
+    public static Corazones Instance { get; private set; }
     [SerializeField] private GameObject[] corazones;
+
+    [SerializeField] private AudioClip upgradeSfx;
+
     private bool[] statusCorazones = new bool[] { false, false, false };
     //cada corazón está en `false` si NO está roto y en `true` si está roto
 
+
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this.gameObject);
         }
-        else instance = this;
+        else Instance = this;
+    } 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            GiveLife();
+        }
     }
 
     public void LoseLife()
@@ -30,13 +43,32 @@ public class Corazones : MonoBehaviour
             SoundManager.Instance.GetComponent<AudioSource>().loop = false;
             SceneManager.LoadScene("GameOver");
         }
-        for (byte i = 0; i < corazones.Length; i++)
+        for (int i = 0; i < corazones.Length; i++)
         {
             if (statusCorazones[i] == false)
             {
                 corazones[i].GetComponent<Animator>().SetTrigger("romper");
                 statusCorazones[i] = true;
                 break;
+            }
+        }
+    }
+
+    public void GiveLife()
+    {
+        if (EnemySpawner.vidas + 1 <= 3)
+        {
+            Debug.Log(EnemySpawner.vidas);
+            EnemySpawner.vidas++;
+            SoundManager.Instance.PlaySound(upgradeSfx);
+            for (int i = corazones.Length - 1; i <= 0; i++)
+            {
+                if (corazones[i] != null && statusCorazones[i] == true)
+                {
+                    corazones[i].GetComponent<Animator>().SetTrigger("unromper");
+                    statusCorazones[i] = false;
+                    break;
+                }
             }
         }
     }

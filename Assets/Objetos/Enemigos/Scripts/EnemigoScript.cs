@@ -337,7 +337,7 @@ public class EnemigoScript : MonoBehaviour
         this.plata = 0;
         this.colorExplosion = colorExplosion = new Color(this.colorExplosion.r, this.colorExplosion.g, this.colorExplosion.b, 0);
         Morir();
-        Corazones.instance.LoseLife();
+        Corazones.Instance.LoseLife();
         reachedGoal = true;
     }
 }

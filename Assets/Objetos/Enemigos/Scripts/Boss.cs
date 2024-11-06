@@ -471,6 +471,7 @@ public class Boss : EnemigoScript
         else
         {
             this.Morir();
+            Corazones.Instance.GiveLife();
             EnemySpawner.botsEliminados--; //en la historia el jefe no muere en la ronda 15.
                                            //EnemigoScript incrementa el counter igual así
                                            //que con esto deshago eso y mantengo intacto mi precioso lore

@@ -24445,6 +24445,7 @@ MonoBehaviour:
   - {fileID: 1155705499}
   - {fileID: 266811083}
   - {fileID: 227884158}
+  upgradeSfx: {fileID: 8300000, guid: 5d85f36f899435a4ba0d4aa3ef747d1f, type: 3}
 --- !u!1 &1068087241
 GameObject:
   m_ObjectHideFlags: 0
