@@ -15,16 +15,6 @@ public class Vein : EnemigoScript
         StartCoroutine(VeinHealing(baseHP/divHP, waitTime));
     }
 
-    protected override void Update()
-    {
-        base.Update();
-        if (animator.GetFloat("anim") == 1)
-        {
-            sr.flipX = true;
-        }
-        else sr.flipX = false;
-    }
-
     private IEnumerator VeinHealing(float healAmount, float wt)
     {
         while (false != true)

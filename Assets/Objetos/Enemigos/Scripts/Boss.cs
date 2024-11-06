@@ -407,7 +407,13 @@ public class Boss : EnemigoScript
         if (EnemySpawner.ronda == 15) Escapar();
         else
         {
-            if (hp <= 1) StartCoroutine(BossMorir());
+            if (hp <= 1)
+            {
+                Time.timeScale = 1;
+                btnDv.image.sprite = dvOffSpr;
+                btnDv.interactable = false;
+                StartCoroutine(BossMorir());
+            }
             else idle = true;
         }
     }
@@ -433,7 +439,12 @@ public class Boss : EnemigoScript
             if (enemigo != this.gameObject)
             {
                 EnemigoScript enemigoScript = enemigo.GetComponent<EnemigoScript>();
-                if (enemigoScript != null) enemigoScript.Morir();
+                if (enemigoScript != null)
+                {
+                    Ninja ninja = enemigo.GetComponent<Ninja>();
+                    if (ninja != null) ninja.SetInvis(false, 0.1f);
+                    enemigoScript.Morir();
+                }
             }
         }
         if (EnemySpawner.ronda == 30)
