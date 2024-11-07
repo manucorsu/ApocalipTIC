@@ -56,12 +56,11 @@ public class Corazones : MonoBehaviour
 
     public void GiveLife()
     {
-        if (EnemySpawner.vidas + 1 <= 3)
+        if ((EnemySpawner.vidas + 1) <= 3)
         {
-            Debug.Log(EnemySpawner.vidas);
             EnemySpawner.vidas++;
-            SoundManager.Instance.PlaySound(upgradeSfx);
-            for (int i = corazones.Length - 1; i <= 0; i++)
+            SoundManager.Instance.PlayUISound(upgradeSfx);
+            for (int i = corazones.Length - 1; i >= 0; i--)
             {
                 if (corazones[i] != null && statusCorazones[i] == true)
                 {

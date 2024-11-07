@@ -39,7 +39,7 @@ public class BombuchaScript : MonoBehaviour
         if (collision.gameObject.tag == "enemigo")
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
-            SoundManager.Instance.PlaySound(bbchPopSfx);
+            SoundManager.Instance.PlayUISound(bbchPopSfx);
             Destroy(this.gameObject);
         }
     }

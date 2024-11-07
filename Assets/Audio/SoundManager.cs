@@ -33,18 +33,17 @@ public class SoundManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayUIClick() => PlaySound(uiClick);
+    public void PlayUIClick() => PlayUISound(uiClick);
 
-    public void PlaySound(AudioClip clip, float volume = 1)
+    public void PlayUISound(AudioClip clip, float volume = 1)
     {
         if (volume < 0 || volume > 1)
         {
-            Application.Quit();
             throw new System.ArgumentOutOfRangeException("volume", "volume debe ser un float entre 0 y 1 porque Unity.");
         }
         if (clip == null)
         {
-            throw new System.ArgumentNullException("clip", "el clip pasado fue null");
+            throw new System.ArgumentNullException("clip");
         }
         if (sfxOn)
         {
@@ -52,8 +51,30 @@ public class SoundManager : MonoBehaviour
             sfxPlayer.PlayOneShot(clip);
         }
     }
+
+    public void PlaySound(AudioSource source, AudioClip clip, float volume = 1)
+    {
+        if (volume < 0 || volume > 1)
+        {
+            throw new System.ArgumentOutOfRangeException("volume", "volume debe ser un float entre 0 y 1 porque Unity.");
+        }
+        if(source == null)
+        {
+            throw new System.ArgumentNullException("source");
+        }
+        if (clip == null)
+        {
+            throw new System.ArgumentNullException("clip");
+        }
+
+        if (sfxOn)
+        {
+            source.volume = volume;
+            source.PlayOneShot(clip);
+        }
+    }
     
-    public void PlaySounds(AudioClip[] clips, float[] volumes, float waitTime)
+    public void PlayUISounds(AudioClip[] clips, float[] volumes, float waitTime)
     {
         if (clips.Length != volumes.Length)
         {
@@ -71,30 +92,33 @@ public class SoundManager : MonoBehaviour
             throw new System.ArgumentOutOfRangeException(paramName: "waitTime", message: "waitTime no puede ser negativo.");
         }
 
-        StartCoroutine(PlaySoundsCoroutine(clips, volumes, waitTime));
+        StartCoroutine(PlayUISoundsCoroutine(clips, volumes, waitTime));
     }
 
     public void LoopSound(AudioSource player, AudioClip clip, float volume)
     {
-        if (player == null) throw new System.ArgumentNullException("player");
-        if (clip == null) throw new System.ArgumentNullException("clip");
-        if (volume < 0 || volume > 1)
+        if (sfxOn)
         {
-            Application.Quit();
-            throw new System.ArgumentOutOfRangeException("volume", "volume debe ser un float entre 0 y 1 porque Unity.");
-        }
+            if (player == null) throw new System.ArgumentNullException("player");
+            if (clip == null) throw new System.ArgumentNullException("clip");
+            if (volume < 0 || volume > 1)
+            {
+                Application.Quit();
+                throw new System.ArgumentOutOfRangeException("volume", "volume debe ser un float entre 0 y 1 porque Unity.");
+            }
 
-        if (loopers.Contains(player) == false)
-        {
-            player.volume = volume;
-            player.clip = clip;
-            player.loop = true;
-            player.Play();
-            loopers.Add(player);
-        }
-        else
-        {
-            Debug.LogWarning("Ese AudioSource ya estaba loopeando. No se hizo nada.");
+            if (loopers.Contains(player) == false)
+            {
+                player.volume = volume;
+                player.clip = clip;
+                player.loop = true;
+                player.Play();
+                loopers.Add(player);
+            }
+            else
+            {
+                Debug.LogWarning("Ese AudioSource ya estaba loopeando. No se hizo nada.");
+            }
         }
     }
 
@@ -134,7 +158,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMus(AudioClip clip, float volume = 1)
     {
-
         if (volume < 0 || volume > 1)
         {
             Application.Quit();
@@ -150,11 +173,7 @@ public class SoundManager : MonoBehaviour
     public void ToggleSFX(Image callerButtonImg)
     {
         sfxOn = !sfxOn;
-        //if(sfxOn == false)
-        //{
-        //    List<AudioSource> loopersClone = loopers.ToList();
-        //    foreach (AudioSource looper in loopersClone) looper?.Stop();
-        //}
+        if (sfxOn == false) StopAllSfxLoops();
         if (callerButtonImg.sprite == onSpr)
         {
             callerButtonImg.sprite = offSpr;
@@ -205,11 +224,11 @@ public class SoundManager : MonoBehaviour
         };
     }
 
-    private IEnumerator PlaySoundsCoroutine(AudioClip[] clips, float[] volumes, float waitTime)
+    private IEnumerator PlayUISoundsCoroutine(AudioClip[] clips, float[] volumes, float waitTime)
     {
         for (int i = 0; i < clips.Length; i++)
         {
-            PlaySound(clips[i], volumes[i]);
+            PlayUISound(clips[i], volumes[i]);
             yield return new WaitForSeconds(waitTime);
         }
     }

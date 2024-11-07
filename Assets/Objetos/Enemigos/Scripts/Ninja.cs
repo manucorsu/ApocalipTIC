@@ -45,7 +45,7 @@ public class Ninja : EnemigoScript
         Invisible = status;
         if (time > 0)
         {
-            SoundManager.Instance.PlaySound(ninjaRevealSfx, 0.5f);
+            SoundManager.Instance.PlayUISound(ninjaRevealSfx, 0.5f);
             float elapsedTime = 0;
             while (elapsedTime < time)
             {

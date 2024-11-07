@@ -20,7 +20,7 @@ public class BidónScript : MonoBehaviour
 
     private void Start()
     {
-        SoundManager.Instance.PlaySounds(new AudioClip[] { SoundManager.Instance.BuySfx, bbchPopSfx }, new float[] { 0.4f, 1 }, 0.5f);
+        SoundManager.Instance.PlayUISounds(new AudioClip[] { SoundManager.Instance.BuySfx, bbchPopSfx }, new float[] { 0.4f, 1 }, 0.5f);
     }
 
     public void AnimationEnd()

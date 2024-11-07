@@ -16,7 +16,7 @@ public class PegamentoScript : MonoBehaviour
 
     private void Start()
     {
-        SoundManager.Instance.PlaySounds(new AudioClip[] { SoundManager.Instance.BuySfx }, new float[] { 0.4f }, 0.5f);
+        SoundManager.Instance.PlayUISounds(new AudioClip[] { SoundManager.Instance.BuySfx }, new float[] { 0.4f }, 0.5f);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

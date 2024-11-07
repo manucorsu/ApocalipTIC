@@ -6,6 +6,7 @@ public class Pata : EnemigoScript
 {
     [Header("Pata")]
     [SerializeField] private GameObject[] patitos;
+    [HideInInspector] public bool beingKilledByJefe = false;
 
     protected override void Start()
     {
@@ -42,7 +43,11 @@ public class Pata : EnemigoScript
     {
         foreach (GameObject patito in patitos)
         {
-            if (patito != null) patito.GetComponent<Patito>().Liberar();
+            if (patito != null)
+            {
+                patito.GetComponent<Patito>().Liberar();
+                if (beingKilledByJefe) patito.GetComponent<Patito>().Morir();
+            }
         }
         base.Morir(tacho);
     }

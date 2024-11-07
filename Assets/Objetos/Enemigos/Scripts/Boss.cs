@@ -18,7 +18,7 @@ public class Boss : EnemigoScript
     private Image btnDvImg;
     [SerializeField] private Sprite dvOnSpr;
     [SerializeField] private Sprite dvOffSpr;
-
+    private int lastBehaviour;
     private Dictionary<string, float> moveAnims = new Dictionary<string, float> //viva python
     {
         {"MoveDown", 0f},
@@ -259,7 +259,13 @@ public class Boss : EnemigoScript
     {
         idle = false;
         this.spd = this.baseSpd;
+
         int rand = Random.Range(0, 3);
+        while (rand == lastBehaviour)
+        {
+            rand = Random.Range(0, 3);
+        }
+        lastBehaviour = rand;
         switch (rand)
         {
             case 0: //spawnear enemigos cerca de la entrada
@@ -443,7 +449,10 @@ public class Boss : EnemigoScript
                 {
                     Ninja ninja = enemigo.GetComponent<Ninja>();
                     if (ninja != null) ninja.SetInvis(false, 0.1f);
-                    enemigoScript.Morir();
+                    Pata pata = enemigo.GetComponent<Pata>();
+                    if (pata != null) pata.beingKilledByJefe = true;
+                    Patito patito = enemigo.GetComponent<Patito>();
+                    if(patito == null) enemigoScript.Morir();
                 }
             }
         }
@@ -470,8 +479,8 @@ public class Boss : EnemigoScript
         }
         else
         {
-            this.Morir();
             Corazones.Instance.GiveLife();
+            this.Morir();
             EnemySpawner.botsEliminados--; //en la historia el jefe no muere en la ronda 15.
                                            //EnemigoScript incrementa el counter igual así
                                            //que con esto deshago eso y mantengo intacto mi precioso lore

@@ -139,7 +139,7 @@ public class TorretaScript4 : MonoBehaviour
 
     public IEnumerator Atacar()
     {
-        SoundManager.Instance.PlaySound(sfxRayo, 0.3f);
+        SoundManager.Instance.PlayUISound(sfxRayo, 0.3f);
         canshoot = false;
         bala.SetActive(true);
         yield return new WaitForSeconds(0.45f);

@@ -113,9 +113,9 @@ public class TorretaScript : MonoBehaviour
         }
         if (!isTiralapiceras)
         {
-            SoundManager.Instance.PlaySound(tlapicesShootSfx, 0.4f);
+            SoundManager.Instance.PlayUISound(tlapicesShootSfx, 0.4f);
         }
-        else SoundManager.Instance.PlaySound(tlapicerasShootSfx, 0.4f);
+        else SoundManager.Instance.PlayUISound(tlapicerasShootSfx, 0.4f);
         yield return new WaitForSeconds(0.2f);
         animator.SetFloat("anim", 0);
     }

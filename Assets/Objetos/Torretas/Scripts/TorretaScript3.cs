@@ -103,7 +103,7 @@ public class TorretaScript3 : MonoBehaviour
 
             anima = 0;
             animator.SetFloat("anim", anima);
-            SoundManager.Instance.PlaySound(tachoAspirarSfx);
+            SoundManager.Instance.PlayUISound(tachoAspirarSfx);
 
             while (target.position != transform.position)
             {
@@ -141,7 +141,7 @@ public class TorretaScript3 : MonoBehaviour
             Destroy(target.gameObject);
 
             canEat = false;
-            SoundManager.Instance.PlaySound(tachoMasticarSfx, 1f);
+            SoundManager.Instance.PlayUISound(tachoMasticarSfx, 1f);
 
 
 
@@ -152,7 +152,7 @@ public class TorretaScript3 : MonoBehaviour
             yield return new WaitForSeconds(cooldown);
 
             canEat = true;
-            SoundManager.Instance.PlaySound(tachoEructarSfx, 0.75f);
+            SoundManager.Instance.PlayUISound(tachoEructarSfx, 0.75f);
             anima = 2;
             animator.SetFloat("anim", anima);
         }

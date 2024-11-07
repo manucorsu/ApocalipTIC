@@ -86,7 +86,7 @@ public class ConstruirScript : MonoBehaviour
             if (torretaSeleccionada != null)
             {
                 GameObject torreta = Instantiate(torretaSeleccionada, transform.position, Quaternion.identity);
-                try { SoundManager.Instance.PlaySound(buySfx, 0.4f); }
+                try { SoundManager.Instance.PlayUISound(buySfx, 0.4f); }
                 catch (System.NullReferenceException)
                 {
                     Debug.LogError("NullReferenceExeception: El singleton de SoundManager fue null.\n" +
