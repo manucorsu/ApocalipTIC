@@ -15,6 +15,7 @@ public class BombuchaScript : MonoBehaviour
     public float balaSpd;
     public float balaDmg;
 
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip bbchPopSfx;
 
     public void SetTarget(Transform targetSet)
@@ -39,7 +40,7 @@ public class BombuchaScript : MonoBehaviour
         if (collision.gameObject.tag == "enemigo")
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
-            SoundManager.Instance.PlayUISound(bbchPopSfx);
+            SoundManager.Instance.PlaySound(audioSource, bbchPopSfx);
             Destroy(this.gameObject);
         }
     }

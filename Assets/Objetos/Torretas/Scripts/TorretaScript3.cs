@@ -29,6 +29,7 @@ public class TorretaScript3 : MonoBehaviour
     public float nivel2 = 1;
 
     [Header("SFX")]
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip tachoAspirarSfx;
     [SerializeField] private AudioClip tachoMasticarSfx;
     [SerializeField] private AudioClip tachoEructarSfx;
@@ -103,7 +104,7 @@ public class TorretaScript3 : MonoBehaviour
 
             anima = 0;
             animator.SetFloat("anim", anima);
-            SoundManager.Instance.PlayUISound(tachoAspirarSfx);
+            SoundManager.Instance.PlaySound(audioSource, tachoAspirarSfx);
 
             while (target.position != transform.position)
             {
@@ -141,7 +142,7 @@ public class TorretaScript3 : MonoBehaviour
             Destroy(target.gameObject);
 
             canEat = false;
-            SoundManager.Instance.PlayUISound(tachoMasticarSfx, 1f);
+            SoundManager.Instance.PlaySound(audioSource, tachoMasticarSfx, 1f);
 
 
 
@@ -152,7 +153,7 @@ public class TorretaScript3 : MonoBehaviour
             yield return new WaitForSeconds(cooldown);
 
             canEat = true;
-            SoundManager.Instance.PlayUISound(tachoEructarSfx, 0.75f);
+            SoundManager.Instance.PlaySound(audioSource, tachoEructarSfx, 0.75f);
             anima = 2;
             animator.SetFloat("anim", anima);
         }

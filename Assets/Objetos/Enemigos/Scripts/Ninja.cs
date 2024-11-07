@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ninja : EnemigoScript
 {
     [SerializeField] private CustomRangeFloat transparentAlpha = new CustomRangeFloat(0, 1, 0);
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip ninjaRevealSfx;
     public bool Invisible { get; private set; }
 
@@ -45,7 +46,7 @@ public class Ninja : EnemigoScript
         Invisible = status;
         if (time > 0)
         {
-            SoundManager.Instance.PlayUISound(ninjaRevealSfx, 0.5f);
+            SoundManager.Instance.PlaySound(audioSource, ninjaRevealSfx, 0.5f);
             float elapsedTime = 0;
             while (elapsedTime < time)
             {

@@ -10,7 +10,7 @@ public class ParlanteScript : MonoBehaviour
 
 
     //Objetos
-
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip parlanteSfx;
     public Animator animator;
     public Transform target;
@@ -81,7 +81,7 @@ public class ParlanteScript : MonoBehaviour
 
     private IEnumerator Disparar()
     {
-        SoundManager.Instance.PlayUISound(parlanteSfx, 0.2f);
+        SoundManager.Instance.PlaySound(audioSource, parlanteSfx, 0.2f);
         animator.SetTrigger("anim");
         GameObject explosion = Instantiate(onda, firingPoint);
         explosion.transform.localScale = new Vector3(ondaSize, ondaSize, 1);

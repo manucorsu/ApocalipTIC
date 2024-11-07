@@ -8,6 +8,7 @@ public class PegamentoScript : MonoBehaviour
     //Objetos
 
     public Animator animator;
+    [SerializeField] private AudioSource audioSource;
 
     //Variables
 
@@ -16,7 +17,7 @@ public class PegamentoScript : MonoBehaviour
 
     private void Start()
     {
-        SoundManager.Instance.PlaySounds(new AudioClip[] { SoundManager.Instance.BuySfx }, new float[] { 0.4f }, 0.5f);
+        SoundManager.Instance.PlaySounds(audioSource, new AudioClip[] { SoundManager.Instance.BuySfx }, new float[] { 0.4f }, 0.5f);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

@@ -34,6 +34,7 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlayUIClick() => PlaySound(sfxPlayer, uiClick);
+    public void PlayBuySfx() => PlaySound(sfxPlayer, BuySfx, 0.4f);
 
     //public void PlayUISound(AudioClip clip, float volume = 1)
     //{
