@@ -33,24 +33,24 @@ public class SoundManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayUIClick() => PlayUISound(uiClick);
+    public void PlayUIClick() => PlaySound(sfxPlayer, uiClick);
 
-    public void PlayUISound(AudioClip clip, float volume = 1)
-    {
-        if (volume < 0 || volume > 1)
-        {
-            throw new System.ArgumentOutOfRangeException("volume", "volume debe ser un float entre 0 y 1 porque Unity.");
-        }
-        if (clip == null)
-        {
-            throw new System.ArgumentNullException("clip");
-        }
-        if (sfxOn)
-        {
-            sfxPlayer.volume = volume;
-            sfxPlayer.PlayOneShot(clip);
-        }
-    }
+    //public void PlayUISound(AudioClip clip, float volume = 1)
+    //{
+    //    if (volume < 0 || volume > 1)
+    //    {
+    //        throw new System.ArgumentOutOfRangeException("volume", "volume debe ser un float entre 0 y 1 porque Unity.");
+    //    }
+    //    if (clip == null)
+    //    {
+    //        throw new System.ArgumentNullException("clip");
+    //    }
+    //    if (sfxOn)
+    //    {
+    //        sfxPlayer.volume = volume;
+    //        sfxPlayer.PlayOneShot(clip);
+    //    }
+    //}
 
     public void PlaySound(AudioSource source, AudioClip clip, float volume = 1)
     {
@@ -73,8 +73,8 @@ public class SoundManager : MonoBehaviour
             source.PlayOneShot(clip);
         }
     }
-    
-    public void PlayUISounds(AudioClip[] clips, float[] volumes, float waitTime)
+
+    public void PlaySounds(AudioSource source, AudioClip[] clips, float[] volumes, float waitTime)
     {
         if (clips.Length != volumes.Length)
         {
@@ -92,7 +92,7 @@ public class SoundManager : MonoBehaviour
             throw new System.ArgumentOutOfRangeException(paramName: "waitTime", message: "waitTime no puede ser negativo.");
         }
 
-        StartCoroutine(PlayUISoundsCoroutine(clips, volumes, waitTime));
+        StartCoroutine(PlaySoundsCoroutine(source, clips, volumes, waitTime));
     }
 
     public void LoopSound(AudioSource player, AudioClip clip, float volume)
@@ -224,11 +224,11 @@ public class SoundManager : MonoBehaviour
         };
     }
 
-    private IEnumerator PlayUISoundsCoroutine(AudioClip[] clips, float[] volumes, float waitTime)
+    private IEnumerator PlaySoundsCoroutine(AudioSource source, AudioClip[] clips, float[] volumes, float waitTime)
     {
         for (int i = 0; i < clips.Length; i++)
         {
-            PlayUISound(clips[i], volumes[i]);
+            if (sfxOn) PlaySound(source, clips[i], volumes[i]);
             yield return new WaitForSeconds(waitTime);
         }
     }
