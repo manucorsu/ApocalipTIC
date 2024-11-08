@@ -16,11 +16,12 @@ public class BidónScript : MonoBehaviour
     public float daño;
     public float anim;
     public float precio;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip bbchPopSfx;
 
     private void Start()
     {
-        SoundManager.Instance.PlayUISounds(new AudioClip[] { SoundManager.Instance.BuySfx, bbchPopSfx }, new float[] { 0.4f, 1 }, 0.5f);
+        SoundManager.Instance.PlaySounds(audioSource, new AudioClip[] { SoundManager.Instance.BuySfx, bbchPopSfx }, new float[] { 0.4f, 1 }, 0.5f);
     }
 
     public void AnimationEnd()

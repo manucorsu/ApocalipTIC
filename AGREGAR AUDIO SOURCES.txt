@@ -1,0 +1,23 @@
+Bidón, LISTO
+Pegamento, LISTO
+Prefab "Explosion" (de la bombucha), LISTO
+Ninja, LISTO
+Impresora, LISTO
+Tiralápices, LISTO
+Tiralapiceras, LISTO
+El padre de los corazones, LISTO
+Tacho, LISTO
+Parlante, LISTO
+Proyector, LISTO
+PARA SCR BOTONES DARLE LA AUDIOSOURCE DE SCENESCRIPTS, LISTO
+Imán, LISTO
+Lanzabombuchas, LISTO
+Robot1, LISTO
+Robot2, LISTO
+Robot3, LISTO
+Robot4
+Pulpo
+Vein, LISTO
+Pata
+Jefe
+Patito

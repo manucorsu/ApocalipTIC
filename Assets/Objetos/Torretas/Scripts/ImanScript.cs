@@ -12,7 +12,6 @@ public class ImanScript : TorretaScript
     public bool isAbsorbing = false;
     public GameObject tuerca;
     public int ganancia = 0;
-    [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip imanSfx;
     private bool isLoopingSfx = false;
 

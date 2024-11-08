@@ -85,7 +85,7 @@ public class ZonaConsumiblesScript : MonoBehaviour
     private IEnumerator Palomas()
     {
         isPalomas = true;
-        SoundManager.Instance.PlayUISound(SoundManager.Instance.BuySfx, 0.4f);
+        SoundManager.Instance.PlayBuySfx();
         yield return new WaitForSeconds(0.5f);
         palomas.Play();
         SoundManager.Instance.LoopSound(sceneScripts.GetComponent<AudioSource>(), palomasSfx, 1);    

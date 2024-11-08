@@ -11,6 +11,7 @@ public class Corazones : MonoBehaviour
 
     [SerializeField] private AudioClip upgradeSfx;
 
+    [SerializeField] private AudioSource audioSource;
     private bool[] statusCorazones = new bool[] { false, false, false };
     //cada corazón está en `false` si NO está roto y en `true` si está roto
 
@@ -22,7 +23,7 @@ public class Corazones : MonoBehaviour
             Destroy(this.gameObject);
         }
         else Instance = this;
-    } 
+    }
 
     private void Update()
     {
@@ -59,7 +60,7 @@ public class Corazones : MonoBehaviour
         if ((EnemySpawner.vidas + 1) <= 3)
         {
             EnemySpawner.vidas++;
-            SoundManager.Instance.PlayUISound(upgradeSfx);
+            SoundManager.Instance.PlaySound(audioSource, upgradeSfx);
             for (int i = corazones.Length - 1; i >= 0; i--)
             {
                 if (corazones[i] != null && statusCorazones[i] == true)

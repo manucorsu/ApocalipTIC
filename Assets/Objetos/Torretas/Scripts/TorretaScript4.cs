@@ -17,6 +17,7 @@ public class TorretaScript4 : MonoBehaviour
     public RaycastHit2D[] hits;
     public RaycastHit2D[] hits2;
     public Transform puntaRecta;
+    [SerializeField] private AudioSource audioSource;
     public AudioClip sfxRayo;
 
     //Variables
@@ -139,7 +140,7 @@ public class TorretaScript4 : MonoBehaviour
 
     public IEnumerator Atacar()
     {
-        SoundManager.Instance.PlayUISound(sfxRayo, 0.3f);
+        SoundManager.Instance.PlaySound(audioSource, sfxRayo, 0.3f);
         canshoot = false;
         bala.SetActive(true);
         yield return new WaitForSeconds(0.45f);

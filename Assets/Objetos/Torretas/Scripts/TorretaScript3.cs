@@ -29,6 +29,7 @@ public class TorretaScript3 : MonoBehaviour
     public float nivel2 = 1;
 
     [Header("SFX")]
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip tachoAspirarSfx;
     [SerializeField] private AudioClip tachoMasticarSfx;
     [SerializeField] private AudioClip tachoEructarSfx;

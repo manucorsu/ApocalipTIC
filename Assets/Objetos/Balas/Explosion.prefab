@@ -130,3 +130,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "da\xF1o": 20
+  audioSource: {fileID: 0}
+  bbchPopSfx: {fileID: 0}

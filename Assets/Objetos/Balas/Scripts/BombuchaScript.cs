@@ -15,6 +15,7 @@ public class BombuchaScript : MonoBehaviour
     public float balaSpd;
     public float balaDmg;
 
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip bbchPopSfx;
 
     public void SetTarget(Transform targetSet)
@@ -29,7 +30,6 @@ public class BombuchaScript : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
-
         Vector2 direction = (target.position - transform.position).normalized;
         rb.velocity = direction * balaSpd;
     }
@@ -39,7 +39,6 @@ public class BombuchaScript : MonoBehaviour
         if (collision.gameObject.tag == "enemigo")
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
-            SoundManager.Instance.PlayUISound(bbchPopSfx);
             Destroy(this.gameObject);
         }
     }
