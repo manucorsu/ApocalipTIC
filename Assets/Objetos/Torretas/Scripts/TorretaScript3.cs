@@ -52,14 +52,6 @@ public class TorretaScript3 : MonoBehaviour
                 return;
             }
         }
-
-        if (canEat == false)
-        {
-            if (!CheckTargetRange())
-            {
-                target = null;
-            }
-        }
     }
 
     private void FindTarget()
@@ -67,12 +59,14 @@ public class TorretaScript3 : MonoBehaviour
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, rango, new Vector2(transform.position.x, transform.position.y), 0f, enemigos);
         if (hits.Length > 0)
         {
-            Ninja ninja = hits[0].collider.GetComponent<Ninja>();
-            if (hits[0].collider.GetComponent<Pata>() == null && hits[0].collider.GetComponent<Boss>() == null && (ninja == null || ninja.Invisible == false))
+            if (hits[0].collider.GetComponent<Pata>() == null && hits[0].collider.GetComponent<Boss>() == null)
             {
-                target = hits[0].transform;
+                if (hits[0].collider.GetComponent<Ninja>() != null && hits[0].collider.GetComponent<Ninja>().Invisible == false || hits[0].collider.GetComponent<Ninja>() == null)
+                {
+                    target = hits[0].transform;            
+                }
 
-                if (canEat && target.GetComponent<EnemigoScript>().canBeEaten == true)
+                if (canEat)
                 {
                     StartCoroutine(Comer());
                 }
@@ -89,84 +83,62 @@ public class TorretaScript3 : MonoBehaviour
     }
 #endif
 
-
     private IEnumerator Comer()
-    {
-        EnemigoScript targetscr = target.GetComponent<EnemigoScript>();
-
-        if (targetscr.canBeEaten == true && targetscr.isBoss == false)
-        {
-            targetscr.spd = 0;
-            targetscr.canBeEaten = false;
-
-
-
-            anima = 0;
-            animator.SetFloat("anim", anima);
-            SoundManager.Instance.PlayUISound(tachoAspirarSfx);
-
-            while (target.position != transform.position)
-            {
-                target.position = Vector3.MoveTowards(target.position, transform.position, spd * Time.deltaTime);
-                target.Rotate(new Vector3(0, 0, 1), 200 * Time.deltaTime);
-                if (target.localScale.x > 0)
-                {
-                    target.localScale = new Vector2(target.localScale.x - 0.04f, target.localScale.y - 0.04f);
-                }
-                else
-                {
-                    target.localScale = new Vector3(0.01f, 0.01f, 0);
-                }
-                yield return null;
-            }
-
-            Pulpo pulpo = target.gameObject.GetComponent<Pulpo>();
-            if (pulpo == null)
-            {
-                targetscr.Morir(true);
-                Debug.Log("el tacho mató un enemigo por primera vez");
-            }
-            else
-            {
-                pulpo.MorirTacho();
-                Debug.Log("el tacho mató un pulpo");
-            }
-
-            GameObject explosion = Instantiate(targetscr.explosionMuerte, transform.position, Quaternion.identity);
-            explosion.GetComponent<SpriteRenderer>().color = targetscr.colorExplosion;
-            EnemySpawner.botsEliminados++;
-            if (!EnemySpawner.isBossFight) EnemySpawner.botsEliminadosRonda++;
-            EnemySpawner.botsVivos.Remove(target.gameObject);
-            GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>().plataActual += targetscr.plata;
-            Destroy(target.gameObject);
-
-            canEat = false;
-            SoundManager.Instance.PlayUISound(tachoMasticarSfx, 1f);
-
-
-
-            animator.enabled = true;
-            anima = 1;
-            animator.SetFloat("anim", anima);
-
-            yield return new WaitForSeconds(cooldown);
-
-            canEat = true;
-            SoundManager.Instance.PlayUISound(tachoEructarSfx, 0.75f);
-            anima = 2;
-            animator.SetFloat("anim", anima);
-        }
-    }
-
-    private bool CheckTargetRange()
     {
         if (target != null)
         {
-            return Vector2.Distance(target.position, transform.position) <= rango;
-        }
-        else
-        {
-            return false;
+            EnemigoScript targetscr = target.GetComponent<EnemigoScript>();
+
+            if (targetscr.canBeEaten == true && targetscr.isBoss == false)
+            {
+                targetscr.hp = 999;
+                targetscr.spd = 0;
+                targetscr.canBeEaten = false;
+
+
+
+                anima = 0;
+                animator.SetFloat("anim", anima);
+                // SoundManager.Instance.PlaySound(tachoAspirarSfx);
+
+                while (target.position != transform.position)
+                {
+                    if (target != null)
+                    {
+                        target.position = Vector3.MoveTowards(target.position, transform.position, spd * Time.deltaTime);
+                        target.Rotate(new Vector3(0, 0, 1), 200 * Time.deltaTime);
+                        if (target.localScale.x > 0)
+                        {
+                            target.localScale = new Vector2(target.localScale.x - 0.04f, target.localScale.y - 0.04f);
+                        }
+                        else
+                        {
+                            target.localScale = new Vector3(0, 0, 0);
+                        }
+                        yield return null;
+                    }
+                }
+
+                Pulpo pulpo = target.GetComponent<Pulpo>();
+                if (pulpo == null) targetscr.Morir();
+                else pulpo.MorirTacho();
+
+                canEat = false;
+                //   SoundManager.Instance.PlaySound(tachoMasticarSfx, 1f);
+
+
+
+                animator.enabled = true;
+                anima = 1;
+                animator.SetFloat("anim", anima);
+
+                yield return new WaitForSeconds(cooldown);
+
+                canEat = true;
+                //      SoundManager.Instance.PlaySound(tachoEructarSfx, 0.75f);
+                anima = 2;
+                animator.SetFloat("anim", anima);
+            }
         }
     }
 

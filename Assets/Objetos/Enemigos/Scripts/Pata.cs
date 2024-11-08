@@ -39,7 +39,7 @@ public class Pata : EnemigoScript
         base.Start();
     }
 
-    public override void Morir(bool tacho = false)
+    public override void Morir()
     {
         foreach (GameObject patito in patitos)
         {
@@ -49,7 +49,7 @@ public class Pata : EnemigoScript
                 if (beingKilledByJefe) patito.GetComponent<Patito>().Morir();
             }
         }
-        base.Morir(tacho);
+        base.Morir();
     }
 
     protected override void Update()

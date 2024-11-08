@@ -8,11 +8,11 @@ public class Pulpo : EnemigoScript
     [SerializeField] private GameObject aceitePfb;
     public GameObject aceite;
 
-    public override void Morir(bool t)
+    public override void Morir()
     {
-        base.Morir(t);
+        base.Morir();
         aceite = Instantiate(aceitePfb, this.transform.position, Quaternion.identity);
     }
 
-    public void MorirTacho() => base.Morir(true);
+    public void MorirTacho() => base.Morir();
 }
