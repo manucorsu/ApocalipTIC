@@ -104,7 +104,7 @@ public class TorretaScript3 : MonoBehaviour
 
             anima = 0;
             animator.SetFloat("anim", anima);
-            SoundManager.Instance.PlaySound(audioSource, tachoAspirarSfx);
+            SoundManager.Instance.PlaySound(audioSource, tachoAspirarSfx, 0.4f);
 
             while (target.position != transform.position)
             {

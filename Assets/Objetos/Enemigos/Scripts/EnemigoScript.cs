@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro;
 
 public class EnemigoScript : MonoBehaviour
 {
@@ -63,7 +61,8 @@ public class EnemigoScript : MonoBehaviour
     [HideInInspector] public Vector3 currentWaypoint;
     private bool reachedGoal = false;
     #endregion
-
+    [SerializeField] protected AudioSource audioSource;
+    [SerializeField] private AudioClip bbchPopSfx; // Dios me perdone
     protected HPBar hpBar;
 
     private void Awake()
@@ -268,17 +267,18 @@ public class EnemigoScript : MonoBehaviour
             StartCoroutine(Stun(proyector.dps, proyector.stunTime));
         }
 
+        else if (collision.gameObject.GetComponent<ExplosionScript>() != null)
+        {
+            SoundManager.Instance.PlaySound(audioSource, bbchPopSfx, 1);
+            return;
+        }
+
         else if (collision.gameObject.CompareTag("ignorar")) //pegamento, bidón.
         {
             return;
         }
 
-        else if (collision.gameObject.CompareTag("Bombucha"))
-        {
-            BombuchaScript bala = collision.gameObject.GetComponent<BombuchaScript>();
-            Sufrir(bala.balaDmg);
-            Destroy(bala.gameObject);
-        }
+
         else if (collision.gameObject.CompareTag("Goal"))
         {
             if (!reachedGoal)

@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,10 +13,11 @@ public class SoundManager : MonoBehaviour
     [field: SerializeField] public AudioClip BuySfx { get; private set; }
     public Sprite onSpr;
     public Sprite offSpr;
-    public AudioSource audioSource;
+    public AudioSource musPlayer;
     public AudioClip temaPrincipal;
     private List<AudioSource> loopers = new List<AudioSource>();
 
+    [SerializeField] private int warns = 0;
 
     private void Awake()
     {
@@ -30,7 +29,7 @@ public class SoundManager : MonoBehaviour
 
         DontDestroyOnLoad(this);
 
-        audioSource = GetComponent<AudioSource>();
+        musPlayer = GetComponent<AudioSource>();
     }
 
     public void PlayUIClick() => PlaySound(sfxPlayer, uiClick);
@@ -70,8 +69,18 @@ public class SoundManager : MonoBehaviour
 
         if (sfxOn)
         {
-            source.volume = volume;
-            source.PlayOneShot(clip);
+            if (source.isActiveAndEnabled)
+            {
+                source.volume = volume;
+                source.PlayOneShot(clip);
+            }
+            else
+            {
+                //fallback por si justo se destruye el objeto
+                //no es para nada ideal pero bueno, por lo menos te reta en el inspector con warns
+                warns++;
+                PlaySound(sfxPlayer, clip, volume);
+            }
         }
     }
 
@@ -166,8 +175,8 @@ public class SoundManager : MonoBehaviour
         }
         if (musOn && clip != null)
         {
-            audioSource.volume = volume;
-            audioSource.PlayOneShot(clip);
+            musPlayer.volume = volume;
+            musPlayer.PlayOneShot(clip);
         }
     }
 
@@ -195,11 +204,11 @@ public class SoundManager : MonoBehaviour
 
         if (musOn)
         {
-            audioSource.volume = 1;
+            musPlayer.volume = 1;
         }
         else
         {
-            audioSource.volume = 0;
+            musPlayer.volume = 0;
         }
 
         if (callerButtonImg.sprite == onSpr)

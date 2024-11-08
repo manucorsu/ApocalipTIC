@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7100805056013139156}
   - component: {fileID: 7100805056013139163}
   - component: {fileID: 7100805056013139162}
+  - component: {fileID: 82285266966368178}
   m_Layer: 8
   m_Name: Pata
   m_TagString: enemigo
@@ -58,31 +59,33 @@ MonoBehaviour:
   colorExplosion: {r: 0.23921569, g: 0.4862745, b: 0.5372549, a: 1}
   currentMan: 0
   solidWhite: {fileID: 2100000, guid: 73fa6ee842c7da24ea3b26f170eaeac5, type: 2}
+  isSpawnableByJefe: 0
   isLarge: 1
   baseHP: 300
   hp: 0
-  isBoss: 0
-  minRonda: 10
   spd: 1.5
   spdSave: 0
   slowSpd: 0
   aceiteSpd: 0
+  minRonda: 10
   plata: 20
   canBeEaten: 0
+  isBoss: 0
   canBeShot: 1
   isPegamentoed: 0
   isAceitado: 0
-  isSpawnableByJefe: 0
   spName: 
   v3Camino: []
   wi: 0
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
-  reachedGoal: 0
+  audioSource: {fileID: 82285266966368178}
+  bbchPopSfx: {fileID: 8300000, guid: 5f2dda6461366f543b152b7f1bb2fea6, type: 3}
   patitos:
   - {fileID: 9090683695533555971}
   - {fileID: 5790160759110559030}
   - {fileID: 7817767397958369346}
+  beingKilledByJefe: 0
 --- !u!50 &7100805056013139161
 Rigidbody2D:
   serializedVersion: 4
@@ -187,6 +190,102 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &82285266966368178
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7100805056013139157}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &891512930959594171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -194,6 +293,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7100805056013139167}
     m_Modifications:
+    - target: {fileID: 82059363626060092, guid: f5238311d728def48b86b32a760b28d9,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114629074526901080, guid: f5238311d728def48b86b32a760b28d9,
         type: 3}
       propertyPath: m_Enabled
@@ -280,6 +384,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7100805056013139167}
     m_Modifications:
+    - target: {fileID: 82059363626060092, guid: f5238311d728def48b86b32a760b28d9,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114629074526901080, guid: f5238311d728def48b86b32a760b28d9,
         type: 3}
       propertyPath: m_Enabled
@@ -386,6 +495,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7100805056013139167}
     m_Modifications:
+    - target: {fileID: 82059363626060092, guid: f5238311d728def48b86b32a760b28d9,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114629074526901080, guid: f5238311d728def48b86b32a760b28d9,
         type: 3}
       propertyPath: m_Enabled

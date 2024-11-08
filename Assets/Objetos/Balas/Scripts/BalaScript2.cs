@@ -20,7 +20,7 @@ public class BalaScript2 : MonoBehaviour
 
     private void OnEnable()
     {
-       SoundManager.Instance.LoopSound(audioSource, chorroSfx, 0.4f);
+       SoundManager.Instance.LoopSound(audioSource, chorroSfx, 0.25f);
         if (hurtEnemiesCoroutine == null)
         {
             hurtEnemiesCoroutine = StartCoroutine(HurtEnemies());

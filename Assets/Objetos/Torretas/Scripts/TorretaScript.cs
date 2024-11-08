@@ -35,7 +35,7 @@ public class TorretaScript : MonoBehaviour
     public float precioMejora;
 
     [Header("SFX")]
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] protected AudioSource audioSource;
     [SerializeField] private bool isTiralapiceras;
     [SerializeField] private AudioClip tlapicesShootSfx;
     [SerializeField] private AudioClip tlapicerasShootSfx;
@@ -112,7 +112,7 @@ public class TorretaScript : MonoBehaviour
         }
         if (!isTiralapiceras)
         {
-            SoundManager.Instance.PlaySound(audioSource, tlapicesShootSfx, 0.4f);
+            SoundManager.Instance.PlaySound(audioSource, tlapicesShootSfx, 0.6f);
         }
         else SoundManager.Instance.PlaySound(audioSource, tlapicerasShootSfx, 0.4f);
         yield return new WaitForSeconds(0.2f);
