@@ -30445,7 +30445,7 @@ MonoBehaviour:
   - {fileID: 1398770149}
   - {fileID: 1106914361}
   plataActualtxt: {fileID: 746686169696950807}
-  plataInicial: 1500
+  plataInicial: 1000
   plataActual: 0
 --- !u!4 &1496161650
 Transform:
