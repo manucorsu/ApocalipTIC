@@ -39,6 +39,7 @@ public class TorretaScript : MonoBehaviour
     [SerializeField] private bool isTiralapiceras;
     [SerializeField] private AudioClip tlapicesShootSfx;
     [SerializeField] private AudioClip tlapicerasShootSfx;
+    [SerializeField] private AudioClip bbchPopSfx;
 
     void Start()
     {
@@ -103,6 +104,7 @@ public class TorretaScript : MonoBehaviour
             BombuchaScript bombuchaScr = balaObj.GetComponent<BombuchaScript>();
             bombuchaScr.SetTarget(target);
             bombuchaScr.balaDmg = dmg;
+            bombuchaScr.lanzabombuchas = this;
         }
         else
         {
@@ -175,5 +177,10 @@ public class TorretaScript : MonoBehaviour
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, rango);
 #endif  
+    }
+
+    public void PlayBbchPop()
+    {
+        SoundManager.Instance.PlaySound(this.audioSource, bbchPopSfx);
     }
 }

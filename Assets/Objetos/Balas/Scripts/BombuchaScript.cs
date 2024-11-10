@@ -15,8 +15,7 @@ public class BombuchaScript : MonoBehaviour
     public float balaSpd;
     public float balaDmg;
 
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip bbchPopSfx;
+    public TorretaScript lanzabombuchas;
 
     public void SetTarget(Transform targetSet)
     {
@@ -38,6 +37,7 @@ public class BombuchaScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemigo")
         {
+            lanzabombuchas.PlayBbchPop();
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }

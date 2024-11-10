@@ -62,7 +62,6 @@ public class EnemigoScript : MonoBehaviour
     private bool reachedGoal = false;
     #endregion
     [SerializeField] protected AudioSource audioSource;
-    [SerializeField] private AudioClip bbchPopSfx; // Dios me perdone
     protected HPBar hpBar;
 
     private void Awake()
@@ -270,7 +269,6 @@ public class EnemigoScript : MonoBehaviour
 
         else if (collision.gameObject.GetComponent<ExplosionScript>() != null)
         {
-            SoundManager.Instance.PlaySound(audioSource, bbchPopSfx, 1);
             return;
         }
 

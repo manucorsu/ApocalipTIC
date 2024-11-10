@@ -231,6 +231,7 @@ MonoBehaviour:
   isTiralapiceras: 0
   tlapicesShootSfx: {fileID: 8300000, guid: 1b395ba118236fd46839d414f01a251e, type: 3}
   tlapicerasShootSfx: {fileID: 0}
+  bbchPopSfx: {fileID: 8300000, guid: 5f2dda6461366f543b152b7f1bb2fea6, type: 3}
 --- !u!61 &4541655274534026878
 BoxCollider2D:
   m_ObjectHideFlags: 0
