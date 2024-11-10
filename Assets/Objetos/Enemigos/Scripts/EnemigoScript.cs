@@ -98,7 +98,8 @@ public class EnemigoScript : MonoBehaviour
         if (construirscr == null) Debug.LogError("construirscr fue null en EnemigoScript!!");
         isPegamentoed = false;
     }
-    private IEnumerator BossMinionMove(string[] path, bool flash = true)
+
+    private IEnumerator BossMinionMove(string[] path)
     {
         canBeShot = false;
         canBeEaten = false;

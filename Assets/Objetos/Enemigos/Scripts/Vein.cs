@@ -12,7 +12,7 @@ public class Vein : EnemigoScript
     protected override void Start()
     {
         base.Start();
-        StartCoroutine(VeinHealing(baseHP/divHP, waitTime));
+        StartCoroutine(VeinHealing((baseHP/divHP), waitTime));
     }
 
     private IEnumerator VeinHealing(float healAmount, float wt)
