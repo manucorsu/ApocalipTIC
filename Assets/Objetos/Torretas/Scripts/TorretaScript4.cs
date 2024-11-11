@@ -97,6 +97,7 @@ public class TorretaScript4 : MonoBehaviour
                         {
                             if (enemigos.transform == target.transform && enemigoScript.spd > 0)
                             {
+                                if (enemigoScript.isBoss) return;
                                 StartCoroutine(Atacar());
                             }
                         }
