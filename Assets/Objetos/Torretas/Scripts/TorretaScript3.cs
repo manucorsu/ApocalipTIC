@@ -102,23 +102,23 @@ public class TorretaScript3 : MonoBehaviour
                 animator.SetFloat("anim", anima);
                 SoundManager.Instance.PlaySound(audioSource, tachoAspirarSfx, 0.8f);
 
-                while (target.position != transform.position)
-                {
-                    if (target != null)
-                    {
-                        target.position = Vector3.MoveTowards(target.position, transform.position, spd * Time.deltaTime);
-                        target.Rotate(new Vector3(0, 0, 1), 200 * Time.deltaTime);
-                        if (target.localScale.x > 0)
-                        {
-                            target.localScale = new Vector2(target.localScale.x - 0.04f, target.localScale.y - 0.04f);
-                        }
-                        else
-                        {
-                            target.localScale = new Vector3(0, 0, 0);
-                        }
-                        yield return null;
-                    }
-                }
+                //while (target.position != transform.position)
+                //{
+                //    if (target != null)
+                //    {
+                //        target.position = Vector3.MoveTowards(target.position, transform.position, spd * Time.deltaTime);
+                //        target.Rotate(new Vector3(0, 0, 1), 200 * Time.deltaTime);
+                //        if (target.localScale.x > 0)
+                //        {
+                //            target.localScale = new Vector2(target.localScale.x - 0.04f, target.localScale.y - 0.04f);
+                //        }
+                //        else
+                //        {
+                //            target.localScale = new Vector3(0, 0, 0);
+                //        }
+                //        yield return null;
+                //    }
+                //}
 
                 Pulpo pulpo = target.GetComponent<Pulpo>();
                 if (pulpo == null) targetscr.Morir();
