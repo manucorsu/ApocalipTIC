@@ -100,7 +100,7 @@ MonoBehaviour:
   enemigos:
     serializedVersion: 2
     m_Bits: 256
-  rango: 1.3
+  rango: 0.72
   cooldown: 10
   canEat: 1
   anima: 2
