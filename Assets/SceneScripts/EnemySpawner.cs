@@ -41,6 +41,8 @@ public class EnemySpawner : MonoBehaviour
 
     public AudioClip[] musica;
 
+    private readonly List<object> largeSps = new List<object> { "A5", "A8", 'L' };
+
     void Start()
     {
         ToggleSpawning(false);
@@ -180,22 +182,19 @@ public class EnemySpawner : MonoBehaviour
         {
             ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
             loc = spawners[ris].transform;
-            if (loc != lastLoc)
+            if (ronda >= 5 || loc.name[0] != 'A')
             {
-                if (prefabElegido.GetComponent<EnemigoScript>().isLarge)
+                if (!prefabElegido.GetComponent<EnemigoScript>().isLarge)
                 {
-                    if (loc.gameObject.name == "A5" || loc.gameObject.name == "A8" || loc.gameObject.name[1] == 'L')
-                    {
-                        break;
-                    }
+                    if (loc.name[1] != 'L') break;
                 }
-                else if (loc.name[0] == 'A')
+                else
                 {
-                    if (ronda >= 5) break;
+                    if (largeSps.Contains(loc.name) || largeSps.Contains(loc.name[0])) break;
                 }
-                else break;
             }
         }
+
         lastLoc = loc;
 
         GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
