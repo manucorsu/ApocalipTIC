@@ -110,7 +110,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 isBossFight = false;
             }
-            if (ronda > 1) bps += 0.1f;
+            if (ronda > 5) bps += 0.05f;
             botsASpawnear = EnemyFormula();
             ToggleSpawning(true);
             Image btnPlayImage = btnIniciarRonda.GetComponent<Image>();
