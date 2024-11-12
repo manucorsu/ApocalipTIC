@@ -401,7 +401,14 @@ public class Boss : EnemigoScript
                 canBeShot = true;
             }
         }
-        else if (collision.gameObject.CompareTag("BossKiller") && killMe) StartCoroutine(BossMorir());
+        else if (collision.gameObject.CompareTag("BossKiller") && killMe)
+        {
+            if (EnemySpawner.ronda != 15)
+            {
+                return;
+            }
+            StartCoroutine(BossMorir());
+        }
     }
 
     private IEnumerator Marearse()
@@ -452,7 +459,7 @@ public class Boss : EnemigoScript
                     Pata pata = enemigo.GetComponent<Pata>();
                     if (pata != null) pata.beingKilledByJefe = true;
                     Patito patito = enemigo.GetComponent<Patito>();
-                    if(patito == null) enemigoScript.Morir();
+                    if (patito == null) enemigoScript.Morir();
                 }
             }
         }
