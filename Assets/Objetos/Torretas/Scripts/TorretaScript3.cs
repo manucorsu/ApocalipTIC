@@ -53,6 +53,11 @@ public class TorretaScript3 : MonoBehaviour
                 return;
             }
         }
+
+        if (!CheckTargetRange())
+        {
+            target = null;
+        }
     }
 
     private void FindTarget()
@@ -139,6 +144,17 @@ public class TorretaScript3 : MonoBehaviour
                 anima = 2;
                 animator.SetFloat("anim", anima);
             }
+        }
+    }
+
+    private bool CheckTargetRange()
+    {
+        if (target != null)
+        {
+            return Vector2.Distance(target.position, transform.position) <= rango;
+        } else
+        {
+            return false;
         }
     }
 
