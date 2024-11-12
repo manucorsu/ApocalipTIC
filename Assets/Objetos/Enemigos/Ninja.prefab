@@ -59,7 +59,7 @@ MonoBehaviour:
   solidWhite: {fileID: 2100000, guid: 73fa6ee842c7da24ea3b26f170eaeac5, type: 2}
   isSpawnableByJefe: 0
   isLarge: 0
-  baseHP: 100
+  baseHP: 80
   hp: 0
   spd: 2.5
   spdSave: 0
@@ -78,7 +78,6 @@ MonoBehaviour:
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
   audioSource: {fileID: 82296456378869428}
-  bbchPopSfx: {fileID: 8300000, guid: 5f2dda6461366f543b152b7f1bb2fea6, type: 3}
   transparentAlpha:
     value: 0.1
   ninjaRevealSfx: {fileID: 8300000, guid: 0bd775dd365032548ba9071c863baaa3, type: 3}

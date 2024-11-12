@@ -60,7 +60,7 @@ MonoBehaviour:
   isLarge: 0
   baseHP: 100
   hp: 0
-  spd: 3
+  spd: 2.75
   spdSave: 0
   slowSpd: 0
   aceiteSpd: 0
@@ -77,7 +77,6 @@ MonoBehaviour:
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
   audioSource: {fileID: 82178348455540334}
-  bbchPopSfx: {fileID: 8300000, guid: 5f2dda6461366f543b152b7f1bb2fea6, type: 3}
 --- !u!50 &4957185954206258417
 Rigidbody2D:
   serializedVersion: 4

@@ -60,7 +60,7 @@ MonoBehaviour:
   isLarge: 0
   baseHP: 300
   hp: 0
-  spd: 1.5
+  spd: 1
   spdSave: 0
   slowSpd: 0
   aceiteSpd: 0

@@ -59,7 +59,7 @@ MonoBehaviour:
   solidWhite: {fileID: 2100000, guid: 73fa6ee842c7da24ea3b26f170eaeac5, type: 2}
   isSpawnableByJefe: 0
   isLarge: 0
-  baseHP: 130
+  baseHP: 120
   hp: 0
   spd: 3
   spdSave: 0
