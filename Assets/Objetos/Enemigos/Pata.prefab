@@ -61,7 +61,7 @@ MonoBehaviour:
   solidWhite: {fileID: 2100000, guid: 73fa6ee842c7da24ea3b26f170eaeac5, type: 2}
   isSpawnableByJefe: 0
   isLarge: 1
-  baseHP: 300
+  baseHP: 350
   hp: 0
   spd: 1.5
   spdSave: 0
@@ -80,7 +80,6 @@ MonoBehaviour:
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
   audioSource: {fileID: 82285266966368178}
-  bbchPopSfx: {fileID: 8300000, guid: 5f2dda6461366f543b152b7f1bb2fea6, type: 3}
   patitos:
   - {fileID: 9090683695533555971}
   - {fileID: 5790160759110559030}

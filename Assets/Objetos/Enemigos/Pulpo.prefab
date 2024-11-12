@@ -58,7 +58,7 @@ MonoBehaviour:
   solidWhite: {fileID: 2100000, guid: 73fa6ee842c7da24ea3b26f170eaeac5, type: 2}
   isSpawnableByJefe: 1
   isLarge: 0
-  baseHP: 100
+  baseHP: 150
   hp: 0
   spd: 1.5000001
   spdSave: 0
@@ -77,7 +77,6 @@ MonoBehaviour:
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
   audioSource: {fileID: 82606210554519020}
-  bbchPopSfx: {fileID: 8300000, guid: 5f2dda6461366f543b152b7f1bb2fea6, type: 3}
   aceitePfb: {fileID: 199929408812350690, guid: 8df9d79cc98bff44f98fddae24e03394,
     type: 3}
   aceite: {fileID: 0}
