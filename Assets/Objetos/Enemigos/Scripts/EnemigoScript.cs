@@ -8,7 +8,7 @@ public class EnemigoScript : MonoBehaviour
     [Header("Animación")]
     protected Animator animator;
     [HideInInspector] public List<float> secuenciaAnims = new List<float>(); //0 = DOWN; 1 = LEFT; 2 = UP
-    protected Color baseColor = Color.white;
+    protected Color baseColor;
     [SerializeField] private Color hurtColor = new Color(217, 54, 54);
     public GameObject explosionMuerte;
     public Color colorExplosion;
@@ -85,6 +85,7 @@ public class EnemigoScript : MonoBehaviour
         v3Camino.Clear();
         secuenciaAnims.Clear(); //cuenta como asignación? 
         sr = this.gameObject.GetComponent<SpriteRenderer>();
+        baseColor = sr.color;
         animator = this.gameObject.GetComponent<Animator>();
         padreWaypoints = GameObject.Find("PadreWaypoints");
         defaultMat = new Material(Shader.Find("Sprites/Default"));

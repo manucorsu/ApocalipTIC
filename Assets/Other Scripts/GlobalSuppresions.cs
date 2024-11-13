@@ -7,3 +7,4 @@
 #endregion
 
 [assembly: SuppressMessage("Style", "IDE0044", Justification = "Breaks Unity serialization")]
+[assembly: SuppressMessage("Style", "IDE0090", Justification = "Unity 2018")]
