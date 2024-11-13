@@ -182,18 +182,20 @@ public class EnemySpawner : MonoBehaviour
         {
             ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
             loc = spawners[ris].transform;
-            if (ronda >= 5 || loc.name[0] != 'A')
+            if(lastLoc != loc)
             {
-                if (!prefabElegido.GetComponent<EnemigoScript>().isLarge)
+                if (ronda >= 5 || loc.name[0] != 'A')
                 {
-                    if (loc.name[1] != 'L') break;
-                }
-                else
-                {
-                    if (largeSps.Contains(loc.name) || largeSps.Contains(loc.name[0])) break;
+                    if (!prefabElegido.GetComponent<EnemigoScript>().isLarge)
+                    {
+                        if (loc.name[1] != 'L') break;
+                    }
+                    else
+                    {
+                        if (largeSps.Contains(loc.name) || largeSps.Contains(loc.name[0])) break;
+                    }
                 }
             }
-        }
 
         lastLoc = loc;
 
