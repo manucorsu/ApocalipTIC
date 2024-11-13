@@ -182,7 +182,7 @@ public class EnemySpawner : MonoBehaviour
         {
             ris = (byte)Random.Range(0, spawners.Length); //RIS = Random Index para el array de Spawners™
             loc = spawners[ris].transform;
-            if(lastLoc != loc)
+            if (lastLoc != loc)
             {
                 if (ronda >= 5 || loc.name[0] != 'A')
                 {
@@ -197,15 +197,16 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
 
-        lastLoc = loc;
+            lastLoc = loc;
 
-        GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
+            GameObject nuevoEnemigo = Instantiate(prefabElegido, loc.position, Quaternion.identity);
 
-        EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
-        enemigoScript.spName = spawners[ris].name;
+            EnemigoScript enemigoScript = nuevoEnemigo.GetComponent<EnemigoScript>();
+            enemigoScript.spName = spawners[ris].name;
 
-        botsASpawnear--;
-        tiempoDesdeUltimoSpawn = 0;
+            botsASpawnear--;
+            tiempoDesdeUltimoSpawn = 0;
+        }
     }
 
     public void TerminarRonda()
