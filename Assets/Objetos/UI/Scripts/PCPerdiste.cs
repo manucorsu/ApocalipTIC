@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PCPerdiste : MonoBehaviour
@@ -7,8 +8,8 @@ public class PCPerdiste : MonoBehaviour
     [SerializeField] private Animator animator;
     private bool red;
     private bool showedGameOverText;
-    [SerializeField] private GameObject txtGameOver;
-    [SerializeField] private GameObject txtPressAnyKey;
+    [SerializeField] private TMP_Text txtGameOver;
+    [SerializeField] private BlinkingTMPText txtPressAnyKey;
 
     private void Awake()
     {
@@ -30,8 +31,8 @@ public class PCPerdiste : MonoBehaviour
         if (!showedGameOverText)
         {
             showedGameOverText = true;
-            txtGameOver.SetActive(true);
-            txtPressAnyKey.SetActive(true);
+            txtGameOver.enabled = true;
+            txtPressAnyKey.StartBlinking();
         }
     }
 }

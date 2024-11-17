@@ -6,19 +6,29 @@ using UnityEngine;
 public class BlinkingTMPText : MonoBehaviour
 {
     private TMP_Text thisText;
-    [SerializeField] private CustomRangeFloat blinkWaitTime = new CustomRangeFloat(0, float.MaxValue, 1.5f);
+    [SerializeField] private CustomRangeFloat blinkWaitTime = new CustomRangeFloat(0, float.MaxValue, 1f);
+    public bool Blinking { get; private set; }
 
-    private void OnEnable()
+    private void Awake()
     {
-        thisText = GetComponent<TMP_Text>();
-        if (thisText == null)
+        Blinking = false;
+    }
+
+    public void StartBlinking()
+    {
+        if (!Blinking)
         {
-            throw new System.Exception("This object must have a TMP Text component.");
-        }
-        else
-        {
-            StopAllCoroutines();
-            StartCoroutine(Blink());
+            thisText = GetComponent<TMP_Text>();
+            if (thisText == null)
+            {
+                throw new System.Exception("This object must have a TMP Text component.");
+            }
+            else
+            {
+                StopAllCoroutines();
+                Blinking = true;
+                StartCoroutine(Blink());
+            }
         }
     }
 
@@ -27,8 +37,9 @@ public class BlinkingTMPText : MonoBehaviour
         while (false != true)
         {
             thisText.enabled = !thisText.enabled;
-            Debug.Log(thisText.enabled);
             yield return new WaitForSecondsRealtime(blinkWaitTime);
         }
     }
+
+    public void StopBlinking() => StopAllCoroutines();
 }

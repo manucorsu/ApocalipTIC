@@ -35,30 +35,13 @@ public class SoundManager : MonoBehaviour
     public void PlayUIClick() => PlaySound(sfxPlayer, uiClick);
     public void PlayBuySfx() => PlaySound(sfxPlayer, BuySfx, 0.4f);
 
-    //public void PlayUISound(AudioClip clip, float volume = 1)
-    //{
-    //    if (volume < 0 || volume > 1)
-    //    {
-    //        throw new System.ArgumentOutOfRangeException("volume", "volume debe ser un float entre 0 y 1 porque Unity.");
-    //    }
-    //    if (clip == null)
-    //    {
-    //        throw new System.ArgumentNullException("clip");
-    //    }
-    //    if (sfxOn)
-    //    {
-    //        sfxPlayer.volume = volume;
-    //        sfxPlayer.PlayOneShot(clip);
-    //    }
-    //}
-
     public void PlaySound(AudioSource source, AudioClip clip, float volume = 1)
     {
         if (volume < 0 || volume > 1)
         {
             throw new System.ArgumentOutOfRangeException("volume", "volume debe ser un float entre 0 y 1 porque Unity.");
         }
-        if(source == null)
+        if (source == null)
         {
             throw new System.ArgumentNullException("source");
         }
@@ -136,7 +119,7 @@ public class SoundManager : MonoBehaviour
     {
         if (player == null) throw new System.ArgumentNullException("player");
         if (loopers.Contains(player) == false)
-        {   
+        {
             Debug.LogWarning("El player pasado no estaba loopeando. No se hizo nada.");
             return;
         }
@@ -149,7 +132,7 @@ public class SoundManager : MonoBehaviour
     public void StopAllSfxLoops()
     {
         List<AudioSource> lIterable = new List<AudioSource>(loopers);
-        foreach(AudioSource l in lIterable)
+        foreach (AudioSource l in lIterable)
         {
             l.loop = false;
             l.Stop();
