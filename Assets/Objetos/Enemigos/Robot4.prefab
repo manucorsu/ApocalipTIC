@@ -77,6 +77,7 @@ MonoBehaviour:
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
   audioSource: {fileID: 82178348455540334}
+  <EnemyType>k__BackingField: 8
 --- !u!50 &4957185954206258417
 Rigidbody2D:
   serializedVersion: 4

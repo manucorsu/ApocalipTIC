@@ -12,7 +12,7 @@ public class Vein : EnemigoScript
     protected override void Start()
     {
         base.Start();
-        StartCoroutine(VeinHealing((baseHP/divHP), waitTime));
+        StartCoroutine(VeinHealing((baseHP / divHP), waitTime));
     }
 
     private IEnumerator VeinHealing(float healAmount, float wt)
@@ -25,7 +25,7 @@ public class Vein : EnemigoScript
                 hp += healAmount;
                 hpBar.Change(healAmount);
                 yield return new WaitForSeconds(0.1f);
-                sr.color = baseColor; 
+                sr.color = baseColor;
             }
             yield return new WaitForSeconds(wt);
         }

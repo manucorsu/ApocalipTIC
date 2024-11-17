@@ -1,0 +1,3 @@
+Si estás buscando las spritesheets de los enemigos, se movieron a
+
+Assets\Resources\EnemySprites

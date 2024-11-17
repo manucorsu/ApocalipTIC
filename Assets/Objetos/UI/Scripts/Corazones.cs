@@ -13,6 +13,8 @@ public class Corazones : MonoBehaviour
 
     [SerializeField] private AudioSource audioSource;
     private bool[] statusCorazones = new bool[] { false, false, false };
+
+    [SerializeField] private LevelChanger levelChanger;
     //cada corazón está en `false` si NO está roto y en `true` si está roto
 
 
@@ -33,7 +35,7 @@ public class Corazones : MonoBehaviour
         }
     }
 
-    public void LoseLife()
+    public void LoseLife(GameObject losingEnemyGO)
     {
         EnemySpawner.vidas--;
         if (MessageBox.Instance.CheatsEnabled == false && EnemySpawner.vidas == 0)
@@ -42,7 +44,7 @@ public class Corazones : MonoBehaviour
             SoundManager.Instance.GetComponent<AudioSource>().clip = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().musica[3];
             SoundManager.Instance.GetComponent<AudioSource>().Play();
             SoundManager.Instance.GetComponent<AudioSource>().loop = false;
-            SceneManager.LoadScene("GameOver");
+            GameOverManager.LoseGame(losingEnemyGO, levelChanger);
         }
         for (int i = 0; i < corazones.Length; i++)
         {

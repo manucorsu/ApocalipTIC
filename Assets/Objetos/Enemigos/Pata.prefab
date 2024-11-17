@@ -80,6 +80,7 @@ MonoBehaviour:
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
   audioSource: {fileID: 82285266966368178}
+  <EnemyType>k__BackingField: 2
   patitos:
   - {fileID: 9090683695533555971}
   - {fileID: 5790160759110559030}

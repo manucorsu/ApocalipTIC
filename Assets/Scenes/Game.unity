@@ -24449,6 +24449,7 @@ MonoBehaviour:
   - {fileID: 227884158}
   upgradeSfx: {fileID: 8300000, guid: 5d85f36f899435a4ba0d4aa3ef747d1f, type: 3}
   audioSource: {fileID: 1066984203}
+  levelChanger: {fileID: 1663630873}
 --- !u!82 &1066984203
 AudioSource:
   m_ObjectHideFlags: 0

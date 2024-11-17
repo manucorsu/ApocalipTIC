@@ -1,14 +1,16 @@
 fileFormatVersion: 2
-guid: b26ec081400d43f4b901881bc7a6baf1
+guid: 4ecd4b38c0e1fc6478d80baf21a66de2
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ninja-Sheet_0
-    21300002: ninja-Sheet_1
-    21300004: ninja-Sheet_2
-    21300006: ninja-Sheet_3
-    21300008: ninja-Sheet_4
-    21300010: ninja-Sheet_5
-    21300012: ninja-Sheet_6
+    21300000: end screen o algo asiperdistePantalla_0
+    21300002: end screen o algo asiperdistePantalla_1
+    21300004: end screen o algo asiperdistePantalla_2
+    21300006: end screen o algo asiperdistePantalla_3
+    21300008: end screen o algo asiperdistePantalla_4
+    21300010: end screen o algo asiperdistePantalla_5
+    21300012: end screen o algo asiperdistePantalla_6
+    21300014: end screen o algo asiperdistePantalla_7
+    21300016: end screen o algo asiperdistePantalla_8
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -80,13 +82,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ninja-Sheet_0
+      name: end screen o algo asiperdistePantalla_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -94,39 +96,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e499084b8ddc564a8acdfde87c6c574
+      spriteID: 57872980ad0775a4e8282e67e54d08ec
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ninja-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d354c387492d9cd45909d3885292ef33
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ninja-Sheet_2
+      name: end screen o algo asiperdistePantalla_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,39 +116,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdb663baaacfaf2448e9dc5417d13c9c
+      spriteID: aac4c285f3499e14baee7535b76bfdc0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ninja-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c33db789b97c75840b8e4ad7ee21bca2
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ninja-Sheet_4
+      name: end screen o algo asiperdistePantalla_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,39 +136,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fde45ccd6bcc62479455f9a27cda493
+      spriteID: 0e9eeadb0088f47498f26abe554e2ea1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ninja-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 667a2d1b79735e04c9db40f1ee4e0bf5
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ninja-Sheet_6
+      name: end screen o algo asiperdistePantalla_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,7 +156,107 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd859565e8efb664baae87384cff3ca9
+      spriteID: 45ba5680656c7d142a0b48dc897bbb9d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: end screen o algo asiperdistePantalla_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 615dfcf3602dc4d4da542ae8f8097f53
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: end screen o algo asiperdistePantalla_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a230c6010195154d9ef7e7ad225fc18
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: end screen o algo asiperdistePantalla_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ef1eacd098c2cf43ba2ac920d702dea
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: end screen o algo asiperdistePantalla_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ed56600977200a42b1848c396498fb1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: end screen o algo asiperdistePantalla_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 688fb8694ec99074e9151339a13931e3
       vertices: []
       indices: 
       edges: []
@@ -222,7 +264,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 900aa1696ce6d754ab3fa50316e24de5
+    spriteID: ed06243b2b1c91840aad68e72440a538
     vertices: []
     indices: 
     edges: []

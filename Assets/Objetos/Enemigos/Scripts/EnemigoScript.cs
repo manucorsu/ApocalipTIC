@@ -64,10 +64,13 @@ public class EnemigoScript : MonoBehaviour
     [SerializeField] protected AudioSource audioSource;
     protected HPBar hpBar;
 
+    [field: SerializeField] public EnemyType EnemyType { get; private set; }
+
     private void Awake()
     {
         AsignarTodo();
     }
+
     protected virtual void Start()
     {
         if (!isBoss) BuscarPath();
@@ -97,6 +100,12 @@ public class EnemigoScript : MonoBehaviour
         construirscr = GameObject.Find("SCENESCRIPTS").GetComponent<ConstruirScriptGeneral>();
         if (construirscr == null) Debug.LogError("construirscr fue null en EnemigoScript!!");
         isPegamentoed = false;
+
+        if (this.EnemyType == EnemyType.Asignar)
+        {
+            string goname = this.gameObject.name;
+            throw new System.Exception($"Tenés que asignar el backing field de EnemyType para {goname.Substring(0, goname.Length - 7)}.");
+        }
     }
 
     private IEnumerator BossMinionMove(string[] path)
@@ -326,11 +335,12 @@ public class EnemigoScript : MonoBehaviour
 
     private void LoseLife()
     {
+        reachedGoal = true;
         this.gameObject.GetComponent<Collider2D>().enabled = false;
         this.plata = 0;
         this.colorExplosion = colorExplosion = new Color(this.colorExplosion.r, this.colorExplosion.g, this.colorExplosion.b, 0);
+        this.sr.color = baseColor;
+        Corazones.Instance.LoseLife(this.gameObject);
         Morir();
-        Corazones.Instance.LoseLife();
-        reachedGoal = true;
     }
 }

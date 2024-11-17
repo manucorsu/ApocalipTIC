@@ -8,3 +8,4 @@
 
 [assembly: SuppressMessage("Style", "IDE0044", Justification = "Breaks Unity serialization")]
 [assembly: SuppressMessage("Style", "IDE0090", Justification = "Unity 2018")]
+[assembly: SuppressMessage("Style", "IDE0066", Justification = "es horrible, además Unity 2018")]

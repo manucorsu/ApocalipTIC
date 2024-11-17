@@ -77,7 +77,7 @@ MonoBehaviour:
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
   audioSource: {fileID: 82059363626060092}
-  bbchPopSfx: {fileID: 8300000, guid: 5f2dda6461366f543b152b7f1bb2fea6, type: 3}
+  <EnemyType>k__BackingField: 3
   madre: {fileID: 0}
 --- !u!50 &6926818039991358197
 Rigidbody2D:

@@ -165,7 +165,7 @@ public class Boss : EnemigoScript
                         GameObject prefabElegido;
                         while (false != true)
                         {
-                            byte rie = (byte)Random.Range(0, pfbsEnemigos.Length);
+                            int rie = Random.Range(0, pfbsEnemigos.Length);
                             prefabElegido = pfbsEnemigos[rie];
                             if (prefabElegido.GetComponent<EnemigoScript>().IsSpawnableByJefe) break;
                             yield return null;

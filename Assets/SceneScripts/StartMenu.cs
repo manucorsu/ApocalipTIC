@@ -33,7 +33,7 @@ public class StartMenu : MonoBehaviour
     public void ToggleMusAjustes()
     {
         GameObject clickedBtn = EventSystem.current.currentSelectedGameObject;
-        if(clickedBtn != null)
+        if (clickedBtn != null)
         {
             Image btnImg = clickedBtn.GetComponent<Image>();
             SoundManager.Instance.PlayUIClick();

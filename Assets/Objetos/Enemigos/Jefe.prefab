@@ -77,7 +77,7 @@ MonoBehaviour:
   siguiendo: 0
   currentWaypoint: {x: 0, y: 0, z: 0}
   audioSource: {fileID: 82153998931831964}
-  bbchPopSfx: {fileID: 8300000, guid: 5f2dda6461366f543b152b7f1bb2fea6, type: 3}
+  <EnemyType>k__BackingField: 0
   introDone: 0
   dvOnSpr: {fileID: 21300002, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}
   dvOffSpr: {fileID: 21300000, guid: 67ba10095f4c41e44a4cd33c9f4c178e, type: 3}

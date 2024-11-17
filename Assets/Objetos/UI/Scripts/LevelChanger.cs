@@ -16,7 +16,7 @@ public class LevelChanger : MonoBehaviour
     {
         Fading = true;
         parentCanvas.sortingOrder = 999;
-        yield return new WaitForSeconds(1); 
+        yield return new WaitForSeconds(1);
         parentCanvas.sortingOrder = -1;
         Fading = false;
     }
