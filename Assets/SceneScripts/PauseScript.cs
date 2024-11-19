@@ -142,7 +142,7 @@ public class PauseScript : MonoBehaviour
         Time.timeScale = 1;
         SoundManager.Instance.PlayUIClick();
         levelChanger.FadeTo("Inicio", 2);
-        SoundManager.Instance.GetComponent<AudioSource>().clip = GetComponent<EnemySpawner>().musica[0];
+        SoundManager.Instance.GetComponent<AudioSource>().clip = SoundManager.Instance.temaPrincipal;
         SoundManager.Instance.GetComponent<AudioSource>().Play();
     }
 }

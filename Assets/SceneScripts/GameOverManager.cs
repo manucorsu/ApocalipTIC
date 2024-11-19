@@ -55,6 +55,12 @@ public class GameOverManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKeyDown) gameOverSceneLevelChngr.FadeTo("Inicio", 1);
+        if (Input.anyKeyDown)
+        {
+            gameOverSceneLevelChngr.FadeTo("Inicio", 1);
+            SoundManager.Instance.GetComponent<AudioSource>().clip = SoundManager.Instance.temaPrincipal;
+            SoundManager.Instance.GetComponent<AudioSource>().loop = true;
+            SoundManager.Instance.GetComponent<AudioSource>().Play();
+        }
     }
 }
