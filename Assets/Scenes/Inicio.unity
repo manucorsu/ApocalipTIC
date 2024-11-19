@@ -1150,8 +1150,9 @@ MonoBehaviour:
     type: 3}
   onSpr: {fileID: 21300000, guid: f30cbe27ac9962449824d14468aa301c, type: 3}
   offSpr: {fileID: 21300004, guid: f30cbe27ac9962449824d14468aa301c, type: 3}
-  audioSource: {fileID: 1321572930}
+  musPlayer: {fileID: 0}
   temaPrincipal: {fileID: 8300000, guid: de0edc05b9340b043951f1fad9aeff2c, type: 3}
+  warns: 0
 --- !u!4 &1321572929
 Transform:
   m_ObjectHideFlags: 0
@@ -1185,7 +1186,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 256
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
