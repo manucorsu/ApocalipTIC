@@ -113,7 +113,7 @@ public class MejorasScript : MonoBehaviour
             float thisPosX = this.transform.position.x + 2.5f;
             float thisPosY = this.transform.position.y;
 
-            if (this.transform.position.x > 8)
+            if (this.transform.position.x > 5)
             {
                 thisPosX -= 5.5f;
             }
