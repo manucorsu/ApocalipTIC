@@ -14,21 +14,25 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] private GameObject robotPerdisteVein;
 
     [SerializeField] private GameObject pcPerdiste;
-
+    public static bool Lost { get; private set; } = false;
 
     public static void LoseGame(GameObject losingEnemyGO, LevelChanger gameSceneLevelChanger)
     {
-        losingEnemyT = EnemyType.Asignar;
-        Time.timeScale = 1f;
-        scrBotones.dv = 0;
-        EnemigoScript losingEnemy = losingEnemyGO.GetComponent<EnemigoScript>();
-        if (losingEnemy.EnemyType == EnemyType.Asignar) throw new System.ArgumentException("el enemigo no debería tener el EnemyType 'Asignar'.");
-        else
+        if (Lost == false)
         {
-            losingEnemyT = losingEnemy.EnemyType;
-            losingEnemySpr = losingEnemyGO.GetComponent<SpriteRenderer>().sprite;
-            losingEnemySprRendererColor = losingEnemyGO.GetComponent<SpriteRenderer>().color;
-            gameSceneLevelChanger.FadeTo("GameOver");
+            losingEnemyT = EnemyType.Asignar;
+            Time.timeScale = 1f;
+            scrBotones.dv = 0;
+            EnemigoScript losingEnemy = losingEnemyGO.GetComponent<EnemigoScript>();
+            if (losingEnemy.EnemyType == EnemyType.Asignar) throw new System.ArgumentException("el enemigo no debería tener el EnemyType 'Asignar'.");
+            else
+            {
+                losingEnemyT = losingEnemy.EnemyType;
+                losingEnemySpr = losingEnemyGO.GetComponent<SpriteRenderer>().sprite;
+                losingEnemySprRendererColor = losingEnemyGO.GetComponent<SpriteRenderer>().color;
+                gameSceneLevelChanger.FadeTo("GameOver");
+            }
+            Lost = true;
         }
     }
 
@@ -61,6 +65,7 @@ public class GameOverManager : MonoBehaviour
             SoundManager.Instance.GetComponent<AudioSource>().clip = SoundManager.Instance.temaPrincipal;
             SoundManager.Instance.GetComponent<AudioSource>().loop = true;
             SoundManager.Instance.GetComponent<AudioSource>().Play();
+            Lost = false;
         }
     }
 }

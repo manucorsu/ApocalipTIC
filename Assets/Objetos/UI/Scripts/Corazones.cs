@@ -37,7 +37,21 @@ public class Corazones : MonoBehaviour
 
     public void LoseLife(GameObject losingEnemyGO)
     {
-        EnemySpawner.vidas--;
+        if (MessageBox.Instance.CheatsEnabled == false)
+        {
+            if ((EnemySpawner.vidas - 1) > 3) EnemySpawner.vidas = 3;
+            else EnemySpawner.vidas--;
+
+            for (int i = 0; i < corazones.Length; i++)
+            {
+                if (statusCorazones[i] == false)
+                {
+                    corazones[i].GetComponent<Animator>().SetTrigger("romper");
+                    statusCorazones[i] = true;
+                    break;
+                }
+            }
+        }
         if (MessageBox.Instance.CheatsEnabled == false && EnemySpawner.vidas == 0)
         {
             SoundManager.Instance.StopAllSfxLoops();
@@ -45,15 +59,6 @@ public class Corazones : MonoBehaviour
             SoundManager.Instance.GetComponent<AudioSource>().Play();
             SoundManager.Instance.GetComponent<AudioSource>().loop = false;
             GameOverManager.LoseGame(losingEnemyGO, levelChanger);
-        }
-        for (int i = 0; i < corazones.Length; i++)
-        {
-            if (statusCorazones[i] == false)
-            {
-                corazones[i].GetComponent<Animator>().SetTrigger("romper");
-                statusCorazones[i] = true;
-                break;
-            }
         }
     }
 
