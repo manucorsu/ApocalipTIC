@@ -68,7 +68,7 @@ public class scrBotonTorreta : MonoBehaviour, IPointerEnterHandler, IPointerExit
             txtTítuloTorreta.text = "Tiralapiceras";
             txtDescTorreta.text = "Dispara lapiceras a largas distancias.";
             cuadroTorreta.SetActive(true);
-            cuadroTorreta.GetComponent<RectTransform>().anchoredPosition = new Vector2(-60, -31);
+            cuadroTorreta.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -31);
         }
 
         if (this.gameObject == GameObject.Find("btnLanzabombuchas"))
@@ -76,7 +76,7 @@ public class scrBotonTorreta : MonoBehaviour, IPointerEnterHandler, IPointerExit
             txtTítuloTorreta.text = "Lanzabombuchas";
             txtDescTorreta.text = "Lanza bombuchas que explotan en área.";
             cuadroTorreta.SetActive(true);
-            cuadroTorreta.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -31);
+            cuadroTorreta.GetComponent<RectTransform>().anchoredPosition = new Vector2(-60, -31);
         }
 
         if (this.gameObject == GameObject.Find("btnImán"))
