@@ -62,9 +62,10 @@ public class GameOverManager : MonoBehaviour
         if (Input.anyKeyDown)
         {
             gameOverSceneLevelChngr.FadeTo("Inicio", 1);
-            SoundManager.Instance.GetComponent<AudioSource>().clip = SoundManager.Instance.temaPrincipal;
-            SoundManager.Instance.GetComponent<AudioSource>().loop = true;
-            SoundManager.Instance.GetComponent<AudioSource>().Play();
+            AudioSource aus = SoundManager.Instance.GetComponent<AudioSource>();
+            aus.clip = SoundManager.Instance.temaPrincipal;
+            aus.loop = true;
+            aus.Play();
             Lost = false;
         }
     }

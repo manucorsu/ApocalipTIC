@@ -29,7 +29,7 @@ public class Corazones : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M) && MessageBox.Instance.CheatsEnabled)
         {
             GiveLife();
         }
@@ -52,7 +52,7 @@ public class Corazones : MonoBehaviour
                 }
             }
         }
-        if (MessageBox.Instance.CheatsEnabled == false && EnemySpawner.vidas == 0)
+        if (MessageBox.Instance.CheatsEnabled == false && EnemySpawner.vidas < 1)
         {
             SoundManager.Instance.StopAllSfxLoops();
             SoundManager.Instance.GetComponent<AudioSource>().clip = GameObject.Find("SCENESCRIPTS").GetComponent<EnemySpawner>().musica[3];
